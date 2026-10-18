@@ -1,6 +1,6 @@
 # 一击之后 · 8秒原创视听镜头
 
-[有声MP4](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-final.mp4) · [音效独听](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-sfx.wav) · [音乐独听](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-music.wav) · [参考混音](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-score.wav)
+[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/final.mp4) · [音效独听](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/sfx.flac) · [音乐独听](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/music.flac) · [参考混音](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/score.flac)
 
 ![最终编码关键帧](../../evidence/resonance/encoded.jpg)
 
@@ -41,6 +41,6 @@ python scripts/check_media.py examples/resonance/renders/final.mp4 --duration 8
 
 `film.js`只组装对象和艺术布局，复用公共`solid/lathe/rod/surface/studio`与`camera/contact/impulse/track`；`score.mjs`定义音乐与动作，没有另写一套合音器。接触速度从同一motion参数推导；改变strike拍号会同时改变槌/余振/冲击声时刻。
 
-[最终编码接触表](../../evidence/resonance/encoded.jpg) · [动作条](../../evidence/resonance/motion.jpg) · [技术媒体报告](../../evidence/resonance/media.json) · [同步报告](../../evidence/resonance/sync.json) · [返工记录](review.md)。大音视频仅存同仓库Release，字节数和SHA256见[assets.json](../../evidence/assets.json)。没有重新制作两部36秒影片。
+[最终编码接触表](../../evidence/resonance/encoded.jpg) · [动作条](../../evidence/resonance/motion.jpg) · [技术媒体报告](../../evidence/resonance/media.json) · [同步报告](../../evidence/resonance/sync.json) · [返工记录](review.md)。短验证片和无损压缩独听轨随证据追踪；36秒大样片使用历史commit固定链接。当前环境Release附件上传401，未发布Release，字节数和SHA256见[assets.json](../../evidence/assets.json)。没有重新制作两部36秒影片。
 
 已检查关键画面、动作中间态和编码抽帧；技术测试不能代替主观听音。当前无音频播放能力，音色、混音舒适度与完整节奏留待人工审片；不宣称已达电影级。不包含真实目标模型A/B结果。

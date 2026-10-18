@@ -41,4 +41,4 @@
 2. **运动 → 可读的定格证据。** 独立 `physics.js` 用绝对物理时间计算位置，摄影机另行缓动；17秒将同一物理时刻明确冻结，速度向量与数字给观众比较任务。初版镜头放得过大，箭头穿过字幕：[失败图](../evidence/descent_studio/v1/s_0017.00.png) → [修订图](../evidence/descent_studio/final/s_0017.00.png)。真正有效的参数是取景尺度1810→1450和标注位置，不是辉光强度。
 3. **实物 → 几何定义。** 22–28秒保留铜色路径，转换为圆周点描出的摆线，并明确标注“几何生成示意”；此时运动表示几何构造，不能沿用赛跑计时。看 [24.5秒实图](../evidence/descent_studio/final/s_0024.50.jpg)。辅助圆接近名称区时先退出，避免解释工具盖住结论。适合一个对象有两种模型的叙事，不能用一次比赛冒充最速性的数学证明。
 
-完整动作见 [36秒影片](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/studio-final.mp4) 与 [比赛 Motion Strip](../evidence/descent_studio/final/motion_8.8-13.2.jpg)。这些参数用于解释这次返工，不是新主题必须复用的布局。
+完整动作见 [36秒影片](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/8c93e14809b839586ab4652cf1e89b2a03876717/evidence/descent_studio/final.mp4) 与 [比赛 Motion Strip](../evidence/descent_studio/final/motion_8.8-13.2.jpg)。这些参数用于解释这次返工，不是新主题必须复用的布局。

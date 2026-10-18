@@ -1,6 +1,6 @@
 # 六秒复杂镜头：旋转变成位移
 
-这里只验证复杂镜头的执行方法，不再制作第二组长片。[有声MP4](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/governor-scene.mp4) · [源码](film.js) · [姿态/后端核验](../../evidence/governor_scene/technical.json) · [媒体报告](../../evidence/governor_scene/media.json)。
+这里只验证复杂镜头的执行方法，不再制作第二组长片。[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/governor_scene/final.mp4) · [源码](film.js) · [姿态/后端核验](../../evidence/governor_scene/technical.json) · [媒体报告](../../evidence/governor_scene/media.json)。
 
 ![实际PBR场景](../../evidence/governor_scene/pbr.png)
 

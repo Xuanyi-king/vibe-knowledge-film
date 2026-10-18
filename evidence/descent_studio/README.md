@@ -1,6 +1,6 @@
 # 原有升级片证据索引
 
-两部36秒影片未重新制作。成片已迁到[PR媒体预发布](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/tag/pr-1-media)，各文件SHA256和下载地址在[assets.json](../assets.json)。
+两部36秒影片未重新制作。成片已迁到[PR媒体预发布](https://github.com/Xuanyi-king/vibe-knowledge-film/blob/feat/director-evidence-workflow/evidence/assets.json)，各文件SHA256和下载地址在[assets.json](../assets.json)。
 
 - v1：首版源码与17秒、5.5秒问题帧。
 - v2：第一次返工源码与同刻17秒帧。

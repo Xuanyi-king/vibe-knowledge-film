@@ -9,3 +9,5 @@ __pycache__/
 engine/vendor/
 examples/governor_scene/audio/
 examples/resonance/audio/
+!evidence/governor_scene/final.mp4
+!evidence/resonance/final.mp4

@@ -37,7 +37,7 @@ VK_BROWSER=/usr/bin/chromium python -m unittest discover -s tests -v
 
 当前只有Linux，没有Windows主机或PowerShell可执行文件；**原生Windows、msvcrt锁、PowerShell入口未实测**。提供[verify.ps1](../scripts/verify.ps1)和[说明](windows.md)，`-Scene`做六秒机构验收，`-AV`做八秒视听验收。实际测试覆盖中文、空格、单引号路径和参数数组，但不能将此当Windows验证。
 
-两部旧MP4与新六秒片迁到[同仓库PR媒体预发布](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/tag/pr-1-media)；下载地址/字节数/SHA256在[assets.json](../evidence/assets.json)。保留源码、首版/第二轮/最终17秒PNG、5.5秒问题帧、代表性最终JPEG、动作条、最终拼图、精简成本与技术报告。删除重复全尺寸帧、重复源码副本和逐进程临时日志。
+两部旧MP4改为历史commit固定链接，当前树不重复保存。六秒/八秒验证片各约1–2MB，独听轨FLAC共约0.5MB，作为必要证据追踪；下载地址/字节数/SHA256在[assets.json](../evidence/assets.json)。保留源码、首版/第二轮/最终17秒PNG、5.5秒问题帧、代表性最终JPEG、动作条、最终拼图、精简成本与技术报告。删除重复全尺寸帧、重复源码副本和逐进程临时日志。
 
 这收敛的是当前树和PR最终差异，**没有强推改写Git历史**；历史大对象仍存在。只需要当前版本时可用`git clone --depth 1 --branch feat/director-evidence-workflow ...`，不把工作树缩减宣传成完整历史已瘦身。
 
@@ -46,3 +46,5 @@ VK_BROWSER=/usr/bin/chromium python -m unittest discover -s tests -v
 八秒最终媒体为240帧1080p30、H.264/AAC48kHz、全解码通过；8个声音事件与最终AAC解码窗口的相关度最低0.99749，测得编码延迟均0样本，声明时间恰落30fps帧网格。响度实测-20.02 LUFS、真实峰值-4.07 dBTP；这是测量，不是音色或电影感评分。5.719–6.167秒静音候选对应有意停顿与下一音符尚未进入，7.646秒后的低能量尾部为收尾。
 
 八秒片warm恢复9.582秒，4段全复用、raw哈希不变。冷导出约292.364秒（两核CPU、SwiftShader，期间并行测试），不将其当跨平台性能保证。制作过程中一次主动中断、一次文档编辑触发保守失效后重算，没有绕过身份检查或发布未验证拼接片。
+
+媒体发布限制：已实际尝试同仓库Release；创建API可用，但uploads.github.com附件端点返回401 Bad credentials，失败发布未保留。改用历史commit链接保留两部大影片，当前树仅加入必要的六秒/八秒小片和FLAC独听。未改写历史或把虚构Release当产物位置。[下载与校验](media.md)可在本地复现；若之后有可用上传凭据，可再迁移到Release。
