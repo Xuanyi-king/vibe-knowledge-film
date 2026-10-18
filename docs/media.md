@@ -22,3 +22,5 @@ Start-Process ..\vk-media\resonance-sfx.flac
 FLAC是WAV的无损PCM压缩，不是新的混音版本；合音时仍使用本地生成的WAV。源混音与独听轨在mastering前，最终MP4含FFmpeg总线响度处理，音量有意不同。数据检测不替代主观听音。
 
 没有Windows主机，此下载脚本未原生实测。当前分支后续仍可能调整媒体，审查时以清单hash核对；历史两部片的URL已固定到commit。
+
+当前Linux环境已实际下载清单全部7个URL，均HTTP200且字节数/SHA256一致；[下载验证记录](../evidence/revision/downloads.json)。三个FLAC也已解码与原WAV逐样本比对，PCM完全一致。

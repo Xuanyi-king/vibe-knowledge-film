@@ -1,0 +1,44 @@
+[
+  {
+    "name": "baseline-final.mp4",
+    "http_status": 200,
+    "bytes": 20698356,
+    "sha256_matches": true
+  },
+  {
+    "name": "studio-final.mp4",
+    "http_status": 200,
+    "bytes": 18385428,
+    "sha256_matches": true
+  },
+  {
+    "name": "governor-scene.mp4",
+    "http_status": 200,
+    "bytes": 1269866,
+    "sha256_matches": true
+  },
+  {
+    "name": "resonance-music.flac",
+    "http_status": 200,
+    "bytes": 85496,
+    "sha256_matches": true
+  },
+  {
+    "name": "resonance-sfx.flac",
+    "http_status": 200,
+    "bytes": 170087,
+    "sha256_matches": true
+  },
+  {
+    "name": "resonance-score.flac",
+    "http_status": 200,
+    "bytes": 244948,
+    "sha256_matches": true
+  },
+  {
+    "name": "resonance-final.mp4",
+    "http_status": 200,
+    "bytes": 1627034,
+    "sha256_matches": true
+  }
+]
