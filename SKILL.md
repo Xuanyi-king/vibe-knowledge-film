@@ -2,7 +2,7 @@
 name: vibe-knowledge-film
 description: >
   用于创作没有人声、以字幕与程序化画面解释知识的 16:9 短片，或改进已有知识片。
-  支持原创艺术方向及 B 寓言 / C 夜曲；提供 Canvas seek(t) 引擎、分镜、局部渲染与真实画面返工流程。
+  支持原创艺术方向及 B 寓言 / C 夜曲；提供确定性 Canvas/可选3D、解析运动、共享视听事件、分轨音乐与真实画面返工。
   用户给选题、文案或要求制作 Vibe 知识大赏、代码直出科普视频时使用；不用于口播片。
 ---
 
@@ -31,14 +31,18 @@ description: >
 | 3 定方向 | 在同一文件选一个方向，定义色/字/空间/材质/节奏/声音 | 说明选择与舍弃理由。B/C 可直接使用，也可自定；[worlds](references/worlds.md) |
 | 4 分镜 | `storyboard.md`：镜头 ID、时间、字幕、可见证据、动作、机位、交接、声音 | 一镜一个理解任务，动作有起点/变化/落点/停留；[讲解案例](references/visualization.md) |
 | 5 关键画面 | 最难一镜与两个不同景别的实际截图 | 遮住字幕检查主体与关系；按手机大小看；[视觉配方](references/craft.md) |
-| 6 动画 | 一镜一个函数，同一主时间轴，事件音绑定动作 | 物理时间与镜头缓动分开；画面是 t 的函数；[engine](references/engine.md) |
+| 6 动画 | 一镜一个函数，同一主时间轴，动作/镜头/声音共读事件 | 物理时间与镜头缓动分开；优先复用[编排组件](references/choreography.md)，画面是t的函数 |
 | 7 动态检查 | 关键动作 Motion Strip + 局部 MP4 | 看中间态、接触、速度、阅读停顿；不能只看首尾 |
 | 8 批评返工 | `review.md`：时间点/证据/原因/层级/修改/同刻结果 | 优先修最影响理解或完成度的 1–3 处；[review](references/review.md) |
-| 9 声音合成 | 事件表、配乐来源、最终 MP4 | 动作与声音同步，停顿有意图，最终编码音轨实测 |
+| 9 声音合成 | 事件表、配乐来源、最终 MP4 | 分轨独听；从最终编码回测同步；停顿有意图，[视听制作](references/choreography.md) |
 | 10 验收 | 技术报告、关键帧、完整源代码、未验证项 | 以真实产物评审；不得用亮度或帧差当审美分数 |
 
 阶段 5–8 是局部循环：先试一个难镜头，再扩展。不要靠增加装饰救概念错误。
 两次修改仍解释不清，回到候选方案；问题解决即可停止，别为了轮数重做。
+
+复杂动作先选`track/contact/spring/impulse/path/camera`，音乐拍点和触感音共读`VK_SCORE`，不从零写调度、弹簧或声学合成。简单片仍可用原`fr.sfx`，不要为了流程强加3D、运镜和配乐。
+
+复杂实体镜头先按[复杂场景制作](references/complex-scenes.md)拆部件与姿态约束，复用标准几何、杆件、旋转体与场景层；不要让轻量模型从零写投影、法线、遮挡和反射算法。文字/图表仍优先Canvas，3D只解决具体观看问题。
 
 ## 创作判断
 
@@ -58,14 +62,14 @@ python engine/render.py <project> --sheet 2 8 16 24
 python engine/render.py <project> --motion 8 10
 python engine/render.py <project> --clip 8 12 check
 python engine/render.py <project> --det
-python engine/render.py <project> --jobs 4
+python engine/render.py <project> --resume 4 --jobs 2 # 持久分段，中断后同命令恢复
 python engine/render.py <project> --events
-python engine/audio.py <project>
+python engine/audio.py <project> --stems              # score工程可独听music/sfx/ambience
 python scripts/check_media.py <project>/renders/final.mp4 --duration 36
 ```
 
 默认 1920×1080、30fps、无旁白。字体缺失先运行 `python engine/get_fonts.py`。
-[Windows 安装与验证](docs/windows.md)。原版 [fold_C](examples/fold_C/storyboard.md)、[pigeon_B](examples/pigeon_B/storyboard.md) 保留；
+[Windows 安装与验证](docs/windows.md)。[8秒视听样例](examples/resonance/README.md)演示公共组件完整调用；技术同步不能代替看图与听音。原版 [fold_C](examples/fold_C/storyboard.md)、[pigeon_B](examples/pigeon_B/storyboard.md) 保留；
 [原创对照实验](docs/experiments/director-2026-10/README.md) 含适用范围、产物和成本，不能把单次样片外推为弱模型已提升。
 
 交付：`facts.md`、`direction.md`、`storyboard.md`、源码、`review.md`、MP4、同刻前后帧和技术报告。

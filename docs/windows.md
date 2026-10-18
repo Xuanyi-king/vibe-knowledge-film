@@ -1,5 +1,7 @@
 # Windows PowerShell 使用与验证
 
+当前仍无Windows主机，Linux环境也没有pwsh/powershell：**本轮未执行Windows或PowerShell实测**。以下提供可直接运行的短验证入口；不能用Linux路径含空格/中文的测试代替原生Windows验证。
+
 在仓库根目录，安装 Python 3.10+、Git 和 FFmpeg（含 ffprobe），并将它们加入 PATH。
 
 ```powershell
@@ -19,6 +21,20 @@ ffprobe -version
 $env:VK_BROWSER = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
 # 删除覆盖设置：Remove-Item Env:VK_BROWSER
 ```
+
+检查显式路径：`Test-Path $env:VK_BROWSER`。不存在时删除该覆盖变量，渲染器会优先本机Chrome，再尝试Playwright Chromium；路径错误不会悄悄换浏览器。首次安装后可运行：
+
+```powershell
+.\scripts\verify.ps1
+# 包括可选3D镜头、持久恢复重复运行和音画合成，只渲6秒：
+.\scripts\verify.ps1 -Scene
+# 无可用GPU/WebGL2时可显式尝试软件后端，再执行上面的Scene验证：
+$env:VK_SOFTWARE_GL = '1'
+```
+
+脚本在仓库根目录执行，逐条检查原生命令退出码，finally恢复当前目录；不修改调用者的浏览器变量。Scene模式先装固定版本可选Three，再运行测试，避免静默跳过可选测试。缓存用msvcrt内核文件锁、relative concat清单及参数数组；这些Windows分支仍待Windows机器实测。
+
+下面原有36秒完整重算命令保留供需要时使用，本轮验证优先用上面的6秒入口，不必重做长片。
 
 建片（已有 film.js 不会被无意覆盖）：
 
@@ -59,3 +75,16 @@ python engine/render.py examples/pigeon_B --clip 29 32 arrival
 确定性只保证同一浏览器/字体版本/平台；跨 Windows 与 Linux 可能出现抗锯齿差异。
 
 本次实测环境是 Linux + Chromium；以上为 PowerShell 兼容命令，**未在 Windows 主机执行**。有些系统限制脚本激活，可直接用 `.\.venv\Scripts\python.exe` 执行。
+
+本轮公共视听组件与8秒样例：
+
+```powershell
+.\scripts\verify.ps1 -AV
+Start-Process examples/resonance/audio/sfx.wav
+Start-Process examples/resonance/audio/music.wav
+Start-Process examples/resonance/renders/final.mp4
+# 用户音乐的候选节奏分析（不自动判定downbeat/乐句）：
+python scripts/analyze_music.py ..\music.wav --out ..\music-analysis.json
+```
+
+`-AV`安装可选Three，跑完整测试、确定性、8秒分段渲染、分轨、编码同步及媒体检查。关闭浏览器预览后再删除可选`engine/vendor/three`即可卸载；无npm服务/注册表改动。缓存可在停止渲染后删除工程renders/.vk-cache；不要在渲染中清理。新音频模块复用已有NumPy/SciPy和FFmpeg，无新增Python依赖。此PowerShell入口仍未在Windows原生执行，不能将Linux成功等同跨平台已验收。

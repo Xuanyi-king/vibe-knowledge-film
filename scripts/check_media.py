@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Objective diagnostics, never an aesthetic score. Exit 1 for technical errors.
-python scripts/check_media.py film.mp4 --duration 36 [--allow-silent] [--output report.json]
+python scripts/check_media.py film.mp4 --duration 36 [--allow-silent] [--loudness] [--output report.json]
 Black, silence and scene-change detections are candidates for human review.
 """
 import argparse
@@ -14,13 +14,13 @@ import sys
 
 
 def run(cmd):
-    result = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=600)
     if result.returncode:
         raise RuntimeError(f"{cmd[0]} failed ({result.returncode}): {result.stderr[-2000:]}")
     return result
 
 
-def inspect_media(path, expected_duration=None, require_audio=True):
+def inspect_media(path, expected_duration=None, require_audio=True, loudness=False):
     path = Path(path)
     info = json.loads(run(['ffprobe', '-v', 'error', '-show_streams', '-show_format', '-of', 'json', str(path)]).stdout)
     video = next((s for s in info['streams'] if s['codec_type'] == 'video'), None)
@@ -57,6 +57,17 @@ def inspect_media(path, expected_duration=None, require_audio=True):
         audio_metrics = {'duration': audio_duration, 'codec': audio['codec_name'], 'sample_rate': audio.get('sample_rate'),
                          'sample_peak_db': peak, 'rms_db': rms, 'note': 'Decoded sample peak, not an intersample true-peak or LUFS measurement.'}
         if peak is not None and peak >= 0: errors.append('Decoded audio reaches or exceeds full scale')
+        if loudness:
+            measurement=run(['ffmpeg','-hide_banner','-nostats','-i',str(path),'-vn',
+                '-af','loudnorm=I=-18:TP=-1.5:LRA=14:print_format=json','-f','null','-']).stderr
+            blocks=re.findall(r'\{\s*"input_i"[\s\S]*?\}',measurement)
+            if not blocks:raise RuntimeError('FFmpeg did not return a loudness measurement')
+            data=json.loads(blocks[-1])
+            for output,key in [('integrated_lufs','input_i'),('true_peak_dbtp','input_tp'),('loudness_range_lu','input_lra')]:
+                value=float(data[key]);audio_metrics[output]=value if math.isfinite(value) else None
+            audio_metrics['note']='Decoded sample peak/RMS plus FFmpeg loudnorm integrated LUFS, true peak and LRA; not a mix-quality score.'
+            if audio_metrics['true_peak_dbtp'] is not None and audio_metrics['true_peak_dbtp']>0:errors.append('Intersample true peak exceeds 0 dBTP')
+
         for start in re.findall(r'silence_start: ([\d.]+)', log): silence.append({'start': float(start)})
         ends = re.findall(r'silence_end: ([\d.]+) \| silence_duration: ([\d.]+)', log)
         for i, (end, length) in enumerate(ends):
@@ -75,8 +86,9 @@ def main():
     parser.add_argument('--duration', type=float)
     parser.add_argument('--allow-silent', action='store_true')
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--loudness', action='store_true', help='measure integrated LUFS, true peak and LRA; extra audio pass')
     args = parser.parse_args()
-    try: report = inspect_media(args.video, args.duration, not args.allow_silent)
+    try: report = inspect_media(args.video, args.duration, not args.allow_silent, args.loudness)
     except (RuntimeError, ValueError, OSError, subprocess.TimeoutExpired) as exc:
         print(str(exc), file=sys.stderr); return 1
     output = json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False)

@@ -3,6 +3,7 @@
 
   python render.py <工程>                       全片 → <工程>/renders/raw.mp4（无声）
   python render.py <工程> --jobs 4              全片，分 4 段并行渲再无损拼起来（长片用这个）
+  python render.py <工程> --resume 4 [--jobs 2] 持久4秒分段；校验后复用，中断后同命令继续
   python render.py <工程> --stills 2.5 8.5 21   只截几帧 → <工程>/review/s_0002.50.png
   python render.py <工程> --sheet 16            全片均匀取 16 帧拼一张 → review/sheet.jpg（开工后先看这个，再渲染）
   python render.py <工程> --sheet 3.5 9 21.5    指定时刻拼一张
@@ -17,18 +18,26 @@
 """
 import hashlib, http.server, io, json, math, os, random, subprocess, sys, tempfile, threading
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 ENGINE = Path(__file__).resolve().parent
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     proj = None
     def translate_path(self, path):
-        p = path.split("?", 1)[0].split("#", 1)[0]
-        if p.startswith("/engine/"): return str(ENGINE / p[len("/engine/"):])
-        return str(self.proj / p.lstrip("/")) if p != "/" else str(self.proj / "index.html")
+        p = unquote(urlsplit(path).path)
+        root = ENGINE if p.startswith('/engine/') else self.proj
+        relative = p[len('/engine/'):] if p.startswith('/engine/') else p.lstrip('/') or 'index.html'
+        target = (root / relative).resolve()
+        if not target.is_relative_to(root.resolve()): raise ValueError('path leaves served directory')
+        return str(target)
     def do_GET(self):
         if self.path.startswith("/favicon"): self.send_response(204); self.end_headers(); return
-        super().do_GET()
+        try: super().do_GET()
+        except ValueError: self.send_error(403, 'Path leaves served directory')
+    def do_HEAD(self):
+        try: super().do_HEAD()
+        except ValueError: self.send_error(403, 'Path leaves served directory')
     def end_headers(self):
         self.send_header("Cache-Control", "no-store"); super().end_headers()
     def log_message(self, *a): pass
@@ -42,6 +51,8 @@ def serve(proj, port=0):
 def open_page(p, url):
     # 关掉 LCD 次像素抗锯齿（跳着 seek 字边不抖）；每帧等合成器跑完再截；固定 sRGB
     args = ["--disable-lcd-text", "--run-all-compositor-stages-before-draw", "--force-color-profile=srgb"]
+    if os.environ.get('VK_SOFTWARE_GL') == '1':
+        args += ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader']
     browser = os.environ.get("VK_BROWSER")
     if browser:
         b = p.chromium.launch(executable_path=browser, args=args)
@@ -58,6 +69,14 @@ def open_page(p, url):
     pg.on("pageerror", lambda e: errors.append(str(e)))
     pg.on("response", lambda response: errors.append(f"HTTP {response.status}: {response.url}") if response.status >= 400 else None)
     pg._vk_errors = errors
+    pg._vk_remote_assets = []
+    pg._vk_generated_assets = []
+    def record_request(req):
+        if req.url.startswith(url):
+            path = unquote(urlsplit(req.url).path).lstrip('/')
+            if path.split('/')[0] in {'renders', 'review', 'audio'}: pg._vk_generated_assets.append(path)
+        elif not req.url.startswith(('data:', 'blob:')): pg._vk_remote_assets.append(req.url)
+    pg.on("request", record_request)
     try:
         # Syntax/runtime failures can happen before VK.film installs its READY
         # promise. Surface their cause instead of waiting three minutes.
@@ -117,7 +136,7 @@ def sheet(proj, args, name="sheet"):
         out.save(proj / f"review/{name}.jpg", quality=90); print("sheet:", proj / f"review/{name}.jpg", len(ts))
     with_page(proj, go)
 
-def frames(proj, out, a=0.0, b=None):
+def frames(proj, out, a=0.0, b=None, local_only=False):
     def go(pg):
         end, fps = pg.evaluate("END"), pg.evaluate("FPS")
         if not all(math.isfinite(v) for v in (end, fps, a, end if b is None else b)) or fps <= 0 or end <= 0 or a < 0:
@@ -132,7 +151,12 @@ def frames(proj, out, a=0.0, b=None):
                                    "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "14", "-preset", "medium", "-movflags", "+faststart", str(target)], stdin=subprocess.PIPE)
             try:
                 for i in range(n0, n1):
-                    ff.stdin.write(shot(pg, i / fps))
+                    data = shot(pg, i / fps)
+                    if local_only and pg._vk_remote_assets:
+                        raise RuntimeError(f"resume requires local assets; download these first: {pg._vk_remote_assets}")
+                    if local_only and pg._vk_generated_assets:
+                        raise RuntimeError(f"resume inputs cannot use generated renders/review/audio folders; move inputs to assets/: {pg._vk_generated_assets}")
+                    ff.stdin.write(data)
                     if (i - n0) % 150 == 0: print(f"  {i - n0}/{n1 - n0}", flush=True)
                 ff.stdin.close()
                 code = ff.wait(timeout=60)
@@ -148,6 +172,27 @@ def frames(proj, out, a=0.0, b=None):
         print("done", out, f"{(n1 - n0) / fps:.2f}s")
     out_path = out
     with_page(proj, go)
+
+def frames_resume(proj, out, chunk_seconds=4, jobs=1):
+    if __package__:
+        from .render_cache import render_cached, source_files
+    else:
+        from render_cache import render_cached, source_files
+    from importlib.metadata import version
+    def info(pg):
+        if pg._vk_remote_assets:
+            raise ValueError(f"resume requires local assets: {pg._vk_remote_assets}")
+        if pg._vk_generated_assets:
+            raise ValueError(f"resume inputs cannot use generated folders; move these to assets/: {pg._vk_generated_assets}")
+        meta = pg.evaluate("({end: END, fps: FPS, width: VK.W, height: VK.H, browser: navigator.userAgent, scene: window.VK_SCENE_INFO || null})")
+        meta['browser_version'] = pg.context.browser.version
+        meta['software_gl'] = os.environ.get('VK_SOFTWARE_GL') == '1'
+        return meta
+    sources = source_files(proj)
+    meta = with_page(proj, info)
+    meta['playwright'] = version('playwright')
+    return render_cached(proj, out, meta, chunk_seconds, jobs,
+                         lambda p, target, a, b: frames(p, target, a, b, local_only=True), expected_sources=sources)
 
 def frames_parallel(proj, out, jobs):
     """Isolated part files; wait for every worker; publish only a successful concat."""
@@ -185,8 +230,8 @@ def frames_parallel(proj, out, jobs):
 def events(proj):
     (proj / "audio").mkdir(exist_ok=True)
     def go(pg):
-        ev = pg.evaluate("events()"); m = pg.evaluate("({end: END, fps: FPS, meta: META})")
-        (proj / "audio/events.json").write_text(json.dumps({"end": m["end"], "fps": m["fps"], "meta": m["meta"], "events": ev}, ensure_ascii=False), encoding="utf-8")
+        ev = pg.evaluate("events()"); m = pg.evaluate("({end: END, fps: FPS, meta: META, score: window.VK_SCORE?.json() || null})")
+        (proj / "audio/events.json").write_text(json.dumps({"end": m["end"], "fps": m["fps"], "meta": m["meta"], "events": ev, "score": m["score"]}, ensure_ascii=False), encoding="utf-8")
         print("events:", len(ev))
     with_page(proj, go)
 
@@ -206,6 +251,8 @@ if __name__ == "__main__":
     proj = Path(a[0]).resolve()
     if not (proj / "film.js").exists(): sys.exit(f"{proj} 里没有 film.js")
     (proj / "renders").mkdir(exist_ok=True)
+    if "--resume" in a and any(flag in a for flag in ("--clip", "--serve", "--det", "--events", "--motion", "--sheet", "--stills")):
+        sys.exit("--resume is a full-film render mode; use it separately from preview/clip/check commands")
     if "--serve" in a:
         srv, url = serve(proj, 8765); print("预览:", url + "?play", "（Ctrl+C 结束）")
         try: threading.Event().wait()
@@ -220,5 +267,10 @@ if __name__ == "__main__":
         frames(proj, proj / f"renders/{name}.mp4", float(a[i + 1]), float(a[i + 2]))
     elif "--events" in a: events(proj)
     elif "--det" in a: det(proj)
+    elif "--resume" in a:
+        i = a.index("--resume")
+        seconds = float(a[i + 1]) if len(a) > i + 1 and not a[i + 1].startswith("--") else 4
+        jobs = int(a[a.index("--jobs") + 1]) if "--jobs" in a else 1
+        frames_resume(proj, proj / "renders/raw.mp4", seconds, jobs)
     elif "--jobs" in a and int(a[a.index("--jobs") + 1]) > 1: frames_parallel(proj, proj / "renders/raw.mp4", int(a[a.index("--jobs") + 1]))
     else: frames(proj, proj / "renders/raw.mp4")

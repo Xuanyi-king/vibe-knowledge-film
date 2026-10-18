@@ -1,0 +1,37 @@
+{
+  "baseline-final.mp4": {
+    "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/baseline-final.mp4",
+    "sha256": "7146585e837d4e11a2ffae5f09cdb82b1c2ec9bb7e07de5eb6c5f629226ac990",
+    "bytes": 20698356
+  },
+  "studio-final.mp4": {
+    "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/studio-final.mp4",
+    "sha256": "7080ebee843725bd98c3b0d8b0bdcdd205a653050476fd3be8b46151626bb1c1",
+    "bytes": 18385428
+  },
+  "governor-scene.mp4": {
+    "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/governor-scene.mp4",
+    "sha256": "a1a6f21babe3c2862791c56e6acbb9ae8285db71810094f3d3a7db3549249e3d",
+    "bytes": 1269866
+  },
+  "resonance-music.wav": {
+    "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-music.wav",
+    "sha256": "7c6423a600a44f977264f5fceea646758dcadcff48cd0dafd2715528803a32d0",
+    "bytes": 1536044
+  },
+  "resonance-sfx.wav": {
+    "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-sfx.wav",
+    "sha256": "bebb0e52e27e44c07c1c60eedf4acd0ed7334e60e13e5e382b1ba61372a7ba28",
+    "bytes": 1536044
+  },
+  "resonance-score.wav": {
+    "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-score.wav",
+    "sha256": "8296cdc3fe199e21830b9d176de15c92a9828d2ff5211e6cc3ae0457b2189af7",
+    "bytes": 1536044
+  },
+  "resonance-final.mp4": {
+    "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-final.mp4",
+    "sha256": "81e2de6bdccc25b6075f80a8fba2ff932b1ff3af294ea063239685f98ace9add",
+    "bytes": 1627034
+  }
+}

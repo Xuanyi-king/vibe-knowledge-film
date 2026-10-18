@@ -4,7 +4,7 @@
 
 ## 发现与修复
 
-1. **事件扫描越过片尾（P2）。** `Math.round(dur*fps)`在dur=.05、fps30时调用draw(.066667)，与seek的时间边界不一致。审查者用Node stub复现；父任务新增真实浏览器测试再次复现，日志见`evidence/validation/event-boundary-red.log`。改为ceil覆盖真实末刻、对时间clamp、frame与seek一致。新测试及完整15项测试通过。
+1. **事件扫描越过片尾（P2）。** `Math.round(dur*fps)`在dur=.05、fps30时调用draw(.066667)，与seek的时间边界不一致。审查者用Node stub复现；父任务新增真实浏览器测试再次复现，原日志在历史commit8c93e14；当前保留对应回归测试。改为ceil覆盖真实末刻、对时间clamp、frame与seek一致。新测试及完整15项测试通过。
 2. **原子发布文案范围过宽（P2）。** raw/clip渲染已采用临时文件成功后替换；音频合成仍沿用原版直接输出final.mp4。README原来写“输出成功后才替换视频”会让人误以为final也有该保证。文案已限定raw/clip；未将旧音频行为误报为本次已解决。
 
 审查者第二次只读复核确认两项已处理，未发现新的重要问题。全片装配与最终技术报告随后由父任务核验，不用本次审查替代。

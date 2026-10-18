@@ -12,16 +12,25 @@
 
 ## 本次升级与可检查的作品
 
+新增8秒原创《一击之后》：[有声MP4](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/resonance-final.mp4) · [源码、关键帧、返工与分轨](examples/resonance/README.md)。共享事件驱动敲击、回弹、余振、阻尼、相机和音乐；模型可调用解析运动、真实深度/PBR、材质音色、采样与分轨自动化，不必每镜重写算法。
+
+[视听编排调用手册](references/choreography.md)按需加载；[开源融合取舍](docs/capability-integration.md)记录源码与许可。最终AAC已回测调度同步；音色与完整节奏仍需人工听音，不宣称仅靠技术报告完成专业审片。
+
+
 原创 36 秒《先换来速度》：为什么更长的摆线比直线更快？从实体实验、同一时刻的速度比较，过渡到生成曲线的几何模型。
 
-[![先换来速度：成片关键帧](evidence/descent_studio/final/s_0030.00.png)](evidence/descent_studio/final.mp4)
+[![先换来速度：成片关键帧](evidence/descent_studio/final/s_0030.00.jpg)](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/studio-final.mp4)
 
-- [升级版有声 MP4](evidence/descent_studio/final.mp4) · [原版流程有声 MP4](evidence/descent_baseline/final.mp4)
+- [升级版有声 MP4](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/studio-final.mp4) · [原版流程有声 MP4](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/baseline-final.mp4)
 - [源代码与分镜](examples/descent_studio/) · [同题对照、返工证据与已知限制](docs/experiments/director-2026-10/README.md)
 - [导演决策](references/directing.md)、[视觉实现配方](references/craft.md)、[按时间点返工](references/review.md)按需加载，主 Skill 保持简短。
 - 渲染失败、非确定性和事件异常会返回失败；raw/clip 渲染成功后才替换对应视频。新增媒体诊断与回归测试，继续使用原来的 seek、sheet、motion、clip 和并行渲染。
 
-这是两个独立创作臂的同会话模型、同题、同环境单次实验，不是盲测，也没有调用 DeepSeek。它展示可检查的设计变化，不宣称已证明某个轻量模型的普遍提升。用户提到的 Opus 参考片未提供，未作为已观看材料使用。
+本轮新增[6秒复杂机构镜头](examples/governor_scene/README.md)：通过可选Three.js层复用真实深度、PBR材质、阴影、杆件和旋转体几何，减少轻量模型手写图形算法的负担。[复杂场景制作方法](references/complex-scenes.md)说明适用边界；Canvas旧工程无需安装该依赖。
+
+`render.py --resume 4`提供正式的持久分段、输入/浏览器/编码参数身份校验、损坏检测与续跑；`audio.py`也在临时输出通过验证后才替换旧成片。两部原样片未重做；大型MP4迁至[PR媒体预发布](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/tag/pr-1-media)，SHA256见[evidence/assets.json](evidence/assets.json)。重复帧和恢复临时记录已清理，源码与关键同刻对照保留。
+
+这两个创作臂的简报不完全一致：升级臂额外收到铜/陶瓷美术方向提示，不能据此隔离证明Skill提升了模型能力。它们是非盲案例，没有调用DeepSeek。新的[中性提示小对照工具](docs/model-probe.md)默认只准备请求，提供任意兼容提供商的凭据、端点和精确模型ID后才能运行。当前无目标模型结果；用户提到的Opus参考片也未提供。
 
 ## 夜曲：《折叠》
 
@@ -59,7 +68,7 @@ python engine/render.py <工程目录> --serve
 ```bash
 python -m unittest discover -s tests -v
 python engine/render.py examples/descent_studio --det
-python engine/render.py examples/descent_studio --jobs 3
+python engine/render.py examples/descent_studio --resume 4 --jobs 2
 python engine/render.py examples/descent_studio --events
 python engine/audio.py examples/descent_studio
 python scripts/check_media.py examples/descent_studio/renders/final.mp4 --duration 36
@@ -73,7 +82,7 @@ python scripts/check_media.py examples/descent_studio/renders/final.mp4 --durati
 
 `references/analysis.md`、`references/historical-prompts.md` 里按成片填好的 brief，以及 `examples/stim_B`、`info_C`，字幕和画面设计来自他人的短片，版权属于原作者。这两段是学习对照，不要当成自己的作品发布。
 
-本次 descent 两部样片的代码、程序化画面和合成音轨为本任务原创，随仓库 MIT 许可提供。未复制调研项目的代码或视听素材；依赖与调研许可边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+本次 descent、governor_scene、resonance 原创样片的代码、程序化画面和合成音轨为本任务原创，随仓库 MIT 许可提供。未复制调研项目的代码或视听素材；依赖与调研许可边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 ## 联系
 

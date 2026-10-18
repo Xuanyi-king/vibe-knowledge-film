@@ -14,9 +14,11 @@ class MediaTest(unittest.TestCase):
     def test_valid_media_and_duration_mismatch(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/'test.mp4'; self.make(p)
-            report=self.check(p,expected_duration=.6)
+            report=self.check(p,expected_duration=.6,loudness=True)
             self.assertEqual(report['errors'],[])
             self.assertIn('sample_peak_db',report['audio'])
+            self.assertIsInstance(report['audio']['integrated_lufs'],float)
+            self.assertLess(report['audio']['true_peak_dbtp'],0)
             self.assertTrue(self.check(p,expected_duration=3)['errors'])
     def test_black_frames_are_candidates_not_aesthetic_scores(self):
         with tempfile.TemporaryDirectory() as d:

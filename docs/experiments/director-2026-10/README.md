@@ -6,7 +6,7 @@
 
 | | 原版流程 | 升级流程 |
 |---|---|---|
-| 有声成片 | [final.mp4](../../../evidence/descent_baseline/final.mp4) | [final.mp4](../../../evidence/descent_studio/final.mp4) |
+| 有声成片 | [final.mp4](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/baseline-final.mp4) | [final.mp4](https://github.com/Xuanyi-king/vibe-knowledge-film/releases/download/pr-1-media/studio-final.mp4) |
 | 源码 / 事实 / 分镜 | [descent_baseline](../../../examples/descent_baseline/) | [descent_studio](../../../examples/descent_studio/) |
 | 实际创作输入 | [brief.md](../../../examples/descent_baseline/brief.md) | [brief.md](../../../evidence/descent_studio/brief.md) |
 | 图像返工记录 | [production-notes.md](../../../examples/descent_baseline/production-notes.md) | [review.md](../../../examples/descent_studio/review.md) |

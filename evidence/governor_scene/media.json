@@ -1,0 +1,35 @@
+{
+  "file": "examples/governor_scene/renders/final.mp4",
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 6.0,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "frames": "180"
+  },
+  "audio": {
+    "duration": 5.98,
+    "codec": "aac",
+    "sample_rate": "48000",
+    "sample_peak_db": -7.302196,
+    "rms_db": -19.620853,
+    "note": "Decoded sample peak, not an intersample true-peak or LUFS measurement."
+  },
+  "errors": [],
+  "candidates": {
+    "black": [],
+    "silence": [],
+    "scene_change_times": []
+  },
+  "unverified": [
+    "aesthetic quality",
+    "unexpected blank colored frames",
+    "object bounds and subtitle occlusion",
+    "glyph coverage/readability",
+    "storyboard match",
+    "factual correctness"
+  ],
+  "interpretation": "Candidates require timestamped visual/audio review; intentional black, cuts and silence are allowed."
+}

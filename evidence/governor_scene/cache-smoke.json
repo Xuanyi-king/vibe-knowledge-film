@@ -1,0 +1,10 @@
+{
+  "frames": 180,
+  "chunks": 3,
+  "warm_elapsed_seconds": 4.923022752999714,
+  "warm_rendered_chunks": 0,
+  "warm_reused_chunks": 3,
+  "raw_sha256_before": "0142ab86b86ff40f0494d2373cad333b1e525e019f8134e3861e631d9f7d131a",
+  "raw_sha256_after": "0142ab86b86ff40f0494d2373cad333b1e525e019f8134e3861e631d9f7d131a",
+  "scope": "initial integration build; later input-fingerprint tightening invalidates this historical cache"
+}

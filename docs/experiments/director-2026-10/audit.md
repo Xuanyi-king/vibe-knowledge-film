@@ -1,3 +1,5 @@
+> 第一轮审计的历史判断。第二轮只针对复杂机构验证后增加可选Three.js层，见references/complex-scenes.md；没有重做这里的全仓库调研。
+
 # 能力审计与取舍 · 2026-10-17
 
 原版：fork 与 upstream 均为 `62d51508aad00003dc6209afa80c4b5dc540de59`。完整阅读 SKILL、七份 references、两个 JS 引擎、render/audio/get_fonts/new_film、全部五个示例源码与分镜及 fold 的布局生成。原版无自动化测试。

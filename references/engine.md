@@ -1,5 +1,21 @@
 # 引擎
 
+## 可恢复的正式渲染模式
+
+`python engine/render.py <project> --resume 4 --jobs 2`按整数帧切分持久4秒片段。中断后重复同命令，完整校验后复用；不需要样片专用脚本。默认1个worker，资源少时更稳。`--jobs`、`--clip`等旧命令保留；resume用于全片，不能与clip/sheet/det等模式混用。
+
+缓存位于`<project>/renders/.vk-cache/<identity>/`：哈希项目/引擎真实文件、字体和可选依赖，加上时间/帧率/尺寸、分段帧数、浏览器版本/后端、系统、FFmpeg版本与编码参数。换输入或必要参数会换身份，旧代仍保留供恢复。resume仍要求纯时间驱动代码，不能修复Math.random/Date.now或未追踪的系统字体；请使用本地提供的字体。项目所有输入扩展名都参与，包括Markdown；日志请写入renders或review。源码/素材编辑期间会拒绝发布，等编辑完成后重跑。
+
+`renders/`、`review/`、`audio/`是保留的生成目录，不能作为resume的浏览器输入素材目录；请把素材放assets/。符号链接和联网素材也拒绝使用，先复制/下载到项目或engine本地。这样才能避免哈希没有追踪的输入。普通非resume模式继续兼容原有行为。
+
+每段先原子写入，再检查哈希、H.264/yuv420p、尺寸、帧率、精确帧数、时长和完整解码；损坏/缺记录的段会重绘。按绝对帧区间顺序无损拼接，最终再验证总帧数/解码，成功后才替换raw.mp4。操作系统文件锁在进程死亡后自动释放，阻止同一缓存被并发写入。Ctrl+C会取消排队任务，只等待已启动短段收尾；强制杀进程后未完成段下次重绘。
+
+不要手动拼用旧样片的segNN文件，它们没有当前完整输入身份。旧recover_render.py只是转发兼容入口。换分段长度会换缓存；没有自动LRU，空间不足时先停渲染，再删除不需要的identity目录（PowerShell：`Remove-Item <project>/renders/.vk-cache/<identity> -Recurse`）。
+
+音频同样先合成到临时文件，检查两条流、时长和完整解码，再替换final.mp4；失败保留旧片。全片事件不能直接给一个局部clip合音，时长不匹配会被拒绝。
+
+复杂实体的可选Three.js层见[complex-scenes.md](complex-scenes.md)；未安装它不影响Canvas旧工程。`VK_SOFTWARE_GL=1`可显式使用软件WebGL，软件/硬件或浏览器变化会失效缓存，不承诺跨GPU像素相同。
+
 一张 1920×1080 的 Canvas，一个 `seek(t)`。**每一帧只由时间 t 决定**：没有时间线对象，没有补间库，没有跨帧状态。
 这是参考片（C 家族）露出的源码里用的模型，也是能"只渲一段、只截几帧、乱序截"的前提。
 
@@ -263,3 +279,7 @@ function urn(fr, t) {
 `--clip` 向最近帧取整，结束时间最多为 END；负数、非有限数、空区间报错。
 `--det` 检查乱序重放，不担保跨浏览器版本的像素完全相同。
 新增 `scripts/check_media.py` 只提供技术诊断；视觉返工见 review.md。
+
+## 共享视听编排（可选）
+
+`window.VK_SCORE=score({...})`通过原`--events`导出，`audio.py --stems`使用同一事件制作music/sfx/ambience；不混入旧fr.sfx以免重复。旧工程完全按原逻辑。公共解析运动、tempo map、摄影机、材质拟音、用户采样、自动化、最终编码回测的字段和例子见[choreography](choreography.md)。score模式的BGM进入sample/music轨，不额外传`--bgm`。

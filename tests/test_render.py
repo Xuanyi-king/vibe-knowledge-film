@@ -6,8 +6,7 @@ import unittest
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('render', ROOT / 'engine/render.py')
-r = importlib.util.module_from_spec(spec); spec.loader.exec_module(r)
+from engine import render as r
 
 class RenderTests(unittest.TestCase):
     def test_determinism_failure_is_an_error(self):
@@ -41,6 +40,28 @@ class RenderTests(unittest.TestCase):
             self.assertEqual(out.read_bytes(),b'previous good film')
             self.assertEqual(list(Path(d).iterdir()),[out])
 
+class ServerPathsTest(unittest.TestCase):
+    def test_url_encoded_asset_names_work(self):
+        import urllib.error, urllib.parse, urllib.request
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);name='图像 space.txt';(p/name).write_bytes(b'local asset')
+            srv,url=r.serve(p)
+            try:
+                try:
+                    with urllib.request.urlopen(url+urllib.parse.quote(name)) as response:data=response.read()
+                except urllib.error.HTTPError as exc:data=f'HTTP {exc.code}'.encode()
+                self.assertEqual(data,b'local asset')
+            finally:srv.shutdown();srv.server_close()
+
+    def test_encoded_parent_path_cannot_escape_project(self):
+        import urllib.error, urllib.request
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'project';p.mkdir();(p.parent/'outside.txt').write_bytes(b'private fixture')
+            srv,url=r.serve(p)
+            try:
+                with self.assertRaises(urllib.error.HTTPError):urllib.request.urlopen(url+'%2e%2e/outside.txt')
+            finally:srv.shutdown();srv.server_close()
+
 class ParallelTests(unittest.TestCase):
     def test_failed_worker_does_not_skip_waiting_for_other_workers(self):
         from unittest.mock import MagicMock
@@ -55,6 +76,15 @@ class ParallelTests(unittest.TestCase):
             self.assertEqual(list((p/'renders').iterdir()),[])
 
 class BrowserTests(unittest.TestCase):
+    def test_resume_rejects_inputs_in_generated_directories(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);(p/'review').mkdir();(p/'renders').mkdir()
+            (p/'review/labels.md').write_text('input')
+            (p/'film.js').write_text("fetch('review/labels.md').then(r=>r.text()).then(()=>VK.film({dur:.1,draw(){}}))")
+            (p/'index.html').write_text('<canvas id="stage"></canvas><script src="/engine/vk.js"></script><script src="film.js"></script>')
+            with self.assertRaisesRegex(ValueError,'generated folders'):
+                r.frames_resume(p,p/'renders/raw.mp4')
+
     def page(self, code, callback):
         from playwright.sync_api import BrowserType
         original=BrowserType.launch

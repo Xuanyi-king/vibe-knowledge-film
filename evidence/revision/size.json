@@ -1,0 +1,8 @@
+{
+  "scope": "evidence working tree excluding this size report, not Git history",
+  "before_bytes": 73033118,
+  "after_bytes": 10992514,
+  "reduction_percent": 84.94859003555072,
+  "history_rewritten": false,
+  "large_media_location": "GitHub prerelease pr-1-media"
+}

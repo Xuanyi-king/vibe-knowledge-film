@@ -1,3 +1,5 @@
+> 第一轮历史验证记录。第二轮的正式恢复、原子合音与42项完整测试见[当前修订](../../pr1-revision.md)。过程日志/重复帧已收敛，原始版本仍可在commit8c93e14查看，成片转至Release。
+
 # 验证、成本与未验证项
 
 ## 可复核的运行环境
@@ -23,7 +25,7 @@ requirements.txt提供兼容范围，不是环境锁定；同浏览器/字体/�
 
 原始commit与新版引擎在同一环境重新截图：fold_C的24秒、pigeon_B的29秒PNG均逐字节相同（SHA256见[original-compatibility.json](../../../evidence/validation/original-compatibility.json)）。这证明已采样帧兼容，不外推为全片所有帧的像素证明。
 
-两个旧工程分别通过12个随机时刻的乱序确定性检查；重新渲染[fold_C 23–24秒](../../../evidence/original/fold_C-clip.mp4)及[pigeon_B 29–30秒](../../../evidence/original/pigeon_B-clip.mp4)，各30帧、1080p/30fps，完整解码成功。原有示例源码与设计未修改。
+两个旧工程分别通过12个随机时刻的乱序确定性检查；重新渲染fold_C 23–24秒及pigeon_B 29–30秒，各30帧、1080p/30fps，完整解码成功。原有示例源码与设计未修改。
 
 ## 基线成片
 
@@ -55,6 +57,6 @@ requirements.txt提供兼容范围，不是环境锁定；同浏览器/字体/�
 
 任务两度经历会话/环境中断。基线损坏头段重算，升级片三进程临时片段失去moov索引；失败结果没有交付为成片。后续改用持久命名短clip、逐段核验、串行恢复与无损拼接。已完成部分可复用，属于任务恢复策略，不新增替代原渲染器的框架。
 
-升级恢复操作的逐项单调时钟、UTC时间、返回码、源码哈希和帧数保存在[recovery_state.json](../../../evidence/descent_studio/recovery_state.json)。基线耗时在[制作记录](../../../examples/descent_baseline/production-notes.md)。中断期间不计主动时间；失败重算成本不隐去；资源竞争及重启导致两臂墙钟不宜用于性能排名。
+升级恢复操作的逐项单调时钟、UTC时间、返回码、源码哈希和帧数的精简版本保存在[timing_and_cost.json](../../../evidence/descent_studio/timing_and_cost.json)。基线耗时在[制作记录](../../../examples/descent_baseline/production-notes.md)。中断期间不计主动时间；失败重算成本不隐去；资源竞争及重启导致两臂墙钟不宜用于性能排名。
 
 模型精确ID、调用总数/token与货币费用 unavailable；外部AI API调用为0不等于整个会话免费。父任务审计、实现、测试和文档投入是额外研发成本，未混入样片生成预算。

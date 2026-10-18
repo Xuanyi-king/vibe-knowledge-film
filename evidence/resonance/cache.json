@@ -1,0 +1,7 @@
+{
+  "scope": "8s sample warm validation only; includes ffprobe/full decode",
+  "elapsed_seconds": 9.582386581000264,
+  "reused_parts": 4,
+  "rendered_parts": 0,
+  "raw_sha256_unchanged": true
+}
