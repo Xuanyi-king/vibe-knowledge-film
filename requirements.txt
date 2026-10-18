@@ -1,4 +1,4 @@
-playwright
-numpy
-scipy
-Pillow
+playwright>=1.51,<2
+numpy>=1.24,<3
+scipy>=1.10,<2
+Pillow>=10,<13

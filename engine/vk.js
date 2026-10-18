@@ -245,10 +245,11 @@ function film(spec) {
   fr.sfx = (t, name, p) => { if (collecting) SFX.push([+t.toFixed(3), name, p || {}]); };
   fr.theme = spec.theme || 'night';
 
+  const defaultLook = () => ({ bg: fr.theme, bgo: {}, bloom: spec.bloom == null ? ({ gilt: .34, flat: .12 }[fr.theme] || 1) : spec.bloom, grain: spec.grain == null ? .05 : spec.grain, post: null });
   function seek(t) {
     t = Math.max(0, Math.min(spec.dur, t)); fr.t = t; fr.frame = Math.round(t * fps);
     const L = F.L, lx = L.getContext('2d'); lx.setTransform(1, 0, 0, 1, 0, 0); lx.clearRect(0, 0, W, H); fr.x = lx;
-    const look = { bg: fr.theme, bgo: {}, bloom: spec.bloom == null ? ({ gilt: .34, flat: .12 }[fr.theme] || 1) : spec.bloom, grain: spec.grain == null ? .05 : spec.grain, post: null };   // 辉光：夜空全开，鎏金三成（实物不能发白），插画基本不要
+    const look = defaultLook();   // 辉光：夜空全开，鎏金三成（实物不能发白），插画基本不要
     fr.look = look;
     spec.draw(fr, t);                                   // 场景可以改 fr.look（换底、调辉光）
     out.setTransform(1, 0, 0, 1, 0, 0); out.globalCompositeOperation = 'source-over'; out.globalAlpha = 1; out.filter = 'none';
@@ -266,10 +267,30 @@ function film(spec) {
     if (look.grain > 0) { out.globalCompositeOperation = 'overlay'; out.globalAlpha = look.grain; out.imageSmoothingEnabled = true; out.drawImage(grains[fr.frame % grains.length], 0, 0, W, H); out.globalCompositeOperation = 'source-over'; out.globalAlpha = 1; }
   }
   /* 音效事件表：把全片每帧过一遍，只收集、不出图 */
-  function events() { SFX.length = 0; collecting = true; const keep = F.L; for (let i = 0; i <= spec.dur * fps; i++) { fr.t = i / fps; fr.frame = i; fr.x = keep.getContext('2d'); fr.look = { bgo: {} }; try { spec.draw(fr, i / fps); } catch (e) { } } collecting = false; const seen = new Set(), uniq = []; SFX.forEach(e => { const k = e[0] + e[1]; if (!seen.has(k)) { seen.add(k); uniq.push(e); } }); uniq.sort((a, b) => a[0] - b[0]); return uniq; }
+  function events() {
+    SFX.length = 0;
+    const previousTime = fr.t;
+    collecting = true;
+    try {
+      for (let i = 0; i <= Math.ceil(spec.dur * fps); i++) {
+        fr.t = Math.min(i / fps, spec.dur); fr.frame = Math.round(fr.t * fps);
+        fr.x = F.L.getContext('2d'); fr.x.reset(); fr.look = defaultLook();
+        try { spec.draw(fr, fr.t); }
+        catch (e) { throw new Error(`events at ${fr.t.toFixed(3)}s: ${e.message}`, { cause: e }); }
+      }
+    } finally {
+      collecting = false;
+      fr.t = previousTime;
+      fr.x = F.L.getContext('2d'); fr.x.reset();
+    }
+    const seen = new Set(), uniq = [];
+    SFX.forEach(e => { const k = JSON.stringify([e[0], e[1]]); if (!seen.has(k)) { seen.add(k); uniq.push(e); } });
+    uniq.sort((a, b) => a[0] - b[0]);
+    return uniq;
+  }
 
   G.seek = seek; G.END = spec.dur; G.FPS = fps; G.events = events; G.META = spec.meta || {};
-  document.fonts.ready.then(() => Promise.all(Object.values(FONTS).map(f => document.fonts.load(`${f[0]} 40px ${f[1].split(',')[0]}`, '运A1')))).then(() => { G.READY = true; seek(+(new URLSearchParams(location.search).get('t') || 0)); });
+  document.fonts.ready.then(() => Promise.all(Object.values(FONTS).map(f => document.fonts.load(`${f[0]} 40px ${f[1].split(',')[0]}`, '运A1')))).then(() => { seek(+(new URLSearchParams(location.search).get('t') || 0)); G.READY = true; }).catch(e => { G.READY_ERROR = String(e); });
   /* 预览：?play 实时播，←/→ 步进 */
   if (new URLSearchParams(location.search).has('play')) { let t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % spec.dur); requestAnimationFrame(loop); }; document.fonts.ready.then(() => requestAnimationFrame(loop)); }
   return F;

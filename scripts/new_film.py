@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """建一个新片工程：
-  python new_film.py <工程目录> --world C|B [--force]
+  python new_film.py <工程目录> --world C|B|custom [--force]
 C 夜曲（抽象概念、看不见的机制）· B 寓言（心理和行为机制）。怎么选见 references/worlds.md。
 
 工程里是 index.html 和一份只能跑起来的 film.js 骨架——里面一行画面都没有。
@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WORLD = {   # 外观名、theme、字幕样式、色板、这套外观的常驻元素（都在 vk-kit.js，用法见 references/engine.md）
+    "CUSTOM": ("原创方向", "flat", "flat", "flat", "按 direction.md 设计；无预设仪表、星点或片名卡"),
     "B": ("B 寓言", "flat", "flat", "flat", "仪表 K.gauge、片名卡 K.titleGilt；场景自己画进 fr.look.under"),
     "C": ("C 夜曲", "night", "night", "night", "章节标 K.chapterMark、片名卡 K.titleNight；字幕带一行英文（en）"),
 }
@@ -34,7 +35,7 @@ function scene1(fr, t) {{
 }}
 
 VK.film({{
-  dur: T.end, theme: '{theme}', meta: {{ title: '' }},
+  dur: T.end, theme: '{theme}', {look}meta: {{ title: '' }},
   draw(fr, t) {{
     scene1(fr, t);
     K.subs(fr, t, SUBS, '{subs}');                         // 字幕永远最后画，压在一切之上
@@ -47,13 +48,15 @@ if __name__ == "__main__":
     a = sys.argv[1:]
     if len(a) < 1 or a[0].startswith("-"): sys.exit(__doc__)
     proj = Path(a[0]).resolve(); world = (a[a.index("--world") + 1] if "--world" in a else "C").upper()
-    if world not in WORLD: sys.exit("--world 只能是 C 或 B")
+    if world not in WORLD: sys.exit("--world 只能是 C、B 或 custom")
     proj.mkdir(parents=True, exist_ok=True)
     film = proj / "film.js"
     if film.exists() and "--force" not in a: sys.exit(f"{film} 已经存在。要覆盖加 --force")
     name, theme, subs, pal, standing = WORLD[world]
     shutil.copy(ROOT / "engine/index.html", proj / "index.html")
-    film.write_text(SKELETON.format(name=name, theme=theme, subs=subs, pal=pal, standing=standing, en=", en: '……'" if world == "C" else ""), encoding="utf-8", newline="\n")
+    film.write_text(SKELETON.format(name=name, theme=theme, subs=subs, pal=pal, standing=standing, look="bloom: 0, grain: 0, " if world == "CUSTOM" else "", en=", en: '……'" if world == "C" else ""), encoding="utf-8", newline="\n")
+    if world == "CUSTOM" and not (proj / "direction.md").exists():
+        (proj / "direction.md").write_text("# 作品方向\n\n先写事实与观众卡点，再比较两个表达机制。\n\n- 视觉概念与母题：\n- 颜色及语义：\n- 字体与字阶（当前字幕使用 flat 默认，按作品修改）：\n- 构图与相机：\n- 光源、材质与空间：\n- 动作、停顿与声音：\n- 候选方案及选择理由：\n", encoding="utf-8")
     render = ROOT / "engine/render.py"
     print(f"建好了：{proj}（{name}）\n"
           f"  预览  python \"{render}\" \"{proj}\" --serve\n"

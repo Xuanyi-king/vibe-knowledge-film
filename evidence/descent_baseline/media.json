@@ -1,0 +1,52 @@
+{
+  "file": "evidence/descent_baseline/final.mp4",
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 36.0,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "frames": "1080"
+  },
+  "audio": {
+    "duration": 35.997,
+    "codec": "aac",
+    "sample_rate": "48000",
+    "sample_peak_db": -1.484339,
+    "rms_db": -20.287668,
+    "note": "Decoded sample peak, not an intersample true-peak or LUFS measurement."
+  },
+  "errors": [],
+  "candidates": {
+    "black": [
+      {
+        "start": 7.566667,
+        "end": 10.9,
+        "duration": 3.333333
+      },
+      {
+        "start": 32.066667,
+        "end": 32.166667,
+        "duration": 0.1
+      }
+    ],
+    "silence": [
+      {
+        "start": 0.139479,
+        "end": 3.805312,
+        "duration": 3.665833
+      }
+    ],
+    "scene_change_times": []
+  },
+  "unverified": [
+    "aesthetic quality",
+    "unexpected blank colored frames",
+    "object bounds and subtitle occlusion",
+    "glyph coverage/readability",
+    "storyboard match",
+    "factual correctness"
+  ],
+  "interpretation": "Candidates require timestamped visual/audio review; intentional black, cuts and silence are allowed."
+}

@@ -132,7 +132,8 @@ if __name__ == "__main__":
     if "--wav-only" in a: sys.exit()
     raw, out, end = proj / "renders/raw.mp4", proj / "renders/final.mp4", spec["end"]
     if bgm:   # 现成配乐：垫底 + 事件音；整体到 -14 LUFS
-        fc = f"[2:a]atrim=0:{end},volume={bgm_db}dB,afade=t=in:d=0.4,afade=t=out:st={end - 1.5}:d=1.5[b];[1:a][b]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]"
+        fade_duration = min(1.5, end)
+        fc = f"[2:a]atrim=0:{end},volume={bgm_db}dB,afade=t=in:d={min(.4, end)},afade=t=out:st={max(0, end - fade_duration)}:d={fade_duration}[b];[1:a][b]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]"
         cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-i", str(wav), "-stream_loop", "-1", "-i", bgm, "-filter_complex", fc]
     else:     # 合成配乐本来就安静、动态大：只到 -18 LUFS，别压扁
         cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-i", str(wav), "-filter_complex", "[1:a]loudnorm=I=-18:TP=-1.5:LRA=14[a]"]

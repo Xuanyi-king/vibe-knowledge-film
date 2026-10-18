@@ -1,0 +1,54 @@
+stills: 1
+stills: 1
+deterministic
+  0/30
+done /workspace/vibe-knowledge-film/examples/fold_C/renders/compatibility.mp4 1.00s
+stills: 1
+stills: 1
+deterministic
+  0/30
+done /workspace/vibe-knowledge-film/examples/pigeon_B/renders/compatibility.mp4 1.00s
+[
+  {
+    "film": "fold_C",
+    "frame_time": 24,
+    "original_and_upgraded_sha256": [
+      "d84194691dd5b58ac84c79868116e7242334f153244015b9ee702faa6d203cae",
+      "d84194691dd5b58ac84c79868116e7242334f153244015b9ee702faa6d203cae"
+    ],
+    "pixel_identical": true,
+    "determinism": "passed (12 random times, out-of-order)",
+    "clip_bounds": [
+      23,
+      24
+    ],
+    "clip": {
+      "width": 1920,
+      "height": 1080,
+      "avg_frame_rate": "30/1",
+      "duration": "1.000000",
+      "nb_read_frames": "30"
+    }
+  },
+  {
+    "film": "pigeon_B",
+    "frame_time": 29,
+    "original_and_upgraded_sha256": [
+      "a814333c3ef6219ebe8da3982faa772a48776f03f45f216e3a2ce61874793b5f",
+      "a814333c3ef6219ebe8da3982faa772a48776f03f45f216e3a2ce61874793b5f"
+    ],
+    "pixel_identical": true,
+    "determinism": "passed (12 random times, out-of-order)",
+    "clip_bounds": [
+      29,
+      30
+    ],
+    "clip": {
+      "width": 1920,
+      "height": 1080,
+      "avg_frame_rate": "30/1",
+      "duration": "1.000000",
+      "nb_read_frames": "30"
+    }
+  }
+]

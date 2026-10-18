@@ -1,0 +1,169 @@
+test_event_draw_errors_are_not_swallowed (test_render.BrowserTests.test_event_draw_errors_are_not_swallowed) ... FAIL
+test_events_preserve_seek_pixels_and_repeatability (test_render.BrowserTests.test_events_preserve_seek_pixels_and_repeatability) ... /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pyee/base.py:201: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 44625)>
+  def emit(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/workspace/vibe-knowledge-film/tests/test_render.py:56: ResourceWarning: unclosed <socket.socket fd=4, family=2, type=1, proto=0, laddr=('127.0.0.1', 39095)>
+  with patch.object(BrowserType,'launch',launch): return r.with_page(p,callback)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_determinism_failure_is_an_error (test_render.RenderTests.test_determinism_failure_is_an_error) ... FAIL
+test_encoder_failure_preserves_existing_output (test_render.RenderTests.test_encoder_failure_preserves_existing_output) ... NOT deterministic at [0.151, 0.651, 0.324] —— 有东西在跨帧存状态或用了 Math.random()
+  0/1
+FAIL
+test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) ... done /tmp/tmpsggwow5y/raw.mp4 1.00s
+  0/60
+
+  test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) (a=-1, b=1) ... FAIL
+  test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) (a=1, b=1) ... FAIL
+  test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) (a=2, b=3) ... FAIL
+test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) ... FAIL
+
+======================================================================
+FAIL: test_event_draw_errors_are_not_swallowed (test_render.BrowserTests.test_event_draw_errors_are_not_swallowed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 59, in test_event_draw_errors_are_not_swallowed
+    self.page("VK.film({dur:.2,grain:0,draw(fr,t){if(t>.1)throw Error('broken shot');fr.sfx(0,'tick');}})",
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 56, in page
+    with patch.object(BrowserType,'launch',launch): return r.with_page(p,callback)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/vibe-knowledge-film/engine/render.py", line 62, in with_page
+    pg.goto(url)
+
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 60, in <lambda>
+    lambda pg: self.assertRaisesRegex(Exception,'broken shot',pg.evaluate,'events()'))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Exception not raised by evaluate
+
+======================================================================
+FAIL: test_determinism_failure_is_an_error (test_render.RenderTests.test_determinism_failure_is_an_error)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 18, in test_determinism_failure_is_an_error
+    with self.assertRaisesRegex(RuntimeError, 'determin'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_encoder_failure_preserves_existing_output (test_render.RenderTests.test_encoder_failure_preserves_existing_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 40, in test_encoder_failure_preserves_existing_output
+    with self.assertRaises((RuntimeError, subprocess.CalledProcessError)): r.frames(Path(d),out)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (<class 'RuntimeError'>, <class 'subprocess.CalledProcessError'>) not raised
+
+======================================================================
+FAIL: test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) (a=-1, b=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 26, in test_invalid_clip_rejected_before_encoder
+    with self.subTest(a=a,b=b), self.assertRaises(ValueError): r.frames(Path('.'), Path('bad.mp4'),a,b)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) (a=1, b=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 26, in test_invalid_clip_rejected_before_encoder
+    with self.subTest(a=a,b=b), self.assertRaises(ValueError): r.frames(Path('.'), Path('bad.mp4'),a,b)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) (a=2, b=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 26, in test_invalid_clip_rejected_before_encoder
+    with self.subTest(a=a,b=b), self.assertRaises(ValueError): r.frames(Path('.'), Path('bad.mp4'),a,b)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 27, in test_invalid_clip_rejected_before_encoder
+    popen.assert_not_called()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 910, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'Popen' to not have been called. Called 4 times.
+Calls: [call(['ffmpeg', '-v', 'error', '-y', '-f', 'image2pipe', '-framerate', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '14', '-preset', 'medium', '-movflags', '+faststart', 'bad.mp4'], stdin=-1),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.write(b'frame'),
+ call().stdin.close(),
+ call().wait(),
+ call(['ffmpeg', '-v', 'error', '-y', '-f', 'image2pipe', '-framerate', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '14', '-preset', 'medium', '-movflags', '+faststart', 'bad.mp4'], stdin=-1),
+ call().stdin.close(),
+ call().wait(),
+ call(['ffmpeg', '-v', 'error', '-y', '-f', 'image2pipe', '-framerate', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '14', '-preset', 'medium', '-movflags', '+faststart', 'bad.mp4'], stdin=-1),
+ call().stdin.close(),
+ call().wait(),
+ call(['ffmpeg', '-v', 'error', '-y', '-f', 'image2pipe', '-framerate', '30', '-i', '-', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '14', '-preset', 'medium', '-movflags', '+faststart', 'bad.mp4'], stdin=-1)].
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.598s
+
+FAILED (failures=7)
+done bad.mp4 2.00s
+done bad.mp4 0.00s
+done bad.mp4 0.00s

@@ -1,0 +1,29 @@
+{
+  "recorded_utc": "2026-10-18T07:41:32.255735+00:00",
+  "source_base": "62d51508aad00003dc6209afa80c4b5dc540de59",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "dependencies": {
+    "playwright": "1.62.0",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "Pillow": "12.3.0"
+  },
+  "browser": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+  "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "cpu_quota": "200000 100000",
+  "memory_limit_bytes": "8589934592",
+  "fonts_sha256": {
+    "CormorantGaramond-Italic.ttf": "0f48ea6abb2084537854f7174c470991a463b13036309e3b50a81511611c530d",
+    "CormorantGaramond.ttf": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+    "CourierPrime-Regular.ttf": "72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af",
+    "JetBrainsMono.ttf": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+    "Lora-Italic.ttf": "22d8d8854b53807aa664ca34f2031a9ed57a1d0dea296b8b96cdd3aad937a2b3",
+    "Lora.ttf": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7",
+    "NotoSansSC-VF.ttf": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+    "NotoSerifSC-VF.ttf": "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9"
+  },
+  "model_id": "unknown (inherited same session model at original agent creation)",
+  "model_tokens_and_billing": "unavailable",
+  "external_model_calls": 0
+}

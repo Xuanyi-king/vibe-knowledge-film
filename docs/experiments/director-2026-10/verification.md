@@ -1,0 +1,60 @@
+# 验证、成本与未验证项
+
+## 可复核的运行环境
+
+Linux、Python3.12.14、Chromium154.0.8037.57、FFmpeg7.1.5；Playwright1.62.0、NumPy2.3.5、SciPy1.17.0、Pillow12.3.0。实际容器CPU配额2核、内存上限8GiB。字体文件哈希与完整环境记录见[evidence/validation/environment.json](../../../evidence/validation/environment.json)。
+
+requirements.txt提供兼容范围，不是环境锁定；同浏览器/字体/平台的确定性不保证跨操作系统像素相同。Windows PowerShell命令已提供，未在Windows主机执行。
+
+## 自动化回归
+
+`VK_BROWSER=/usr/bin/chromium python -m unittest discover -s tests -v`：**15项通过**，完整输出见[tests.log](../../../evidence/validation/tests.log)。测试覆盖：
+
+- 非确定性返回失败；错误/空/负片段在编码前拒绝；真实失败编码器不覆盖已有输出，并清理临时文件。
+- 并行worker首个失败后仍等待其余worker；页面初始化错误报告原因；事件异常不吞、事件导出不改变后续seek像素；非整数帧时长不越过END且包含末刻。
+- 短于1.5秒的BGM合音不产生负淡出时间，实际生成音视频。
+- 媒体正常/损坏/缺音轨/错时长/黑帧负例；黑段只生成待审候选，不给审美评分。
+- 新工程自定义方向中性默认及防意外覆盖。
+- 独立能量积分核对摆线/直线时间、弧长，有限差分核对位置变化与速度；检查端点和单位切线。
+
+确定性、事件异常、编码失败、短音频、并行等待、启动错误等先有失败再修复；部分原始失败日志保存在validation目录。非整数事件边界的红/绿验证由独立审查触发。没有给低影响文案修改编写镜像测试。
+
+## 旧示例兼容性
+
+原始commit与新版引擎在同一环境重新截图：fold_C的24秒、pigeon_B的29秒PNG均逐字节相同（SHA256见[original-compatibility.json](../../../evidence/validation/original-compatibility.json)）。这证明已采样帧兼容，不外推为全片所有帧的像素证明。
+
+两个旧工程分别通过12个随机时刻的乱序确定性检查；重新渲染[fold_C 23–24秒](../../../evidence/original/fold_C-clip.mp4)及[pigeon_B 29–30秒](../../../evidence/original/pigeon_B-clip.mp4)，各30帧、1080p/30fps，完整解码成功。原有示例源码与设计未修改。
+
+## 基线成片
+
+[media.json](../../../evidence/descent_baseline/media.json)：36.000秒、1920×1080、30fps、H.264/yuv420p、1080帧；AAC48kHz，音轨35.997秒，A/V差3ms，完整解码无技术错误。解码样本峰值−1.484dBFS，RMS−20.288dBFS，未测LUFS或重建真峰值。
+
+黑段候选7.567–10.9秒与32.067–32.167秒，实际[抽帧](../../../evidence/descent_baseline/black-candidates.jpg)分别可见片名卡与淡入的文献片尾，不是异常空白。静音.139–3.805秒对应META预设的开场停顿。检测器按暗像素占比会把有文字的暗场也列为候选，不能自动当故障。
+
+基线按原版renderer生成0–10/10–20/20–30/30–36四段，再无损拼接。四段共1080帧已逐段计数及解码；完整产物、全片抽帧和原版音频结果均保存。原始工程的字体、浏览器与来源资料和升级臂一致。
+
+## 升级成片
+
+[final_media_report.json](../../../evidence/descent_studio/final_media_report.json)：36.000秒、1920×1080、30fps、H.264/yuv420p、1080帧；AAC48kHz、35.997秒，完整解码无技术错误、无黑段候选。解码样本峰值−1.505dBFS，RMS−20.501dBFS；静音35.574–35.997秒对应结尾主动收声。最终MP4为18,385,428字节，SHA256 `7080ebee843725bd98c3b0d8b0bdcdd205a653050476fd3be8b46151626bb1c1`。
+
+十个持久短片段逐段确认后无损拼成1080帧。已实际看[编码后16帧拼图](../../../evidence/descent_studio/final_contact.jpg)及[22秒](../../../evidence/descent_studio/transition22.jpg)/[28秒](../../../evidence/descent_studio/transition28.jpg)切换前后的六帧条；两处是明确剪切，未见采样中的对象/文字冲突，不宣称无缝变形。
+
+恢复脚本完成窗口672.093秒，其中九段实际渲染645.740秒，成功操作合计657.540秒；窗口包含验证/文件操作。父任务先渲的seg00未独立计时，初次失败并行渲染的精确时长不可恢复，均记为unavailable，不能把上述数字称为总渲染成本。
+
+## 声音、画面与事实的证据范围
+
+父任务与独立审查实际看过关键原生帧、首版/修订同刻图、动作条与编码后抽帧。未把这些采样称作连续观看整片；本环境没有主观音轨聆听工具，未声称完成听感验收。最终文件供审阅者直接播放。
+
+[arrival-events.json](../../../evidence/validation/arrival-events.json)核对升级片两次到达事件与物理计算，最大排程误差小于一帧。该检查不证明AAC编码后的主观同步感或音乐质量。数学事实链接与模型简化在各facts.md；最速性来自文献，不由一次与直线赛跑独立证明。
+
+画面越界、字幕遮挡、字体可读性和分镜一致性在已访问镜头中人工核查；没有通用自动遮挡/OCR/事实真伪检测器。`check_media.py`明确列出未验证项，不用亮度、帧差或颜色数量当审美分数。
+
+## 成本口径与中断
+
+两臂初始主动创作预算均约20分钟、两次图像主导迭代；实际主动用时不完全可计量，详见各制作记录。基线可核验的文档后创作约5分9秒，早期阅读时间未单独计时；升级臂主动创作约10–15分钟为作者估计。不能据此声称返工效率提高。
+
+任务两度经历会话/环境中断。基线损坏头段重算，升级片三进程临时片段失去moov索引；失败结果没有交付为成片。后续改用持久命名短clip、逐段核验、串行恢复与无损拼接。已完成部分可复用，属于任务恢复策略，不新增替代原渲染器的框架。
+
+升级恢复操作的逐项单调时钟、UTC时间、返回码、源码哈希和帧数保存在[recovery_state.json](../../../evidence/descent_studio/recovery_state.json)。基线耗时在[制作记录](../../../examples/descent_baseline/production-notes.md)。中断期间不计主动时间；失败重算成本不隐去；资源竞争及重启导致两臂墙钟不宜用于性能排名。
+
+模型精确ID、调用总数/token与货币费用 unavailable；外部AI API调用为0不等于整个会话免费。父任务审计、实现、测试和文档投入是额外研发成本，未混入样片生成预算。

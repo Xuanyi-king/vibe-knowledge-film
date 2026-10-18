@@ -1,0 +1,12 @@
+{
+  "physical_arrival_in_film_seconds": [
+    12.196859067976359,
+    12.878735787828298
+  ],
+  "exported_sound_times_seconds": [
+    12.197,
+    12.879
+  ],
+  "max_delta_seconds": 0.0002642121717020274,
+  "criterion": "within one frame at30fps; this validates scheduled times, not subjective audio audition"
+}

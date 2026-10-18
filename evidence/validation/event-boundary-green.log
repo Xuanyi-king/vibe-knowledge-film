@@ -1,0 +1,6 @@
+test_event_scan_includes_end_without_exceeding_duration (test_render.BrowserTests.test_event_scan_includes_end_without_exceeding_duration) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.432s
+
+OK
