@@ -27,3 +27,5 @@ HTML保留正式模板全部字体声明；自写页面不能只引入vk.js就�
 钢琴：Simon Dalzell/Ivy Audio录制，Versilian Studios VSCO2 CE以CC0重分发。固定源码commit与SHA在piano.json，完整许可/Info在assets。仅准备5个需要的音符，原创新编84 BPM，不复制参考片音轨。生成bank/audio/renders/review不进Git，最终短MP4与必要证据单独归档。卸载时停止渲染后可删生成目录，无新Python依赖。
 
 技术边界：方向光PCF滤波阴影与环境PBR，不是路径追踪、真正面积光阴影、SSAO或光学景深。材质/文字/相机确定性只保证同浏览器/驱动/字体环境。完整动态与主观音乐评价的范围见证据页。
+
+静载成立（2.7秒）时力矩标签、数值和单位一起出现；接触前/当下/回弹不显示空读数或孤立单位。物理状态、相机与score时刻不变。

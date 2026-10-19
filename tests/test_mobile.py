@@ -121,3 +121,56 @@ class MobileTest(unittest.TestCase):
             with patch.object(Path,'replace',fail):
                 with self.assertRaisesRegex(OSError,'publication failed'):m.review_video(v,out,times=[.2])
             self.assertEqual((out/'report.json').read_text(),OLD)
+
+    def test_required_and_explicit_samples_survive_optional_budget_and_merging(self):
+        m=self.module()
+        self.assertTrue(callable(getattr(m,'sample_plan',None)),'auditable bounded sample plan missing')
+        checks=[{'time':53/30},{'time':54/30},{'time':55/30},{'time':170}]
+        events=[{'id':str(i),'start':i*.1,'end':i*.1+.1,'action':'slide'} for i in range(1790)]
+        plan=m.sample_plan(180,30,checks,events)
+        self.assertLessEqual(len(plan['frames']),32)
+        self.assertTrue({53,54,55,5100}.issubset(plan['frames']))
+        self.assertGreater(len(plan['merged_optional_frames']),0)
+        self.assertGreater(len(plan['omitted_optional_frames']),0)
+        required=[i/30 for i in range(80)]
+        plan=m.sample_plan(180,30,checks,events,times=required)
+        self.assertTrue(set(range(80)).issubset(plan['frames']))
+        self.assertIn(5100,plan['frames']);self.assertTrue(plan['required_exceeds_budget'])
+
+    def test_music_events_do_not_expand_visual_sampling(self):
+        m=self.module()
+        self.assertTrue(callable(getattr(m,'sample_plan',None)))
+        notes=[{'id':str(i),'start':i*.2,'end':i*.2+.1,'action':'note','sound':{'track':'music'}} for i in range(800)]
+        plan=m.sample_plan(180,30,events=notes)
+        self.assertEqual(len(plan['frames']),4);self.assertEqual(plan['excluded_music_events'],800)
+
+    def test_batch_selection_matches_individual_decoded_frames(self):
+        m=self.module()
+        self.assertTrue(callable(getattr(m,'extract_frames',None)),'exact batch extractor missing')
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);v=p/'master.mp4';self.make(v);frames=[0,1,5,7,17]
+            with patch.object(m,'run',wraps=m.run) as calls:
+                files=m.extract_frames(v,frames,p,'master')
+            self.assertEqual(sum(c.args[0][0]=='ffmpeg' for c in calls.call_args_list),1)
+            for frame,path in zip(frames,files):
+                ref=p/'reference.png'
+                subprocess.run(['ffmpeg','-v','error','-y','-i',str(v),'-vf',f'select=eq(n\\,{frame})','-frames:v','1',str(ref)],check=True)
+                with Image.open(path) as a,Image.open(ref) as b:self.assertEqual(a.convert('RGB').tobytes(),b.convert('RGB').tobytes())
+            with self.assertRaisesRegex(RuntimeError,'frame|extract'):m.extract_frames(v,[0,18],p,'missing')
+
+    def test_many_explicit_frames_are_preserved_in_bounded_contact_sheets(self):
+        m=self.module()
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);v=p/'master.mp4'
+            subprocess.run(['ffmpeg','-v','error','-y','-f','lavfi','-i','testsrc2=s=320x180:r=30:d=1.2','-c:v','libx264','-threads','1','-pix_fmt','yuv420p',str(v)],check=True)
+            r=m.review_video(v,p/'review',times=[i/30 for i in range(30)],widths=[320])
+            self.assertEqual(len(r['frames']),30)
+            self.assertEqual(len(r.get('sheets',[])),2,'large explicit checks need paginated evidence, not one unbounded image')
+            for name in r['sheets']:
+                with Image.open(p/'review'/name) as im:self.assertLessEqual(im.height,24*(180+24))
+
+    def test_end_marker_uses_last_encoded_frame_without_relaxing_explicit_times(self):
+        m=self.module()
+        r=m.sample_plan(14,30,events=[{'id':'end','start':14,'end':14,'action':'hold'}])
+        self.assertIn(419,r['frames']);self.assertEqual(r['end_marker_events'],['end'])
+        with self.assertRaises(ValueError):m.sample_plan(14,30,times=[14])

@@ -78,9 +78,13 @@ export async function makeFilm(variant='cinematic') {
    // Force stays beside its object; removing the duplicate F block gives the comparison air.
    add(fr,'力臂',1360,435,{role:'label',size:72,importance:'essential',color:INK.ivory});
    add(fr,`${state.r.toFixed(2)} m`,1360,530,{role:'number',size:96,color:INK.ivory,maxWidth:464});
-   add(fr,'力矩',1360,680,{role:'label',size:72,importance:'essential',color:INK.ivory});
-   add(fr,state.static?state.torque.toFixed(2):'—',1360,785,{role:'number',size:112,color:t>=reveal.start?INK.gold:INK.ivory,maxWidth:300});
-   add(fr,'N·m',1672,797,{role:'label',importance:'essential',font:'mono',size:74,color:INK.ivory,maxWidth:152});
+   // A static torque reading is meaningful only after the controlled set-down.
+   // Reveal label/value/unit together; no orphan unit or empty readout mid-contact.
+   if(state.static){
+     add(fr,'力矩',1360,680,{role:'label',size:72,importance:'essential',color:INK.ivory});
+     add(fr,state.torque.toFixed(2),1360,785,{role:'number',size:112,color:t>=reveal.start?INK.gold:INK.ivory,maxWidth:300});
+     add(fr,'N·m',1672,797,{role:'label',importance:'essential',font:'mono',size:74,color:INK.ivory,maxWidth:152});
+   }
    // The larger caption supplies the conclusion; no extra tiny gold sentence.
    const caption=t<2.7?'同样的力，换个位置会怎样？':t<7.7?'保持 2 N，只把施力点移远。':'力臂翻倍，力矩也翻倍。';
    add(fr,caption,960,973,{role:'caption',size:84,align:'c',maxWidth:1660});

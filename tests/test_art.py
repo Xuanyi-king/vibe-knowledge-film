@@ -88,6 +88,17 @@ class CinematicTest(unittest.TestCase):
 
 class TorqueTest(unittest.TestCase):
     @unittest.skipUnless(THREE and (ROOT/'examples/torque/assets/piano/bank.json').exists(),'optional Three.js/recorded piano bank')
+    def test_moment_label_value_and_unit_wait_for_static_condition_together(self):
+        def check(pg):
+            for t in [53/30,54/30,55/30,2.699]:
+                render.shot(pg,t)
+                text=pg.evaluate('VK_LAYOUT().map(x=>x.text)')
+                self.assertNotIn('N·m',text);self.assertNotIn('力矩',text);self.assertNotIn('—',text)
+            render.shot(pg,2.7);text=pg.evaluate('VK_LAYOUT().map(x=>x.text)')
+            for item in ['力矩','0.70','N·m','2 N']:self.assertIn(item,text)
+        render.with_page(ROOT/'examples/torque',check)
+
+    @unittest.skipUnless(THREE and (ROOT/'examples/torque/assets/piano/bank.json').exists(),'optional Three.js/recorded piano bank')
     def test_actual_mesh_lever_arm_and_rendered_conditions_replay(self):
         def check(pg):
             for time,expected in [(3.2,.35),(8.5,.70)]:

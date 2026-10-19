@@ -29,14 +29,74 @@ def probe(path):
             'audio_start':float(a.get('start_time',0)) if a else None,
             'audio_duration':float(a.get('duration',d['format']['duration'])) if a else None}
 
-def sample_frames(end,fps,checks=(),events=(),times=None):
-    requested=list(times) if times is not None else [end*k for k in [.1,.3,.55,.85]]
-    if times is None:
-        requested += [c['time'] for c in checks]
-        requested += [(e['start']+e['end'])/2 for e in events if e.get('action') and e['end']>e['start']]
-    if not requested or any(not math.isfinite(t) or t<0 or t>=end for t in requested):raise ValueError('sample times must be finite and within [0, video duration)')
+def sample_plan(end,fps,checks=(),events=(),times=None,limit=32):
+    """Budget optional previews, never declared or recognized critical actions.
+
+    Close optional motion samples merge at 0.5s. Required checks/explicit times
+    stay on their exact encoded frames, even when they exceed the soft budget.
+    Unknown action semantics must be declared through VK_CHECKS/VK_MOBILE_TIMES.
+    """
+    if not all(math.isfinite(x) and x>0 for x in (end,fps)):raise ValueError('positive finite duration/fps required')
+    if not isinstance(limit,int) or isinstance(limit,bool) or limit<1:raise ValueError('sample budget must be a positive integer')
     last=math.ceil(end*fps)-1
-    return sorted({min(last,math.floor(t*fps+.5)) for t in requested})
+    def frame(t):
+        if not isinstance(t,(int,float)) or isinstance(t,bool) or not math.isfinite(t) or t<0 or t>=end:raise ValueError('sample times must be finite and within [0, video duration)')
+        return min(last,math.floor(t*fps+.5))
+    required={frame(c['time']) for c in checks}
+    if times is not None:
+        explicit=list(times)
+        if not explicit:raise ValueError('sample times cannot be empty')
+        required.update(frame(t) for t in explicit)
+    optional={frame(end*k) for k in [.1,.3,.55,.85]} if times is None else set()
+    excluded=0;end_markers=[]
+    critical={'contact','impact','collision','reveal','discovery','computed','conclusion','hold','observation','reading','subtitle'}
+    for e in events:
+        action=str(e.get('action','')).lower()
+        if not action:continue
+        words=set(action.replace('_','-').split('-'))
+        if words & critical:
+            if e['start']==end:end_markers.append(e.get('id'))
+            required.add(frame(min(e['start'],last/fps)))
+            if words & {'hold','reading','subtitle'} and e.get('end',e['start'])>e['start']:
+                required.add(frame((e['start']+e['end'])/2))
+        elif (e.get('sound') or {}).get('track')=='music' or action in {'note','music'}:excluded+=1
+        elif times is None:optional.add(frame((e['start']+e.get('end',e['start']))/2))
+    merged=[];near=[];radius=max(1,round(.5*fps))
+    for f in sorted(optional-required):
+        if any(abs(f-r)<radius for r in required) or (merged and f-merged[-1]<radius):near.append(f)
+        else:merged.append(f)
+    slots=max(0,limit-len(required))
+    chosen=merged if len(merged)<=slots else [merged[math.floor((i+.5)*len(merged)/slots)] for i in range(slots)]
+    return {'frames':sorted(required|set(chosen)),'required_frames':sorted(required),'optional_budget':limit,
+            'required_exceeds_budget':len(required)>limit,'merged_optional_frames':near,
+            'omitted_optional_frames':sorted(set(merged)-set(chosen)),'excluded_music_events':excluded,'end_marker_events':end_markers,
+            'policy':'exact declared/critical frames; optional 0.5s merge and distributed soft budget; no aesthetic pass'}
+
+def sample_frames(end,fps,checks=(),events=(),times=None):
+    return sample_plan(end,fps,checks,events,times)['frames']
+
+def extract_frames(video,frames,folder,variant):
+    """One presentation-order decode per input; n is the encoded frame index.
+
+    No timestamp seeking, fps conversion or keyframe approximation. PNG outputs
+    are ordinal selected frames, checked before they are associated with n.
+    """
+    if not frames or any(not isinstance(f,int) or isinstance(f,bool) or f<0 for f in frames) or frames!=sorted(set(frames)):
+        raise ValueError('frame indices must be nonnegative, unique and sorted')
+    folder=Path(folder);pattern=folder/f'.{variant}-batch-%06d.png'
+    expression='select='+('+'.join(f'eq(n\\,{f})' for f in frames))
+    script=folder/f'.{variant}-select.txt'
+    # Keep even a large explicit list below Windows command-line limits.
+    if len(expression)>4096:
+        script.write_text(expression,encoding='utf-8');filter_args=['-filter_script:v',str(script)]
+    else:filter_args=['-vf',expression]
+    try:
+        run(['ffmpeg','-v','error','-y','-i',str(video),'-an','-sn','-dn',*filter_args,
+             '-vsync','0','-frames:v',str(len(frames)),'-start_number','0',str(pattern)])
+    finally:script.unlink(missing_ok=True)
+    files=[folder/f'.{variant}-batch-{i:06d}.png' for i in range(len(frames))]
+    if not all(f.is_file() for f in files):raise RuntimeError('frame extraction incomplete; evidence not published')
+    return files
 
 def contrast(a,b):
     def lum(s):
@@ -100,7 +160,7 @@ def review_video(video,output,times=None,widths=(390,320),profile='720p-crf30',l
     if not widths or any(not isinstance(w,int) or isinstance(w,bool) or w<160 or w>1920 for w in widths):raise ValueError('preview widths must be integers between 160 and 1920')
     meta=probe(video)
     if abs(meta['width']/meta['height']-16/9)>.001 or meta['sar'] not in {'1:1','N/A'}:raise ValueError('mobile preview currently requires square-pixel 16:9 video; no automatic crop/stretch')
-    frames=sample_frames(meta['duration'],meta['fps'],times=times)
+    plan=sample_plan(meta['duration'],meta['fps'],times=times);frames=plan['frames']
     before=provenance.digest(video);output.parent.mkdir(parents=True,exist_ok=True)
     stage=Path(tempfile.mkdtemp(prefix='.mobile-',dir=output.parent));backup=None
     try:
@@ -118,27 +178,30 @@ def review_video(video,output,times=None,widths=(390,320),profile='720p-crf30',l
                 'layout_scope':'only registered type() items; legacy/unregistered text remains unverified',
                 'simulation':{**sm,'profile':profile,'crf':crf,'preset':'veryfast','audio':'stream copy','audio_payload_identical':same_audio,
                               'note':'compression pressure test, not Douyin parameters or observed platform output','sha256':provenance.digest(stress)},
-                'widths':list(widths),'frames':[],'unverified':['object recognition','text occlusion','comfortable reading/hold time','actual local background contrast','aesthetic quality','actual Douyin transcode']}
+                'widths':list(widths),'frames':[],'sampling':plan,'extraction':'one exact select(n) pass per input; no timestamp seeking','sheets':[],'unverified':['object recognition','text occlusion','comfortable reading/hold time','actual local background contrast','aesthetic quality','actual Douyin transcode']}
         if not layouts:report['unverified'].append('text layout unavailable')
-        sheets={w:Image.new('RGB',(w*2,(round(w*9/16)+24)*len(frames)),'#202426') for w in widths}
+        extracted={variant:extract_frames(src,frames,stage,variant) for variant,src in [('master',video),('stress',stress)]}
         for i,frame in enumerate(frames):
+            if i%24==0:sheets={w:Image.new('RGB',(w*2,(round(w*9/16)+24)*min(24,len(frames)-i)),'#202426') for w in widths}
             row={'frame':frame,'time':frame/meta['fps'],'previews':{},'layout_risks':{}}
             for variant,src in [('master',video),('stress',stress)]:
-                full=stage/f'.{variant}.png'
-                run(['ffmpeg','-v','error','-y','-i',str(src),'-vf',f'select=eq(n\\,{frame})','-frames:v','1',str(full)])
+                full=extracted[variant][i]
                 with Image.open(full) as image:
                     for w in widths:
                         thumb=image.convert('RGB').resize((w,round(w*9/16)),Image.Resampling.LANCZOS)
                         name=f'{variant}-{frame:06d}-{w}.png';thumb.save(stage/name)
                         row['previews'][f'{variant}-{w}']=name
-                        sheet=sheets[w];y=i*(thumb.height+24);sheet.paste(thumb,(0 if variant=='master' else w,y+24))
+                        sheet=sheets[w];y=(i%24)*(thumb.height+24);sheet.paste(thumb,(0 if variant=='master' else w,y+24))
                         ImageDraw.Draw(sheet).text((8 if variant=='master' else w+8,y+5),f'{variant} {frame/meta["fps"]:.3f}s / {w}px',fill='white')
                 full.unlink()
             if layouts:
                 row['layout_count']=len(layouts.get(frame,[]))
                 for w in widths:row['layout_risks'][str(w)]=layout_risks(layouts.get(frame,[]),w,meta['width'],meta['height'])
             report['frames'].append(row)
-        for w,sheet in sheets.items():sheet.save(stage/f'phone-{w}.png')
+            if i%24==23 or i==len(frames)-1:
+                for w,sheet in sheets.items():
+                    name=f'phone-{w}'+('' if i<24 else f'-{i//24+1:03d}')+'.png'
+                    sheet.save(stage/name);report['sheets'].append(name)
         if provenance.digest(video)!=before:raise RuntimeError('master changed during mobile QA; evidence not published')
         if validate:validate()
         report.update(context or {})
@@ -160,11 +223,12 @@ def check_project(proj,video,output,times=None,widths=(390,320),profile='720p-cr
     spec=json.loads((proj/'audio/events.json').read_text(encoding='utf-8'))
     sources=provenance.validate_events(proj,spec)
     provenance.validate_video(video,spec,sources,kind='final')
-    layouts={}
+    layouts={};selection=None
     def go(pg):
         nonlocal times
+        nonlocal selection
         d=pg.evaluate('({times:window.VK_MOBILE_TIMES||null,checks:window.VK_CHECKS?.list()||[],events:window.VK_SCORE?.json().events||[]})')
-        frames=sample_frames(spec['end'],spec.get('fps',30),d['checks'],d['events'],times if times is not None else d['times'])
+        selection=sample_plan(spec['end'],spec.get('fps',30),d['checks'],d['events'],times if times is not None else d['times']);frames=selection['frames']
         times=[f/spec.get('fps',30) for f in frames]
         for f,t in zip(frames,times):
             render.shot(pg,t)
@@ -174,7 +238,7 @@ def check_project(proj,video,output,times=None,widths=(390,320),profile='720p-cr
     def validate():
         provenance.stable(proj,sources);provenance.validate_video(video,spec,sources,kind='final')
     result=review_video(video,output,times,widths,profile,layouts if any(layouts.values()) else None,
-        context={'input_sha256':provenance.identity(sources),'events_sha256':provenance.identity(spec)},validate=validate)
+        context={'input_sha256':provenance.identity(sources),'events_sha256':provenance.identity(spec),'sampling':selection},validate=validate)
     return result
 
 def main():
