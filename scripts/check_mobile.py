@@ -92,7 +92,7 @@ def extract_frames(video,frames,folder,variant):
     else:filter_args=['-vf',expression]
     try:
         run(['ffmpeg','-v','error','-y','-i',str(video),'-an','-sn','-dn',*filter_args,
-             '-vsync','0','-frames:v',str(len(frames)),'-start_number','0',str(pattern)])
+             '-fps_mode','passthrough','-frames:v',str(len(frames)),'-start_number','0',str(pattern)])
     finally:script.unlink(missing_ok=True)
     files=[folder/f'.{variant}-batch-{i:06d}.png' for i in range(len(frames))]
     if not all(f.is_file() for f in files):raise RuntimeError('frame extraction incomplete; evidence not published')
