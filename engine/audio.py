@@ -11,7 +11,7 @@
 事件名：tick / soft / chord / bloom / rise / thud / tock / stamp / shimmer / hush（参数 dur，秒）
 META（film.js 的 meta）：{ root: 半音偏移, noise: [[起,止,强度0..1],...], silence: [[起,止],...], drone: 0..1 }
 """
-import json, subprocess, sys
+import json, math, subprocess, sys, tempfile
 from pathlib import Path
 import numpy as np
 from scipy.signal import fftconvolve, lfilter, butter
@@ -121,20 +121,75 @@ def write_wav(path, x):
     x = np.clip(x, -1, 1); pcm = (x * 32767).astype("<i2")
     with wave.open(str(path), "wb") as w: w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes())
 
+def validate_mux(path, end, fps):
+    """Check the actual encoded streams before publishing a replacement."""
+    probe = subprocess.run(["ffprobe", "-v", "error", "-show_streams", "-of", "json", str(path)],
+                           check=True, capture_output=True, text=True, encoding='utf-8', errors='replace')
+    streams = json.loads(probe.stdout)["streams"]
+    durations = []
+    for kind in ("video", "audio"):
+        stream = next((s for s in streams if s["codec_type"] == kind), None)
+        if stream is None: raise RuntimeError(f"audio output validation: missing {kind} stream")
+        duration = float(stream.get("duration", "nan"))
+        if not math.isfinite(duration) or abs(duration - end) > 1 / fps + .01:
+            raise RuntimeError(f"audio output validation: {kind} duration {duration}, expected {end}; check raw video and events")
+        durations.append(duration)
+    if abs(durations[0] - durations[1]) > .1: raise RuntimeError("audio output validation: A/V duration mismatch")
+    subprocess.run(["ffmpeg", "-v", "error", "-xerror", "-i", str(path), "-f", "null", "-"],
+                   check=True, capture_output=True)
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     if not a: sys.exit(__doc__)
-    proj = Path(a[0]).resolve(); spec = json.load(open(proj / "audio/events.json", encoding="utf-8"))
+    proj = Path(a[0]).resolve(); spec = json.loads((proj / "audio/events.json").read_text(encoding="utf-8"))
+    try:
+        from engine import provenance
+    except ModuleNotFoundError:
+        import provenance
+    sources = provenance.validate_events(proj, spec)
+    if '--wav-only' not in a:provenance.validate_video(proj/'renders/raw.mp4', spec, sources)
     bgm = a[a.index("--bgm") + 1] if "--bgm" in a else None
     bgm_db = float(a[a.index("--bgm") + 2]) if bgm and len(a) > a.index("--bgm") + 2 and a[a.index("--bgm") + 2].lstrip("-").replace(".", "").isdigit() else -8
-    x = synth(spec, bgm=bool(bgm)); pk = np.abs(x).max() or 1; x = x / pk * 10 ** (-3 / 20)
+    if spec.get('score'):
+        if bgm:raise ValueError('shared score: put licensed BGM in a sample/music track; --bgm is for legacy events only')
+        try:
+            from engine import score_audio
+        except ModuleNotFoundError:
+            import score_audio
+        import hashlib
+        score = spec['score']
+        if score['end'] != spec['end'] or score.get('fps', 30) != spec.get('fps', 30):
+            raise ValueError('score and film timeline differ; re-export --events')
+        x, stems, report = score_audio.render(score, proj)
+        report['score_sha256'] = hashlib.sha256(json.dumps(score, sort_keys=True).encode()).hexdigest()
+        if '--stems' in a:
+            for name, stem in stems.items(): write_wav(proj/f'audio/{name}.wav', stem)
+    else:
+        x = synth(spec, bgm=bool(bgm)); pk = np.abs(x).max() or 1; x = x / pk * 10 ** (-3 / 20)
     wav = proj / "audio/score.wav"; write_wav(wav, x); print("score:", wav, f"{len(x) / SR:.1f}s", len(spec["events"]), "events")
+    provenance.stable(proj, sources)
+    if spec.get('score'):
+        report.update(events_sha256=provenance.identity(spec),reference_sha256=provenance.digest(wav))
+        provenance.atomic_json(proj/'audio/mix.json', report)
     if "--wav-only" in a: sys.exit()
     raw, out, end = proj / "renders/raw.mp4", proj / "renders/final.mp4", spec["end"]
     if bgm:   # 现成配乐：垫底 + 事件音；整体到 -14 LUFS
-        fc = f"[2:a]atrim=0:{end},volume={bgm_db}dB,afade=t=in:d=0.4,afade=t=out:st={end - 1.5}:d=1.5[b];[1:a][b]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]"
+        fade_duration = min(1.5, end)
+        fc = f"[2:a]atrim=0:{end},volume={bgm_db}dB,afade=t=in:d={min(.4, end)},afade=t=out:st={max(0, end - fade_duration)}:d={fade_duration}[b];[1:a][b]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[a]"
         cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-i", str(wav), "-stream_loop", "-1", "-i", bgm, "-filter_complex", fc]
     else:     # 合成配乐本来就安静、动态大：只到 -18 LUFS，别压扁
         cmd = ["ffmpeg", "-v", "error", "-y", "-i", str(raw), "-i", str(wav), "-filter_complex", "[1:a]loudnorm=I=-18:TP=-1.5:LRA=14[a]"]
-    subprocess.run(cmd + ["-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", str(out)], check=True)
+    with tempfile.TemporaryDirectory(prefix=".vk-audio-", dir=out.parent) as tmp:
+        target = Path(tmp) / "final.mp4"
+        try:
+            subprocess.run(cmd + ["-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", str(target)],
+                           check=True, capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=600)
+            validate_mux(target, end, spec.get("fps", 30))
+        except (subprocess.SubprocessError, ValueError, RuntimeError) as exc:
+            detail = getattr(exc, 'stderr', None) or str(exc)
+            raise RuntimeError(f"audio mux failed; previous final.mp4 kept: {detail}") from exc
+        provenance.stable(proj, sources)
+        provenance.validate_video(raw, spec, sources)
+        provenance.publish_video(target, out, sources, dict(end=end, fps=spec.get('fps',30), start=0, stop=end),
+                                 kind='final', events_sha256=provenance.identity(spec), reference_sha256=provenance.digest(wav))
     print("done", out)

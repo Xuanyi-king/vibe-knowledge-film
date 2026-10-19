@@ -1,0 +1,1430 @@
+{
+  "end": 72,
+  "fps": 30,
+  "meta": {
+    "title": "地图是一种选择",
+    "drone": 0
+  },
+  "events": [],
+  "score": {
+    "end": 72,
+    "fps": 30,
+    "tempo": [
+      {
+        "beat": 0,
+        "bpm": 80
+      }
+    ],
+    "shots": [
+      {
+        "id": "whole",
+        "start": 0,
+        "end": 72
+      }
+    ],
+    "tracks": {
+      "music": {
+        "gain": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0.75
+          ],
+          [
+            20,
+            0.55
+          ],
+          [
+            29,
+            0.3
+          ],
+          [
+            37,
+            0.15
+          ],
+          [
+            40,
+            0.02
+          ],
+          [
+            44,
+            0.5
+          ],
+          [
+            61,
+            0.55
+          ],
+          [
+            68,
+            0.6
+          ],
+          [
+            71.8,
+            0
+          ]
+        ],
+        "room": 0.11,
+        "t60": 0.8,
+        "highpass": 50
+      },
+      "sfx": {
+        "room": 0.04,
+        "t60": 0.22
+      }
+    },
+    "silence": [
+      [
+        41,
+        42
+      ]
+    ],
+    "events": [
+      {
+        "id": "opening-layout",
+        "start": 3,
+        "duration": 0,
+        "action": "observation",
+        "end": 3
+      },
+      {
+        "id": "latitude-half",
+        "start": 20,
+        "duration": 0,
+        "action": "observation",
+        "end": 20
+      },
+      {
+        "id": "choice-layout",
+        "start": 65,
+        "duration": 0,
+        "action": "observation",
+        "end": 65
+      },
+      {
+        "id": "unfold",
+        "start": 7,
+        "duration": 1.2,
+        "action": "transformation",
+        "sound": {
+          "kind": "friction",
+          "material": "paper",
+          "gain": 0.09,
+          "speed": [
+            [
+              0,
+              0.1
+            ],
+            [
+              0.5,
+              1
+            ],
+            [
+              1.2,
+              0
+            ]
+          ]
+        },
+        "end": 8.2
+      },
+      {
+        "id": "stretch-x",
+        "start": 28,
+        "duration": 0.5,
+        "action": "reveal",
+        "sound": {
+          "kind": "pluck",
+          "midi": 64,
+          "gain": 0.15
+        },
+        "end": 28.5
+      },
+      {
+        "id": "keep-angle",
+        "start": 35,
+        "duration": 0.6,
+        "action": "reveal",
+        "sound": {
+          "kind": "pluck",
+          "midi": 67,
+          "gain": 0.13
+        },
+        "end": 35.6
+      },
+      {
+        "id": "four",
+        "start": 38.25,
+        "duration": 0.7,
+        "action": "reveal",
+        "sound": {
+          "kind": "impact",
+          "material": "wood",
+          "frequency": 180,
+          "intensity": 0.3,
+          "gain": 0.3
+        },
+        "end": 38.95
+      },
+      {
+        "id": "reproject",
+        "start": 44,
+        "duration": 1.2,
+        "action": "transformation",
+        "sound": {
+          "kind": "friction",
+          "material": "paper",
+          "gain": 0.1,
+          "speed": [
+            [
+              0,
+              0.2
+            ],
+            [
+              0.4,
+              0.8
+            ],
+            [
+              1.2,
+              0
+            ]
+          ]
+        },
+        "end": 45.2
+      },
+      {
+        "id": "equal-area",
+        "start": 52,
+        "duration": 0.65,
+        "action": "reveal",
+        "sound": {
+          "kind": "pluck",
+          "midi": 72,
+          "gain": 0.14
+        },
+        "end": 52.65
+      },
+      {
+        "id": "compare",
+        "start": 58,
+        "duration": 0,
+        "action": "comparison",
+        "end": 58
+      },
+      {
+        "id": "finish",
+        "start": 71,
+        "duration": 0,
+        "action": "resolution",
+        "end": 71
+      },
+      {
+        "id": "bass-0",
+        "beat": 0,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 41,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 0,
+        "end": 2.6
+      },
+      {
+        "id": "line-0-0",
+        "beat": 0.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 65,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 0.5625,
+        "end": 2.2625
+      },
+      {
+        "id": "line-0-1",
+        "beat": 2.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 1.6875,
+        "end": 3.3875
+      },
+      {
+        "id": "bass-1",
+        "beat": 4,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 41,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 3,
+        "end": 5.6
+      },
+      {
+        "id": "line-1-0",
+        "beat": 4.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 3.5625,
+        "end": 5.2625
+      },
+      {
+        "id": "line-1-1",
+        "beat": 6.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 72,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 4.6875,
+        "end": 6.3875
+      },
+      {
+        "id": "bass-2",
+        "beat": 8,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 38,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 6,
+        "end": 8.6
+      },
+      {
+        "id": "line-2-0",
+        "beat": 8.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 6.5625,
+        "end": 8.2625
+      },
+      {
+        "id": "line-2-1",
+        "beat": 10.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 72,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 7.6875,
+        "end": 9.3875
+      },
+      {
+        "id": "bass-3",
+        "beat": 12,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 38,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 9,
+        "end": 11.6
+      },
+      {
+        "id": "line-3-0",
+        "beat": 12.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 72,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 9.5625,
+        "end": 11.2625
+      },
+      {
+        "id": "line-3-1",
+        "beat": 14.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 62,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 10.6875,
+        "end": 12.3875
+      },
+      {
+        "id": "bass-4",
+        "beat": 16,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 34,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 12,
+        "end": 14.6
+      },
+      {
+        "id": "line-4-0",
+        "beat": 16.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 58,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 12.5625,
+        "end": 14.2625
+      },
+      {
+        "id": "line-4-1",
+        "beat": 18.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 65,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 13.6875,
+        "end": 15.3875
+      },
+      {
+        "id": "bass-5",
+        "beat": 20,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 34,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 15,
+        "end": 17.6
+      },
+      {
+        "id": "line-5-0",
+        "beat": 20.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 65,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 15.5625,
+        "end": 17.2625
+      },
+      {
+        "id": "line-5-1",
+        "beat": 22.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 16.6875,
+        "end": 18.3875
+      },
+      {
+        "id": "bass-6",
+        "beat": 24,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 36,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 18,
+        "end": 20.6
+      },
+      {
+        "id": "line-6-0",
+        "beat": 24.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 70,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 18.5625,
+        "end": 20.2625
+      },
+      {
+        "id": "line-6-1",
+        "beat": 26.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 74,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 19.6875,
+        "end": 21.3875
+      },
+      {
+        "id": "bass-7",
+        "beat": 28,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 36,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 21,
+        "end": 23.6
+      },
+      {
+        "id": "line-7-0",
+        "beat": 28.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 74,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 21.5625,
+        "end": 23.2625
+      },
+      {
+        "id": "line-7-1",
+        "beat": 30.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 60,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 22.6875,
+        "end": 24.3875
+      },
+      {
+        "id": "bass-8",
+        "beat": 32,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 41,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 24,
+        "end": 26.6
+      },
+      {
+        "id": "line-8-0",
+        "beat": 32.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 65,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 24.5625,
+        "end": 26.2625
+      },
+      {
+        "id": "line-8-1",
+        "beat": 34.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 25.6875,
+        "end": 27.3875
+      },
+      {
+        "id": "bass-9",
+        "beat": 36,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 41,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 27,
+        "end": 29.6
+      },
+      {
+        "id": "line-9-0",
+        "beat": 36.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 27.5625,
+        "end": 29.2625
+      },
+      {
+        "id": "line-9-1",
+        "beat": 38.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 72,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 28.6875,
+        "end": 30.3875
+      },
+      {
+        "id": "bass-10",
+        "beat": 40,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 38,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 30,
+        "end": 32.6
+      },
+      {
+        "id": "line-10-0",
+        "beat": 40.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 30.5625,
+        "end": 32.2625
+      },
+      {
+        "id": "line-10-1",
+        "beat": 42.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 72,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 31.6875,
+        "end": 33.3875
+      },
+      {
+        "id": "bass-11",
+        "beat": 44,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 38,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 33,
+        "end": 35.6
+      },
+      {
+        "id": "line-11-0",
+        "beat": 44.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 72,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 33.5625,
+        "end": 35.2625
+      },
+      {
+        "id": "line-11-1",
+        "beat": 46.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 62,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 34.6875,
+        "end": 36.3875
+      },
+      {
+        "id": "bass-12",
+        "beat": 48,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 34,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 36,
+        "end": 38.6
+      },
+      {
+        "id": "line-12-0",
+        "beat": 48.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 58,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 36.5625,
+        "end": 38.2625
+      },
+      {
+        "id": "line-12-1",
+        "beat": 50.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 65,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 37.6875,
+        "end": 39.3875
+      },
+      {
+        "id": "bass-13",
+        "beat": 52,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 34,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 39,
+        "end": 41.6
+      },
+      {
+        "id": "line-13-0",
+        "beat": 52.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 65,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 39.5625,
+        "end": 41.2625
+      },
+      {
+        "id": "line-13-1",
+        "beat": 54.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 40.6875,
+        "end": 42.3875
+      },
+      {
+        "id": "bass-14",
+        "beat": 56,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 36,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 42,
+        "end": 44.6
+      },
+      {
+        "id": "line-14-0",
+        "beat": 56.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 70,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 42.5625,
+        "end": 44.2625
+      },
+      {
+        "id": "line-14-1",
+        "beat": 58.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 74,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 43.6875,
+        "end": 45.3875
+      },
+      {
+        "id": "bass-15",
+        "beat": 60,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 36,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 45,
+        "end": 47.6
+      },
+      {
+        "id": "line-15-0",
+        "beat": 60.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 74,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 45.5625,
+        "end": 47.2625
+      },
+      {
+        "id": "line-15-1",
+        "beat": 62.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 60,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 46.6875,
+        "end": 48.3875
+      },
+      {
+        "id": "bass-16",
+        "beat": 64,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 41,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 48,
+        "end": 50.6
+      },
+      {
+        "id": "line-16-0",
+        "beat": 64.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 65,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 48.5625,
+        "end": 50.2625
+      },
+      {
+        "id": "line-16-1",
+        "beat": 66.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 81,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 49.6875,
+        "end": 51.3875
+      },
+      {
+        "id": "bass-17",
+        "beat": 68,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 41,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 51,
+        "end": 53.6
+      },
+      {
+        "id": "line-17-0",
+        "beat": 68.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 51.5625,
+        "end": 53.2625
+      },
+      {
+        "id": "line-17-1",
+        "beat": 70.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 84,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 52.6875,
+        "end": 54.3875
+      },
+      {
+        "id": "bass-18",
+        "beat": 72,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 38,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 54,
+        "end": 56.6
+      },
+      {
+        "id": "line-18-0",
+        "beat": 72.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 69,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 54.5625,
+        "end": 56.2625
+      },
+      {
+        "id": "line-18-1",
+        "beat": 74.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 84,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 55.6875,
+        "end": 57.3875
+      },
+      {
+        "id": "bass-19",
+        "beat": 76,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 38,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 57,
+        "end": 59.6
+      },
+      {
+        "id": "line-19-0",
+        "beat": 76.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 72,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 57.5625,
+        "end": 59.2625
+      },
+      {
+        "id": "line-19-1",
+        "beat": 78.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 74,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 58.6875,
+        "end": 60.3875
+      },
+      {
+        "id": "bass-20",
+        "beat": 80,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 34,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 60,
+        "end": 62.6
+      },
+      {
+        "id": "line-20-0",
+        "beat": 80.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 58,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 60.5625,
+        "end": 62.2625
+      },
+      {
+        "id": "line-20-1",
+        "beat": 82.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 77,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 61.6875,
+        "end": 63.3875
+      },
+      {
+        "id": "bass-21",
+        "beat": 84,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 34,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 63,
+        "end": 65.6
+      },
+      {
+        "id": "line-21-0",
+        "beat": 84.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 65,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 63.5625,
+        "end": 65.2625
+      },
+      {
+        "id": "line-21-1",
+        "beat": 86.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 81,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 64.6875,
+        "end": 66.3875
+      },
+      {
+        "id": "bass-22",
+        "beat": 88,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 41,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 66,
+        "end": 68.6
+      },
+      {
+        "id": "line-22-0",
+        "beat": 88.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 72,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 66.5625,
+        "end": 68.2625
+      },
+      {
+        "id": "line-22-1",
+        "beat": 90.25,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 88,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 67.6875,
+        "end": 69.3875
+      },
+      {
+        "id": "bass-23",
+        "beat": 92,
+        "duration": 2.6,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 41,
+          "feedback": 0.978,
+          "gain": 0.16,
+          "track": "music",
+          "pan": -0.13
+        },
+        "start": 69,
+        "end": 71.6
+      },
+      {
+        "id": "line-23-0",
+        "beat": 92.75,
+        "duration": 1.7,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 76,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": -0.28
+        },
+        "start": 69.5625,
+        "end": 71.2625
+      },
+      {
+        "id": "line-23-1",
+        "beat": 94.25,
+        "duration": 1.3125,
+        "action": "music",
+        "sound": {
+          "kind": "string",
+          "midi": 77,
+          "gain": 0.15,
+          "feedback": 0.975,
+          "track": "music",
+          "pan": 0.28
+        },
+        "start": 70.6875,
+        "end": 72
+      }
+    ],
+    "version": 1
+  },
+  "provenance": {
+    "version": 1,
+    "sources": {
+      "project/README.md": "37660e5a8b365047ad00df240357cf2d67925049aed52238a1522b0867a7f27c",
+      "project/brief.txt": "626270ae2fd1ab54e3754b80f36b9d2fe737100201c2e134687a44e7076efba2",
+      "project/direction.md": "103696631f7932d8c0eebd92d19a879dfb133c5222187d1e1db054f064dae2b7",
+      "project/facts.md": "766038ef5b7a0b7770996fc18c185c1f44f20dd99047a6f3a3836688d3861374",
+      "project/film.js": "933c055810ac9014ffd83cdf232d60bdf597ed5818e05898caaebd189f950e75",
+      "project/index.html": "71179764cf7f380400f33e6d1a7d5888e6872b0489e9a2077abe61920398677b",
+      "project/score.mjs": "61282d5ba117867ba6a1edab52f8524f4b45c86e29b9b1a4c6f0163fa960e9ed",
+      "project/storyboard.md": "0b607eb225c24468075d2c0891a92b96091b80284edbd3b600253765b4050307",
+      "engine/audio.py": "126ce07fe15229e27bd31faacb7d1e117764839f3fb9098d8f96303155acea4f",
+      "engine/fonts/CormorantGaramond-Italic.ttf": "0f48ea6abb2084537854f7174c470991a463b13036309e3b50a81511611c530d",
+      "engine/fonts/CormorantGaramond.ttf": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+      "engine/fonts/CourierPrime-Regular.ttf": "72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af",
+      "engine/fonts/JetBrainsMono.ttf": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "engine/fonts/Lora-Italic.ttf": "22d8d8854b53807aa664ca34f2031a9ed57a1d0dea296b8b96cdd3aad937a2b3",
+      "engine/fonts/Lora.ttf": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7",
+      "engine/fonts/NotoSansSC-VF.ttf": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+      "engine/fonts/NotoSerifSC-VF.ttf": "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9",
+      "engine/fonts/OFL-CormorantGaramond.txt": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956",
+      "engine/fonts/OFL-CourierPrime.txt": "9a755af092b494944c99f471be6fddd19b006a448fefdc4717e4ee0aa09a97b0",
+      "engine/fonts/OFL-JetBrainsMono.txt": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+      "engine/fonts/OFL-Lora.txt": "1d9a970809ac804b582a6ce7f0ebc4e7fefcbfd7ff6299cad35ee656a21be716",
+      "engine/fonts/OFL-NotoSansSC.txt": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "engine/fonts/OFL-NotoSerifSC.txt": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "engine/get_fonts.py": "9e696c2aa9cb764ea8619048a2a1c4902a692d79647941492c916ed94d1381b4",
+      "engine/get_geo_assets.py": "c38981c9d6d3fc402e92ed851eafb0d725a6cbd0526fafe66b952d711495ae9f",
+      "engine/get_scene_assets.py": "1451cc9c3645dd9005152f8cc5a3c52daf8bf9d68374120979b2ff17db608649",
+      "engine/index.html": "71179764cf7f380400f33e6d1a7d5888e6872b0489e9a2077abe61920398677b",
+      "engine/provenance.py": "43d853d004d2483a1cc0c8d4394f5296f277c1d9ca57329eea217cdb88cb16e0",
+      "engine/render.py": "08d0071d5cf88cfd80ff22b1bf662f2a8ad274a7f515823f1ebb4768d58cab68",
+      "engine/render_cache.py": "ab389fee37cd50b2e94bbdb2dd70c909cf1b13bc90aa5c4f2bd7393d83cd88af",
+      "engine/score_audio.py": "139672d1e980e5ca3503957ec845e691aecbdfd03b9515fc8e7e04c0209bedd3",
+      "engine/vendor/geo/NaturalEarth-LICENSE.md": "2631b5b39b6d1acc56de75235109b5af2dbb4b0ac5a127b6f06185977247fd4b",
+      "engine/vendor/geo/d3-array-LICENSE": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4",
+      "engine/vendor/geo/d3-array.min.js": "80aa70d0cd17dabddf6d056494ea17926a45a69da8b7850220aace331bad671d",
+      "engine/vendor/geo/d3-geo-LICENSE": "3e3edc1224eec9c39cd26491a21304a62883c1e5b6a65c5283ccc7a6cc94baee",
+      "engine/vendor/geo/d3-geo.min.js": "23e574f1e8d4716d622bce45356a379b66a277162b145f5f147e4c8daefb73d2",
+      "engine/vendor/geo/land.geojson": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+      "engine/vendor/three/LICENSE": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+      "engine/vendor/three/three.core.min.js": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de",
+      "engine/vendor/three/three.module.min.js": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6",
+      "engine/vk-checks.mjs": "938ba6c3350abf1eda3e279ebfefdeb94b002f3753a804dc35c207b8513b4673",
+      "engine/vk-geo.mjs": "2adff3ab14bd9f4054e683681bd4d242ce3a92ff1451bfcf2e2dab8c31c6ef6c",
+      "engine/vk-kit.js": "c5afef06ccbe5d1e21ecc9310a31599b4870e28ee28cd8d9b7ee18e827025ea3",
+      "engine/vk-motion.mjs": "3a8da3371a8d360c21d70d0c3b8809858fb40a3f6334abaa3be3998d36953c1b",
+      "engine/vk-scene.mjs": "fa19f33278587d687bf37c4bf6391157d4f6ae82c82f0e009967cde6dd7cc0d5",
+      "engine/vk.js": "71fde3551c585dd18522c8c9fe099c069830afeb3e9dd482cd80a123ba6ea8bc"
+    },
+    "input_sha256": "e862f5121bb2751bb903a93d253d6072555620055c2ddfc587d78a46277e2334",
+    "payload_sha256": "a98909ba5a41e82c417630d027dcc64a90d03d472e86282575d6331264fd080e"
+  }
+}

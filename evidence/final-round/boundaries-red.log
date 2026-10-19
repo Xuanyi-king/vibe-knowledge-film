@@ -1,0 +1,55 @@
+test_noninteger_frame_end_is_supported_by_serial_pipeline (tests.test_provenance.ProvenanceTest.test_noninteger_frame_end_is_supported_by_serial_pipeline) ...   0/12
+FAIL
+test_decoder_failure_invalidates_previous_green_report (tests.test_provenance.ProvenanceTest.test_decoder_failure_invalidates_previous_green_report) ... done /tmp/tmpx_lkd_pf/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+FAIL
+test_rendered_condition_fails_when_motion_is_retimed_without_sound (tests.test_visual_checks.VisualChecksTest.test_rendered_condition_fails_when_motion_is_retimed_without_sound) ... FAIL
+
+======================================================================
+FAIL: test_noninteger_frame_end_is_supported_by_serial_pipeline (tests.test_provenance.ProvenanceTest.test_noninteger_frame_end_is_supported_by_serial_pipeline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_provenance.py", line 96, in test_noninteger_frame_end_is_supported_by_serial_pipeline
+    self.assertEqual(good.returncode,0,good.stderr)
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/engine/provenance.py", line 55, in validate_video
+    raise ValueError('input, media bytes or timeline differ')
+ValueError: input, media bytes or timeline differ
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/engine/audio.py", line 150, in <module>
+    if '--wav-only' not in a:provenance.validate_video(proj/'renders/raw.mp4', spec, sources)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/vibe-knowledge-film/engine/provenance.py", line 59, in validate_video
+    raise RuntimeError(f'stale or unversioned {kind} video {path}; re-render raw and re-mux with current events: {exc}') from exc
+RuntimeError: stale or unversioned raw video /tmp/tmpx_lkd_pf/renders/raw.mp4; re-render raw and re-mux with current events: input, media bytes or timeline differ
+
+
+======================================================================
+FAIL: test_decoder_failure_invalidates_previous_green_report (tests.test_provenance.ProvenanceTest.test_decoder_failure_invalidates_previous_green_report)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_provenance.py", line 112, in test_decoder_failure_invalidates_previous_green_report
+    self.assertTrue(json.loads((p/'audio/sync.json').read_text())['failed'])
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rendered_condition_fails_when_motion_is_retimed_without_sound (tests.test_visual_checks.VisualChecksTest.test_rendered_condition_fails_when_motion_is_retimed_without_sound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_visual_checks.py", line 38, in test_rendered_condition_fails_when_motion_is_retimed_without_sound
+    self.assertFalse(json.loads((p/'review/visual-sync.json').read_text())['passed'])
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 3 tests in 28.076s
+
+FAILED (failures=3)
+done /tmp/tmp82fgqok4/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared

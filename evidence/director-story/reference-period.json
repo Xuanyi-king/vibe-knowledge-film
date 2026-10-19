@@ -1,0 +1,9 @@
+{
+  "method": "spectral positive flux, 12000Hz/512 window/24 hop, full-clip autocorrelation; peak search .48-.59s; parabolic sub-hop fit",
+  "period_seconds": 0.5310261082584021,
+  "bpm_candidate": 112.98879483869644,
+  "grid_phase": null,
+  "downbeats": null,
+  "subjective_listening": "not_performed",
+  "scope": "candidate periodicity, not verified beat grid or musical interpretation"
+}

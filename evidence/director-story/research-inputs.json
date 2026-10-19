@@ -1,0 +1,30 @@
+{
+  "verified_at_utc": "2026-10-19T02:47:59.448289+00:00",
+  "pdfs": [
+    {
+      "file": "selfie2018_author.pdf",
+      "bytes": 352962,
+      "pdf_magic": "%PDF-",
+      "sha256": "7bf9435b2acd9bfa2f1ea1686f0597ca34f482fda2bb8316286ad7abe92a1921"
+    },
+    {
+      "file": "wegner1987_archive.pdf",
+      "bytes": 1057603,
+      "pdf_magic": "%PDF-",
+      "sha256": "7a370630fff2cec15472523fabd814eff1684c09c53e0521991a87c5d05a309e"
+    },
+    {
+      "file": "wegner1994_archive.pdf",
+      "bytes": 3897448,
+      "pdf_magic": "%PDF-",
+      "sha256": "4aa86e183381184a417ce1631181988d4abe632496091d6093dabd70e0b1d513"
+    }
+  ],
+  "report_exists": true,
+  "ocr_nonempty": {
+    "wegner1994-page-03.txt": 6788,
+    "wegner1994-page-01.txt": 5700,
+    "wegner1994-page-02.txt": 7043,
+    "wegner1994-page-04.txt": 7136
+  }
+}

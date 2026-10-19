@@ -1,0 +1,9 @@
+test_input_edit_during_encoding_check_cannot_publish_green (tests.test_provenance.ProvenanceTest.test_input_edit_during_encoding_check_cannot_publish_green) ...   0/12
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 24.322s
+
+OK
+done /tmp/tmpeq3i5a2x/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared

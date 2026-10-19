@@ -1,0 +1,197 @@
+test_complete_film_drawn_scale_layout_and_reverse_seek (test_atlas.AtlasTest.test_complete_film_drawn_scale_layout_and_reverse_seek) ... ok
+test_corrupt_successful_mux_keeps_previous_final (test_audio.AudioTest.test_corrupt_successful_mux_keeps_previous_final) ... ok
+test_failed_mux_keeps_previous_final (test_audio.AudioTest.test_failed_mux_keeps_previous_final) ... ok
+test_shared_score_mux_and_stems (test_audio.AudioTest.test_shared_score_mux_and_stems) ... ok
+test_shared_score_rejects_unreferenced_external_bgm_keeps_final (test_audio.AudioTest.test_shared_score_rejects_unreferenced_external_bgm_keeps_final) ... ok
+test_subsecond_bgm_mux_has_valid_fade (test_audio.AudioTest.test_subsecond_bgm_mux_has_valid_fade) ... ok
+test_tempo_inverse_contact_and_seek_order (test_choreography.ChoreographyTest.test_tempo_inverse_contact_and_seek_order) ... ok
+test_only_guidance_differs_and_missing_credentials_never_call_network (test_comparison.ComparisonTest.test_only_guidance_differs_and_missing_credentials_never_call_network) ... ok
+test_two_real_http_requests_preserve_usage_and_generated_sources (test_comparison.ComparisonTest.test_two_real_http_requests_preserve_usage_and_generated_sources) ... ok
+test_differential_scales_and_projection_library (test_geo.GeoTest.test_differential_scales_and_projection_library) ... ok
+test_real_projection_and_land_orientation (test_geo.GeoTest.test_real_projection_and_land_orientation) ... ok
+test_legacy_mastering_requires_explicit_source_only_contract (test_mastering.MasteringTest.test_legacy_mastering_requires_explicit_source_only_contract) ... ok
+test_real_encoder_failure_preserves_final_and_provenance (test_mastering.MasteringTest.test_real_encoder_failure_preserves_final_and_provenance) ... ok
+test_sparse_transients_meet_encoded_ceiling_without_timing_shift (test_mastering.MasteringTest.test_sparse_transients_meet_encoded_ceiling_without_timing_shift) ... ok
+test_black_frames_are_candidates_not_aesthetic_scores (test_media.MediaTest.test_black_frames_are_candidates_not_aesthetic_scores) ... ok
+test_invalid_file_fails (test_media.MediaTest.test_invalid_file_fails) ... ok
+test_valid_media_and_duration_mismatch (test_media.MediaTest.test_valid_media_and_duration_mismatch) ... ok
+test_distance_changes_projection_not_face_geometry (test_mirror.MirrorTest.test_distance_changes_projection_not_face_geometry) ... ok
+test_orientation_conditions_and_complete_story_replay (test_mirror.MirrorTest.test_orientation_conditions_and_complete_story_replay) ... ok
+test_portrait_aspect_is_preserved_in_opening_and_ending (test_mirror.MirrorTest.test_portrait_aspect_is_preserved_in_opening_and_ending) ... ok
+test_click_grid_and_silence_do_not_invent_downbeats (test_music.MusicTest.test_click_grid_and_silence_do_not_invent_downbeats) ... ok
+test_bad_download_or_escape_preserves_previous_bank (test_music_phrases.MusicTest.test_bad_download_or_escape_preserves_previous_bank) ... ok
+test_phrase_uses_shared_tempo_with_rests_and_release (test_music_phrases.MusicTest.test_phrase_uses_shared_tempo_with_rests_and_release) ... ok
+test_prepared_notes_pitch_cache_and_source_identity (test_music_phrases.MusicTest.test_prepared_notes_pitch_cache_and_source_identity) ... ok
+test_positions_speed_and_arrivals (test_physics.PhysicsTest.test_positions_speed_and_arrivals) ... ok
+test_travel_time_from_energy_integral (test_physics.PhysicsTest.test_travel_time_from_energy_integral) ... ok
+test_force_exit_invalidates_old_success_before_first_step (test_production.ProductionTest.test_force_exit_invalidates_old_success_before_first_step) ... ok
+test_one_entry_completes_pipeline_and_reports_blocked_inspection (test_production.ProductionTest.test_one_entry_completes_pipeline_and_reports_blocked_inspection) ... ok
+test_post_mux_failure_restores_old_final_and_sidecar (test_production.ProductionTest.test_post_mux_failure_restores_old_final_and_sidecar) ... ok
+test_source_edit_during_final_media_check_cannot_publish_success (test_production.ProductionTest.test_source_edit_during_final_media_check_cannot_publish_success) ... ok
+test_decoder_failure_invalidates_previous_green_report (test_provenance.ProvenanceTest.test_decoder_failure_invalidates_previous_green_report) ... score: /tmp/tmp1e1_64bo/audio/score.wav 0.5s 1 events
+score: /tmp/tmpqbgh5gjc/audio/score.wav 0.5s 1 events
+[page] [.WebGL-0x13c00182800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x13c00182800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x13c00182800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x13c00182800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[page] [.WebGL-0x1dc4001bba00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x1dc4001bba00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x1dc4001bba00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x1dc4001bba00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[page] [.WebGL-0x9d4001dae00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+  0/12
+ok
+test_export_input_race_keeps_previous_event_file (test_provenance.ProvenanceTest.test_export_input_race_keeps_previous_event_file) ... done /tmp/tmp8t_79ndg/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+{
+  "layer": "encoding_audio_sync",
+  "visual_action_sync": "not_checked",
+  "checked": 0,
+  "failed": [
+    "Command '['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python', '-c', 'import sys;sys.exit(7)']' returned non-zero exit status 7."
+  ]
+}
+  0/12
+ok
+test_input_edit_during_encoding_check_cannot_publish_green (test_provenance.ProvenanceTest.test_input_edit_during_encoding_check_cannot_publish_green) ... done /tmp/tmp6v7dyk96/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_modified_reference_or_final_cannot_pass_encoding_check (test_provenance.ProvenanceTest.test_modified_reference_or_final_cannot_pass_encoding_check) ... done /tmp/tmph0vuxxtc/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_noninteger_frame_end_is_supported_by_serial_pipeline (test_provenance.ProvenanceTest.test_noninteger_frame_end_is_supported_by_serial_pipeline) ... done /tmp/tmpz4i7g_7q/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_reexported_events_cannot_bind_old_raw_or_tampered_payload (test_provenance.ProvenanceTest.test_reexported_events_cannot_bind_old_raw_or_tampered_payload) ... done /tmp/tmp02e7j7jb/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+done /tmp/tmplemixdbv/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_source_edits_reject_old_events_and_old_encoded_check (test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) ... done /tmp/tmplemixdbv/renders/raw.mp4 0.40s
+  0/12
+done /tmp/tmp69xv1pe9/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_unversioned_events_require_reexport (test_provenance.ProvenanceTest.test_unversioned_events_require_reexport) ... ok
+test_capture_timeout_reports_last_successful_seek_state_without_retry (test_render.BrowserTests.test_capture_timeout_reports_last_successful_seek_state_without_retry) ... ok
+test_event_draw_errors_are_not_swallowed (test_render.BrowserTests.test_event_draw_errors_are_not_swallowed) ... ok
+test_event_scan_includes_end_without_exceeding_duration (test_render.BrowserTests.test_event_scan_includes_end_without_exceeding_duration) ... ok
+test_events_preserve_seek_pixels_and_repeatability (test_render.BrowserTests.test_events_preserve_seek_pixels_and_repeatability) ... ok
+test_real_failed_request_is_retained_for_render_diagnostics (test_render.BrowserTests.test_real_failed_request_is_retained_for_render_diagnostics) ... done /tmp/tmphpud52mp/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+[requestfailed] net::ERR_FAILED http://127.0.0.1:46381/diagnostic-font.woff2
+ok
+test_resume_rejects_inputs_in_generated_directories (test_render.BrowserTests.test_resume_rejects_inputs_in_generated_directories) ... ok
+test_startup_script_error_reports_cause_without_ready (test_render.BrowserTests.test_startup_script_error_reports_cause_without_ready) ... ok
+test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text (test_render.ModuleMimeTest.test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text) ... ok
+test_failed_worker_does_not_skip_waiting_for_other_workers (test_render.ParallelTests.test_failed_worker_does_not_skip_waiting_for_other_workers) ... ok
+test_determinism_failure_is_an_error (test_render.RenderTests.test_determinism_failure_is_an_error) ... ok
+test_encoder_failure_preserves_existing_output (test_render.RenderTests.test_encoder_failure_preserves_existing_output) ... [page] Failed to load resource: net::ERR_FAILED
+  0/1
+ok
+test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) ... ok
+test_encoded_parent_path_cannot_escape_project (test_render.ServerPathsTest.test_encoded_parent_path_cannot_escape_project) ... ok
+test_url_encoded_asset_names_work (test_render.ServerPathsTest.test_url_encoded_asset_names_work) ... ok
+test_asset_and_render_parameter_changes_invalidate_cache (test_resume.ResumeTest.test_asset_and_render_parameter_changes_invalidate_cache) ... cache new identity bfdb06dbba17ade8e0e2 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done /tmp/vk cache's 空格 cdo40yzd/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 cdo40yzd/renders/.vk-cache/bfdb06dbba17ade8e0e2
+cache new identity 8d2624bfb14d745420f1 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done /tmp/vk cache's 空格 cdo40yzd/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 cdo40yzd/renders/.vk-cache/8d2624bfb14d745420f1
+cache new identity fd5c7ab6386f5a808fa8 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done /tmp/vk cache's 空格 cdo40yzd/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 cdo40yzd/renders/.vk-cache/fd5c7ab6386f5a808fa8
+cache new identity ce279353f98d3f65a522 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done /tmp/vk cache's 空格 cdo40yzd/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 cdo40yzd/renders/.vk-cache/ce279353f98d3f65a522
+ok
+test_browser_initialization_source_race_is_rejected (test_resume.ResumeTest.test_browser_initialization_source_race_is_rejected) ... ok
+test_corrupt_part_is_rebuilt_without_rebuilding_valid_parts (test_resume.ResumeTest.test_corrupt_part_is_rebuilt_without_rebuilding_valid_parts) ... cache new identity bfdb06dbba17ade8e0e2 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done /tmp/vk cache's 空格 coyfg_c6/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 coyfg_c6/renders/.vk-cache/bfdb06dbba17ade8e0e2
+cache reuse 1/3 [0,6)
+cache render 2/3 [6,12)
+cache reuse 3/3 [12,18)
+done /tmp/vk cache's 空格 coyfg_c6/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 coyfg_c6/renders/.vk-cache/bfdb06dbba17ade8e0e2
+ok
+test_failed_concat_preserves_old_final (test_resume.ResumeTest.test_failed_concat_preserves_old_final) ... cache new identity bfdb06dbba17ade8e0e2 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done /tmp/vk cache's 空格 7oc712h6/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 7oc712h6/renders/.vk-cache/bfdb06dbba17ade8e0e2
+cache reuse 1/3 [0,6)
+cache reuse 2/3 [6,12)
+cache reuse 3/3 [12,18)
+ok
+test_interruption_keeps_completed_parts_and_resumes_in_order (test_resume.ResumeTest.test_interruption_keeps_completed_parts_and_resumes_in_order) ... cache new identity bfdb06dbba17ade8e0e2 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache reuse 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done /tmp/vk cache's 空格 dm4yvrn7/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 dm4yvrn7/renders/.vk-cache/bfdb06dbba17ade8e0e2
+ok
+test_invalid_chunk_is_rejected (test_resume.ResumeTest.test_invalid_chunk_is_rejected) ... ok
+test_invalid_part_never_published (test_resume.ResumeTest.test_invalid_part_never_published) ... cache new identity bfdb06dbba17ade8e0e2 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+ok
+test_lock_releases_after_interruption (test_resume.ResumeTest.test_lock_releases_after_interruption) ... ok
+test_parallel_interrupt_cancels_queued_segments (test_resume.ResumeTest.test_parallel_interrupt_cancels_queued_segments) ... cache new identity eae75eef530313e379e2 (source / runtime / encoding / chunk parameters)
+cache render 1/6 [0,6)
+cache render 2/6 [6,12)
+cache render 3/6 [12,18)
+ok
+test_parallel_parts_are_concatenated_in_frame_order (test_resume.ResumeTest.test_parallel_parts_are_concatenated_in_frame_order) ... cache new identity bfdb06dbba17ade8e0e2 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done /tmp/vk cache's 空格 3l4d276a/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 3l4d276a/renders/.vk-cache/bfdb06dbba17ade8e0e2
+ok
+test_source_change_during_render_is_rejected (test_resume.ResumeTest.test_source_change_during_render_is_rejected) ... cache new identity bfdb06dbba17ade8e0e2 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+ok
+test_custom_is_neutral_and_does_not_overwrite (test_scaffold.ScaffoldTest.test_custom_is_neutral_and_does_not_overwrite) ... ok
+test_explicit_legacy_worlds_keep_appearance_and_warn_about_placeholder (test_scaffold.ScaffoldTest.test_explicit_legacy_worlds_keep_appearance_and_warn_about_placeholder) ... ok
+test_invalid_arguments_leave_existing_project_untouched_even_with_force (test_scaffold.ScaffoldTest.test_invalid_arguments_leave_existing_project_untouched_even_with_force) ... ok
+test_missing_decisions_do_not_create_a_default_film (test_scaffold.ScaffoldTest.test_missing_decisions_do_not_create_a_default_film) ... ok
+test_contact_clock_and_final_composition_replay (test_scene.ResonanceTest.test_contact_clock_and_final_composition_replay) ... ok
+test_complex_scene_replays_and_preserves_link_lengths (test_scene.SceneTest.test_complex_scene_replays_and_preserves_link_lengths) ... ok
+test_automation_silence_samples_and_invalid_events (test_score_audio.ScoreAudioTest.test_automation_silence_samples_and_invalid_events) ... ok
+test_encoded_sync_detects_delay_instead_of_assuming_aac_offset (test_score_audio.ScoreAudioTest.test_encoded_sync_detects_delay_instead_of_assuming_aac_offset) ... ok
+test_materials_repeat_order_independent_and_stems_sum (test_score_audio.ScoreAudioTest.test_materials_repeat_order_independent_and_stems_sum) ... ok
+test_seeded_string_has_requested_pitch (test_score_audio.ScoreAudioTest.test_seeded_string_has_requested_pitch) ... ok
+test_invalid_declarations_and_nonfinite_measurements_fail (test_visual_checks.VisualChecksTest.test_invalid_declarations_and_nonfinite_measurements_fail) ... ok
+test_rendered_condition_fails_when_motion_is_retimed_without_sound (test_visual_checks.VisualChecksTest.test_rendered_condition_fails_when_motion_is_retimed_without_sound) ... ok
+
+----------------------------------------------------------------------
+Ran 75 tests in 225.013s
+
+OK
+[page] [.WebGL-0x340400175a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x340400175a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x340400175a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x340400175a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[page] [.WebGL-0x11dc001b8800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x11dc001b8800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x11dc001b8800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x11dc001b8800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared

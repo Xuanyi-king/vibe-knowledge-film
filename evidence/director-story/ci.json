@@ -1,0 +1,39 @@
+{
+  "code_commit": "74036406fc20e209722bc8076a81b907a1f76f7b",
+  "run": "https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39204006908",
+  "local": {
+    "total": 70,
+    "passed": 70,
+    "skipped": 0,
+    "seconds": 282.208,
+    "optional_assets": "Three, Geo and piano bank installed"
+  },
+  "linux_attempt1": {
+    "job": 117902783338,
+    "passed": 62,
+    "failed": 1,
+    "skipped": 7,
+    "seconds": 167.698,
+    "failure": "test_production first screenshot timeout after fonts loaded; root cause unconfirmed"
+  },
+  "linux_attempt2": {
+    "job": 117905284082,
+    "passed": 63,
+    "skipped": 7,
+    "seconds": 124.351,
+    "changes": "none; rerun failed jobs only"
+  },
+  "windows": {
+    "original_job": 117902783744,
+    "passed": 63,
+    "skipped": 7,
+    "seconds": 230.982,
+    "powershell": "verify.ps1 -SkipTests succeeded; fonts and fold_C@24 still",
+    "rerun": false
+  },
+  "limits": [
+    "Optional WebGL manual job not triggered",
+    "Windows full mirror production not tested",
+    "Passing rerun does not establish that the initial intermittent timeout is fixed"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "scope": "evidence working tree excluding this size report, not Git history",
+  "before_bytes": 73033118,
+  "after_bytes": 14391025,
+  "reduction_percent": 80.29520662119342,
+  "history_rewritten": false,
+  "large_media_location": "historical commit URLs; bounded short proofs and lossless FLAC tracked; Release upload blocked by401"
+}

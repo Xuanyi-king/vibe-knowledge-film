@@ -1,0 +1,15 @@
+test_legacy_mastering_requires_explicit_source_only_contract (tests.test_mastering.MasteringTest.test_legacy_mastering_requires_explicit_source_only_contract) ... FAIL
+
+======================================================================
+FAIL: test_legacy_mastering_requires_explicit_source_only_contract (tests.test_mastering.MasteringTest.test_legacy_mastering_requires_explicit_source_only_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_mastering.py", line 57, in test_legacy_mastering_requires_explicit_source_only_contract
+    with self.assertRaisesRegex(ValueError,'legacy'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 1.081s
+
+FAILED (failures=1)

@@ -1,0 +1,43 @@
+test_reexported_events_cannot_bind_old_raw_or_tampered_payload (tests.test_provenance.ProvenanceTest.test_reexported_events_cannot_bind_old_raw_or_tampered_payload) ...   0/12
+FAIL
+test_source_edits_reject_old_events_and_old_encoded_check (tests.test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) ... done /tmp/tmp_qvxgsy4/renders/raw.mp4 0.40s
+events: 0
+events: 0
+  0/12
+
+  test_source_edits_reject_old_events_and_old_encoded_check (tests.test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) (filename='film.js') ... FAIL
+done /tmp/tmprdrd51vg/renders/raw.mp4 0.40s
+events: 0
+  0/12
+  test_source_edits_reject_old_events_and_old_encoded_check (tests.test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) (filename='score.mjs') ... FAIL
+
+======================================================================
+FAIL: test_reexported_events_cannot_bind_old_raw_or_tampered_payload (tests.test_provenance.ProvenanceTest.test_reexported_events_cannot_bind_old_raw_or_tampered_payload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_provenance.py", line 48, in test_reexported_events_cannot_bind_old_raw_or_tampered_payload
+    self.assertNotEqual(failed.returncode,0,'new events accepted old raw from another input version')
+AssertionError: 0 == 0 : new events accepted old raw from another input version
+
+======================================================================
+FAIL: test_source_edits_reject_old_events_and_old_encoded_check (tests.test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) (filename='film.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_provenance.py", line 35, in test_source_edits_reject_old_events_and_old_encoded_check
+    self.assertNotEqual(failed.returncode,0,'edited source still accepted stale events')
+AssertionError: 0 == 0 : edited source still accepted stale events
+
+======================================================================
+FAIL: test_source_edits_reject_old_events_and_old_encoded_check (tests.test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) (filename='score.mjs')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_provenance.py", line 35, in test_source_edits_reject_old_events_and_old_encoded_check
+    self.assertNotEqual(failed.returncode,0,'edited source still accepted stale events')
+AssertionError: 0 == 0 : edited source still accepted stale events
+
+----------------------------------------------------------------------
+Ran 2 tests in 31.577s
+
+FAILED (failures=3)
+done /tmp/tmpqgkqq95i/renders/raw.mp4 0.40s
+events: 0

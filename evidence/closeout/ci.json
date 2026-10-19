@@ -1,0 +1,41 @@
+{
+  "code_commit": "399483819087d8d23bda714932478c6130b87736",
+  "run": "https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39208723709",
+  "local": {
+    "total": 75,
+    "passed": 75,
+    "skipped": 0,
+    "seconds": 225.013,
+    "optional_assets": "existing Three/Geo/piano bank installed"
+  },
+  "linux": {
+    "job": 117917137854,
+    "conclusion": "success",
+    "total": 75,
+    "passed": 68,
+    "skipped": 7,
+    "seconds": 171.968,
+    "attempt": 1
+  },
+  "windows": {
+    "job": 117917137730,
+    "conclusion": "success",
+    "total": 75,
+    "passed": 68,
+    "skipped": 7,
+    "seconds": 189.313,
+    "attempt": 1,
+    "powershell": "verify.ps1 -SkipTests succeeded; fonts and fold_C still"
+  },
+  "optional_webgl": {
+    "job": 117917138653,
+    "conclusion": "skipped"
+  },
+  "not_proven": [
+    "Historical intermittent screenshot timeout root cause",
+    "Windows full WebGL/real recorded piano bank/full mirror production",
+    "Subjective listening, continuous final viewing, phone readability",
+    "Ordinary-model creative quality improvement"
+  ],
+  "final_documentation_only": "No engine/scripts/tests changes after this code commit; final evidence update skips redundant CI"
+}

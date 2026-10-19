@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "method": "measured_constant_gain_with_encoded_peak_check",
+  "target_lufs": -18,
+  "ceiling_dbtp": -1.5,
+  "attempts": [
+    {
+      "gain_db": 13.370000000000001,
+      "encoded": {
+        "integrated_lufs": -23.72,
+        "true_peak_dbtp": -1.02,
+        "loudness_range_lu": 7.8
+      }
+    },
+    {
+      "gain_db": 12.39,
+      "encoded": {
+        "integrated_lufs": -24.71,
+        "true_peak_dbtp": -1.95,
+        "loudness_range_lu": 7.8
+      }
+    }
+  ],
+  "source": {
+    "integrated_lufs": -36.82,
+    "true_peak_dbtp": -16.87,
+    "loudness_range_lu": 7.8
+  },
+  "encoded": {
+    "integrated_lufs": -24.71,
+    "true_peak_dbtp": -1.95,
+    "loudness_range_lu": 7.8
+  },
+  "gain_db": 12.39,
+  "input_sha256": "e862f5121bb2751bb903a93d253d6072555620055c2ddfc587d78a46277e2334",
+  "reference_sha256": "4f0281c64a8be0b0fc20d436c9e36ce35ec8bdea2242d88902eecfb21b801704",
+  "implementation_sha256": "f96a0bcca809b629c8864a9d44b0e46cf5b556a515c963c5fb6935a811400cd6",
+  "video_sha256": "ecf129e4e670f5595aeceaef9f0f96f21c5d451de8bc04f6bb0f8d238201615d"
+}

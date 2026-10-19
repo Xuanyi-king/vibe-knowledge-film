@@ -1,0 +1,38 @@
+{
+  "status": "technical_complete_needs_subjective_review",
+  "stages": [
+    "assets-geo",
+    "fonts",
+    "determinism",
+    "picture",
+    "events",
+    "sound",
+    "mastering",
+    "encoding_audio_sync",
+    "declared_visual_action_sync",
+    "media",
+    "delivery_h264_crf20",
+    "delivery_encoding_audio_sync",
+    "delivery_declared_visual_conditions",
+    "delivery_media"
+  ],
+  "subjective_visual_review": "not_automated",
+  "subjective_listening": "not_automated",
+  "active_stage": "media",
+  "film": {
+    "end": 72,
+    "fps": 30,
+    "score": true,
+    "checks": 15
+  },
+  "previous_final_backup": null,
+  "input_sha256": "e862f5121bb2751bb903a93d253d6072555620055c2ddfc587d78a46277e2334",
+  "video_sha256": "a4325e661255415591320109fc53a4c426d87cfbe0ca16c826b2ef87eb7986ec",
+  "events_sha256": "7b568c51c98a27a780a04ccdb77b43d3e3d38023ee8c74bf74f5c3c59301f0fe",
+  "final": "evidence/atlas/final.mp4",
+  "visual_action_sync": "checked_declared_conditions",
+  "encoding_audio_sync": "checked",
+  "source_production": "master-production.json",
+  "source_video_sha256": "ecf129e4e670f5595aeceaef9f0f96f21c5d451de8bc04f6bb0f8d238201615d",
+  "delivery": "delivery.json"
+}

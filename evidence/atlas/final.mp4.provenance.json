@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "kind": "final",
+  "input_sha256": "e862f5121bb2751bb903a93d253d6072555620055c2ddfc587d78a46277e2334",
+  "sha256": "a4325e661255415591320109fc53a4c426d87cfbe0ca16c826b2ef87eb7986ec",
+  "timeline": {
+    "end": 72,
+    "fps": 30,
+    "start": 0,
+    "stop": 72
+  },
+  "events_sha256": "7b568c51c98a27a780a04ccdb77b43d3e3d38023ee8c74bf74f5c3c59301f0fe",
+  "reference_sha256": "4f0281c64a8be0b0fc20d436c9e36ce35ec8bdea2242d88902eecfb21b801704",
+  "mastering": {
+    "method": "measured_constant_gain_with_encoded_peak_check",
+    "target_lufs": -18,
+    "ceiling_dbtp": -1.5,
+    "gain_db": 12.39,
+    "implementation_sha256": "f96a0bcca809b629c8864a9d44b0e46cf5b556a515c963c5fb6935a811400cd6"
+  },
+  "delivery": {
+    "source_sha256": "ecf129e4e670f5595aeceaef9f0f96f21c5d451de8bc04f6bb0f8d238201615d",
+    "source_path": "examples/atlas/renders/final.mp4",
+    "codec": "libx264",
+    "crf": 20,
+    "preset": "medium",
+    "resolution": "unchanged 1920x1080",
+    "audio": "AAC packet copy"
+  }
+}

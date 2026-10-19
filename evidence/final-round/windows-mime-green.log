@@ -1,0 +1,6 @@
+test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text (tests.test_render.ModuleMimeTest.test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.529s
+
+OK

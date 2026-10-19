@@ -1,0 +1,563 @@
+{
+  "sample_rate": 48000,
+  "events": [
+    {
+      "id": "bass-0",
+      "visual_time": 0,
+      "scheduled_sample": 0,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-1",
+      "visual_time": 3,
+      "scheduled_sample": 144000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-10",
+      "visual_time": 30,
+      "scheduled_sample": 1440000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-11",
+      "visual_time": 33,
+      "scheduled_sample": 1584000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-12",
+      "visual_time": 36,
+      "scheduled_sample": 1728000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-13",
+      "visual_time": 39,
+      "scheduled_sample": 1872000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-14",
+      "visual_time": 42,
+      "scheduled_sample": 2016000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-15",
+      "visual_time": 45,
+      "scheduled_sample": 2160000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-16",
+      "visual_time": 48,
+      "scheduled_sample": 2304000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-17",
+      "visual_time": 51,
+      "scheduled_sample": 2448000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-18",
+      "visual_time": 54,
+      "scheduled_sample": 2592000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-19",
+      "visual_time": 57,
+      "scheduled_sample": 2736000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-2",
+      "visual_time": 6,
+      "scheduled_sample": 288000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-20",
+      "visual_time": 60,
+      "scheduled_sample": 2880000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-21",
+      "visual_time": 63,
+      "scheduled_sample": 3024000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-22",
+      "visual_time": 66,
+      "scheduled_sample": 3168000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-23",
+      "visual_time": 69,
+      "scheduled_sample": 3312000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-3",
+      "visual_time": 9,
+      "scheduled_sample": 432000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-4",
+      "visual_time": 12,
+      "scheduled_sample": 576000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-5",
+      "visual_time": 15,
+      "scheduled_sample": 720000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-6",
+      "visual_time": 18,
+      "scheduled_sample": 864000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-7",
+      "visual_time": 21,
+      "scheduled_sample": 1008000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-8",
+      "visual_time": 24,
+      "scheduled_sample": 1152000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "bass-9",
+      "visual_time": 27,
+      "scheduled_sample": 1296000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "equal-area",
+      "visual_time": 52,
+      "scheduled_sample": 2496000,
+      "source_anchor": 0,
+      "track": "sfx"
+    },
+    {
+      "id": "four",
+      "visual_time": 38.25,
+      "scheduled_sample": 1836000,
+      "source_anchor": 0,
+      "track": "sfx"
+    },
+    {
+      "id": "keep-angle",
+      "visual_time": 35,
+      "scheduled_sample": 1680000,
+      "source_anchor": 0,
+      "track": "sfx"
+    },
+    {
+      "id": "line-0-0",
+      "visual_time": 0.5625,
+      "scheduled_sample": 27000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-0-1",
+      "visual_time": 1.6875,
+      "scheduled_sample": 81000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-1-0",
+      "visual_time": 3.5625,
+      "scheduled_sample": 171000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-1-1",
+      "visual_time": 4.6875,
+      "scheduled_sample": 225000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-10-0",
+      "visual_time": 30.5625,
+      "scheduled_sample": 1467000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-10-1",
+      "visual_time": 31.6875,
+      "scheduled_sample": 1521000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-11-0",
+      "visual_time": 33.5625,
+      "scheduled_sample": 1611000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-11-1",
+      "visual_time": 34.6875,
+      "scheduled_sample": 1665000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-12-0",
+      "visual_time": 36.5625,
+      "scheduled_sample": 1755000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-12-1",
+      "visual_time": 37.6875,
+      "scheduled_sample": 1809000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-13-0",
+      "visual_time": 39.5625,
+      "scheduled_sample": 1899000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-13-1",
+      "visual_time": 40.6875,
+      "scheduled_sample": 1953000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-14-0",
+      "visual_time": 42.5625,
+      "scheduled_sample": 2043000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-14-1",
+      "visual_time": 43.6875,
+      "scheduled_sample": 2097000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-15-0",
+      "visual_time": 45.5625,
+      "scheduled_sample": 2187000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-15-1",
+      "visual_time": 46.6875,
+      "scheduled_sample": 2241000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-16-0",
+      "visual_time": 48.5625,
+      "scheduled_sample": 2331000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-16-1",
+      "visual_time": 49.6875,
+      "scheduled_sample": 2385000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-17-0",
+      "visual_time": 51.5625,
+      "scheduled_sample": 2475000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-17-1",
+      "visual_time": 52.6875,
+      "scheduled_sample": 2529000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-18-0",
+      "visual_time": 54.5625,
+      "scheduled_sample": 2619000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-18-1",
+      "visual_time": 55.6875,
+      "scheduled_sample": 2673000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-19-0",
+      "visual_time": 57.5625,
+      "scheduled_sample": 2763000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-19-1",
+      "visual_time": 58.6875,
+      "scheduled_sample": 2817000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-2-0",
+      "visual_time": 6.5625,
+      "scheduled_sample": 315000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-2-1",
+      "visual_time": 7.6875,
+      "scheduled_sample": 369000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-20-0",
+      "visual_time": 60.5625,
+      "scheduled_sample": 2907000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-20-1",
+      "visual_time": 61.6875,
+      "scheduled_sample": 2961000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-21-0",
+      "visual_time": 63.5625,
+      "scheduled_sample": 3051000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-21-1",
+      "visual_time": 64.6875,
+      "scheduled_sample": 3105000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-22-0",
+      "visual_time": 66.5625,
+      "scheduled_sample": 3195000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-22-1",
+      "visual_time": 67.6875,
+      "scheduled_sample": 3249000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-23-0",
+      "visual_time": 69.5625,
+      "scheduled_sample": 3339000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-23-1",
+      "visual_time": 70.6875,
+      "scheduled_sample": 3393000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-3-0",
+      "visual_time": 9.5625,
+      "scheduled_sample": 459000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-3-1",
+      "visual_time": 10.6875,
+      "scheduled_sample": 513000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-4-0",
+      "visual_time": 12.5625,
+      "scheduled_sample": 603000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-4-1",
+      "visual_time": 13.6875,
+      "scheduled_sample": 657000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-5-0",
+      "visual_time": 15.5625,
+      "scheduled_sample": 747000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-5-1",
+      "visual_time": 16.6875,
+      "scheduled_sample": 801000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-6-0",
+      "visual_time": 18.5625,
+      "scheduled_sample": 891000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-6-1",
+      "visual_time": 19.6875,
+      "scheduled_sample": 945000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-7-0",
+      "visual_time": 21.5625,
+      "scheduled_sample": 1035000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-7-1",
+      "visual_time": 22.6875,
+      "scheduled_sample": 1089000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-8-0",
+      "visual_time": 24.5625,
+      "scheduled_sample": 1179000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-8-1",
+      "visual_time": 25.6875,
+      "scheduled_sample": 1233000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-9-0",
+      "visual_time": 27.5625,
+      "scheduled_sample": 1323000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "line-9-1",
+      "visual_time": 28.6875,
+      "scheduled_sample": 1377000,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "reproject",
+      "visual_time": 44,
+      "scheduled_sample": 2112000,
+      "source_anchor": 0,
+      "track": "sfx"
+    },
+    {
+      "id": "stretch-x",
+      "visual_time": 28,
+      "scheduled_sample": 1344000,
+      "source_anchor": 0,
+      "track": "sfx"
+    },
+    {
+      "id": "unfold",
+      "visual_time": 7,
+      "scheduled_sample": 336000,
+      "source_anchor": 0,
+      "track": "sfx"
+    }
+  ],
+  "intentional_silence": [
+    [
+      41,
+      42
+    ]
+  ],
+  "peak_before_headroom": 0.10666250999345002,
+  "headroom_gain": 1,
+  "peak_dbfs": -19.43976401338556,
+  "score_sha256": "7baa4e8162636f97c86e2ce3f2a990de1a8bcb9e620af1b74cf1a07393f8c4eb",
+  "events_sha256": "7b568c51c98a27a780a04ccdb77b43d3e3d38023ee8c74bf74f5c3c59301f0fe",
+  "reference_sha256": "4f0281c64a8be0b0fc20d436c9e36ce35ec8bdea2242d88902eecfb21b801704"
+}

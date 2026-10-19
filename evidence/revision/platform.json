@@ -1,0 +1,14 @@
+{
+  "browser_version": "154.0.8037.57",
+  "backend": {
+    "three": "180",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  "software_gl_flag": true,
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "playwright": "1.62.0",
+  "native_windows_tested": false,
+  "powershell_present": false,
+  "local_browser": "/usr/bin/chromium"
+}

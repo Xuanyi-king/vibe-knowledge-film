@@ -1,0 +1,21 @@
+2026-10-19T06:14:05.1672199Z Complete job name: core (windows-latest)
+2026-10-19T06:17:49.3305248Z test_complete_film_drawn_scale_layout_and_reverse_seek (test_atlas.AtlasTest.test_complete_film_drawn_scale_layout_and_reverse_seek) ... skipped 'optional geographic assets'
+2026-10-19T06:18:00.6140964Z test_real_projection_and_land_orientation (test_geo.GeoTest.test_real_projection_and_land_orientation) ... skipped 'optional geographic assets'
+2026-10-19T06:18:03.6069563Z test_distance_changes_projection_not_face_geometry (test_mirror.MirrorTest.test_distance_changes_projection_not_face_geometry) ... skipped 'optional Three.js portrait assets'
+2026-10-19T06:18:03.6070667Z test_orientation_conditions_and_complete_story_replay (test_mirror.MirrorTest.test_orientation_conditions_and_complete_story_replay) ... skipped 'optional Three.js portrait assets'
+2026-10-19T06:18:03.6071599Z test_portrait_aspect_is_preserved_in_opening_and_ending (test_mirror.MirrorTest.test_portrait_aspect_is_preserved_in_opening_and_ending) ... skipped 'optional Three.js portrait assets'
+2026-10-19T06:18:03.8602175Z test_bad_download_or_escape_preserves_previous_bank (test_music_phrases.MusicTest.test_bad_download_or_escape_preserves_previous_bank) ... ok
+2026-10-19T06:18:05.7463362Z test_phrase_uses_shared_tempo_with_rests_and_release (test_music_phrases.MusicTest.test_phrase_uses_shared_tempo_with_rests_and_release) ... ok
+2026-10-19T06:18:07.0786778Z test_prepared_notes_pitch_cache_and_source_identity (test_music_phrases.MusicTest.test_prepared_notes_pitch_cache_and_source_identity) ... ok
+2026-10-19T06:20:21.3601577Z test_capture_timeout_reports_last_successful_seek_state_without_retry (test_render.BrowserTests.test_capture_timeout_reports_last_successful_seek_state_without_retry) ... ok
+2026-10-19T06:20:28.1757547Z test_real_failed_request_is_retained_for_render_diagnostics (test_render.BrowserTests.test_real_failed_request_is_retained_for_render_diagnostics) ... done C:\Users\RUNNER~1\AppData\Local\Temp\tmp_a5nydon\renders\raw.mp4 0.40s
+2026-10-19T06:20:43.8970617Z test_custom_is_neutral_and_does_not_overwrite (test_scaffold.ScaffoldTest.test_custom_is_neutral_and_does_not_overwrite) ... ok
+2026-10-19T06:20:43.9765807Z test_explicit_legacy_worlds_keep_appearance_and_warn_about_placeholder (test_scaffold.ScaffoldTest.test_explicit_legacy_worlds_keep_appearance_and_warn_about_placeholder) ... ok
+2026-10-19T06:20:44.1658865Z test_invalid_arguments_leave_existing_project_untouched_even_with_force (test_scaffold.ScaffoldTest.test_invalid_arguments_leave_existing_project_untouched_even_with_force) ... ok
+2026-10-19T06:20:44.2453465Z test_missing_decisions_do_not_create_a_default_film (test_scaffold.ScaffoldTest.test_missing_decisions_do_not_create_a_default_film) ... ok
+2026-10-19T06:20:44.2455164Z test_contact_clock_and_final_composition_replay (test_scene.ResonanceTest.test_contact_clock_and_final_composition_replay) ... skipped 'optional Three.js assets'
+2026-10-19T06:20:44.2456580Z test_complex_scene_replays_and_preserves_link_lengths (test_scene.SceneTest.test_complex_scene_replays_and_preserves_link_lengths) ... skipped 'optional Three.js assets: run engine/get_scene_assets.py'
+2026-10-19T06:20:58.6428491Z Ran 75 tests in 189.313s
+2026-10-19T06:20:58.6428707Z OK (skipped=7)
+2026-10-19T06:20:58.7754181Z ##[group]Run ./scripts/verify.ps1 -SkipTests
+2026-10-19T06:20:58.7754505Z ./scripts/verify.ps1 -SkipTests

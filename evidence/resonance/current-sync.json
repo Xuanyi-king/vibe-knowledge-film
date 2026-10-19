@@ -1,0 +1,71 @@
+{
+  "layer": "encoding_audio_sync",
+  "visual_action_sync": "not_checked",
+  "input_sha256": "d938352a5fbda5dd42e1d39cf89e02370e4961decac86071cef39a18fc66ccf3",
+  "events_sha256": "4c90e0433920add43e8792e16983d5fe1fe71ecb10ae2b9288b4b702b42f8777",
+  "video_sha256": "810bbea648ba9643386dcc0208eea323971c15111fdeea032598606a3780cb8a",
+  "reference_sha256": "8296cdc3fe199e21830b9d176de15c92a9828d2ff5211e6cc3ae0457b2189af7",
+  "scope": "source mix vs decoded final; visual action conditions require check_visual.py; no aesthetic score",
+  "checked": 8,
+  "exempt": [],
+  "failed": [],
+  "events": [
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9994247014059158,
+      "id": "approach",
+      "time": 1.3,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998410977431558,
+      "id": "strike",
+      "time": 2,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998309407925169,
+      "id": "damp",
+      "time": 5.333333333333333,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9992641817560495,
+      "id": "music-0",
+      "time": 0,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998744514611371,
+      "id": "music-1",
+      "time": 0.6666666666666666,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999895325883955,
+      "id": "music-2",
+      "time": 6.166666666666667,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999827232948174,
+      "id": "music-3",
+      "time": 6.666666666666667,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999722441319231,
+      "id": "music-4",
+      "time": 7.133333333333334,
+      "frame_quantization_seconds": 0.0
+    }
+  ],
+  "duration_difference_seconds": 0.0
+}

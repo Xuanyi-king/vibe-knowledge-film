@@ -1,0 +1,10 @@
+{
+  "shadow": true,
+  "meshes": 23,
+  "maxLinkError": 1.1102230246251565e-16,
+  "glError": 0,
+  "backend": {
+    "three": "180",
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  }
+}

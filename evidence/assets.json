@@ -1,0 +1,62 @@
+{
+  "baseline-final.mp4": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/8c93e14809b839586ab4652cf1e89b2a03876717/evidence/descent_baseline/final.mp4",
+    "sha256": "7146585e837d4e11a2ffae5f09cdb82b1c2ec9bb7e07de5eb6c5f629226ac990",
+    "bytes": 20698356
+  },
+  "studio-final.mp4": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/8c93e14809b839586ab4652cf1e89b2a03876717/evidence/descent_studio/final.mp4",
+    "sha256": "7080ebee843725bd98c3b0d8b0bdcdd205a653050476fd3be8b46151626bb1c1",
+    "bytes": 18385428
+  },
+  "governor-scene.mp4": {
+    "bytes": 1269866,
+    "sha256": "a1a6f21babe3c2862791c56e6acbb9ae8285db71810094f3d3a7db3549249e3d",
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/governor_scene/final.mp4"
+  },
+  "resonance-music.flac": {
+    "bytes": 85496,
+    "sha256": "90c0baf676f9a9c073c6f5532a682bdec11c9fd4d4e514570e37ac36ceffe532",
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/music.flac"
+  },
+  "resonance-sfx.flac": {
+    "bytes": 170087,
+    "sha256": "122b3520caa53003679a57c959081442d30027b9a49c58cdaefa846c9787c635",
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/sfx.flac"
+  },
+  "resonance-score.flac": {
+    "bytes": 244948,
+    "sha256": "09d180b4edf97dddf0e9363e297606fedef2f41b1af84cdde3eea328247ed4fb",
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/score.flac"
+  },
+  "resonance-final.mp4": {
+    "bytes": 1627034,
+    "sha256": "81e2de6bdccc25b6075f80a8fba2ff932b1ff3af294ea063239685f98ace9add",
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/final.mp4"
+  },
+  "atlas-final.mp4": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/final.mp4",
+    "sha256": "a4325e661255415591320109fc53a4c426d87cfbe0ca16c826b2ef87eb7986ec",
+    "bytes": 10800291
+  },
+  "atlas-score.flac": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/score.flac",
+    "sha256": "c163029c9f797626a883a9289870317ee3f3c9c4dd8d8d126e07774d16050fef",
+    "bytes": 2842716
+  },
+  "atlas-music.flac": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/music.flac",
+    "sha256": "42b2c2019a464feaf951ec7d7d2eddfea4ac342eef99d44baf730624f2c4712e",
+    "bytes": 2768570
+  },
+  "atlas-sfx.flac": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/sfx.flac",
+    "sha256": "61a0f4d31e01c59b466559a817e3a6d5d8c8fc8f08906daf63c2f5433164c3ae",
+    "bytes": 220236
+  },
+  "resonance-current.mp4": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/current.mp4",
+    "sha256": "810bbea648ba9643386dcc0208eea323971c15111fdeea032598606a3780cb8a",
+    "bytes": 1616764
+  }
+}

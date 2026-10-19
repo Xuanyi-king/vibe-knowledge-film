@@ -1,0 +1,23 @@
+test_distance_changes_projection_not_face_geometry (tests.test_mirror.MirrorTest.test_distance_changes_projection_not_face_geometry) ... FAIL
+test_orientation_conditions_and_complete_story_replay (tests.test_mirror.MirrorTest.test_orientation_conditions_and_complete_story_replay) ... FAIL
+
+======================================================================
+FAIL: test_distance_changes_projection_not_face_geometry (tests.test_mirror.MirrorTest.test_distance_changes_projection_not_face_geometry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_mirror.py", line 23, in test_distance_changes_projection_not_face_geometry
+    self.assertTrue((ROOT/'examples/mirror/index.html').exists(),'controlled portrait scene missing')
+AssertionError: False is not true : controlled portrait scene missing
+
+======================================================================
+FAIL: test_orientation_conditions_and_complete_story_replay (tests.test_mirror.MirrorTest.test_orientation_conditions_and_complete_story_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_mirror.py", line 10, in test_orientation_conditions_and_complete_story_replay
+    self.assertTrue((ROOT/'examples/mirror/index.html').exists(),'complete mirror film missing')
+AssertionError: False is not true : complete mirror film missing
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (failures=2)

@@ -1,0 +1,89 @@
+{
+  "recovery_started_utc": "2026-10-18T07:36:40.879076+00:00",
+  "recovery_finished_utc": "2026-10-18T07:47:52.972205+00:00",
+  "recovery_wall_seconds": 672.093129,
+  "measured_render_segments_seconds": 645.7399842540001,
+  "measured_successful_operations_seconds": 657.5397197780003,
+  "parent_seg00_seconds": "unavailable (not timed; no inference from timestamps)",
+  "prior_failed_render_seconds": "unavailable (environment killed timer before persistence)",
+  "prior_unusable_partial_bytes": 11534480,
+  "prior_last_logged_progress": "150/360 in one of three workers; overall frames unknown",
+  "creative_time": "approximately 10\u201315 minutes before frozen source; exact original start unavailable; system interruptions and rendering excluded",
+  "model_id": "unknown",
+  "model_tokens": "unavailable",
+  "model_cost": "unavailable",
+  "final_sha256": "7080ebee843725bd98c3b0d8b0bdcdd205a653050476fd3be8b46151626bb1c1",
+  "final_bytes": 18385428,
+  "steps": [
+    {
+      "label": "seg01",
+      "seconds": 81.853614537,
+      "exit_code": 0
+    },
+    {
+      "label": "seg02",
+      "seconds": 77.83353903699998,
+      "exit_code": 0
+    },
+    {
+      "label": "seg03",
+      "seconds": 81.97848448499997,
+      "exit_code": 0
+    },
+    {
+      "label": "seg04",
+      "seconds": 72.34413222400008,
+      "exit_code": 0
+    },
+    {
+      "label": "seg05",
+      "seconds": 72.84438485800001,
+      "exit_code": 0
+    },
+    {
+      "label": "seg06",
+      "seconds": 67.33955987599995,
+      "exit_code": 0
+    },
+    {
+      "label": "seg07",
+      "seconds": 72.33462906200009,
+      "exit_code": 0
+    },
+    {
+      "label": "seg08",
+      "seconds": 78.920263696,
+      "exit_code": 0
+    },
+    {
+      "label": "seg09",
+      "seconds": 40.291376479000064,
+      "exit_code": 0
+    },
+    {
+      "label": "concat",
+      "seconds": 0.26788517500006037,
+      "exit_code": 0
+    },
+    {
+      "label": "events",
+      "seconds": 1.7709504829999787,
+      "exit_code": 0
+    },
+    {
+      "label": "audio",
+      "seconds": 3.14458868600002,
+      "exit_code": 0
+    },
+    {
+      "label": "check_media",
+      "seconds": 3.5671437519999927,
+      "exit_code": 0
+    },
+    {
+      "label": "contact",
+      "seconds": 3.0491674280000325,
+      "exit_code": 0
+    }
+  ]
+}

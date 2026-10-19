@@ -1,5 +1,23 @@
 # 引擎
 
+完整交付优先用`python scripts/produce.py <project>`；本页底层命令不是验收完成信号。新score作品需要编码后峰值、版本与两层同步检查，见[choreography](choreography.md)。
+
+## 可恢复的正式渲染模式
+
+`python engine/render.py <project> --resume 4 --jobs 2`按整数帧切分持久4秒片段。中断后重复同命令，完整校验后复用；不需要样片专用脚本。默认1个worker，资源少时更稳。`--jobs`、`--clip`等旧命令保留；resume用于全片，不能与clip/sheet/det等模式混用。
+
+缓存位于`<project>/renders/.vk-cache/<identity>/`：哈希项目/引擎真实文件、字体和可选依赖，加上时间/帧率/尺寸、分段帧数、浏览器版本/后端、系统、FFmpeg版本与编码参数。换输入或必要参数会换身份，旧代仍保留供恢复。resume仍要求纯时间驱动代码，不能修复Math.random/Date.now或未追踪的系统字体；请使用本地提供的字体。项目所有输入扩展名都参与，包括Markdown；日志请写入renders或review。源码/素材编辑期间会拒绝发布，等编辑完成后重跑。
+
+`renders/`、`review/`、`audio/`是保留的生成目录，不能作为resume的浏览器输入素材目录；请把素材放assets/。符号链接和联网素材也拒绝使用，先复制/下载到项目或engine本地。这样才能避免哈希没有追踪的输入。普通非resume模式继续兼容原有行为。
+
+每段先原子写入，再检查哈希、H.264/yuv420p、尺寸、帧率、精确帧数、时长和完整解码；损坏/缺记录的段会重绘。按绝对帧区间顺序无损拼接，最终再验证总帧数/解码，成功后才替换raw.mp4。操作系统文件锁在进程死亡后自动释放，阻止同一缓存被并发写入。Ctrl+C会取消排队任务，只等待已启动短段收尾；强制杀进程后未完成段下次重绘。
+
+不要手动拼用旧样片的segNN文件，它们没有当前完整输入身份。旧recover_render.py只是转发兼容入口。换分段长度会换缓存；没有自动LRU，空间不足时先停渲染，再删除不需要的identity目录（PowerShell：`Remove-Item <project>/renders/.vk-cache/<identity> -Recurse`）。
+
+音频同样先合成到临时文件，检查两条流、时长和完整解码，再替换final.mp4；失败保留旧片。全片事件不能直接给一个局部clip合音，时长不匹配会被拒绝。
+
+复杂实体的可选Three.js层见[complex-scenes.md](complex-scenes.md)；未安装它不影响Canvas旧工程。`VK_SOFTWARE_GL=1`可显式使用软件WebGL，软件/硬件或浏览器变化会失效缓存，不承诺跨GPU像素相同。
+
 一张 1920×1080 的 Canvas，一个 `seek(t)`。**每一帧只由时间 t 决定**：没有时间线对象，没有补间库，没有跨帧状态。
 这是参考片（C 家族）露出的源码里用的模型，也是能"只渲一段、只截几帧、乱序截"的前提。
 
@@ -16,12 +34,12 @@ engine/
 
 工程目录里只有 `index.html` 和 `film.js`。引擎由 `render.py` 内置的小服务器挂在 `/engine/` 下。
 
-可选的外观是两套：`night`（C 夜曲）和 `flat`（B 寓言）。下面出现的 `gilt`（鎏金）和它的年份栏、金字卡还在引擎里——寓言的片名卡和货架图在用——但不再作为一套可选外观。
+内置外观是两套（也可用 custom 自定方向）：`night`（C 夜曲）和 `flat`（B 寓言）。下面出现的 `gilt`（鎏金）和它的年份栏、金字卡还在引擎里——寓言的片名卡和货架图在用——但不再作为一套可选外观。
 
 ## 命令
 
 ```bash
-python scripts/new_film.py <工程目录> --world C|B     # 建工程：index.html + 一份没有画面的 film.js 骨架
+python scripts/new_film.py <工程目录> --world <B或C或custom> --duration <完整分镜秒数> # 先定方向与分镜，再建空骨架
 python engine/render.py <工程> --serve                  # 预览 http://127.0.0.1:8765/?play
 python engine/render.py <工程> --stills 2.5 8.5 21      # 截几帧 → review/
 python engine/render.py <工程> --sheet 16               # 全片均匀 16 帧拼一张 → review/sheet.jpg
@@ -89,7 +107,7 @@ VK.film({
 | `VK.scene(fr, t, a, b, fn(lt, k), fin, fout)` | 只在 [a, b] 内调用 fn，并替它乘好淡入淡出。lt 是本地时间 |
 
 **随机** 只用 `rng(seed)`（返回一个 0…1 的发生器）和 `hash(n)`。不要用 `Math.random()` 和 `Date.now()`——
-同一帧每次渲染必须一模一样，`render.py --det` 会查。
+同一环境中同一帧每次渲染必须一模一样，`render.py --det` 会查并以非零状态报告失败。
 
 **模拟要真算，但要能回放。** 载入时把整场模拟一次算完、存成表，每帧只按时间查表：
 
@@ -254,3 +272,16 @@ function urn(fr, t) {
 - **一帧画太多。** 上千个粒子用 `fr.x.fillRect`，别每个都开 `shadowBlur` 或 `blur`。慢的预处理（取样字形、算模拟）放在载入时，缓存起来。
 - **文字太长。** 定稿前 `fr.measure` 量最长的字幕：A 不超过 1300px，C 中文不超过 1400px。
 - **时间写死在好几处。** 每站开头定一个本地时间 `const lt = t - 17`，站内全用 `lt`；整站挪动时只改一个数。
+
+## 渲染错误与环境
+
+`VK_BROWSER` 可设浏览器可执行文件的绝对路径；未设时优先本机 Chrome，缺失时尝试 Playwright Chromium。
+用 `python -m playwright install chromium` 安装后者。字体下载后运行 `get_fonts.py --check`。
+绘制/字体加载/事件导出异常会失败；serial encoder 失败不覆盖上一次成功产物。
+`--clip` 向最近帧取整，结束时间最多为 END；负数、非有限数、空区间报错。
+`--det` 检查乱序重放，不担保跨浏览器版本的像素完全相同。
+新增 `scripts/check_media.py` 只提供技术诊断；视觉返工见 review.md。
+
+## 共享视听编排（可选）
+
+`window.VK_SCORE=score({...})`通过原`--events`导出，`audio.py --stems`使用同一事件制作music/sfx/ambience；不混入旧fr.sfx以免重复。旧工程完全按原逻辑。公共解析运动、tempo map、摄影机、材质拟音、用户采样、自动化、最终编码回测的字段和例子见[choreography](choreography.md)。score模式的BGM进入sample/music轨，不额外传`--bgm`。

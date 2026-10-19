@@ -1,0 +1,33 @@
+{
+  "checked_utc": "2026-10-18T07:34:54.072848+00:00",
+  "session": 41256,
+  "session_status": "Unknown process id",
+  "chromium_ffmpeg_processes": "none at inspection",
+  "progress_last_logged": "150/360 (one of three workers)",
+  "full_render_time_json": "absent; wrapper never reached completion",
+  "raw_mp4": "absent",
+  "final_mp4": "absent",
+  "partials": [
+    {
+      "path": "examples/descent_studio/renders/.vk-parts-5ga_1vxo/.vk-render-i9lgxwk_/encoded.mp4",
+      "bytes": 3670064,
+      "ffprobe_exit": 1,
+      "stdout": "{\n\n}\n",
+      "stderr": "[mov,mp4,m4a,3gp,3g2,mj2 @ 0x557f2c49cfc0] moov atom not found\n/workspace/vibe-knowledge-film/examples/descent_studio/renders/.vk-parts-5ga_1vxo/.vk-render-i9lgxwk_/encoded.mp4: Invalid data found when processing input\n"
+    },
+    {
+      "path": "examples/descent_studio/renders/.vk-parts-5ga_1vxo/.vk-render-i72r81zn/encoded.mp4",
+      "bytes": 4194352,
+      "ffprobe_exit": 1,
+      "stdout": "{\n\n}\n",
+      "stderr": "[mov,mp4,m4a,3gp,3g2,mj2 @ 0x560680ae9fc0] moov atom not found\n/workspace/vibe-knowledge-film/examples/descent_studio/renders/.vk-parts-5ga_1vxo/.vk-render-i72r81zn/encoded.mp4: Invalid data found when processing input\n"
+    },
+    {
+      "path": "examples/descent_studio/renders/.vk-parts-5ga_1vxo/.vk-render-iw5ukglt/encoded.mp4",
+      "bytes": 3670064,
+      "ffprobe_exit": 1,
+      "stdout": "{\n\n}\n",
+      "stderr": "[mov,mp4,m4a,3gp,3g2,mj2 @ 0x557506662fc0] moov atom not found\n/workspace/vibe-knowledge-film/examples/descent_studio/renders/.vk-parts-5ga_1vxo/.vk-render-iw5ukglt/encoded.mp4: Invalid data found when processing input\n"
+    }
+  ]
+}

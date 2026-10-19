@@ -1,0 +1,21 @@
+test_subsecond_bgm_mux_has_valid_fade (test_audio.AudioTest.test_subsecond_bgm_mux_has_valid_fade) ... ok
+test_black_frames_are_candidates_not_aesthetic_scores (test_media.MediaTest.test_black_frames_are_candidates_not_aesthetic_scores) ... ok
+test_invalid_file_fails (test_media.MediaTest.test_invalid_file_fails) ... ok
+test_valid_media_and_duration_mismatch (test_media.MediaTest.test_valid_media_and_duration_mismatch) ... ok
+test_positions_speed_and_arrivals (test_physics.PhysicsTest.test_positions_speed_and_arrivals) ... ok
+test_travel_time_from_energy_integral (test_physics.PhysicsTest.test_travel_time_from_energy_integral) ... ok
+test_event_draw_errors_are_not_swallowed (test_render.BrowserTests.test_event_draw_errors_are_not_swallowed) ... ok
+test_event_scan_includes_end_without_exceeding_duration (test_render.BrowserTests.test_event_scan_includes_end_without_exceeding_duration) ... ok
+test_events_preserve_seek_pixels_and_repeatability (test_render.BrowserTests.test_events_preserve_seek_pixels_and_repeatability) ... ok
+test_startup_script_error_reports_cause_without_ready (test_render.BrowserTests.test_startup_script_error_reports_cause_without_ready) ... ok
+test_failed_worker_does_not_skip_waiting_for_other_workers (test_render.ParallelTests.test_failed_worker_does_not_skip_waiting_for_other_workers) ... ok
+test_determinism_failure_is_an_error (test_render.RenderTests.test_determinism_failure_is_an_error) ... ok
+test_encoder_failure_preserves_existing_output (test_render.RenderTests.test_encoder_failure_preserves_existing_output) ...   0/1
+ok
+test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) ... ok
+test_custom_is_neutral_and_does_not_overwrite (test_scaffold.ScaffoldTest.test_custom_is_neutral_and_does_not_overwrite) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 11.638s
+
+OK

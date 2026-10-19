@@ -1,0 +1,104 @@
+{
+  "code_commit": "0fead6a8d4343a9bb8ac7165d6165a3812d61107",
+  "run_id": 39183691582,
+  "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39183691582",
+  "verified_date_utc": "2026-10-19",
+  "jobs": [
+    {
+      "id": 117841589996,
+      "name": "core (windows-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39183691582/job/117841589996"
+    },
+    {
+      "id": 117841590175,
+      "name": "core (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39183691582/job/117841590175"
+    },
+    {
+      "id": 117841591200,
+      "name": "webgl",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39183691582/job/117841591200"
+    }
+  ],
+  "core": {
+    "linux": {
+      "tests": 64,
+      "passed": 60,
+      "skipped": 4,
+      "seconds": 127.998
+    },
+    "windows": {
+      "tests": 64,
+      "passed": 60,
+      "skipped": 4,
+      "seconds": 213.146
+    },
+    "skips": [
+      "Atlas optional geographic assets",
+      "Geo optional geographic assets",
+      "Resonance optional Three.js assets",
+      "Scene optional Three.js assets"
+    ]
+  },
+  "windows_powershell": {
+    "command": "./scripts/verify.ps1 -SkipTests",
+    "conclusion": "success",
+    "scope": [
+      "fonts --check",
+      "fold_C --stills 24"
+    ],
+    "not_run": [
+      "verify.ps1 -Scene",
+      "verify.ps1 -AV",
+      "complete 72s Atlas production",
+      "system Google Chrome channel"
+    ]
+  },
+  "local_linux": {
+    "tests": 64,
+    "passed": 64,
+    "skipped": 0,
+    "seconds": 204.234,
+    "browser": "/usr/bin/chromium",
+    "optional_assets": [
+      "geo",
+      "three"
+    ]
+  },
+  "prior_failed_runs": [
+    {
+      "run_id": 39179144760,
+      "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39179144760",
+      "windows": {
+        "tests": 56,
+        "failures": 1,
+        "errors": 11,
+        "skipped": 4
+      },
+      "cause": "Confirmed .mjs MIME text/plain; explicit JavaScript server mapping and real HTTP RED/GREEN regression."
+    },
+    {
+      "run_id": 39180277599,
+      "url": "https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39180277599",
+      "windows": {
+        "tests": 60,
+        "passed": 54,
+        "errors": 2,
+        "skipped": 4
+      },
+      "cause": "Local font load NetworkError; root cause not confirmed. Diagnostics added; final run passed, not proof intermittent failure permanently resolved."
+    }
+  ],
+  "limitations": [
+    "Subjective complete video playback and listening not accepted",
+    "No causal model capability improvement experiment",
+    "Optional manual WebGL CI was not triggered; Linux local rendering was performed"
+  ],
+  "documentation_commit": "Evidence/docs only follow-up uses [skip ci]; no engine/scripts/tests/Skill or film source changed after tested code commit."
+}

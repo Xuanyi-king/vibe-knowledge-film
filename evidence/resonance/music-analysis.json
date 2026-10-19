@@ -1,0 +1,65 @@
+{
+  "onsets": [
+    0.01,
+    0.67,
+    6.17,
+    6.67,
+    7.13
+  ],
+  "tempo_candidates": [
+    {
+      "bpm": 120.0,
+      "relative_periodicity": 0.251
+    },
+    {
+      "bpm": 90.909,
+      "relative_periodicity": 0.1489
+    },
+    {
+      "bpm": 61.856,
+      "relative_periodicity": 0.1465
+    },
+    {
+      "bpm": 127.66,
+      "relative_periodicity": 0.1038
+    }
+  ],
+  "energy_1s": [
+    {
+      "time": 0.0,
+      "rms_dbfs": -44.39
+    },
+    {
+      "time": 1.0,
+      "rms_dbfs": -57.1
+    },
+    {
+      "time": 2.0,
+      "rms_dbfs": -240.0
+    },
+    {
+      "time": 3.0,
+      "rms_dbfs": -240.0
+    },
+    {
+      "time": 4.0,
+      "rms_dbfs": -240.0
+    },
+    {
+      "time": 5.0,
+      "rms_dbfs": -240.0
+    },
+    {
+      "time": 6.0,
+      "rms_dbfs": -46.42
+    },
+    {
+      "time": 7.0,
+      "rms_dbfs": -55.83
+    }
+  ],
+  "downbeats": null,
+  "phrases": null,
+  "grid_verified": false,
+  "scope": "spectral-flux and autocorrelation candidates; soft/noisy or changing-tempo music needs manual annotation; not a music-quality score"
+}

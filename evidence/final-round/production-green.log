@@ -1,0 +1,8 @@
+test_force_exit_invalidates_old_success_before_first_step (tests.test_production.ProductionTest.test_force_exit_invalidates_old_success_before_first_step) ... ok
+test_one_entry_completes_pipeline_and_reports_blocked_inspection (tests.test_production.ProductionTest.test_one_entry_completes_pipeline_and_reports_blocked_inspection) ... ok
+test_source_edit_during_final_media_check_cannot_publish_success (tests.test_production.ProductionTest.test_source_edit_during_final_media_check_cannot_publish_success) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 94.688s
+
+OK

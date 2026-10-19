@@ -6,3 +6,16 @@ __pycache__/
 *.pyc
 *.mp4
 *.wav
+engine/vendor/
+examples/governor_scene/audio/
+examples/resonance/audio/
+!evidence/governor_scene/final.mp4
+!evidence/resonance/final.mp4
+
+examples/atlas/audio/
+!evidence/atlas/final.mp4
+!evidence/resonance/current.mp4
+
+examples/mirror/audio/
+examples/mirror/assets/piano/
+!evidence/mirror/final.mp4

@@ -1,0 +1,23 @@
+{
+  "render": {
+    "seconds": 8,
+    "frames": 240,
+    "cold_wall_seconds_from_log_timestamps": 292.364,
+    "cold_note": "Linux 2-core SwiftShader; concurrent test suite; not a benchmark guarantee"
+  },
+  "determinism": "render.py --det: 12 out-of-order times passed",
+  "contact_tests": "test_scene.ResonanceTest: <=.005 mallet gap, <=.02 felt gap in illustrative world units; actual contact frames viewed",
+  "visual_review": [
+    "encoded frames 1.8,2,2.2,3.8,5.333,6.5",
+    "motion strip 1.7–2.5s, 12 frames",
+    "v1 to final layout/material comparison"
+  ],
+  "audio_review": "not auditioned: no audio playback capability; source/encoded alignment and loudness measured only",
+  "model_api_calls": 0,
+  "native_windows_tested": false,
+  "silence_review": {
+    "5.719–6.167": "declared 5.72–6 pause plus music next note at6.1667",
+    "7.646–8": "quiet final music decay/end hold"
+  },
+  "failed_attempts": "one interrupted development render; one input-edited render rejected by source guard; neither published"
+}

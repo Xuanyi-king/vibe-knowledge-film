@@ -1,0 +1,21 @@
+{
+  "cold": {
+    "seconds": 5.020585696999888,
+    "reused_chunks": 0,
+    "rendered_chunks": 2,
+    "sha256": "4e4cccebf72879c9f6db4dabbddcdf07e8d2a1062fb99580fb7175df225f58be"
+  },
+  "warm": {
+    "seconds": 2.055389464999962,
+    "reused_chunks": 2,
+    "rendered_chunks": 0,
+    "sha256": "4e4cccebf72879c9f6db4dabbddcdf07e8d2a1062fb99580fb7175df225f58be"
+  },
+  "changed_md_asset": {
+    "seconds": 4.631238202000077,
+    "reused_chunks": 0,
+    "rendered_chunks": 2,
+    "sha256": "b86f763d0db5a480f325550c4af88de26a958d244d48c6dbcaaa303bd6e621f9"
+  },
+  "scope": "0.2-second technical CLI fixture; Unicode/space/apostrophe project path and Unicode/space Markdown URL; not an artistic/model comparison"
+}

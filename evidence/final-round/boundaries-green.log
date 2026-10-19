@@ -1,0 +1,27 @@
+test_noninteger_frame_end_is_supported_by_serial_pipeline (tests.test_provenance.ProvenanceTest.test_noninteger_frame_end_is_supported_by_serial_pipeline) ...   0/12
+ok
+test_decoder_failure_invalidates_previous_green_report (tests.test_provenance.ProvenanceTest.test_decoder_failure_invalidates_previous_green_report) ... done /tmp/tmp0y1aby5i/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_rendered_condition_fails_when_motion_is_retimed_without_sound (tests.test_visual_checks.VisualChecksTest.test_rendered_condition_fails_when_motion_is_retimed_without_sound) ... ok
+test_positions_speed_and_arrivals (tests.test_physics.PhysicsTest.test_positions_speed_and_arrivals) ... ok
+test_travel_time_from_energy_integral (tests.test_physics.PhysicsTest.test_travel_time_from_energy_integral) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 31.881s
+
+OK
+done /tmp/tmp7k14ly_c/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+{
+  "layer": "encoding_audio_sync",
+  "visual_action_sync": "not_checked",
+  "checked": 0,
+  "failed": [
+    "Command '['/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python', '-c', 'import sys;sys.exit(7)']' returned non-zero exit status 7."
+  ]
+}
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared

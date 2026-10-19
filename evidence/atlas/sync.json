@@ -1,0 +1,561 @@
+{
+  "layer": "encoding_audio_sync",
+  "visual_action_sync": "not_checked",
+  "input_sha256": "e862f5121bb2751bb903a93d253d6072555620055c2ddfc587d78a46277e2334",
+  "events_sha256": "7b568c51c98a27a780a04ccdb77b43d3e3d38023ee8c74bf74f5c3c59301f0fe",
+  "video_sha256": "a4325e661255415591320109fc53a4c426d87cfbe0ca16c826b2ef87eb7986ec",
+  "reference_sha256": "4f0281c64a8be0b0fc20d436c9e36ce35ec8bdea2242d88902eecfb21b801704",
+  "scope": "source mix vs decoded final; visual action conditions require check_visual.py; no aesthetic score",
+  "checked": 78,
+  "exempt": [],
+  "failed": [],
+  "events": [
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9993973780449257,
+      "id": "unfold",
+      "time": 7,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999978337050616,
+      "id": "stretch-x",
+      "time": 28,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999969344889074,
+      "id": "keep-angle",
+      "time": 35,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998396000583512,
+      "id": "four",
+      "time": 38.25,
+      "frame_quantization_seconds": 0.01666666666666572
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9988345195455386,
+      "id": "reproject",
+      "time": 44,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999369721295295,
+      "id": "equal-area",
+      "time": 52,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9988691539129988,
+      "id": "bass-0",
+      "time": 0,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9861643437971991,
+      "id": "line-0-0",
+      "time": 0.5625,
+      "frame_quantization_seconds": 0.004166666666666652
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.983925995175271,
+      "id": "line-0-1",
+      "time": 1.6875,
+      "frame_quantization_seconds": 0.012499999999999956
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.980361208390487,
+      "id": "bass-1",
+      "time": 3,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.983469142056991,
+      "id": "line-1-0",
+      "time": 3.5625,
+      "frame_quantization_seconds": 0.004166666666666874
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9856839133349019,
+      "id": "line-1-1",
+      "time": 4.6875,
+      "frame_quantization_seconds": 0.012500000000000178
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9769880427389491,
+      "id": "bass-2",
+      "time": 6,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9819286368353928,
+      "id": "line-2-0",
+      "time": 6.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9161847259749984,
+      "id": "line-2-1",
+      "time": 7.6875,
+      "frame_quantization_seconds": 0.012500000000000178
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9842035965820674,
+      "id": "bass-3",
+      "time": 9,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9961731701846842,
+      "id": "line-3-0",
+      "time": 9.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9870741332108036,
+      "id": "line-3-1",
+      "time": 10.6875,
+      "frame_quantization_seconds": 0.01249999999999929
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9614744891487762,
+      "id": "bass-4",
+      "time": 12,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9907741648712052,
+      "id": "line-4-0",
+      "time": 12.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9782212131137679,
+      "id": "line-4-1",
+      "time": 13.6875,
+      "frame_quantization_seconds": 0.01249999999999929
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9731857658939002,
+      "id": "bass-5",
+      "time": 15,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.949260129704435,
+      "id": "line-5-0",
+      "time": 15.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9864207684038332,
+      "id": "line-5-1",
+      "time": 16.6875,
+      "frame_quantization_seconds": 0.01249999999999929
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9862010372139779,
+      "id": "bass-6",
+      "time": 18,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9924985364036584,
+      "id": "line-6-0",
+      "time": 18.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9953137913768914,
+      "id": "line-6-1",
+      "time": 19.6875,
+      "frame_quantization_seconds": 0.01249999999999929
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9820463435421858,
+      "id": "bass-7",
+      "time": 21,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9916640886377981,
+      "id": "line-7-0",
+      "time": 21.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.904107333946084,
+      "id": "line-7-1",
+      "time": 22.6875,
+      "frame_quantization_seconds": 0.01249999999999929
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9841185952404065,
+      "id": "bass-8",
+      "time": 24,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9648868811544736,
+      "id": "line-8-0",
+      "time": 24.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9884554385017003,
+      "id": "line-8-1",
+      "time": 25.6875,
+      "frame_quantization_seconds": 0.01249999999999929
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9837050520970247,
+      "id": "bass-9",
+      "time": 27,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9862187655987151,
+      "id": "line-9-0",
+      "time": 27.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.990873782362603,
+      "id": "line-9-1",
+      "time": 28.6875,
+      "frame_quantization_seconds": 0.01249999999999929
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.977336154738599,
+      "id": "bass-10",
+      "time": 30,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9871887434089512,
+      "id": "line-10-0",
+      "time": 30.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9944820294347821,
+      "id": "line-10-1",
+      "time": 31.6875,
+      "frame_quantization_seconds": 0.01249999999999929
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9844144253216939,
+      "id": "bass-11",
+      "time": 33,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9949900363222222,
+      "id": "line-11-0",
+      "time": 33.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9939164319100017,
+      "id": "line-11-1",
+      "time": 34.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9775458762549326,
+      "id": "bass-12",
+      "time": 36,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9894539253468183,
+      "id": "line-12-0",
+      "time": 36.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9816804858194168,
+      "id": "line-12-1",
+      "time": 37.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9760461112398392,
+      "id": "bass-13",
+      "time": 39,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9416954728179903,
+      "id": "line-13-0",
+      "time": 39.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.989126239696556,
+      "id": "line-13-1",
+      "time": 40.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9859297999358768,
+      "id": "bass-14",
+      "time": 42,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.99596874521169,
+      "id": "line-14-0",
+      "time": 42.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9953344902162011,
+      "id": "line-14-1",
+      "time": 43.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.964452428327576,
+      "id": "bass-15",
+      "time": 45,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9954438680751001,
+      "id": "line-15-0",
+      "time": 45.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.8770296102383819,
+      "id": "line-15-1",
+      "time": 46.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9794616131086856,
+      "id": "bass-16",
+      "time": 48,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9822770140598814,
+      "id": "line-16-0",
+      "time": 48.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9874596296734045,
+      "id": "line-16-1",
+      "time": 49.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9906784164107103,
+      "id": "bass-17",
+      "time": 51,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9881049058277928,
+      "id": "line-17-0",
+      "time": 51.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9961617333350724,
+      "id": "line-17-1",
+      "time": 52.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9757748616530536,
+      "id": "bass-18",
+      "time": 54,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9907013352981842,
+      "id": "line-18-0",
+      "time": 54.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9975451034125421,
+      "id": "line-18-1",
+      "time": 55.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9817622919729231,
+      "id": "bass-19",
+      "time": 57,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9890947229333983,
+      "id": "line-19-0",
+      "time": 57.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9847705260785558,
+      "id": "line-19-1",
+      "time": 58.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.966365240083768,
+      "id": "bass-20",
+      "time": 60,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9897999864187158,
+      "id": "line-20-0",
+      "time": 60.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.966696452521247,
+      "id": "line-20-1",
+      "time": 61.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9756229495210494,
+      "id": "bass-21",
+      "time": 63,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9536166263599041,
+      "id": "line-21-0",
+      "time": 63.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9981259948848586,
+      "id": "line-21-1",
+      "time": 64.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9839490098226554,
+      "id": "bass-22",
+      "time": 66,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9950447388245153,
+      "id": "line-22-0",
+      "time": 66.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.992408407505233,
+      "id": "line-22-1",
+      "time": 67.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.980140522173525,
+      "id": "bass-23",
+      "time": 69,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9900712303271456,
+      "id": "line-23-0",
+      "time": 69.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.856266823922124,
+      "id": "line-23-1",
+      "time": 70.6875,
+      "frame_quantization_seconds": 0.012500000000002842
+    }
+  ],
+  "duration_difference_seconds": 0.0
+}

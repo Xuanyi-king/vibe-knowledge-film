@@ -1,0 +1,14 @@
+test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text (tests.test_render.ModuleMimeTest.test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text) ... FAIL
+
+======================================================================
+FAIL: test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text (tests.test_render.ModuleMimeTest.test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_render.py", line 143, in test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text
+    self.assertIn(response.headers.get_content_type(),['text/javascript','application/javascript'],name)
+AssertionError: 'text/plain' not found in ['text/javascript', 'application/javascript'] : film.mjs
+
+----------------------------------------------------------------------
+Ran 1 test in 0.540s
+
+FAILED (failures=1)

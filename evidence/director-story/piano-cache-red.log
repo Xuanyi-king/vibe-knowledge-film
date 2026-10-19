@@ -1,0 +1,17 @@
+test_prepared_notes_pitch_cache_and_source_identity (tests.test_music_phrases.MusicTest.test_prepared_notes_pitch_cache_and_source_identity) ... FAIL
+
+======================================================================
+FAIL: test_prepared_notes_pitch_cache_and_source_identity (tests.test_music_phrases.MusicTest.test_prepared_notes_pitch_cache_and_source_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_music_phrases.py", line 24, in test_prepared_notes_pitch_cache_and_source_identity
+    repaired=prepare(root,spec);self.assertEqual(set(repaired['notes']),{'69','71'},'empty cached descriptor must be rebuilt')
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'71'
+'69' : empty cached descriptor must be rebuilt
+
+----------------------------------------------------------------------
+Ran 1 test in 1.626s
+
+FAILED (failures=1)

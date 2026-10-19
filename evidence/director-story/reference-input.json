@@ -1,0 +1,8 @@
+{
+  "filename": "a9063511977063ba693cff53817b29f1.mp4",
+  "sha256": "456effa50dd4a65c6cb2960cd6d18129afb809fbd0bc3e8247fcc3cecb29998e",
+  "size": 13249698,
+  "actual_video": "1280x720 / H264 / 30fps / 3900 frames / 130.0s",
+  "actual_audio": "AAC / stereo / 44100Hz / 130.008005s",
+  "scope": "Full-duration 3s visual sampling plus selected 0.5s motion strips; not uninterrupted playback or subjective listening."
+}

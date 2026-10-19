@@ -1,0 +1,39 @@
+test_real_encoder_failure_preserves_final_and_provenance (tests.test_mastering.MasteringTest.test_real_encoder_failure_preserves_final_and_provenance) ... FAIL
+test_sparse_transients_meet_encoded_ceiling_without_timing_shift (tests.test_mastering.MasteringTest.test_sparse_transients_meet_encoded_ceiling_without_timing_shift) ... FAIL
+test_post_mux_failure_restores_old_final_and_sidecar (tests.test_production.ProductionTest.test_post_mux_failure_restores_old_final_and_sidecar) ... FAIL
+
+======================================================================
+FAIL: test_real_encoder_failure_preserves_final_and_provenance (tests.test_mastering.MasteringTest.test_real_encoder_failure_preserves_final_and_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_mastering.py", line 43, in test_real_encoder_failure_preserves_final_and_provenance
+    m=self.module()
+      ^^^^^^^^^^^^^
+  File "/workspace/vibe-knowledge-film/tests/test_mastering.py", line 28, in module
+    self.assertTrue((ROOT/'scripts/master_audio.py').exists(),'safe encoded-peak mastering stage missing')
+AssertionError: False is not true : safe encoded-peak mastering stage missing
+
+======================================================================
+FAIL: test_sparse_transients_meet_encoded_ceiling_without_timing_shift (tests.test_mastering.MasteringTest.test_sparse_transients_meet_encoded_ceiling_without_timing_shift)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_mastering.py", line 33, in test_sparse_transients_meet_encoded_ceiling_without_timing_shift
+    m=self.module()
+      ^^^^^^^^^^^^^
+  File "/workspace/vibe-knowledge-film/tests/test_mastering.py", line 28, in module
+    self.assertTrue((ROOT/'scripts/master_audio.py').exists(),'safe encoded-peak mastering stage missing')
+AssertionError: False is not true : safe encoded-peak mastering stage missing
+
+======================================================================
+FAIL: test_post_mux_failure_restores_old_final_and_sidecar (tests.test_production.ProductionTest.test_post_mux_failure_restores_old_final_and_sidecar)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_production.py", line 72, in test_post_mux_failure_restores_old_final_and_sidecar
+    self.assertEqual(video.read_bytes(),b'old valid film');self.assertEqual(stamp.read_bytes(),b'old identity')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: b'new candidate' != b'old valid film'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.067s
+
+FAILED (failures=3)

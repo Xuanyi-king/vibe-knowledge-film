@@ -1,0 +1,26 @@
+{
+  "file": "examples/mirror/renders/final.mp4",
+  "sha256": "219bdcfc9fb7c6347190970ca2a7e0fa2de9d0fc10a16a41ba891051fc18f058",
+  "bytes": 22823874,
+  "matches_archived": true,
+  "storage": "local workspace only; no persistent upload",
+  "modified": false,
+  "music_measurement_scope": "Read existing 48kHz pre-master stems only; no resynthesis or subjective listening",
+  "stems": [
+    {
+      "name": "music",
+      "sample_peak_dbfs": -52.924,
+      "full_duration_rms_dbfs": -73.922
+    },
+    {
+      "name": "sfx",
+      "sample_peak_dbfs": -37.225,
+      "full_duration_rms_dbfs": -72.922
+    },
+    {
+      "name": "score",
+      "sample_peak_dbfs": -37.206,
+      "full_duration_rms_dbfs": -70.374
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "scope": "source mix vs decoded final; visual event identity still requires frame inspection; no aesthetic score",
+  "checked": 8,
+  "exempt": [],
+  "failed": [],
+  "events": [
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999399758274866,
+      "id": "approach",
+      "time": 1.3,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9974998827900919,
+      "id": "strike",
+      "time": 2,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999705649161644,
+      "id": "damp",
+      "time": 5.333333333333333,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9992390256248906,
+      "id": "music-0",
+      "time": 0,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998819627909956,
+      "id": "music-1",
+      "time": 0.6666666666666666,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999910771728238,
+      "id": "music-2",
+      "time": 6.166666666666667,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999811090481455,
+      "id": "music-3",
+      "time": 6.666666666666667,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999977538551094,
+      "id": "music-4",
+      "time": 7.133333333333334,
+      "frame_quantization_seconds": 0.0
+    }
+  ],
+  "duration_difference_seconds": 0.0
+}

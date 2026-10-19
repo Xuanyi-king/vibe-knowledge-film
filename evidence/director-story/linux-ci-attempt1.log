@@ -1,0 +1,90 @@
+2026-10-19T05:24:11.1929595Z FAIL: test_one_entry_completes_pipeline_and_reports_blocked_inspection (test_production.ProductionTest.test_one_entry_completes_pipeline_and_reports_blocked_inspection)
+2026-10-19T05:24:11.1930536Z ----------------------------------------------------------------------
+2026-10-19T05:24:11.1930865Z Traceback (most recent call last):
+2026-10-19T05:24:11.1936025Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/tests/test_production.py", line 22, in test_one_entry_completes_pipeline_and_reports_blocked_inspection
+2026-10-19T05:24:11.1936678Z     self.assertEqual(r.returncode,0,r.stderr+r.stdout)
+2026-10-19T05:24:11.1937005Z AssertionError: 1 != 0 : Traceback (most recent call last):
+2026-10-19T05:24:11.1937501Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render.py", line 291, in <module>
+2026-10-19T05:24:11.1937951Z     frames_resume(proj, proj / "renders/raw.mp4", seconds, jobs)
+2026-10-19T05:24:11.1938651Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render.py", line 203, in frames_resume
+2026-10-19T05:24:11.1939101Z     return render_cached(proj, out, meta, chunk_seconds, jobs,
+2026-10-19T05:24:11.1939530Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-19T05:24:11.1939968Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render_cache.py", line 140, in render_cached
+2026-10-19T05:24:11.1940397Z     for i in range(len(parts)): part(i)
+2026-10-19T05:24:11.1940613Z                                 ^^^^^^^
+2026-10-19T05:24:11.1940992Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render_cache.py", line 132, in part
+2026-10-19T05:24:11.1941416Z     render_part(proj, path, a / meta['fps'], b / meta['fps'])
+2026-10-19T05:24:11.1941844Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render.py", line 204, in <lambda>
+2026-10-19T05:24:11.1942328Z     lambda p, target, a, b: frames(p, target, a, b, local_only=True), expected_sources=sources)
+2026-10-19T05:24:11.1942681Z                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-19T05:24:11.1943088Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render.py", line 183, in frames
+2026-10-19T05:24:11.1943464Z     with_page(proj, go)
+2026-10-19T05:24:11.1943833Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render.py", line 117, in with_page
+2026-10-19T05:24:11.1944215Z     try: return fn(pg)
+2026-10-19T05:24:11.1944398Z                 ^^^^^^
+2026-10-19T05:24:11.1944763Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render.py", line 162, in go
+2026-10-19T05:24:11.1945129Z     data = shot(pg, i / fps)
+2026-10-19T05:24:11.1945318Z            ^^^^^^^^^^^^^^^^^
+2026-10-19T05:24:11.1945656Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render.py", line 109, in shot
+2026-10-19T05:24:11.1946034Z     return pg.screenshot(type="png")
+2026-10-19T05:24:11.1946241Z            ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-19T05:24:11.1946710Z   File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 20239, in screenshot
+2026-10-19T05:24:11.1947168Z     self._sync(
+2026-10-19T05:24:11.1947566Z   File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 111, in _sync
+2026-10-19T05:24:11.1947986Z     return task.result()
+2026-10-19T05:24:11.1948331Z            ^^^^^^^^^^^^^
+2026-10-19T05:24:11.1948730Z   File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/playwright/_impl/_page.py", line 832, in screenshot
+2026-10-19T05:24:11.1949173Z     encoded_binary = await self._channel.send(
+2026-10-19T05:24:11.1949407Z                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-19T05:24:11.1949852Z   File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 78, in send
+2026-10-19T05:24:11.1950300Z     return await self._connection.wrap_api_call(
+2026-10-19T05:24:11.1950537Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-19T05:24:11.1950994Z   File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 636, in wrap_api_call
+2026-10-19T05:24:11.1951547Z     raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+2026-10-19T05:24:11.1952088Z playwright._impl._errors.TimeoutError: Page.screenshot: Timeout 30000ms exceeded.
+2026-10-19T05:24:11.1952404Z Call log:
+2026-10-19T05:24:11.1952573Z   - taking page screenshot
+2026-10-19T05:24:11.1952776Z   - waiting for fonts to load...
+2026-10-19T05:24:11.1952973Z   - fonts loaded
+2026-10-19T05:24:11.1953074Z 
+2026-10-19T05:24:11.1953158Z Traceback (most recent call last):
+2026-10-19T05:24:11.1953565Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/scripts/produce.py", line 91, in <module>
+2026-10-19T05:24:11.1953944Z     if __name__=='__main__':main()
+2026-10-19T05:24:11.1954142Z                             ^^^^^^
+2026-10-19T05:24:11.1954495Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/scripts/produce.py", line 90, in main
+2026-10-19T05:24:11.1954999Z     produce(a.project,a.chunk,a.jobs,a.assets)
+2026-10-19T05:24:11.1955404Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/scripts/produce.py", line 41, in produce
+2026-10-19T05:24:11.1955862Z     step('picture','engine/render.py',proj,'--resume',chunk,'--jobs',jobs)
+2026-10-19T05:24:11.1956300Z   File "/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/scripts/produce.py", line 29, in step
+2026-10-19T05:24:11.1956753Z     subprocess.run([sys.executable,str(ROOT/script),*map(str,args)],check=True)
+2026-10-19T05:24:11.1957198Z   File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/subprocess.py", line 571, in run
+2026-10-19T05:24:11.1957594Z     raise CalledProcessError(retcode, process.args,
+2026-10-19T05:24:11.1958553Z subprocess.CalledProcessError: Command '['/opt/hostedtoolcache/Python/3.12.15/x64/bin/python', '/home/runner/work/vibe-knowledge-film/vibe-knowledge-film/engine/render.py', '/tmp/tmp2dj57sys', '--resume', '0.2', '--jobs', '1']' returned non-zero exit status 1.
+2026-10-19T05:24:11.1959508Z 完成。
+2026-10-19T05:24:11.1959665Z deterministic
+2026-10-19T05:24:11.1959952Z cache new identity faa5d7f035a173a30885 (source / runtime / encoding / chunk parameters)
+2026-10-19T05:24:11.1960289Z cache render 1/2 [0,6)
+2026-10-19T05:24:11.1960404Z 
+2026-10-19T05:24:11.1960409Z 
+2026-10-19T05:24:11.1960537Z ----------------------------------------------------------------------
+2026-10-19T05:24:11.1960800Z Ran 70 tests in 167.698s
+2026-10-19T05:24:11.1960923Z 
+2026-10-19T05:24:11.1961010Z FAILED (failures=1, skipped=7)
+2026-10-19T05:24:11.1961209Z events: 0 legacy; 1 shared
+2026-10-19T05:24:11.1961399Z events: 0 legacy; 1 shared
+2026-10-19T05:24:11.1961576Z events: 0 legacy; 1 shared
+2026-10-19T05:24:11.2776414Z ##[error]Process completed with exit code 1.
+2026-10-19T05:24:11.2851977Z ##[group]Run actions/upload-artifact@v4
+2026-10-19T05:24:11.2852212Z with:
+2026-10-19T05:24:11.2852374Z   name: core-Linux
+2026-10-19T05:24:11.2852564Z   path: core-tests.log
+2026-10-19T05:24:11.2852758Z   retention-days: 7
+2026-10-19T05:24:11.2852934Z   if-no-files-found: warn
+2026-10-19T05:24:11.2853125Z   compression-level: 6
+2026-10-19T05:24:11.2853297Z   overwrite: false
+2026-10-19T05:24:11.2853474Z   include-hidden-files: false
+2026-10-19T05:24:11.2853661Z env:
+2026-10-19T05:24:11.2853817Z   PYTHONIOENCODING: utf-8
+2026-10-19T05:24:11.2854004Z   PYTHONUTF8: 1
+2026-10-19T05:24:11.2854214Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-19T05:24:11.2854547Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig

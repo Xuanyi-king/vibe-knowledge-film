@@ -1,0 +1,757 @@
+{
+  "layer": "encoding_audio_sync",
+  "visual_action_sync": "not_checked",
+  "input_sha256": "8a2eed346e8318da416507a21898c1557e116763c2e348ace70a373a0f055614",
+  "events_sha256": "df46ae522eb279b2516ae856e59279bb5d38b974853d9e72a69dd18c432de051",
+  "video_sha256": "219bdcfc9fb7c6347190970ca2a7e0fa2de9d0fc10a16a41ba891051fc18f058",
+  "reference_sha256": "4b3898249579e8aa0c59cd6b190279d5c52e9e516791640bae86d7996c45707a",
+  "scope": "source mix vs decoded final; visual action conditions require check_visual.py; no aesthetic score",
+  "checked": 106,
+  "exempt": [],
+  "failed": [],
+  "events": [
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9988169359557404,
+      "id": "photo-arrives",
+      "time": 4,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9988720938951217,
+      "id": "flip",
+      "time": 9,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997974469957358,
+      "id": "camera-move",
+      "time": 58,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997076748102848,
+      "id": "support-0-0",
+      "time": 0,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997093386911351,
+      "id": "support-0-1",
+      "time": 0.09,
+      "frame_quantization_seconds": 0.010000000000000009
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998539334406294,
+      "id": "line-0-0",
+      "time": 0.5625,
+      "frame_quantization_seconds": 0.004166666666666652
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996846061696014,
+      "id": "line-0-1",
+      "time": 1.875,
+      "frame_quantization_seconds": -0.008333333333333304
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996316574085403,
+      "id": "support-1-0",
+      "time": 3,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996454340834415,
+      "id": "support-1-1",
+      "time": 3.0900000000000003,
+      "frame_quantization_seconds": 0.009999999999999787
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996948540503415,
+      "id": "support-2-0",
+      "time": 6,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996972741169339,
+      "id": "support-2-1",
+      "time": 6.089999999999999,
+      "frame_quantization_seconds": 0.010000000000000675
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996444665129206,
+      "id": "line-2-0",
+      "time": 6.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997728604646505,
+      "id": "line-2-1",
+      "time": 7.875,
+      "frame_quantization_seconds": -0.008333333333333748
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9988720938951217,
+      "id": "support-3-0",
+      "time": 9,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.998851200353004,
+      "id": "support-3-1",
+      "time": 9.09,
+      "frame_quantization_seconds": 0.009999999999999787
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9993909738547512,
+      "id": "support-6-0",
+      "time": 18,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9992739638020761,
+      "id": "support-6-1",
+      "time": 18.09,
+      "frame_quantization_seconds": 0.010000000000001563
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999930903451882,
+      "id": "line-6-0",
+      "time": 18.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998977999741692,
+      "id": "line-6-1",
+      "time": 19.875,
+      "frame_quantization_seconds": -0.00833333333333286
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9994031669851484,
+      "id": "support-7-0",
+      "time": 21,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9993719778463788,
+      "id": "support-7-1",
+      "time": 21.09,
+      "frame_quantization_seconds": 0.010000000000001563
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996610168190772,
+      "id": "support-8-0",
+      "time": 24,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996117970023568,
+      "id": "support-8-1",
+      "time": 24.089999999999996,
+      "frame_quantization_seconds": 0.010000000000005116
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999481923317827,
+      "id": "line-8-0",
+      "time": 24.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999891080472342,
+      "id": "line-8-1",
+      "time": 25.875,
+      "frame_quantization_seconds": -0.00833333333333286
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9992168544737261,
+      "id": "support-9-0",
+      "time": 27,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9991230897907102,
+      "id": "support-9-1",
+      "time": 27.089999999999996,
+      "frame_quantization_seconds": 0.010000000000005116
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996998260418698,
+      "id": "support-10-0",
+      "time": 30,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996941656985162,
+      "id": "support-10-1",
+      "time": 30.089999999999996,
+      "frame_quantization_seconds": 0.010000000000005116
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999641862351922,
+      "id": "line-10-0",
+      "time": 30.5625,
+      "frame_quantization_seconds": 0.00416666666666643
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999807355957658,
+      "id": "line-10-1",
+      "time": 31.875,
+      "frame_quantization_seconds": -0.00833333333333286
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999341049428888,
+      "id": "support-11-0",
+      "time": 33,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999395288894263,
+      "id": "support-11-1",
+      "time": 33.089999999999996,
+      "frame_quantization_seconds": 0.010000000000005116
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999122437470206,
+      "id": "support-12-0",
+      "time": 36,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999148387223277,
+      "id": "support-12-1",
+      "time": 36.089999999999996,
+      "frame_quantization_seconds": 0.010000000000005116
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999493093649588,
+      "id": "line-12-0",
+      "time": 36.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998700384587912,
+      "id": "line-12-1",
+      "time": 37.875,
+      "frame_quantization_seconds": -0.00833333333333286
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999096397785753,
+      "id": "support-13-0",
+      "time": 39,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999098278322487,
+      "id": "support-13-1",
+      "time": 39.089999999999996,
+      "frame_quantization_seconds": 0.010000000000005116
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9992358167738696,
+      "id": "support-14-0",
+      "time": 42,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9991872934632279,
+      "id": "support-14-1",
+      "time": 42.089999999999996,
+      "frame_quantization_seconds": 0.010000000000005116
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999042127623089,
+      "id": "line-14-0",
+      "time": 42.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997689550296798,
+      "id": "line-14-1",
+      "time": 43.875,
+      "frame_quantization_seconds": -0.00833333333333286
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9992641355222812,
+      "id": "support-17-0",
+      "time": 51,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9990537020589407,
+      "id": "support-17-1",
+      "time": 51.09,
+      "frame_quantization_seconds": 0.00999999999999801
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999020179002112,
+      "id": "support-18-0",
+      "time": 54,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999029239547165,
+      "id": "support-18-1",
+      "time": 54.09000000000001,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998965415128391,
+      "id": "line-18-0",
+      "time": 54.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999192690438339,
+      "id": "line-18-1",
+      "time": 55.875,
+      "frame_quantization_seconds": -0.00833333333333286
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999088599579662,
+      "id": "support-19-0",
+      "time": 57,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999142859988082,
+      "id": "support-19-1",
+      "time": 57.09000000000001,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998941413766337,
+      "id": "support-20-0",
+      "time": 60,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999058577512909,
+      "id": "support-20-1",
+      "time": 60.09000000000001,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999545612859145,
+      "id": "line-20-0",
+      "time": 60.5625,
+      "frame_quantization_seconds": 0.0041666666666699825
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999906769221795,
+      "id": "line-20-1",
+      "time": 61.875,
+      "frame_quantization_seconds": -0.00833333333333286
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999171108154469,
+      "id": "support-21-0",
+      "time": 63,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999930915484596,
+      "id": "support-21-1",
+      "time": 63.09000000000001,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9995611601393596,
+      "id": "support-22-0",
+      "time": 66,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9995820095013432,
+      "id": "support-22-1",
+      "time": 66.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999445860659171,
+      "id": "line-22-0",
+      "time": 66.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999056509182873,
+      "id": "line-22-1",
+      "time": 67.875,
+      "frame_quantization_seconds": -0.008333333333339965
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9995614144796785,
+      "id": "support-23-0",
+      "time": 69,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9995025608503517,
+      "id": "support-23-1",
+      "time": 69.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9993744465339154,
+      "id": "support-24-0",
+      "time": 72,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9992509722994534,
+      "id": "support-24-1",
+      "time": 72.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998754436091062,
+      "id": "line-24-0",
+      "time": 72.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9993966566705136,
+      "id": "line-24-1",
+      "time": 73.875,
+      "frame_quantization_seconds": -0.008333333333339965
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998956040662462,
+      "id": "support-26-0",
+      "time": 78,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998951296435303,
+      "id": "support-26-1",
+      "time": 78.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998775894618542,
+      "id": "line-26-0",
+      "time": 78.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999051074558263,
+      "id": "line-26-1",
+      "time": 79.875,
+      "frame_quantization_seconds": -0.008333333333339965
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999191112619169,
+      "id": "support-27-0",
+      "time": 81,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999226551657757,
+      "id": "support-27-1",
+      "time": 81.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998511609349003,
+      "id": "support-28-0",
+      "time": 84,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998587523143897,
+      "id": "support-28-1",
+      "time": 84.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999428042830718,
+      "id": "line-28-0",
+      "time": 84.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998804753642451,
+      "id": "line-28-1",
+      "time": 85.875,
+      "frame_quantization_seconds": -0.008333333333339965
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998300617722611,
+      "id": "support-29-0",
+      "time": 87,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998322099685392,
+      "id": "support-29-1",
+      "time": 87.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9995251367739427,
+      "id": "support-30-0",
+      "time": 90,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9994805563679463,
+      "id": "support-30-1",
+      "time": 90.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999492719759964,
+      "id": "line-30-0",
+      "time": 90.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999907665302383,
+      "id": "line-30-1",
+      "time": 91.875,
+      "frame_quantization_seconds": -0.008333333333339965
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997307361694626,
+      "id": "support-31-0",
+      "time": 93,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997193807901814,
+      "id": "support-31-1",
+      "time": 93.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999777710727108,
+      "id": "support-32-0",
+      "time": 96,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998746253907375,
+      "id": "support-32-1",
+      "time": 96.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999674615652265,
+      "id": "line-32-0",
+      "time": 96.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998875907733725,
+      "id": "line-32-1",
+      "time": 97.875,
+      "frame_quantization_seconds": -0.008333333333339965
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997571090874035,
+      "id": "support-33-0",
+      "time": 99,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997443811848645,
+      "id": "support-33-1",
+      "time": 99.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997746037442095,
+      "id": "support-34-0",
+      "time": 102,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997744376693741,
+      "id": "support-34-1",
+      "time": 102.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996646573978127,
+      "id": "line-34-0",
+      "time": 102.5625,
+      "frame_quantization_seconds": 0.004166666666662877
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997217871345567,
+      "id": "line-34-1",
+      "time": 103.875,
+      "frame_quantization_seconds": -0.008333333333339965
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999645139577099,
+      "id": "support-35-0",
+      "time": 105,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999651779796996,
+      "id": "support-35-1",
+      "time": 105.09,
+      "frame_quantization_seconds": 0.009999999999990905
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9997083158150316,
+      "id": "question-0",
+      "time": 0.075,
+      "frame_quantization_seconds": -0.008333333333333331
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9998092212230226,
+      "id": "question-1",
+      "time": 1.275,
+      "frame_quantization_seconds": -0.008333333333333304
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9996494894634865,
+      "id": "question-2",
+      "time": 2.325,
+      "frame_quantization_seconds": 0.008333333333333304
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999706440426814,
+      "id": "return-0",
+      "time": 94.07499999999999,
+      "frame_quantization_seconds": -0.008333333333325754
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.999951636109028,
+      "id": "return-1",
+      "time": 95.275,
+      "frame_quantization_seconds": -0.008333333333339965
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999420285523798,
+      "id": "return-2",
+      "time": 96.325,
+      "frame_quantization_seconds": 0.008333333333325754
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999645139577099,
+      "id": "cadence-0",
+      "time": 105,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9999528912969873,
+      "id": "cadence-1",
+      "time": 106.5,
+      "frame_quantization_seconds": 0.0
+    },
+    {
+      "lag_seconds": 0.0,
+      "correlation": 0.9990933126275316,
+      "id": "cadence-2",
+      "time": 108,
+      "frame_quantization_seconds": 0.0
+    }
+  ],
+  "duration_difference_seconds": 0.0
+}

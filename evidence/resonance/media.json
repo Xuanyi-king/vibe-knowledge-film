@@ -1,0 +1,49 @@
+{
+  "file": "examples/resonance/renders/final.mp4",
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 8.0,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "frames": "240"
+  },
+  "audio": {
+    "duration": 8.0,
+    "codec": "aac",
+    "sample_rate": "48000",
+    "sample_peak_db": -4.068983,
+    "rms_db": -24.999422,
+    "note": "Decoded sample peak/RMS plus FFmpeg loudnorm integrated LUFS, true peak and LRA; not a mix-quality score.",
+    "integrated_lufs": -20.02,
+    "true_peak_dbtp": -4.07,
+    "loudness_range_lu": 17.2
+  },
+  "errors": [],
+  "candidates": {
+    "black": [],
+    "silence": [
+      {
+        "start": 5.719354,
+        "end": 6.167042,
+        "duration": 0.447687
+      },
+      {
+        "start": 7.646479,
+        "end": 8.0,
+        "duration": 0.353521
+      }
+    ],
+    "scene_change_times": []
+  },
+  "unverified": [
+    "aesthetic quality",
+    "unexpected blank colored frames",
+    "object bounds and subtitle occlusion",
+    "glyph coverage/readability",
+    "storyboard match",
+    "factual correctness"
+  ],
+  "interpretation": "Candidates require timestamped visual/audio review; intentional black, cuts and silence are allowed."
+}
