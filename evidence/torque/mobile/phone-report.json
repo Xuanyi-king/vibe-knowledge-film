@@ -1,0 +1,157 @@
+{
+  "producer": "vk-mobile-qa",
+  "version": 1,
+  "status": "needs_visual_review",
+  "actual_platform_verified": false,
+  "video_sha256": "0a0b8a574f35b4538f5eaa6fd3ea3fc9b762fc1eef223aecc7806921e5c4293e",
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 14.0,
+    "frames": 420,
+    "sar": "1:1",
+    "audio": true,
+    "audio_start": 0.0,
+    "audio_duration": 14.0
+  },
+  "layout_scope": "only registered type() items; legacy/unregistered text remains unverified",
+  "simulation": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30.0,
+    "duration": 14.0,
+    "frames": 420,
+    "sar": "1:1",
+    "audio": "stream copy",
+    "audio_start": 0.0,
+    "audio_duration": 14.0,
+    "profile": "720p-crf30",
+    "crf": 30,
+    "preset": "veryfast",
+    "audio_payload_identical": true,
+    "note": "compression pressure test, not Douyin parameters or observed platform output",
+    "sha256": "286c23506ac1eae10a1a572aec76e51608f187c5a69e7b88c8b34b8f9c724256"
+  },
+  "widths": [
+    390,
+    320
+  ],
+  "frames": [
+    {
+      "frame": 53,
+      "time": 1.7666666666666666,
+      "previews": {
+        "master-390": "master-000053-390.png",
+        "master-320": "master-000053-320.png",
+        "stress-390": "stress-000053-390.png",
+        "stress-320": "stress-000053-320.png"
+      },
+      "layout_risks": {
+        "390": [],
+        "320": []
+      },
+      "layout_count": 9
+    },
+    {
+      "frame": 54,
+      "time": 1.8,
+      "previews": {
+        "master-390": "master-000054-390.png",
+        "master-320": "master-000054-320.png",
+        "stress-390": "stress-000054-390.png",
+        "stress-320": "stress-000054-320.png"
+      },
+      "layout_risks": {
+        "390": [],
+        "320": []
+      },
+      "layout_count": 9
+    },
+    {
+      "frame": 55,
+      "time": 1.8333333333333333,
+      "previews": {
+        "master-390": "master-000055-390.png",
+        "master-320": "master-000055-320.png",
+        "stress-390": "stress-000055-390.png",
+        "stress-320": "stress-000055-320.png"
+      },
+      "layout_risks": {
+        "390": [],
+        "320": []
+      },
+      "layout_count": 9
+    },
+    {
+      "frame": 96,
+      "time": 3.2,
+      "previews": {
+        "master-390": "master-000096-390.png",
+        "master-320": "master-000096-320.png",
+        "stress-390": "stress-000096-390.png",
+        "stress-320": "stress-000096-320.png"
+      },
+      "layout_risks": {
+        "390": [],
+        "320": []
+      },
+      "layout_count": 10
+    },
+    {
+      "frame": 161,
+      "time": 5.366666666666666,
+      "previews": {
+        "master-390": "master-000161-390.png",
+        "master-320": "master-000161-320.png",
+        "stress-390": "stress-000161-390.png",
+        "stress-320": "stress-000161-320.png"
+      },
+      "layout_risks": {
+        "390": [],
+        "320": []
+      },
+      "layout_count": 10
+    },
+    {
+      "frame": 255,
+      "time": 8.5,
+      "previews": {
+        "master-390": "master-000255-390.png",
+        "master-320": "master-000255-320.png",
+        "stress-390": "stress-000255-390.png",
+        "stress-320": "stress-000255-320.png"
+      },
+      "layout_risks": {
+        "390": [],
+        "320": []
+      },
+      "layout_count": 10
+    },
+    {
+      "frame": 360,
+      "time": 12.0,
+      "previews": {
+        "master-390": "master-000360-390.png",
+        "master-320": "master-000360-320.png",
+        "stress-390": "stress-000360-390.png",
+        "stress-320": "stress-000360-320.png"
+      },
+      "layout_risks": {
+        "390": [],
+        "320": []
+      },
+      "layout_count": 10
+    }
+  ],
+  "unverified": [
+    "object recognition",
+    "text occlusion",
+    "comfortable reading/hold time",
+    "actual local background contrast",
+    "aesthetic quality",
+    "actual Douyin transcode"
+  ],
+  "input_sha256": "83f0e0c05ffe0d66820c906e2bb37d17d0099d6a4775985867418577322c47d6",
+  "events_sha256": "e57326f66153c4402fe3a8e8642bda3f3e3b6b7cf5a58669faf59459c3e14e22"
+}

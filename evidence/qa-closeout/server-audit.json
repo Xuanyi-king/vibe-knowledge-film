@@ -1,0 +1,72 @@
+{
+  "platform": "linux",
+  "cycles": [
+    {
+      "port": 37513,
+      "parallel_font_reads": 12,
+      "hashes_match": true,
+      "closed_listener": true
+    },
+    {
+      "port": 41247,
+      "parallel_font_reads": 12,
+      "hashes_match": true,
+      "closed_listener": true
+    },
+    {
+      "port": 39153,
+      "parallel_font_reads": 12,
+      "hashes_match": true,
+      "closed_listener": true
+    },
+    {
+      "port": 39503,
+      "parallel_font_reads": 12,
+      "hashes_match": true,
+      "closed_listener": true
+    },
+    {
+      "port": 39441,
+      "parallel_font_reads": 12,
+      "hashes_match": true,
+      "closed_listener": true
+    },
+    {
+      "port": 46219,
+      "parallel_font_reads": 12,
+      "hashes_match": true,
+      "closed_listener": true
+    },
+    {
+      "port": 45747,
+      "parallel_font_reads": 12,
+      "hashes_match": true,
+      "closed_listener": true
+    },
+    {
+      "port": 44821,
+      "parallel_font_reads": 12,
+      "hashes_match": true,
+      "closed_listener": true
+    }
+  ],
+  "browser_ready_checks": [
+    {
+      "ready": true,
+      "fonts": "loaded",
+      "loaded": 8
+    },
+    {
+      "ready": true,
+      "fonts": "loaded",
+      "loaded": 8
+    },
+    {
+      "ready": true,
+      "fonts": "loaded",
+      "loaded": 8
+    }
+  ],
+  "wall_seconds": 21.100802200002363,
+  "scope": "Linux bounded lifecycle audit; Windows intermittent refusal not reproduced or proven fixed"
+}

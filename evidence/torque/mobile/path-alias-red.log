@@ -1,0 +1,15 @@
+test_publication_error_restores_previous_owned_directory (tests.test_mobile.MobileTest.test_publication_error_restores_previous_owned_directory) ... FAIL
+
+======================================================================
+FAIL: test_publication_error_restores_previous_owned_directory (tests.test_mobile.MobileTest.test_publication_error_restores_previous_owned_directory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_mobile.py", line 121, in test_publication_error_restores_previous_owned_directory
+    with self.assertRaisesRegex(OSError,'publication failed'):m.review_video(v,out,times=[.2])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: OSError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.796s
+
+FAILED (failures=1)

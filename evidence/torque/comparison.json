@@ -1,0 +1,37 @@
+{
+  "scope": "same geometry/camera/colors/score/type; lighting and surface only, not a model experiment",
+  "frames": [
+    {
+      "variant": "baseline",
+      "time": 3.2,
+      "png_sha256": "48175e38e15c2c00415ab7b9911c72414e6920ab2f18973f3bfd64d7909b2c1b",
+      "r": 0.35,
+      "force": 2,
+      "torque": 0.7
+    },
+    {
+      "variant": "baseline",
+      "time": 8.5,
+      "png_sha256": "d7b5cce033cf726a2198764837fdbc2914249224678bdfb87e2b5994a183b321",
+      "r": 0.7,
+      "force": 2,
+      "torque": 1.4
+    },
+    {
+      "variant": "cinematic",
+      "time": 3.2,
+      "png_sha256": "2bf148ee1ac559b19f06177272b1a8b0c9915b3217623a05f64c330307361b50",
+      "r": 0.35,
+      "force": 2,
+      "torque": 0.7
+    },
+    {
+      "variant": "cinematic",
+      "time": 8.5,
+      "png_sha256": "a3e279ae64bcb057f37d318526b351a01e8d65444b32c0badea58c1c56a1c1ab",
+      "r": 0.7,
+      "force": 2,
+      "torque": 1.4
+    }
+  ]
+}

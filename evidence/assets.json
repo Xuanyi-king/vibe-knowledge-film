@@ -58,5 +58,30 @@
     "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/current.mp4",
     "sha256": "810bbea648ba9643386dcc0208eea323971c15111fdeea032598606a3780cb8a",
     "bytes": 1616764
+  },
+  "torque-final.mp4": {
+    "sha256": "bf9b26e8a2e12fa8f8e7cae228fdf42b5b0bf4486fadf638c66fe18f228bec60",
+    "bytes": 1610192,
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/6a2381cd5f597acd2402bfd9d507f8013b6caecd/evidence/torque/final.mp4"
+  },
+  "torque-music.flac": {
+    "sha256": "14cc362a1d02b4d13c809440f64a621a9b70de6cc203d6a8bf86dd493dea6134",
+    "bytes": 2235664,
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/6a2381cd5f597acd2402bfd9d507f8013b6caecd/evidence/torque/music.flac"
+  },
+  "torque-sfx.flac": {
+    "sha256": "e2087f9c9b5c1b9d6637f5e2c891a651c3830f138eb99fb71a3ea589f7deaacc",
+    "bytes": 607874,
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/6a2381cd5f597acd2402bfd9d507f8013b6caecd/evidence/torque/sfx.flac"
+  },
+  "torque-mobile-final.mp4": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/f21d2009b51e090aeadc9254ff15935a7d7977f0/evidence/torque/mobile/final.mp4",
+    "sha256": "0a0b8a574f35b4538f5eaa6fd3ea3fc9b762fc1eef223aecc7806921e5c4293e",
+    "bytes": 1665320
+  },
+  "torque-mobile-stress.mp4": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/f21d2009b51e090aeadc9254ff15935a7d7977f0/evidence/torque/mobile/stress.mp4",
+    "sha256": "286c23506ac1eae10a1a572aec76e51608f187c5a69e7b88c8b34b8f9c724256",
+    "bytes": 458612
   }
 }

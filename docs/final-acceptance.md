@@ -1,4 +1,12 @@
-# PR #1 最终验收：按证据层级区分结论
+# 当前验收与历史记录
+
+PR #2在曜石鎏金基础上继续手机QA与音乐导演整合，没有新主题长片。最新[14秒母版/同刻手机对照/技术及主观边界](../evidence/torque/mobile/README.md)、[真实参考音轨/We Never未确认结论](../evidence/music-direction/README.md)分别记录，不把技术同步、静帧可读、音乐感染力或平台转码混为一项通过。
+
+最新代码的本地回归与原生Linux/Windows CI数量、提交身份和工作流链接以[PR #2验收段](https://github.com/Xuanyi-king/vibe-knowledge-film/pull/2)为准；下文75/70/64项均为历史记录。Windows核心/软件WebGL组件不等于完整真实录音bank与14秒整片路径。完整动态观看、主观听音、实机及抖音转码、普通模型创作提升仍未验收。
+
+## PR #1历史验收（已合并）
+
+PR #1随后按用户授权合并至main（e9d715fbbceb7a2e486b9919141325363c0f3677）；以下保留当时不合并main的审查记录，不是PR #2合并指令。
 
 本轮继续feat/director-evidence-workflow，不合并main。既有两部36秒影片、6秒机构、8秒音画作品及有效证据保留；没有重新做九仓库全面调研。
 

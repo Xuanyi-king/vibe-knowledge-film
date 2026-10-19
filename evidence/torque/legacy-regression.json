@@ -1,0 +1,16 @@
+[
+  {
+    "film": "fold_C",
+    "frame_time": 24,
+    "sha256": "d84194691dd5b58ac84c79868116e7242334f153244015b9ee702faa6d203cae",
+    "matches_original_baseline": true,
+    "actual_sha256": "d84194691dd5b58ac84c79868116e7242334f153244015b9ee702faa6d203cae"
+  },
+  {
+    "film": "pigeon_B",
+    "frame_time": 29,
+    "sha256": "a814333c3ef6219ebe8da3982faa772a48776f03f45f216e3a2ce61874793b5f",
+    "matches_original_baseline": true,
+    "actual_sha256": "a814333c3ef6219ebe8da3982faa772a48776f03f45f216e3a2ce61874793b5f"
+  }
+]

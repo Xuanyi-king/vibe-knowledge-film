@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "kind": "final",
+  "input_sha256": "f03a8b301b0684ea668158d8fcbf5b4954f4a38ef91ea9f04e4376a0fd26a3f1",
+  "sha256": "bf9b26e8a2e12fa8f8e7cae228fdf42b5b0bf4486fadf638c66fe18f228bec60",
+  "timeline": {
+    "end": 14,
+    "fps": 30,
+    "start": 0,
+    "stop": 14
+  },
+  "events_sha256": "374219369ff5f3d5f112be28b60ec5604d35e55f5ccefe5b2bbf9972784f1e0e",
+  "reference_sha256": "4dba3669c440bd7e948fb0aa46d96b502790abea0a1906c6e9f8074a1256bee2",
+  "mastering": {
+    "method": "measured_constant_gain_with_encoded_peak_check",
+    "target_lufs": -18,
+    "ceiling_dbtp": -1.5,
+    "gain_db": 23.61,
+    "implementation_sha256": "f96a0bcca809b629c8864a9d44b0e46cf5b556a515c963c5fb6935a811400cd6"
+  }
+}

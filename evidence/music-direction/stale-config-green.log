@@ -1,0 +1,6 @@
+test_prepared_loader_rejects_replaced_music_before_seek (tests.test_music_direction.MusicDirectionTest.test_prepared_loader_rejects_replaced_music_before_seek) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 7.402s
+
+OK

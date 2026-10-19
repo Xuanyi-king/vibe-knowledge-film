@@ -1,0 +1,10 @@
+test_layout_metadata_resets_on_repeated_seek_without_changing_text (tests.test_art.TypographyTest.test_layout_metadata_resets_on_repeated_seek_without_changing_text) ... ok
+test_missing_font_declaration_cannot_silently_use_a_fallback (tests.test_art.TypographyTest.test_missing_font_declaration_cannot_silently_use_a_fallback) ... ok
+test_mobile_metadata_does_not_replace_legacy_character_layout (tests.test_art.TypographyTest.test_mobile_metadata_does_not_replace_legacy_character_layout) ... ok
+test_roles_measure_real_text_and_reject_overflow_without_painting (tests.test_art.TypographyTest.test_roles_measure_real_text_and_reject_overflow_without_painting) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 8.970s
+
+OK
+[page] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently

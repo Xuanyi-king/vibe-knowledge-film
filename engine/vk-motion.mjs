@@ -63,6 +63,9 @@ export function camera(camera,keys,t) {
   const baseFov=cameraDefaults.get(camera);
   const pose=track(keys.map(([s,p])=>[s,[...p.position,...p.target,p.fov??baseFov]]),t);
   camera.position.fromArray(pose.slice(0,3));camera.lookAt(...pose.slice(3,6));camera.fov=pose[6];camera.updateProjectionMatrix();
+  // Overlay labels may project before renderer.render(). Update the view matrix
+  // here too, otherwise their position depends on the previously sought frame.
+  camera.updateMatrixWorld?.(true);
 }
 // Prescribed contact choreography, not a collision solver. The approach has
 // nonzero contact speed; the recoil starts with restitution * incoming speed.

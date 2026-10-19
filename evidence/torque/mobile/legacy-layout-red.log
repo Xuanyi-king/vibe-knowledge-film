@@ -1,0 +1,19 @@
+test_mobile_metadata_does_not_replace_legacy_character_layout (tests.test_art.TypographyTest.test_mobile_metadata_does_not_replace_legacy_character_layout) ... ERROR
+
+======================================================================
+ERROR: test_mobile_metadata_does_not_replace_legacy_character_layout (tests.test_art.TypographyTest.test_mobile_metadata_does_not_replace_legacy_character_layout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_art.py", line 26, in test_mobile_metadata_does_not_replace_legacy_character_layout
+    render.with_page(p,check)
+  File "/workspace/vibe-knowledge-film/engine/render.py", line 143, in with_page
+    b, pg = open_page(p, url)
+            ^^^^^^^^^^^^^^^^^
+  File "/workspace/vibe-knowledge-film/engine/render.py", line 108, in open_page
+    raise RuntimeError((reason or "\n".join(errors))+(f'; failed assets: {failures}' if failures else ''))
+RuntimeError: TypeError: this.layout is not a function
+
+----------------------------------------------------------------------
+Ran 1 test in 1.307s
+
+FAILED (errors=1)

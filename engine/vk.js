@@ -247,7 +247,7 @@ function film(spec) {
 
   const defaultLook = () => ({ bg: fr.theme, bgo: {}, bloom: spec.bloom == null ? ({ gilt: .34, flat: .12 }[fr.theme] || 1) : spec.bloom, grain: spec.grain == null ? .05 : spec.grain, post: null });
   function seek(t) {
-    t = Math.max(0, Math.min(spec.dur, t)); fr.t = t; fr.frame = Math.round(t * fps);
+    t = Math.max(0, Math.min(spec.dur, t)); fr.t = t; fr.frame = Math.round(t * fps); fr.artLayout = [];
     const L = F.L, lx = L.getContext('2d'); lx.setTransform(1, 0, 0, 1, 0, 0); lx.clearRect(0, 0, W, H); fr.x = lx;
     const look = defaultLook();   // 辉光：夜空全开，鎏金三成（实物不能发白），插画基本不要
     fr.look = look;
@@ -273,7 +273,7 @@ function film(spec) {
     collecting = true;
     try {
       for (let i = 0; i <= Math.ceil(spec.dur * fps); i++) {
-        fr.t = Math.min(i / fps, spec.dur); fr.frame = Math.round(fr.t * fps);
+        fr.t = Math.min(i / fps, spec.dur); fr.frame = Math.round(fr.t * fps); fr.artLayout = [];
         fr.x = F.L.getContext('2d'); fr.x.reset(); fr.look = defaultLook();
         try { spec.draw(fr, fr.t); }
         catch (e) { throw new Error(`events at ${fr.t.toFixed(3)}s: ${e.message}`, { cause: e }); }
@@ -290,6 +290,7 @@ function film(spec) {
   }
 
   G.seek = seek; G.END = spec.dur; G.FPS = fps; G.events = events; G.META = spec.meta || {};
+  G.VK_LAYOUT = () => structuredClone(fr.artLayout || []); // opt-in measured art text; legacy text remains unverified
   document.fonts.ready.then(() => Promise.all(Object.values(FONTS).map(f => document.fonts.load(`${f[0]} 40px ${f[1].split(',')[0]}`, '运A1')))).then(() => { seek(+(new URLSearchParams(location.search).get('t') || 0)); G.READY = true; }).catch(e => { G.READY_ERROR = String(e); });
   /* 预览：?play 实时播，←/→ 步进 */
   if (new URLSearchParams(location.search).has('play')) { let t0 = performance.now(); const loop = () => { seek(((performance.now() - t0) / 1000) % spec.dur); requestAnimationFrame(loop); }; document.fonts.ready.then(() => requestAnimationFrame(loop)); }

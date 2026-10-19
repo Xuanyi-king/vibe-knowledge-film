@@ -23,3 +23,6 @@
 没有重复九仓库调研。新增D3地理算法解决真实海岸线、球面裁剪和投影形变，取代每次手写整套地图图形算法；不引入D3动画计时器。实际读3.1.1的mercator/cylindricalEqualArea/orthographic实现并验证导数与球面多边形绕序，全部本地确定性驱动。d3-geo3.1.1+d3-array3.2.4与Natural Earth110m数据共约208KB（含许可），不安装整套D3或独立框架。固定版本/散列由get_geo_assets.py管理；[许可](../THIRD_PARTY_NOTICES.md)、[调用与失败经验](../references/cartography.md)。
 
 音乐复用Karplus–Strong公开方法补充可衰减拨弦，不加入新DSP依赖；与现有score、分轨和同步共用。实际原创24小节配乐用于72秒作品，尚不能从技术检测推断听感专业。未实现自动作曲审美、自动downbeat/乐句、通用地理事实核验或电影级后期库。
+# 曜石鎏金增量
+
+复用已固定Three r180的MeshPhysicalMaterial各向异性/PMREM/PCF及ExtrudeGeometry倒角，提供可选美术适配；文字角色复用Frame.text/measure，验证页面实际字体，不新建排版引擎。未再次调研九个仓库、未引入包、未复制外部道具/音乐。真实对照、条件与边界见[evidence/torque](../evidence/torque/README.md)。

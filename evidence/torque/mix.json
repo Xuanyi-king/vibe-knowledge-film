@@ -1,0 +1,115 @@
+{
+  "sample_rate": 48000,
+  "events": [
+    {
+      "id": "answer-0",
+      "visual_time": 7.857142857142857,
+      "scheduled_sample": 377143,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "answer-1",
+      "visual_time": 7.964285714285714,
+      "scheduled_sample": 382286,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "answer-2",
+      "visual_time": 8.642857142857142,
+      "scheduled_sample": 414857,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "compare-0",
+      "visual_time": 2.857142857142857,
+      "scheduled_sample": 137143,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "compare-1",
+      "visual_time": 3.9285714285714284,
+      "scheduled_sample": 188571,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "compare-2",
+      "visual_time": 5.142857142857143,
+      "scheduled_sample": 246857,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "question-0",
+      "visual_time": 0,
+      "scheduled_sample": 0,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "question-1",
+      "visual_time": 0.21428571428571427,
+      "scheduled_sample": 10286,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "question-2",
+      "visual_time": 1.0714285714285714,
+      "scheduled_sample": 51429,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "return-0",
+      "visual_time": 10.714285714285714,
+      "scheduled_sample": 514286,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "return-1",
+      "visual_time": 11.785714285714286,
+      "scheduled_sample": 565714,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "return-2",
+      "visual_time": 12.857142857142858,
+      "scheduled_sample": 617143,
+      "source_anchor": 0,
+      "track": "music"
+    },
+    {
+      "id": "seat",
+      "visual_time": 1.8,
+      "scheduled_sample": 86400,
+      "source_anchor": 0,
+      "track": "sfx"
+    },
+    {
+      "id": "slide",
+      "visual_time": 3.7,
+      "scheduled_sample": 177600,
+      "source_anchor": 0,
+      "track": "sfx"
+    }
+  ],
+  "intentional_silence": [
+    [
+      7.4,
+      7.7
+    ]
+  ],
+  "peak_before_headroom": 0.04415049293061996,
+  "headroom_gain": 1,
+  "peak_dbfs": -27.10128886512434,
+  "score_sha256": "34bcddb18a1bf64a8f8c856f45168e75189778aa8ac4bd5521d8110a995b86a3",
+  "events_sha256": "374219369ff5f3d5f112be28b60ec5604d35e55f5ccefe5b2bbf9972784f1e0e",
+  "reference_sha256": "4dba3669c440bd7e948fb0aa46d96b502790abea0a1906c6e9f8074a1256bee2"
+}
