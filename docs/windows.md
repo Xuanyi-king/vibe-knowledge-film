@@ -126,4 +126,6 @@ Start-Process examples/mirror/renders/final.mp4
 
 prepare按固定SHA下载三个CC0钢琴根音，带限离线重采样到manifest的音符；生成assets/piano不进Git。项目完整原始来源/许可保留，生成失败不替换旧bank索引。断网时已准备好的正确bank可重用；修改piano.json或准备器后要先重跑prepare，不能在准备失败后继续合成。关闭制作后可删除生成目录以及系统临时目录中的vk-music-source-v1缓存来卸载，不改注册表或音频驱动。
 
-本轮代码7403640已在原生windows-latest执行：70项中63通过、7项可选跳过，230.982秒；采样准备与共享拍点新增测试实际执行，verify.ps1 -SkipTests成功。完整镜像作品/可选Three渲染未在Windows实测。Linux同代码首次截图超时，重跑失败任务通过；不声称已修复间歇根因。详见[当前CI记录](../evidence/director-story/ci.json)。用户要求停止原创作品开发后，此处保留复现命令，不再继续样片制作。
+此前代码7403640已在原生windows-latest执行：70项中63通过、7项可选跳过，230.982秒；采样准备与共享拍点新增测试实际执行，verify.ps1 -SkipTests成功。完整镜像作品/可选Three渲染未在Windows实测。Linux同代码首次截图超时，重跑失败任务通过；不声称已修复间歇根因。详见[当前CI记录](../evidence/director-story/ci.json)。用户要求停止原创作品开发后，此处保留复现命令，不再继续样片制作。
+
+最后小范围修复代码3994838已再次完成原生Windows核心验收：75项中68通过、7可选跳过，189.313秒，verify.ps1 -SkipTests成功；Linux同代码68通过/7跳过。新增脚手架/诊断及采样准备算法的测试实际执行。此结果仍不覆盖上列完整Three/真实钢琴bank联网下载/整片流程，也不覆盖本页原样备份命令的Windows手工执行；见[最新证据](../evidence/closeout/ci.json)。

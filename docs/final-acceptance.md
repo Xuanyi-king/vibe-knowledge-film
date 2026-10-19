@@ -8,6 +8,8 @@
 
 截图仍限30秒，无自动重试；增加最后成功seek现场、浏览器与失败请求诊断，超时后不再发送可能阻塞的JS探针。原生CI历史超时根因仍未知，本轮不声称修复间歇故障。[最新测试/覆盖边界](../evidence/closeout/README.md)与[旧B/C字节回归](../evidence/closeout/legacy-regression.json)单列，本地完整75项通过、225.013秒、无跳过；以下70/64计数属于此前代码。
 
+代码`3994838`的[本次原生Actions39208723709](https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39208723709)首次运行均通过：Linux 68通过/7可选跳过（171.968秒）；Windows 68通过/7可选跳过（189.313秒），PowerShell字体与静帧入口成功。[本次CI身份](../evidence/closeout/ci.json)及日志已归档。可选WebGL未触发；最终文档/证据提交不改这份已验证代码。
+
 现有112秒MP4在本地且SHA未变，仍未持久化发布；[位置、原样备份与完整SHA](../evidence/mirror/README.md)已提供。音乐谱面的有意休止、未解释的静默候选、−30.11 LUFS与可能偏弱的音乐分别说明，未调音或宣称人工试听通过。最终连续观看、手机阅读、主观听审、Windows完整Three/真实录音bank/全片流程及普通模型效果实验仍未验收。
 
 ## 本轮Skill收尾（2026-10-19）
