@@ -78,6 +78,13 @@ def open_page(p, url):
     pg._vk_errors = errors
     pg._vk_remote_assets = []
     pg._vk_generated_assets = []
+    pg._vk_request_failures = []
+    def record_failure(req):
+        parsed = urlsplit(req.url)
+        location = parsed.path if parsed.hostname in {'127.0.0.1', 'localhost'} else '[nonlocal resource]'
+        pg._vk_request_failures.append(f'{req.failure}: {location}')
+        del pg._vk_request_failures[:-20]
+    pg.on('requestfailed', record_failure)
     def record_request(req):
         if req.url.startswith(url):
             path = unquote(urlsplit(req.url).path).lstrip('/')
@@ -104,9 +111,27 @@ def open_page(p, url):
 
 def shot(pg, t):
     if not math.isfinite(t) or t < 0: raise ValueError("frame time must be finite and nonnegative")
-    pg.evaluate("t => seek(t)", t)
+    # Capture state with the successful seek, before entering screenshot/compositor.
+    # Never issue a second JS diagnostic probe after a timeout: a stuck renderer
+    # might also hang that probe. No real-time animation or pixels are changed.
+    state = pg.evaluate("""t => {
+      seek(t);
+      return {ready: window.READY, ready_error: window.READY_ERROR || null,
+        document: document.readyState, visibility: document.visibilityState,
+        fonts: document.fonts.status, title: String(window.META?.title || '').slice(0,160),
+        pending_images: [...document.images].filter(i=>!i.complete).length,
+        canvas: [...document.querySelectorAll('canvas')].slice(0,8).map(c=>[c.width,c.height]),
+        scene: window.VK_SCENE_INFO || null};
+    }""", t)
     if getattr(pg, "_vk_errors", None): raise RuntimeError("\n".join(pg._vk_errors))
-    return pg.screenshot(type="png")
+    from playwright.sync_api import TimeoutError as CaptureTimeout
+    try:
+        return pg.screenshot(type="png", timeout=30000)
+    except CaptureTimeout as exc:
+        diagnostic = dict(time=t, browser=pg.context.browser.version, closed=pg.is_closed(),
+                          last_seek_state=state, request_failures=pg._vk_request_failures)
+        raise RuntimeError('frame capture timeout (30s; no automatic retry): ' +
+                           json.dumps(diagnostic, ensure_ascii=False)) from exc
 
 def with_page(proj, fn):
     from playwright.sync_api import sync_playwright

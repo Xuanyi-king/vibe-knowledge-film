@@ -39,7 +39,7 @@ engine/
 ## 命令
 
 ```bash
-python scripts/new_film.py <工程目录> --world C|B|custom # 建工程：index.html + 一份没有画面的 film.js 骨架
+python scripts/new_film.py <工程目录> --world <B或C或custom> --duration <完整分镜秒数> # 先定方向与分镜，再建空骨架
 python engine/render.py <工程> --serve                  # 预览 http://127.0.0.1:8765/?play
 python engine/render.py <工程> --stills 2.5 8.5 21      # 截几帧 → review/
 python engine/render.py <工程> --sheet 16               # 全片均匀 16 帧拼一张 → review/sheet.jpg

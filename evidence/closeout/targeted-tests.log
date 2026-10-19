@@ -1,0 +1,25 @@
+test_custom_is_neutral_and_does_not_overwrite (tests.test_scaffold.ScaffoldTest.test_custom_is_neutral_and_does_not_overwrite) ... ok
+test_explicit_legacy_worlds_keep_appearance_and_warn_about_placeholder (tests.test_scaffold.ScaffoldTest.test_explicit_legacy_worlds_keep_appearance_and_warn_about_placeholder) ... ok
+test_invalid_arguments_leave_existing_project_untouched_even_with_force (tests.test_scaffold.ScaffoldTest.test_invalid_arguments_leave_existing_project_untouched_even_with_force) ... ok
+test_missing_decisions_do_not_create_a_default_film (tests.test_scaffold.ScaffoldTest.test_missing_decisions_do_not_create_a_default_film) ... ok
+test_capture_timeout_reports_last_successful_seek_state_without_retry (tests.test_render.BrowserTests.test_capture_timeout_reports_last_successful_seek_state_without_retry) ... ok
+test_event_draw_errors_are_not_swallowed (tests.test_render.BrowserTests.test_event_draw_errors_are_not_swallowed) ... ok
+test_event_scan_includes_end_without_exceeding_duration (tests.test_render.BrowserTests.test_event_scan_includes_end_without_exceeding_duration) ... ok
+test_events_preserve_seek_pixels_and_repeatability (tests.test_render.BrowserTests.test_events_preserve_seek_pixels_and_repeatability) ... ok
+test_real_failed_request_is_retained_for_render_diagnostics (tests.test_render.BrowserTests.test_real_failed_request_is_retained_for_render_diagnostics) ... ok
+test_resume_rejects_inputs_in_generated_directories (tests.test_render.BrowserTests.test_resume_rejects_inputs_in_generated_directories) ... ok
+test_startup_script_error_reports_cause_without_ready (tests.test_render.BrowserTests.test_startup_script_error_reports_cause_without_ready) ... ok
+test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text (tests.test_render.ModuleMimeTest.test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text) ... ok
+test_failed_worker_does_not_skip_waiting_for_other_workers (tests.test_render.ParallelTests.test_failed_worker_does_not_skip_waiting_for_other_workers) ... ok
+test_determinism_failure_is_an_error (tests.test_render.RenderTests.test_determinism_failure_is_an_error) ... ok
+test_encoder_failure_preserves_existing_output (tests.test_render.RenderTests.test_encoder_failure_preserves_existing_output) ... [page] Failed to load resource: net::ERR_FAILED
+  0/1
+ok
+test_invalid_clip_rejected_before_encoder (tests.test_render.RenderTests.test_invalid_clip_rejected_before_encoder) ... ok
+test_encoded_parent_path_cannot_escape_project (tests.test_render.ServerPathsTest.test_encoded_parent_path_cannot_escape_project) ... ok
+test_url_encoded_asset_names_work (tests.test_render.ServerPathsTest.test_url_encoded_asset_names_work) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 14.746s
+
+OK

@@ -1,6 +1,6 @@
 # Windows PowerShell 使用与验证
 
-本地开发环境只有Linux，没有原生Windows或pwsh；原生GitHub Actions的windows-latest核心矩阵已通过：64项中60通过、4可选跳过，另执行`verify.ps1 -SkipTests`的字体检查与fold_C静帧。实际运行链接与范围见[最终验收](final-acceptance.md)。可选WebGL完整导出为单独手动任务，本轮未触发；Windows的`-Scene`/`-AV`和完整地图影片生产仍未实测。
+本地开发环境只有Linux，没有原生Windows或pwsh；原生GitHub Actions的windows-latest核心矩阵已执行，最新计数与代码身份见[最终验收](final-acceptance.md)，不能用历史成功替代新增代码的验证。可选WebGL完整导出为单独手动任务，本轮未触发；Windows的`-Scene`/`-AV`和完整地图/镜像影片生产仍未实测。
 
 在仓库根目录，安装 Python 3.10+、Git 和 FFmpeg（含 ffprobe），并将它们加入 PATH。
 
@@ -40,8 +40,12 @@ $env:VK_SOFTWARE_GL = '1'
 建片（已有 film.js 不会被无意覆盖）：
 
 ```powershell
-python scripts/new_film.py ..\my-film --world custom
-# 写好 facts.md / direction.md / storyboard.md，再按镜头实现 film.js
+# Agent先写好facts/direction/storyboard，决定world与完整时长；以下只演示变量传参：
+$filmWorld = 'custom' # 按实际艺术方向，也可B/C
+$filmSeconds = 78.5  # 示例数值，不是默认；改为完整分镜决定的时长
+python scripts/new_film.py ..\my-film --world $filmWorld --duration $filmSeconds
+if ($LASTEXITCODE -ne 0) { throw 'film scaffold failed' }
+# 按已完成的分镜逐镜实现，内部检查后自动继续整片
 python engine/render.py ..\my-film --serve
 ```
 

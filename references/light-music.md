@@ -14,7 +14,9 @@
 
 ```powershell
 python scripts/prepare_instrument.py examples/mirror examples/mirror/piano.json
+if ($LASTEXITCODE -ne 0) { throw 'instrument preparation failed; do not continue with an old bank' }
 python scripts/produce.py examples/mirror --assets scene --chunk 4 --jobs 1
+if ($LASTEXITCODE -ne 0) { throw 'production failed; inspect review/production.json' }
 ```
 
 这是Agent内部制作命令；主题用户无需执行或批准。准备器校验HTTPS源SHA256，采用最近采样根音的带限重采样，输出项目内FLAC与bank.json。版本身份包含manifest、准备器源码和FFmpeg版本；内容损坏、缺失音符或输入变化重建。成功后才替换bank索引，失败保留旧索引。变调同时改变录音衰减时长，不冒充复杂采样钢琴/踏板/力度层模型。

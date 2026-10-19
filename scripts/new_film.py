@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """建一个新片工程：
-  python new_film.py <工程目录> --world C|B|custom [--force]
+  python new_film.py <工程目录> --world C|B|custom --duration <完整剧本秒数> [--force]
 C 夜曲（抽象概念、看不见的机制）· B 寓言（心理和行为机制）。怎么选见 references/worlds.md。
 
 工程里是 index.html 和一份只能跑起来的 film.js 骨架——里面一行画面都没有。
 文案不同，屏上的东西就不同，代码也不同：每一镜照 storyboard.md 现写，不要从别的片子里搬画面。
 引擎留在 skill 目录里，由 engine/render.py 挂载。"""
-import shutil, sys
+import argparse, math, shutil, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -25,7 +25,7 @@ SKELETON = """/* ★ 片名 · {name}
 const {{ W, H, clamp, lerp, seg, smooth, ss, E, fade, hash, rng, rgba, mix }} = VK;
 const K = VKit, P = K.PAL.{pal};
 
-const T = {{ end: 30 }};                                   // 关键时刻集中写在这里，挪动时只改一处
+const T = {{ end: {duration} }};                            // 由完整分镜决定，不是默认交付时长
 const SUBS = [                                             // 一句字幕一行，和分镜表对着写；{{词}} 金色，{{!词}} 红色
   // {{ a: 0.8, b: 4.2, zh: '……'{en} }},
 ];
@@ -45,16 +45,28 @@ VK.film({{
 """
 
 if __name__ == "__main__":
-    a = sys.argv[1:]
-    if len(a) < 1 or a[0].startswith("-"): sys.exit(__doc__)
-    proj = Path(a[0]).resolve(); world = (a[a.index("--world") + 1] if "--world" in a else "C").upper()
-    if world not in WORLD: sys.exit("--world 只能是 C、B 或 custom")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('project', type=Path)
+    parser.add_argument('--world', required=True, type=str.upper, choices=WORLD,
+                        help='Agent先完成事实、叙事和艺术方向，再显式选择；不默认夜曲')
+    parser.add_argument('--duration', type=float, help='完整分镜决定的正数秒数，无30秒创作默认值')
+    parser.add_argument('--force', action='store_true')
+    a = parser.parse_args()
+    world = a.world
+    duration = a.duration
+    if duration is None:
+        if world == 'CUSTOM': parser.error('先确定完整分镜时长，再提供 --duration；不要为通过命令擅自填30')
+        duration = 30
+        print('兼容旧B/C命令：30秒仅为历史骨架占位。正式创作须先确定完整分镜，并用 --duration 指定时长。', file=sys.stderr)
+    if not math.isfinite(duration) or duration <= 0:
+        parser.error('--duration 必须是有限正数秒数')
+    proj = a.project.resolve()
     proj.mkdir(parents=True, exist_ok=True)
     film = proj / "film.js"
-    if film.exists() and "--force" not in a: sys.exit(f"{film} 已经存在。要覆盖加 --force")
+    if film.exists() and not a.force: sys.exit(f"{film} 已经存在。要覆盖加 --force")
     name, theme, subs, pal, standing = WORLD[world]
     shutil.copy(ROOT / "engine/index.html", proj / "index.html")
-    film.write_text(SKELETON.format(name=name, theme=theme, subs=subs, pal=pal, standing=standing, look="bloom: 0, grain: 0, " if world == "CUSTOM" else "", en=", en: '……'" if world == "C" else ""), encoding="utf-8", newline="\n")
+    film.write_text(SKELETON.format(name=name, duration=format(duration, '.15g'), theme=theme, subs=subs, pal=pal, standing=standing, look="bloom: 0, grain: 0, " if world == "CUSTOM" else "", en=", en: '……'" if world == "C" else ""), encoding="utf-8", newline="\n")
     if world == "CUSTOM" and not (proj / "direction.md").exists():
         (proj / "direction.md").write_text("# 作品方向\n\n先写事实与观众卡点，再比较两个表达机制。\n\n- 视觉概念与母题：\n- 颜色及语义：\n- 字体与字阶（当前字幕使用 flat 默认，按作品修改）：\n- 构图与相机：\n- 光源、材质与空间：\n- 动作、停顿与声音：\n- 候选方案及选择理由：\n", encoding="utf-8")
     render = ROOT / "engine/render.py"

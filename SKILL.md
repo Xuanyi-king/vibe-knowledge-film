@@ -66,7 +66,8 @@ description: >
 ## 制作与交付
 
 ```bash
-python scripts/new_film.py <project> --world custom # 也可B/C；Agent按剧本确定时长
+# 先完成事实、艺术方向及完整分镜；world与秒数由Agent决定，不向用户索取技术选择。
+python scripts/new_film.py <project> --world <B或C或custom> --duration <完整分镜秒数>
 # 完成事实、叙事、分镜和源码；先用sheet/motion/clip检查难镜头，再自动扩展全片。
 python scripts/produce.py <project> --assets geo     # 按需求选geo/scene，无可选资产则省略
 ```
@@ -75,7 +76,7 @@ python scripts/produce.py <project> --assets geo     # 按需求选geo/scene，�
 
 输入修改后必须重导事件并重渲受影响画面；版本指纹不匹配会拒绝合音和检查。[动作探针](references/action-checks.md)让重要接触/到达拥有实际帧证据；编码同步、视觉动作条件和主观审片分别验收。
 
-脚手架的30秒是可编辑占位，必须按完整剧本设置`T.end`，不是最终交付长度。地图/球面主题按需读[地理制作](references/cartography.md)，不加载给其他题材。
+脚手架不再默认选夜曲；省略world会停止且不创建工程。custom必须提供duration，不能为通过命令机械填30。显式B/C旧命令仍保留30秒兼容占位并警告，正式创作一律按完整剧本传duration；不需用户批准这些内部决定。地图/球面主题按需读[地理制作](references/cartography.md)，不加载给其他题材。
 
 默认 1920×1080、30fps、无旁白。字体缺失先运行 `python engine/get_fonts.py`。
 配乐默认从简洁、舒适、有呼吸的方向选择，按题材调整；先写情绪与静默，再选音色。真实授权素材、用户音乐、原创编配均可；[轻音乐制作](references/light-music.md)提供CC0真实钢琴采样与共享拍点的最小调用，不要求每片使用钢琴。未听审不得称音乐舒适度已验收。

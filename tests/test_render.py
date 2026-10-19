@@ -76,6 +76,29 @@ class ParallelTests(unittest.TestCase):
             self.assertEqual(list((p/'renders').iterdir()),[])
 
 class BrowserTests(unittest.TestCase):
+    def test_capture_timeout_reports_last_successful_seek_state_without_retry(self):
+        # Inject only the expensive compositor timeout. Real page, seek, fonts,
+        # project server and diagnostics must run, with no second JS probe.
+        from playwright.sync_api import Page, TimeoutError as CaptureTimeout
+        def check(pg):
+            with patch.object(Page,'screenshot',side_effect=CaptureTimeout('injected compositor stall')) as capture, patch.object(pg,'evaluate',wraps=pg.evaluate) as evaluate:
+                with self.assertRaisesRegex(RuntimeError,'frame capture timeout') as error:
+                    r.shot(pg,.125)
+                message=str(error.exception)
+                for text in ['0.125','browser','fonts','loaded','canvas','ready','request_failures','capture-1']:
+                    self.assertIn(text,message)
+                capture.assert_called_once()
+                self.assertEqual(evaluate.call_count,1,'a stalled renderer must not receive another diagnostic JS call')
+        self.page("VK.film({dur:1,grain:0,meta:{title:'capture-1'},draw(fr,t){fr.rect(t*10,40,80,80,{fill:'#abc'})}})",check)
+
+    def test_real_failed_request_is_retained_for_render_diagnostics(self):
+        def check(pg):
+            pg.route('**/diagnostic-font.woff2',lambda route:route.abort('failed'))
+            pg.evaluate("fetch('diagnostic-font.woff2').catch(()=>null)")
+            failures=getattr(pg,'_vk_request_failures',[])
+            self.assertTrue(any('diagnostic-font.woff2' in x for x in failures),failures)
+        self.page('VK.film({dur:.1,draw(){}})',check)
+
     def test_resume_rejects_inputs_in_generated_directories(self):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d);(p/'review').mkdir();(p/'renders').mkdir()

@@ -70,11 +70,12 @@ python engine/get_fonts.py
 在你自己的项目里建工程，不要建在这个 skill 目录里。
 
 ```bash
-python scripts/new_film.py <工程目录> --world C
+# Agent先完成事实、艺术方向与完整分镜，再填入它选定的world和秒数：
+python scripts/new_film.py <工程目录> --world <B或C或custom> --duration <完整分镜秒数>
 python engine/render.py <工程目录> --serve
 ```
 
-`--world` 用 `C`（夜曲）、`B`（寓言）或 `custom`（无辉光/颗粒的中性起点，同时生成 direction.md）。原 B/C 工程无需迁移；已有 film.js 默认不会被覆盖，需要明确 `--force`。命令和写法见 [engine](references/engine.md)。
+`--world` 用 `C`（夜曲）、`B`（寓言）或 `custom`（无辉光/颗粒的中性起点，同时生成 direction.md）。无world不再默认夜曲且不创建工程；custom还必须指定正数duration。正式创作一律先决定时长再建工程，用户无需选择这些技术参数。显式B/C旧命令省略duration仍保留30秒占位并发出警告；原B/C工程无需迁移。已有film.js默认不会被覆盖，需要明确`--force`。命令和写法见[engine](references/engine.md)。
 
 ```bash
 python -m unittest discover -s tests -v
