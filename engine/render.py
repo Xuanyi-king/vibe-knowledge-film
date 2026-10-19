@@ -20,6 +20,11 @@ import hashlib, http.server, io, json, math, os, random, subprocess, sys, tempfi
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+try:
+    from . import provenance as provenance
+except ImportError:
+    import provenance
+
 ENGINE = Path(__file__).resolve().parent
 
 class Handler(http.server.SimpleHTTPRequestHandler):
@@ -137,6 +142,7 @@ def sheet(proj, args, name="sheet"):
     with_page(proj, go)
 
 def frames(proj, out, a=0.0, b=None, local_only=False):
+    sources = provenance.source_files(proj)
     def go(pg):
         end, fps = pg.evaluate("END"), pg.evaluate("FPS")
         if not all(math.isfinite(v) for v in (end, fps, a, end if b is None else b)) or fps <= 0 or end <= 0 or a < 0:
@@ -162,7 +168,8 @@ def frames(proj, out, a=0.0, b=None, local_only=False):
                 code = ff.wait(timeout=60)
                 if code: raise RuntimeError(f"ffmpeg failed with exit code {code}")
                 if not target.is_file() or not target.stat().st_size: raise RuntimeError("ffmpeg produced no video")
-                target.replace(out)
+                provenance.stable(proj, sources)
+                provenance.publish_video(target, out, sources, dict(end=end, fps=fps, start=n0/fps, stop=end if a==0 and bb==end else n1/fps))
             finally:
                 if ff.poll() is None:
                     ff.terminate()
@@ -196,6 +203,7 @@ def frames_resume(proj, out, chunk_seconds=4, jobs=1):
 
 def frames_parallel(proj, out, jobs):
     """Isolated part files; wait for every worker; publish only a successful concat."""
+    sources = provenance.source_files(proj)
     end, fps = with_page(proj, lambda pg: (pg.evaluate("END"), pg.evaluate("FPS")))
     if not all(math.isfinite(v) and v > 0 for v in (end, fps)) or jobs < 1:
         raise ValueError("invalid duration, fps or jobs")
@@ -218,7 +226,8 @@ def frames_parallel(proj, out, jobs):
             listing.write_text("".join(f"file '{part.name}'\n" for part in parts), encoding="utf-8")
             target = folder / "joined.mp4"
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(listing), "-c", "copy", "-movflags", "+faststart", str(target)], check=True)
-            target.replace(out)
+            provenance.stable(proj, sources)
+            provenance.publish_video(target, out, sources, dict(end=end, fps=fps, start=0, stop=end))
         finally:
             for process in procs:
                 if process.poll() is None:
@@ -229,10 +238,16 @@ def frames_parallel(proj, out, jobs):
 
 def events(proj):
     (proj / "audio").mkdir(exist_ok=True)
+    sources = provenance.source_files(proj)
     def go(pg):
-        ev = pg.evaluate("events()"); m = pg.evaluate("({end: END, fps: FPS, meta: META, score: window.VK_SCORE?.json() || null})")
-        (proj / "audio/events.json").write_text(json.dumps({"end": m["end"], "fps": m["fps"], "meta": m["meta"], "events": ev, "score": m["score"]}, ensure_ascii=False), encoding="utf-8")
-        print("events:", len(ev))
+        ev = pg.evaluate("events()")
+        m = pg.evaluate("({end: END, fps: FPS, meta: META, score: window.VK_SCORE?.json() || null})")
+        if pg._vk_remote_assets or pg._vk_generated_assets:
+            raise RuntimeError('versioned events require local assets outside generated audio/review/renders folders')
+        provenance.stable(proj, sources)
+        spec = provenance.seal_events(dict(end=m['end'],fps=m['fps'],meta=m['meta'],events=ev,score=m['score']), sources)
+        provenance.atomic_json(proj/'audio/events.json', spec)
+        print("events:", len(ev), "legacy;", len((m['score'] or {}).get('events', [])), "shared")
     with_page(proj, go)
 
 def det(proj, n=12):

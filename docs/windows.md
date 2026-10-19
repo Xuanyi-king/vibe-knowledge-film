@@ -1,12 +1,13 @@
 # Windows PowerShell 使用与验证
 
-当前仍无Windows主机，Linux环境也没有pwsh/powershell：**本轮未执行Windows或PowerShell实测**。以下提供可直接运行的短验证入口；不能用Linux路径含空格/中文的测试代替原生Windows验证。
+本地开发环境只有Linux，没有原生Windows或pwsh。新增GitHub Actions的ubuntu-latest/windows-latest核心矩阵，实际运行状态和链接统一列在[最终验收](final-acceptance.md)；未运行的任务不能当通过。Windows核心任务还执行本文件的PowerShell验证入口；可选WebGL完整导出为单独手动任务。
 
 在仓库根目录，安装 Python 3.10+、Git 和 FFmpeg（含 ffprobe），并将它们加入 PATH。
 
 ```powershell
 py -m venv .venv
 .\.venv\Scripts\Activate.ps1
+$env:PYTHONUTF8 = '1' # Python3.10–3.14一致的UTF-8工程/日志环境
 python -m pip install -r requirements.txt
 python -m playwright install chromium
 python engine/get_fonts.py
@@ -88,3 +89,19 @@ python scripts/analyze_music.py ..\music.wav --out ..\music-analysis.json
 ```
 
 `-AV`安装可选Three，跑完整测试、确定性、8秒分段渲染、分轨、编码同步及媒体检查。关闭浏览器预览后再删除可选`engine/vendor/three`即可卸载；无npm服务/注册表改动。缓存可在停止渲染后删除工程renders/.vk-cache；不要在渲染中清理。新音频模块复用已有NumPy/SciPy和FFmpeg，无新增Python依赖。此PowerShell入口仍未在Windows原生执行，不能将Linux成功等同跨平台已验收。
+
+## 完整自主作品与当前版本检查
+
+Agent负责主题、资料、剧本和艺术决定；用户不需要按阶段审批。源文件完成后可一次执行：
+
+```powershell
+python scripts/produce.py examples/atlas --assets geo --chunk 4 --jobs 1
+if ($LASTEXITCODE -ne 0) { throw 'production failed; read review/production.json' }
+Start-Process examples/atlas/renders/final.mp4
+# 单独复查声明的实际绘制条件（不是通用语义识别）：
+python scripts/check_visual.py examples/atlas --video examples/atlas/renders/final.mp4 --require four-area one-area end-complete
+```
+
+历史无指纹导出须保留后重新渲染/导事件/合音，不能把旧audio/events.json认领为新film.js。输入编辑后请重跑生产入口；--resume按内容复用合法段。相同时长与FPS不代表相同版本。生成目录audio/review/renders不可放输入素材。
+
+可选地理依赖为本地固定D3与Natural Earth数据，无浏览器CDN请求；卸载时关闭预览后删除engine/vendor/geo。核心CI不强制安装地理或Three，因此会明确跳过对应可选测试；本地完整验收需先安装。完整作品的WebGL之外地理分支由Linux本地实际导出验证。

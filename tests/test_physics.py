@@ -6,9 +6,7 @@ import unittest
 from scipy.integrate import quad
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location('render', ROOT / 'engine/render.py')
-render = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(render)
+from engine import render
 
 
 class PhysicsTest(unittest.TestCase):

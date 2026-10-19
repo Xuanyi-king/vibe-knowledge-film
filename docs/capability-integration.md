@@ -17,3 +17,9 @@
 实际落地：`engine/vk-motion.mjs`（解析运动/tempo/score/camera）、`score_audio.py`（材质激励/样本/分轨/自动化）、`check_av.py`（编码回测）、`analyze_music.py`（保守分析候选），统一接入原render.py/audio.py。组件是本任务原创实现，公开算法与方法不是第三方资产授权。
 
 验证见[8秒样例](../examples/resonance/README.md)与[修订记录](pr1-revision.md)。仅“读过参考”的能力不列为已实现；自动downbeat、语义乐句、完整物理仿真、任意3D资产加载、实时WebAudio试听仍是扩展方向。
+
+## 地图完整制作的定向补充
+
+没有重复九仓库调研。新增D3地理算法解决真实海岸线、球面裁剪和投影形变，取代每次手写整套地图图形算法；不引入D3动画计时器。实际读3.1.1的mercator/cylindricalEqualArea/orthographic实现并验证导数与球面多边形绕序，全部本地确定性驱动。d3-geo3.1.1+d3-array3.2.4与Natural Earth110m数据共约208KB（含许可），不安装整套D3或独立框架。固定版本/散列由get_geo_assets.py管理；[许可](../THIRD_PARTY_NOTICES.md)、[调用与失败经验](../references/cartography.md)。
+
+音乐复用Karplus–Strong公开方法补充可衰减拨弦，不加入新DSP依赖；与现有score、分轨和同步共用。实际原创24小节配乐用于72秒作品，尚不能从技术检测推断听感专业。未实现自动作曲审美、自动downbeat/乐句、通用地理事实核验或电影级后期库。

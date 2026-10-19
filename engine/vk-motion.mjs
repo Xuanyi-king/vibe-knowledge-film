@@ -57,8 +57,11 @@ export function score(input) {
   return {time,beat,event(id){if(!events.has(id))throw Error(`unknown event ${id}`);return structuredClone(events.get(id));},json(){return structuredClone(data);}};
 }
 // Focal position, target and field-of-view share key times; repeated poses make holds.
+const cameraDefaults=new WeakMap();
 export function camera(camera,keys,t) {
-  const pose=track(keys.map(([s,p])=>[s,[...p.position,...p.target,p.fov??camera.fov]]),t);
+  if(!cameraDefaults.has(camera))cameraDefaults.set(camera,camera.fov);
+  const baseFov=cameraDefaults.get(camera);
+  const pose=track(keys.map(([s,p])=>[s,[...p.position,...p.target,p.fov??baseFov]]),t);
   camera.position.fromArray(pose.slice(0,3));camera.lookAt(...pose.slice(3,6));camera.fov=pose[6];camera.updateProjectionMatrix();
 }
 // Prescribed contact choreography, not a collision solver. The approach has

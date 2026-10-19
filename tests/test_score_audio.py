@@ -63,3 +63,12 @@ class ScoreAudioTest(unittest.TestCase):
         self.assertAlmostEqual(measured['lag_seconds'],321/48000,places=6)
         self.assertGreater(measured['correlation'],.999)
         with self.assertRaisesRegex(ValueError,'silent'):m.delay(np.zeros(100),np.zeros(100),48000)
+
+    def test_seeded_string_has_requested_pitch(self):
+        m=self.load();e={'id':'string','start':0,'end':1,'sound':{'kind':'string','midi':60,'gain':.1}}
+        x=m.voice(e,48000,ROOT).mean(axis=1)
+        spectrum=np.abs(np.fft.rfft(x[:24000]*np.hanning(24000)))
+        freqs=np.fft.rfftfreq(24000,1/48000);band=(freqs>230)&(freqs<290)
+        peak=freqs[band][np.argmax(spectrum[band])]
+        self.assertAlmostEqual(peak,261.63,delta=4)
+        self.assertTrue(np.array_equal(x,m.voice(e,48000,ROOT).mean(axis=1)))

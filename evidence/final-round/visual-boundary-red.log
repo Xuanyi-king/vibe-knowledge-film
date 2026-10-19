@@ -1,0 +1,20 @@
+test_invalid_declarations_and_nonfinite_measurements_fail (tests.test_visual_checks.VisualChecksTest.test_invalid_declarations_and_nonfinite_measurements_fail) ... FAIL
+
+======================================================================
+FAIL: test_invalid_declarations_and_nonfinite_measurements_fail (tests.test_visual_checks.VisualChecksTest.test_invalid_declarations_and_nonfinite_measurements_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_visual_checks.py", line 51, in test_invalid_declarations_and_nonfinite_measurements_fail
+    render.with_page(ROOT/'examples/fold_C',run)
+  File "/workspace/vibe-knowledge-film/engine/render.py", line 115, in with_page
+    try: return fn(pg)
+                ^^^^^^
+  File "/workspace/vibe-knowledge-film/tests/test_visual_checks.py", line 50, in run
+    for key in ['duplicate','unknown','range','lastFrame']:self.assertTrue(result[key],key)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true : lastFrame
+
+----------------------------------------------------------------------
+Ran 1 test in 1.693s
+
+FAILED (failures=1)

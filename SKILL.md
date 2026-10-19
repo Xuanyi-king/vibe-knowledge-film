@@ -12,17 +12,23 @@ description: >
 保留原版的两个核心：**能认出对象，能看见因果**。抽象概念也可以用数学图、空间隐喻、文字、蒙太奇来讲。
 每个视觉决定须有目的；真实物体需要可识别，隐喻需要对应关系和边界，图表需要单位，安静的镜头需要观看任务。
 
+## 自主完成契约
+
+用户只给知识主题，任务也已开始：自主研究可靠资料、选择切入点、编剧、确定艺术与声音方向、制作、渲染、审片和返工，目标是**完整有声MP4**。用户无需懂技术、提供分镜或逐阶段批准。
+
+时长由理解任务和叙事决定；70秒、3分钟或更长都可，不按固定结构/画风/复杂度套片。内部关键帧、6秒镜头和30秒试做只降低风险，**通过后立即继续全片，不能作为默认最终交付**。技术正确但缺乏吸引力的镜头应重新设计；不以原版规则、代码量或特效数接受普通结果。
+
 ## 先判断从哪里开始
 
 - 只有选题：从事实与理解障碍开始。有文案：先核事实，保留意图，说明必要改写。
 - 改旧片：先看旧片真实帧，记录时间点；无法看视频时用静帧和 Motion Strip，并说明动态审查局限。
 - 无素材 / 无模型 API：用可运行的程序化作品继续。不得假装看过参考片、调用过模型或完成审美验收。
-- 用户已说直接做：自主决定并记录，不反复请求确认。作品范围不明时先做 30–45 秒。
+- 用户已说直接做：自主决定并记录，不反复请求确认。只有主题时自主定完整作品范围与合理长度，并持续执行到交付；不把短样片当成默认目标。
 
-## 一次解决一个问题
+## 内部分阶段，持续完成
 
 把创意和代码分开。每步只读取下面指向的文档、当前文件与上一阶段决定；不要一次加载全部 references。
-轻量模型每轮只交付一项，写清 `已定 / 未知 / 下一步`。同一 Agent 即可，不需要多 Agent 框架。
+每个内部步骤只解决一个推理任务，保留简短的`已定 / 未知 / 下一步`后自动继续。阶段完成不是结束对话的理由；只有无法推断的必要输入、不可恢复的环境阻塞或用户明确要求暂停，才请求帮助。单Agent即可，不需要多Agent框架。
 
 | 阶段 | 写下或制作 | 通过条件 / 按需阅读 |
 |---|---|---|
@@ -31,14 +37,14 @@ description: >
 | 3 定方向 | 在同一文件选一个方向，定义色/字/空间/材质/节奏/声音 | 说明选择与舍弃理由。B/C 可直接使用，也可自定；[worlds](references/worlds.md) |
 | 4 分镜 | `storyboard.md`：镜头 ID、时间、字幕、可见证据、动作、机位、交接、声音 | 一镜一个理解任务，动作有起点/变化/落点/停留；[讲解案例](references/visualization.md) |
 | 5 关键画面 | 最难一镜与两个不同景别的实际截图 | 遮住字幕检查主体与关系；按手机大小看；[视觉配方](references/craft.md) |
-| 6 动画 | 一镜一个函数，同一主时间轴，动作/镜头/声音共读事件 | 物理时间与镜头缓动分开；优先复用[编排组件](references/choreography.md)，画面是t的函数 |
+| 6 动画 | 按复杂度拆镜头/组件，同一主时间轴，动作/镜头/声音共读事件 | 物理时间与镜头缓动分开；优先复用[编排组件](references/choreography.md)，画面是t的函数 |
 | 7 动态检查 | 关键动作 Motion Strip + 局部 MP4 | 看中间态、接触、速度、阅读停顿；不能只看首尾 |
 | 8 批评返工 | `review.md`：时间点/证据/原因/层级/修改/同刻结果 | 优先修最影响理解或完成度的 1–3 处；[review](references/review.md) |
 | 9 声音合成 | 事件表、配乐来源、最终 MP4 | 分轨独听；从最终编码回测同步；停顿有意图，[视听制作](references/choreography.md) |
 | 10 验收 | 技术报告、关键帧、完整源代码、未验证项 | 以真实产物评审；不得用亮度或帧差当审美分数 |
 
 阶段 5–8 是局部循环：先试一个难镜头，再扩展。不要靠增加装饰救概念错误。
-两次修改仍解释不清，回到候选方案；问题解决即可停止，别为了轮数重做。
+修改不能解决理解或完成度问题时回到叙事/候选方案；不要用固定返工次数限制质量，也不要为凑轮数重复。完成的标准是整部片的知识收获、观看体验和交付，而不是某个阶段的文件齐全。
 
 复杂动作先选`track/contact/spring/impulse/path/camera`，音乐拍点和触感音共读`VK_SCORE`，不从零写调度、弹簧或声学合成。简单片仍可用原`fr.sfx`，不要为了流程强加3D、运镜和配乐。
 
@@ -54,23 +60,23 @@ description: >
 - **声音也在讲解。** 到达、接触、转折才强调；不要所有元素入场都配音效。合成配乐可用，外部音乐需许可。
 - **自由有边界。** 隐喻不能篡改事实，物理仿真不能套缓动改速度；简化必须上屏或在事实表说明。
 
-## 最小命令链
+## 制作与交付
 
 ```bash
-python scripts/new_film.py <project> --world C       # B / C / custom
-python engine/render.py <project> --sheet 2 8 16 24
-python engine/render.py <project> --motion 8 10
-python engine/render.py <project> --clip 8 12 check
-python engine/render.py <project> --det
-python engine/render.py <project> --resume 4 --jobs 2 # 持久分段，中断后同命令恢复
-python engine/render.py <project> --events
-python engine/audio.py <project> --stems              # score工程可独听music/sfx/ambience
-python scripts/check_media.py <project>/renders/final.mp4 --duration 36
+python scripts/new_film.py <project> --world custom # 也可B/C；Agent按剧本确定时长
+# 完成事实、叙事、分镜和源码；先用sheet/motion/clip检查难镜头，再自动扩展全片。
+python scripts/produce.py <project> --assets geo     # 按需求选geo/scene，无可选资产则省略
 ```
+
+生产入口自动安装已声明的可选资产与字体，执行确定性、持久分段、事件导出、分轨合音、编码同步、已声明视觉条件和媒体检测；失败立即停止并保留旧成片。它不替Agent决定主题、镜头、音乐或审美。详见[完整制作](references/production.md)。旧命令仍可单独使用。
+
+输入修改后必须重导事件并重渲受影响画面；版本指纹不匹配会拒绝合音和检查。[动作探针](references/action-checks.md)让重要接触/到达拥有实际帧证据；编码同步、视觉动作条件和主观审片分别验收。
+
+脚手架的30秒是可编辑占位，必须按完整剧本设置`T.end`，不是最终交付长度。地图/球面主题按需读[地理制作](references/cartography.md)，不加载给其他题材。
 
 默认 1920×1080、30fps、无旁白。字体缺失先运行 `python engine/get_fonts.py`。
 [Windows 安装与验证](docs/windows.md)。[8秒视听样例](examples/resonance/README.md)演示公共组件完整调用；技术同步不能代替看图与听音。原版 [fold_C](examples/fold_C/storyboard.md)、[pigeon_B](examples/pigeon_B/storyboard.md) 保留；
 [原创对照实验](docs/experiments/director-2026-10/README.md) 含适用范围、产物和成本，不能把单次样片外推为弱模型已提升。
 
-交付：`facts.md`、`direction.md`、`storyboard.md`、源码、`review.md`、MP4、同刻前后帧和技术报告。
+优先向用户交付：完整可播放MP4、简短作品介绍、知识来源和源码位置、实际验收及限制。facts/direction/storyboard/review和技术记录保留在工程供追溯，不以大量内部文档代替作品。只有明确请求技术样例时，短片段才是完整交付。
 如果画面或音频无法访问，列出未验收项及可直接执行的继续命令。

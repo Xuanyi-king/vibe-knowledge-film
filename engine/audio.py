@@ -142,6 +142,12 @@ if __name__ == "__main__":
     a = sys.argv[1:]
     if not a: sys.exit(__doc__)
     proj = Path(a[0]).resolve(); spec = json.loads((proj / "audio/events.json").read_text(encoding="utf-8"))
+    try:
+        from engine import provenance
+    except ModuleNotFoundError:
+        import provenance
+    sources = provenance.validate_events(proj, spec)
+    if '--wav-only' not in a:provenance.validate_video(proj/'renders/raw.mp4', spec, sources)
     bgm = a[a.index("--bgm") + 1] if "--bgm" in a else None
     bgm_db = float(a[a.index("--bgm") + 2]) if bgm and len(a) > a.index("--bgm") + 2 and a[a.index("--bgm") + 2].lstrip("-").replace(".", "").isdigit() else -8
     if spec.get('score'):
@@ -156,12 +162,15 @@ if __name__ == "__main__":
             raise ValueError('score and film timeline differ; re-export --events')
         x, stems, report = score_audio.render(score, proj)
         report['score_sha256'] = hashlib.sha256(json.dumps(score, sort_keys=True).encode()).hexdigest()
-        (proj/'audio/mix.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
         if '--stems' in a:
             for name, stem in stems.items(): write_wav(proj/f'audio/{name}.wav', stem)
     else:
         x = synth(spec, bgm=bool(bgm)); pk = np.abs(x).max() or 1; x = x / pk * 10 ** (-3 / 20)
     wav = proj / "audio/score.wav"; write_wav(wav, x); print("score:", wav, f"{len(x) / SR:.1f}s", len(spec["events"]), "events")
+    provenance.stable(proj, sources)
+    if spec.get('score'):
+        report.update(events_sha256=provenance.identity(spec),reference_sha256=provenance.digest(wav))
+        provenance.atomic_json(proj/'audio/mix.json', report)
     if "--wav-only" in a: sys.exit()
     raw, out, end = proj / "renders/raw.mp4", proj / "renders/final.mp4", spec["end"]
     if bgm:   # 现成配乐：垫底 + 事件音；整体到 -14 LUFS
@@ -179,5 +188,8 @@ if __name__ == "__main__":
         except (subprocess.SubprocessError, ValueError, RuntimeError) as exc:
             detail = getattr(exc, 'stderr', None) or str(exc)
             raise RuntimeError(f"audio mux failed; previous final.mp4 kept: {detail}") from exc
-        target.replace(out)
+        provenance.stable(proj, sources)
+        provenance.validate_video(raw, spec, sources)
+        provenance.publish_video(target, out, sources, dict(end=end, fps=spec.get('fps',30), start=0, stop=end),
+                                 kind='final', events_sha256=provenance.identity(spec), reference_sha256=provenance.digest(wav))
     print("done", out)

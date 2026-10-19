@@ -10,7 +10,7 @@
 | 重量、反弹、次级响应 | `spring(dt,{from,to,velocity,frequency,damping})`、`impulse(dt,{velocity,frequency,damping})` | 频率Hz与阻尼比；0.3有余振，1临界，>1过阻尼；不是数值物理求解器 |
 | 接触后回弹 | `contact(t,{time,from,to,lead,restitution})` → `{position,incomingSpeed}` | 预设加速接近 + 解析弹簧回退；接触速度不为零。真实自由落体/机械匀速须另用物理方程 |
 | 沿曲线运动 | `path([p0,p1,p2,p3],u)` | 三次Bezier参数不是弧长；匀速需求须做弧长参数化 |
-| 有目的的机位 | `camera(threeCamera, [[秒,{position,target,fov}],...], t)` | 一次移动引向一个观看目标；先保持接触可见，再移动；无需一直运镜 |
+| 有目的的机位 | `camera(threeCamera, [[秒,{position,target,fov}],...], t)` | 省略fov时保持首次调用前的机位fov，乱序seek不会累积；一次移动引向一个观看目标；先保持接触可见，再移动；无需一直运镜 |
 | 遮挡、曲面、光影 | [场景层](complex-scenes.md)的`solid/rod/lathe/studio/surface` | 形状比例、统一光源、粗糙度、UV尺度；不再手写法线与投影 |
 | 动态文字/数值 | `track`驱动位置/透明度/数值，原`fr.text/VKit`画字 | 字号层级、阅读停顿、单位与精度。可用同运动match cut，不强制字字配音 |
 
@@ -51,6 +51,7 @@ mallet.position.z=contact(t,{time:hit.start,...hit.motion}).position;
 - `friction`：滤波噪声、颗粒调制、`speed`包络控制能量。适合擦动与滑动，不冒充实录拟音。
 - `whoosh`：移动气流的起落包络；不用来替代接触声。
 - `pluck`：MIDI音高、衰减泛音；音乐由显式音符事件编排，**无默认Drone或自动和弦**。不要每次使用样例的五个音。
+- `string`：原创Karplus–Strong延迟反馈拨弦，MIDI音高，`feedback`在(0,1)内控制延音；固定采样率产生有限音高量化，不冒充真实乐器录音。[完整地图配乐](../examples/atlas/score.mjs)给出低音/音型/退让/静默/收束的编排。
 - `sample`：用户/合法素材，通过FFmpeg解码为48kHz双声道。`src`为项目内路径，必须给`license`来源记录；`trim`裁前置秒，`anchor`是裁后素材中对应画面时刻的秒，可对齐attack或peak。禁止照搬第三方统一延迟常数。采样不支持直接pitch移调，应提供处理后的源文件。
 
 所有声源支持gain（标量或局部秒的自动化）、pan（-1..1，自动化可用）、cutoff；合成支持pitch半音。采样声像是立体声balance，中心保持原声场；合成是等功率mono pan。音轨为music/sfx/ambience；轨道gain用**全局秒**，可设置highpass/lowpass、room/t60。房间响应和各事件随机种子固定，不随事件顺序改变。
@@ -84,7 +85,7 @@ python scripts/check_media.py examples/resonance/renders/final.mp4 --duration 8 
 
 `check_media --loudness`额外测量最终音轨的integrated LUFS、intersample true peak与LRA，静音测不出时返回null，不设统一响度审美目标。
 
-`check_av`对源混音与**最终AAC解码**逐事件窗口互相关，报告编码延迟、相关度、帧量化误差；没有有效事件不能通过。无声/身份不清会失败，不假装同步。它验证编码链保留了调度，**不能从波形证明画面真的接触**；须同时看接触前/当刻/之后和Motion Strip。无声动作无需检查；声效需要豁免时给`sync:'exempt', sync_reason:'...'`并保留原因。
+`check_av`对源混音与**最终AAC解码**逐事件窗口互相关，报告编码延迟、相关度、帧量化误差；没有有效事件不能通过。无声/身份不清会失败，不假装同步。输入指纹先拒绝旧事件/旧片/被改混音，报告异常时立即作废旧绿灯。它验证编码链保留了调度，**不能从波形证明画面真的接触**；须同时看接触前/当刻/之后和Motion Strip。无声动作无需检查；声效需要豁免时给`sync:'exempt', sync_reason:'...'`并保留原因。
 
 | 症状 | 先改什么 | 证据 |
 |---|---|---|
@@ -96,3 +97,5 @@ python scripts/check_media.py examples/resonance/renders/final.mp4 --duration 8 
 | 静音被判异常 | 对照声明silence；检查前后余音与音乐返回 | 真实听音与时间表 |
 
 [8秒完整公共能力样例](../examples/resonance/README.md)含真实渲染与局部返工。当前执行环境不能试听，故未主观验收音色、混音舒适度和完整节奏；不要用峰值/相关度代替听音。
+
+关键动作再用[实际帧条件](action-checks.md)读真实几何间隙或实际绘制状态：`python scripts/check_visual.py <project> --video <project>/renders/final.mp4`。编码同步和声明动作条件分层，未声明的动作不在自动证明范围。

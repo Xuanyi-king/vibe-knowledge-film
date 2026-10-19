@@ -23,8 +23,12 @@ class ChoreographyTest(unittest.TestCase):
                 critical:M.spring(20,{from:1,to:0,frequency:2,damping:1}),
                 over:M.spring(20,{from:1,to:0,frequency:2,damping:2}),
                 impulse:M.impulse(0,{velocity:2,frequency:3,damping:.2}),
-                contactProfile:typeof M.contact==='function'?M.contact(2,{time:2,from:1.8,to:.19,lead:.7,restitution:.35}):null};
+                contactProfile:typeof M.contact==='function'?M.contact(2,{time:2,from:1.8,to:.19,lead:.7,restitution:.35}):null,
+                cameraReplay:(()=>{const c={fov:35,position:{fromArray(){}},lookAt(){},updateProjectionMatrix(){}};
+                  const keys=[[0,{position:[0,0,5],target:[0,0,0]}],[1,{position:[0,0,3],target:[0,0,0],fov:60}]];
+                  M.camera(c,keys,.5);const first=c.fov;M.camera(c,keys,0);M.camera(c,keys,.5);return[first,c.fov];})()};
             }''')
+            self.assertEqual(result['cameraReplay'][0],result['cameraReplay'][1],'omitted camera FOV depends on previous seek')
             self.assertEqual(result['start'],3)
             self.assertLess(max(map(abs,result['inverse'])),1e-10)
             self.assertEqual(result['a'],result['b'])

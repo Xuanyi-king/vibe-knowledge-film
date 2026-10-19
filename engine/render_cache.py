@@ -162,6 +162,10 @@ def render_cached(proj, out, meta, chunk_seconds, jobs, render_part, expected_so
                      '-c', 'copy', '-movflags', '+faststart', str(target)], 'concat failed; old output kept')
             validate_video(target, total, meta)
             stable()
-            target.replace(out)
+            try:
+                from .provenance import publish_video
+            except ImportError:
+                from provenance import publish_video
+            publish_video(target, out, sources, dict(end=meta['end'], fps=meta['fps'], start=0, stop=meta['end']))
         print(f'done {out} {total} frames; cache {folder}', flush=True)
         return folder

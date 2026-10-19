@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 import subprocess
 import numpy as np
-from scipy.signal import butter, sosfilt, correlate, correlation_lags
+from scipy.signal import butter, sosfilt, correlate, correlation_lags, lfilter
 try:
     from . import audio as A
 except ImportError:
@@ -63,6 +63,16 @@ def voice(e,sr,root):
             x=noise*(.55+.22*np.sin(2*np.pi*37*t)+.18*np.sin(2*np.pi*83*t))*np.sqrt(np.maximum(0,speed))*.24
         elif kind=='whoosh':
             x=noise*np.sin(np.pi*t/duration)**2*.16
+        elif kind=='string':
+            f=440*2**((p.get('midi',60)+p.get('pitch',0)-69)/12)
+            period=max(2,round(sr/f-.5));feedback=p.get('feedback',.97)
+            if not 0<feedback<1:raise ValueError('string feedback must lie in (0,1)')
+            excitation=np.zeros(n);count=min(period,n)
+            excitation[:count]=rng.uniform(-.4,.4,count)
+            # Karplus-Strong loop: one delay and a two-tap low-pass feedback.
+            denominator=np.zeros(period+2);denominator[0]=1
+            denominator[period:]=-feedback/2
+            x=lfilter([1],denominator,excitation)*2.5
         elif kind=='pluck':
             f=440*2**((p.get('midi',60)-69)/12)
             x=sum(np.sin(2*np.pi*f*k*t)*np.exp(-t/(.45/k))/(k*k) for k in range(1,6) if f*k<sr*.45)*.28*np.minimum(1,t/.004)

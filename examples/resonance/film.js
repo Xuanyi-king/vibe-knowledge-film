@@ -1,5 +1,5 @@
 (async()=>{
-  const [{THREE:T,studio,solid,rod,lathe,surface},M,{SCORE}]=await Promise.all([import('/engine/vk-scene.mjs'),import('/engine/vk-motion.mjs'),import('./score.mjs')]);
+  const [{THREE:T,studio,solid,rod,lathe,surface},M,{SCORE},C]=await Promise.all([import('/engine/vk-scene.mjs'),import('/engine/vk-motion.mjs'),import('./score.mjs'),import('/engine/vk-checks.mjs')]);
   window.VK_SCORE=SCORE;
   const hit=SCORE.event('strike'),damp=SCORE.event('damp'),macro=SCORE.event('macro');
   const S=studio({position:[3.2,2.9,6.4],target:[.15,1.6,0],fov:35});
@@ -15,7 +15,8 @@
   for(const x of [-1.45,1.45])S.scene.add(rod(black,.035).between([x,.05,0],[x,3.05,0]));
   const disc=new T.Group();disc.position.y=1.62;S.scene.add(disc);
   const profile=[[0,.12],[.12,.12],[.2,.055],[.35,.025],[.55,.01],[.78,0],[.9,-.018],[.92,-.06],[.92,-.10],[.88,-.04],[.55,-.03],[.19,.015],[.1,.07],[0,.07]];
-  const plate=lathe(profile,bronze,128);plate.rotation.x=Math.PI/2;disc.add(plate);
+  // Lathe contours must wind outward; the former order culled the front surface.
+  const plate=lathe([...profile].reverse(),bronze,128);plate.rotation.x=Math.PI/2;disc.add(plate);
   for(const [radius,z] of [[.32,.031],[.48,.017],[.65,.006],[.82,-.006],[.90,-.018]]){
     const ring=solid(new T.TorusGeometry(radius,.003,6,128),bronze);ring.position.z=z+.003;disc.add(ring);
   }
@@ -49,6 +50,25 @@
     c.fillStyle=color;c.textAlign='left';c.textBaseline='middle';c.font=`500 ${size}px "${font}"`;c.fillText(s,x,y);
   }
   window.SHOT={inspect(t){pose(t);return{hit:hit.start,damp:damp.start,hammerZ:hammer.position.z,damperX:pad.position.x,glError:S.renderer.getContext().getError()};}};
+  // Probe actual rendered mesh transforms, not a second copy of the motion formula.
+  const ray=new T.Raycaster();
+  function gap(origin,direction,extent){
+    S.scene.updateMatrixWorld(true);ray.set(origin,new T.Vector3(...direction));
+    const surface=ray.intersectObject(plate,false)[0];return surface?surface.distance-extent:NaN;
+  }
+  const malletGap=()=>gap(head.getWorldPosition(new T.Vector3()),[0,0,-1],head.geometry.parameters.radius);
+  const feltGap=()=>{
+    // The rim is curved; inspect several actual sections inside the felt face.
+    const values=[-.08,-.06,-.04,0,.04].map(z=>gap(new T.Vector3(pad.position.x,pad.position.y,z),[-1,0,0],pad.geometry.parameters.width*pad.scale.x/2)).filter(Number.isFinite);
+    return values.length?Math.min(...values):NaN;
+  };
+  window.VK_CHECKS=C.visualChecks(SCORE,[
+    {id:'mallet-before',event:'strike',offset:-1/30,min:.01,max:2,unit:'scene m',measure:malletGap,description:'槌头在接触前一帧仍与圆板分离'},
+    {id:'mallet-contact',event:'strike',min:-.005,max:.005,unit:'scene m',measure:malletGap,description:'射线实测槌球表面与铜板三角面接触'},
+    {id:'mallet-recoil',event:'strike',offset:1/30,min:.01,max:2,unit:'scene m',measure:malletGap,description:'接触后一帧开始分离回弹'},
+    {id:'felt-before',event:'damp',offset:-1/30,min:0,max:.2,unit:'scene m',measure:feltGap,description:'毡块指定截面在接触前一帧未穿入铜板'},
+    {id:'felt-contact',event:'damp',min:-.02,max:.02,unit:'scene m',measure:feltGap,description:'毡块左面在指定边缘截面接触，允许示意压缩'},
+  ]);
   VK.film({dur:8,theme:'flat',bloom:0,grain:0,meta:{title:'一击之后',drone:0},draw(fr,t){
     const env=pose(t);
     fr.look.under=c=>{

@@ -6,11 +6,15 @@
 
 原版有两种视觉世界：「夜曲」适合讲底层、难懂的知识；「寓言」把心理、行为逻辑直观演给观众看。本分支保留这两套设计，并增加按主题制定原创视觉方向的工作流。
 
-用的时候，给 Agent 一个选题或文案。它先核对事实、比较视觉方案，再确定美术方向、分镜和关键画面，制作 30–45 秒样片，通过实际静帧、Motion Strip 和局部视频返工。音效随事件合成，BGM 可以自己加。用户已授权直接制作时，不需要逐阶段重复确认。
+用的时候，给 Agent 一个选题或文案。Agent自主核对事实、比较叙事与视觉方案、确定美术和音乐、写完整分镜、制作与返工，最终交付完整有声MP4。时长由知识内容和观看节奏决定；关键帧、Motion Strip和短试片是内部验证，通过后自动继续全片，不需要用户逐阶段批准或发送“继续”。
 
 原理不复杂。用 Canvas 和 JavaScript 把每一帧画出来，驱动浏览器一帧一帧截图，压成视频，再混上声音。字体都是开源的。说白了，就是用代码做这样一条视频。
 
 ## 本次升级与可检查的作品
+
+完整原创《地图是一种选择》（72秒）：[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/final.mp4) · [源码、事实、分镜与用法](examples/atlas/README.md) · [首版到最终关键帧与验收](evidence/atlas/review.md)。从一句主题出发，完整解释纬圈、长度尺度、面积和投影取舍；复用D3地理几何、共享事件、原创分轨配乐和实际绘制条件，不再每次手写海岸线与投影。
+
+[自主主题到成片](references/production.md)提供Agent内部流程；`python scripts/produce.py <project> [--assets geo scene]`统一执行已编写作品的技术生产与检查，不取代Agent的创作判断。输入指纹把画面、事件、参考混音和最终媒体绑定；过期或无版本产物会拒绝合音/检查。编码同步、声明的视觉动作条件和主观审片分开验收，具体平台与限制见[最终验收](docs/final-acceptance.md)。
 
 新增8秒原创《一击之后》：[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/final.mp4) · [源码、关键帧、返工与分轨](examples/resonance/README.md)。共享事件驱动敲击、回弹、余振、阻尼、相机和音乐；模型可调用解析运动、真实深度/PBR、材质音色、采样与分轨自动化，不必每镜重写算法。
 
@@ -67,11 +71,8 @@ python engine/render.py <工程目录> --serve
 
 ```bash
 python -m unittest discover -s tests -v
-python engine/render.py examples/descent_studio --det
-python engine/render.py examples/descent_studio --resume 4 --jobs 2
-python engine/render.py examples/descent_studio --events
-python engine/audio.py examples/descent_studio
-python scripts/check_media.py examples/descent_studio/renders/final.mp4 --duration 36
+python scripts/produce.py examples/atlas --assets geo --chunk 4 --jobs 1
+# 单个底层命令仍兼容：见 references/engine.md
 ```
 
 媒体诊断验证编码、时长和音轨，输出黑段/静音/切换候选；它不判断审美，也不能自动证明字幕无遮挡、事实正确。须结合实际画面审查。
@@ -82,7 +83,7 @@ python scripts/check_media.py examples/descent_studio/renders/final.mp4 --durati
 
 `references/analysis.md`、`references/historical-prompts.md` 里按成片填好的 brief，以及 `examples/stim_B`、`info_C`，字幕和画面设计来自他人的短片，版权属于原作者。这两段是学习对照，不要当成自己的作品发布。
 
-本次 descent、governor_scene、resonance 原创样片的代码、程序化画面和合成音轨为本任务原创，随仓库 MIT 许可提供。未复制调研项目的代码或视听素材；依赖与调研许可边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+本次 descent、governor_scene、resonance、atlas 原创作品的代码、程序化画面和合成音轨为本任务原创，随仓库 MIT 许可提供。未复制调研项目的视听素材；可选D3/Three运行库和Natural Earth数据单独保留许可，依赖与调研许可边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 ## 联系
 
