@@ -1,0 +1,33 @@
+{
+  "status": "technical_complete_needs_subjective_review",
+  "stages": [
+    "assets-scene",
+    "fonts",
+    "determinism",
+    "picture",
+    "events",
+    "sound",
+    "mastering",
+    "encoding_audio_sync",
+    "declared_visual_action_sync",
+    "media",
+    "mobile_evidence"
+  ],
+  "subjective_visual_review": "not_automated",
+  "subjective_listening": "not_automated",
+  "active_stage": "mobile_evidence",
+  "film": {
+    "end": 14,
+    "fps": 30,
+    "score": true,
+    "checks": 8
+  },
+  "previous_final_backup": null,
+  "input_sha256": "83f0e0c05ffe0d66820c906e2bb37d17d0099d6a4775985867418577322c47d6",
+  "video_sha256": "0a0b8a574f35b4538f5eaa6fd3ea3fc9b762fc1eef223aecc7806921e5c4293e",
+  "events_sha256": "e57326f66153c4402fe3a8e8642bda3f3e3b6b7cf5a58669faf59459c3e14e22",
+  "final": "renders/final.mp4",
+  "mobile_review": "encoded_390_320_and_pressure_evidence_needs_review",
+  "visual_action_sync": "checked_declared_conditions",
+  "encoding_audio_sync": "checked"
+}

@@ -1,0 +1,7 @@
+{
+  "old_sha256": "bf9b26e8a2e12fa8f8e7cae228fdf42b5b0bf4486fadf638c66fe18f228bec60",
+  "new_sha256": "0a0b8a574f35b4538f5eaa6fd3ea3fc9b762fc1eef223aecc7806921e5c4293e",
+  "audio_payload_sha256": "SHA256=0afa98c40101b5aa9953d6bd82e8053a800fb7771f3900bc0bacf569e40bb8d4",
+  "identical": true,
+  "scope": "AAC compressed payload identical; unchanged score/action times and new encoding/visual checks recorded separately"
+}

@@ -1,0 +1,15 @@
+test_prepared_loader_rejects_replaced_music_before_seek (tests.test_music_direction.MusicDirectionTest.test_prepared_loader_rejects_replaced_music_before_seek) ... FAIL
+
+======================================================================
+FAIL: test_prepared_loader_rejects_replaced_music_before_seek (tests.test_music_direction.MusicDirectionTest.test_prepared_loader_rejects_replaced_music_before_seek)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_music_direction.py", line 96, in test_prepared_loader_rejects_replaced_music_before_seek
+    with self.assertRaisesRegex(RuntimeError,'music config fingerprint'):render.with_page(p,lambda pg:None)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 4.562s
+
+FAILED (failures=1)

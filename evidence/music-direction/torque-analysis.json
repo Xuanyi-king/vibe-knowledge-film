@@ -1,0 +1,477 @@
+{
+  "onsets": [
+    0.006,
+    0.216,
+    1.074,
+    2.86,
+    3.93,
+    5.144,
+    7.862,
+    7.966,
+    8.646,
+    10.716,
+    11.786,
+    12.86
+  ],
+  "tempo_candidates": [
+    {
+      "bpm": 56.0562,
+      "period_seconds": 1.0703544,
+      "relative_periodicity": 0.3028
+    },
+    {
+      "bpm": 76.5588,
+      "period_seconds": 0.7837114,
+      "relative_periodicity": 0.2049
+    },
+    {
+      "bpm": 88.4825,
+      "period_seconds": 0.6781001,
+      "relative_periodicity": 0.1633
+    },
+    {
+      "bpm": 190.8071,
+      "period_seconds": 0.3144537,
+      "relative_periodicity": 0.1293
+    },
+    {
+      "bpm": 164.73,
+      "period_seconds": 0.3642323,
+      "relative_periodicity": 0.1293
+    },
+    {
+      "bpm": 69.5165,
+      "period_seconds": 0.863105,
+      "relative_periodicity": 0.1248
+    },
+    {
+      "bpm": 49.5189,
+      "period_seconds": 1.2116583,
+      "relative_periodicity": 0.1219
+    },
+    {
+      "bpm": 60.5322,
+      "period_seconds": 0.9912085,
+      "relative_periodicity": 0.1135
+    }
+  ],
+  "envelope_tempo_candidates": [
+    {
+      "bpm": 55.3084,
+      "period_seconds": 1.0848265,
+      "relative_periodicity": 0.3213
+    }
+  ],
+  "methods": [
+    "spectral_flux_autocorrelation",
+    "envelope_autocorrelation",
+    "parabolic_period_refinement",
+    "onset_density_and_rms_change"
+  ],
+  "hop_seconds": 0.002,
+  "duration": 14.0,
+  "activity": {
+    "threshold_dbfs": -60,
+    "first": 0.0,
+    "last": 13.878
+  },
+  "silence_candidates": [
+    {
+      "start": 7.186,
+      "end": 7.688
+    }
+  ],
+  "energy_1s": [
+    {
+      "time": 0.0,
+      "rms_dbfs": -20.95
+    },
+    {
+      "time": 1.0,
+      "rms_dbfs": -19.45
+    },
+    {
+      "time": 2.0,
+      "rms_dbfs": -26.2
+    },
+    {
+      "time": 3.0,
+      "rms_dbfs": -25.71
+    },
+    {
+      "time": 4.0,
+      "rms_dbfs": -28.12
+    },
+    {
+      "time": 5.0,
+      "rms_dbfs": -20.0
+    },
+    {
+      "time": 6.0,
+      "rms_dbfs": -41.58
+    },
+    {
+      "time": 7.0,
+      "rms_dbfs": -25.08
+    },
+    {
+      "time": 8.0,
+      "rms_dbfs": -16.59
+    },
+    {
+      "time": 9.0,
+      "rms_dbfs": -24.25
+    },
+    {
+      "time": 10.0,
+      "rms_dbfs": -26.55
+    },
+    {
+      "time": 11.0,
+      "rms_dbfs": -26.12
+    },
+    {
+      "time": 12.0,
+      "rms_dbfs": -21.79
+    },
+    {
+      "time": 13.0,
+      "rms_dbfs": -25.96
+    }
+  ],
+  "onsets_per_second": [
+    2,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    2,
+    1,
+    0,
+    1,
+    1,
+    1,
+    0
+  ],
+  "section_candidates": [
+    {
+      "time": 6,
+      "reason": "energy/onset-density change, not a verified phrase",
+      "before_dbfs": -20.0,
+      "after_dbfs": -41.58,
+      "strength": 22.08
+    },
+    {
+      "time": 2,
+      "reason": "energy/onset-density change, not a verified phrase",
+      "before_dbfs": -19.45,
+      "after_dbfs": -26.2,
+      "strength": 6.75
+    }
+  ],
+  "local_periodicity": [
+    {
+      "start": 0,
+      "end": 14.0,
+      "candidates": [
+        {
+          "bpm": 56.0562,
+          "period_seconds": 1.0703544,
+          "relative_periodicity": 0.3028
+        },
+        {
+          "bpm": 76.5588,
+          "period_seconds": 0.7837115,
+          "relative_periodicity": 0.2049
+        },
+        {
+          "bpm": 88.4825,
+          "period_seconds": 0.6781001,
+          "relative_periodicity": 0.1633
+        }
+      ]
+    }
+  ],
+  "beat_grid_candidate": {
+    "bpm": 56.0562,
+    "period_seconds": 1.0703544,
+    "phase_candidate": 0.016,
+    "times": [
+      0.016,
+      1.08635,
+      2.15671,
+      3.22706,
+      4.29742,
+      5.36777,
+      6.43813,
+      7.50848,
+      8.57884,
+      9.64919,
+      10.71954,
+      11.7899,
+      12.86025,
+      13.93061
+    ],
+    "verified": false,
+    "uncertainty": "phase/accent, half/double tempo and meter need review; not detected downbeats"
+  },
+  "beat_grid_candidates": [
+    {
+      "bpm": 56.0562,
+      "period_seconds": 1.0703544,
+      "phase_candidate": 0.016,
+      "times": [
+        0.016,
+        1.08635,
+        2.15671,
+        3.22706,
+        4.29742,
+        5.36777,
+        6.43813,
+        7.50848,
+        8.57884,
+        9.64919,
+        10.71954,
+        11.7899,
+        12.86025,
+        13.93061
+      ],
+      "verified": false,
+      "uncertainty": "phase/accent, half/double tempo and meter need review; not detected downbeats"
+    },
+    {
+      "bpm": 76.5588,
+      "period_seconds": 0.7837114,
+      "phase_candidate": 0.022,
+      "times": [
+        0.022,
+        0.80571,
+        1.58942,
+        2.37313,
+        3.15685,
+        3.94056,
+        4.72427,
+        5.50798,
+        6.29169,
+        7.0754,
+        7.85911,
+        8.64283,
+        9.42654,
+        10.21025,
+        10.99396,
+        11.77767,
+        12.56138,
+        13.34509
+      ],
+      "verified": false,
+      "uncertainty": "phase/accent, half/double tempo and meter need review; not detected downbeats"
+    },
+    {
+      "bpm": 88.4825,
+      "period_seconds": 0.6781001,
+      "phase_candidate": 0.404,
+      "times": [
+        0.404,
+        1.0821,
+        1.7602,
+        2.4383,
+        3.1164,
+        3.7945,
+        4.4726,
+        5.1507,
+        5.8288,
+        6.5069,
+        7.185,
+        7.8631,
+        8.5412,
+        9.2193,
+        9.8974,
+        10.5755,
+        11.2536,
+        11.9317,
+        12.6098,
+        13.2879,
+        13.966
+      ],
+      "verified": false,
+      "uncertainty": "phase/accent, half/double tempo and meter need review; not detected downbeats"
+    }
+  ],
+  "edge_energy_100ms": [
+    {
+      "time": 0.0,
+      "rms_dbfs": -15.03
+    },
+    {
+      "time": 0.1,
+      "rms_dbfs": -19.78
+    },
+    {
+      "time": 0.2,
+      "rms_dbfs": -18.95
+    },
+    {
+      "time": 0.3,
+      "rms_dbfs": -22.14
+    },
+    {
+      "time": 0.4,
+      "rms_dbfs": -23.22
+    },
+    {
+      "time": 0.5,
+      "rms_dbfs": -22.68
+    },
+    {
+      "time": 0.6,
+      "rms_dbfs": -23.71
+    },
+    {
+      "time": 0.7,
+      "rms_dbfs": -27.28
+    },
+    {
+      "time": 0.8,
+      "rms_dbfs": -27.38
+    },
+    {
+      "time": 0.9,
+      "rms_dbfs": -28.22
+    },
+    {
+      "time": 1.0,
+      "rms_dbfs": -22.41
+    },
+    {
+      "time": 1.1,
+      "rms_dbfs": -13.58
+    },
+    {
+      "time": 1.2,
+      "rms_dbfs": -15.43
+    },
+    {
+      "time": 1.3,
+      "rms_dbfs": -18.71
+    },
+    {
+      "time": 1.4,
+      "rms_dbfs": -21.17
+    },
+    {
+      "time": 1.5,
+      "rms_dbfs": -23.38
+    },
+    {
+      "time": 1.6,
+      "rms_dbfs": -24.86
+    },
+    {
+      "time": 1.7,
+      "rms_dbfs": -25.95
+    },
+    {
+      "time": 1.8,
+      "rms_dbfs": -27.28
+    },
+    {
+      "time": 1.9,
+      "rms_dbfs": -27.26
+    },
+    {
+      "time": 12.0,
+      "rms_dbfs": -27.69
+    },
+    {
+      "time": 12.1,
+      "rms_dbfs": -26.33
+    },
+    {
+      "time": 12.2,
+      "rms_dbfs": -27.16
+    },
+    {
+      "time": 12.3,
+      "rms_dbfs": -28.44
+    },
+    {
+      "time": 12.4,
+      "rms_dbfs": -28.4
+    },
+    {
+      "time": 12.5,
+      "rms_dbfs": -29.6
+    },
+    {
+      "time": 12.6,
+      "rms_dbfs": -31.48
+    },
+    {
+      "time": 12.7,
+      "rms_dbfs": -31.29
+    },
+    {
+      "time": 12.8,
+      "rms_dbfs": -18.85
+    },
+    {
+      "time": 12.9,
+      "rms_dbfs": -13.79
+    },
+    {
+      "time": 13.0,
+      "rms_dbfs": -18.24
+    },
+    {
+      "time": 13.1,
+      "rms_dbfs": -22.2
+    },
+    {
+      "time": 13.2,
+      "rms_dbfs": -25.99
+    },
+    {
+      "time": 13.3,
+      "rms_dbfs": -29.47
+    },
+    {
+      "time": 13.4,
+      "rms_dbfs": -33.49
+    },
+    {
+      "time": 13.5,
+      "rms_dbfs": -38.03
+    },
+    {
+      "time": 13.6,
+      "rms_dbfs": -43.21
+    },
+    {
+      "time": 13.7,
+      "rms_dbfs": -48.72
+    },
+    {
+      "time": 13.8,
+      "rms_dbfs": -56.16
+    },
+    {
+      "time": 13.9,
+      "rms_dbfs": -67.59
+    }
+  ],
+  "downbeats": null,
+  "phrases": null,
+  "grid_verified": false,
+  "scope": "spectral-flux and autocorrelation candidates; soft/noisy or changing-tempo music needs manual annotation; not a music-quality score",
+  "version": 2,
+  "source_sha256": "14cc362a1d02b4d13c809440f64a621a9b70de6cc203d6a8bf86dd493dea6134",
+  "source_bytes": 2235664,
+  "identity": "1748066668c9bd70feae11f102c864e7848398d8da7fd96a4407a932a056091d",
+  "implementation_sha256": "254fea6ae38e7d68bb2e5ead9de7fdb8bb5f776f928484ff577e9606b2568e7c",
+  "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "time_unit": "seconds",
+  "annotations": null,
+  "payload_sha256": "9b288833cb95a22e059f5a1cccb0efac674ec2a1ed96009c686097f9ab362db9"
+}

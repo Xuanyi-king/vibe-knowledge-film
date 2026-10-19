@@ -1,0 +1,98 @@
+{
+  "README.md": {
+    "sha256": "0719f7f5d60df703a9812eb8ece65b19b0a3a1923426d14823892c1c09f14787",
+    "bytes": 4817
+  },
+  "after-320.png": {
+    "sha256": "76b13eba51c6871fc99f597f29345375f4a5ebea1a2f2db4495653b5f848daff",
+    "bytes": 507075
+  },
+  "after-390.png": {
+    "sha256": "24e3abe94e4eac1322b6cc506af21f1d8a634b7a97326381a570ead51d33f83b",
+    "bytes": 672633
+  },
+  "audio-preserved.json": {
+    "sha256": "00d355d7671940838488334139c5b7f40295628b1911c8edbd49ee65cb55a9b4",
+    "bytes": 421
+  },
+  "before-320.png": {
+    "sha256": "fedd8344a288177e2724fb84b6d3093112e97c61c0c964c59bfb4defb41d2745",
+    "bytes": 449072
+  },
+  "before-390.png": {
+    "sha256": "5ea77d8877b8f24fe389f926c40c8d3bc39a4ac044803000103854ca19a94bcc",
+    "bytes": 603432
+  },
+  "comparison-320.png": {
+    "sha256": "fe6451dc9f1325c5722dbd6c58f439547f53c8b42d67c05b94dd0cd278409b6c",
+    "bytes": 428483
+  },
+  "comparison-390.png": {
+    "sha256": "629d9571c78f3ebd6e98b1be698d8628aa9f708fb261c621c38254682259d2bc",
+    "bytes": 572086
+  },
+  "encoding-sync.json": {
+    "sha256": "272d2543f4247986f0e37e786728edf2b1787d3733762b9265e1e66dbd052d42",
+    "bytes": 3273
+  },
+  "final.mp4": {
+    "sha256": "0a0b8a574f35b4538f5eaa6fd3ea3fc9b762fc1eef223aecc7806921e5c4293e",
+    "bytes": 1665320
+  },
+  "final.mp4.provenance.json": {
+    "sha256": "43e8a818bc6dcbef0e557cecb31ad9aa244ddc4d52b6592b02f6208007bd0bce",
+    "bytes": 716
+  },
+  "legacy-layout-green.log": {
+    "sha256": "97df1e7fc78592f393111ff7941d12533a52e1fefde3979d8f025f267d2429ca",
+    "bytes": 985
+  },
+  "legacy-layout-red.log": {
+    "sha256": "6066a80437127c5e878259b2597234b8effb8c3560d37a2c0a105d98918b7d24",
+    "bytes": 1166
+  },
+  "legacy-regression.json": {
+    "sha256": "cb45219d4675bd131609fb35e98ba085a1adc500a0487b44ac7493cc4bf8d3bc",
+    "bytes": 351
+  },
+  "local-tests.log": {
+    "sha256": "2cb5a92bec5ff08596231ed31f94934ff48c67d26b5f2fbfe713b57692aa2593",
+    "bytes": 22729
+  },
+  "mastering.json": {
+    "sha256": "f7214c5e93920dda9f57a564a45e2f662fa875eb394443559a66667b858a5534",
+    "bytes": 910
+  },
+  "media.json": {
+    "sha256": "b3ba794ef0b417e60da38332991ec3999a83b469532cf9b1efea37f0e15c6200",
+    "bytes": 1150
+  },
+  "phone-report.json": {
+    "sha256": "c3186b5d12757760220b588b1adce3b9cc1ae0a4e562b48b20eeee4bcd550120",
+    "bytes": 4011
+  },
+  "production.json": {
+    "sha256": "b5780efee1223d8b1495c2200a1684cb12108795caeaf877da5ce7135a070dbb",
+    "bytes": 984
+  },
+  "stress.mp4": {
+    "sha256": "286c23506ac1eae10a1a572aec76e51608f187c5a69e7b88c8b34b8f9c724256",
+    "bytes": 458612
+  },
+  "strong-320.png": {
+    "sha256": "c0872259bc281c64971bd27c4e1d39df0c37aebe8a28d7c8d5b03401fa83e979",
+    "bytes": 502749
+  },
+  "strong-390.png": {
+    "sha256": "678601b26b0b81f4f80f55140e8192dd8fffa41eabde8f04d86c59bffc6e20e3",
+    "bytes": 661614
+  },
+  "strong-report.json": {
+    "sha256": "9267394f952509a4d0cdd9ac402f9c1fabc30cc76fbd9afc7f5349af30789859",
+    "bytes": 3381
+  },
+  "visual-sync.json": {
+    "sha256": "8256a695a60517e1ae13d44ede55affd0a93fec5ff79476e49b6069693c6285e",
+    "bytes": 5078
+  }
+}
