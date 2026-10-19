@@ -1,0 +1,32 @@
+test_bad_download_or_escape_preserves_previous_bank (tests.test_music.MusicTest.test_bad_download_or_escape_preserves_previous_bank) ... ERROR
+test_phrase_uses_shared_tempo_with_rests_and_release (tests.test_music.MusicTest.test_phrase_uses_shared_tempo_with_rests_and_release) ... FAIL
+test_prepared_notes_pitch_cache_and_source_identity (tests.test_music.MusicTest.test_prepared_notes_pitch_cache_and_source_identity) ... ERROR
+
+======================================================================
+ERROR: test_bad_download_or_escape_preserves_previous_bank (tests.test_music.MusicTest.test_bad_download_or_escape_preserves_previous_bank)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_music.py", line 27, in test_bad_download_or_escape_preserves_previous_bank
+    from scripts.prepare_instrument import prepare
+ModuleNotFoundError: No module named 'scripts.prepare_instrument'
+
+======================================================================
+ERROR: test_prepared_notes_pitch_cache_and_source_identity (tests.test_music.MusicTest.test_prepared_notes_pitch_cache_and_source_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_music.py", line 14, in test_prepared_notes_pitch_cache_and_source_identity
+    from scripts.prepare_instrument import prepare
+ModuleNotFoundError: No module named 'scripts.prepare_instrument'
+
+======================================================================
+FAIL: test_phrase_uses_shared_tempo_with_rests_and_release (tests.test_music.MusicTest.test_phrase_uses_shared_tempo_with_rests_and_release)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_music.py", line 39, in test_phrase_uses_shared_tempo_with_rests_and_release
+    self.assertTrue((ROOT/'engine/vk-music.mjs').exists(),'reusable phrase adapter missing')
+AssertionError: False is not true : reusable phrase adapter missing
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=1, errors=2)

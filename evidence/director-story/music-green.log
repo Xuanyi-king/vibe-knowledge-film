@@ -1,0 +1,8 @@
+test_bad_download_or_escape_preserves_previous_bank (tests.test_music.MusicTest.test_bad_download_or_escape_preserves_previous_bank) ... ok
+test_phrase_uses_shared_tempo_with_rests_and_release (tests.test_music.MusicTest.test_phrase_uses_shared_tempo_with_rests_and_release) ... ok
+test_prepared_notes_pitch_cache_and_source_identity (tests.test_music.MusicTest.test_prepared_notes_pitch_cache_and_source_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 4.557s
+
+OK

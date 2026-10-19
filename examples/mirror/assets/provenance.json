@@ -1,0 +1,31 @@
+{
+  "person": {
+    "file": "person.png",
+    "sha256": "0da5a2a298ab74a417a702875c635e610a3bd9524c55655895fa7a43e3c21fdd",
+    "origin": "OpenAI image_gen tool, generated in this session 2026-10-19; exact service model id unavailable",
+    "type": "original fictional adult portrait, not research participant or user likeness",
+    "reference_images_used": false
+  },
+  "bust": {
+    "file": "portrait.json",
+    "source": "MakeHuman graphical hm08 base mesh, explicitly CC0 in asset header",
+    "script": "../build_portrait.py",
+    "license_file": "MakeHuman-CC0.md",
+    "modifications": "crop g body above shoulders, units to metres, triangulate quads; original scene/material/lighting"
+  },
+  "piano": {
+    "manifest": "../piano.json",
+    "license_files": [
+      "VSCO-CC0.txt",
+      "VSCO-Piano-Info.txt"
+    ],
+    "source": "VSCO2 CE, Simon Dalzell/Ivy Audio via Versilian Studios",
+    "music": "original composition; no reference-film audio copied",
+    "root_sample_threshold_onsets_seconds": {
+      "45": 0.0030208333,
+      "57": 0.0021666667,
+      "69": 0.0020208333
+    },
+    "onset_scope": "first sample crossing 2% of its own peak after decoding, not subjective attack annotation; no global offset correction applied"
+  }
+}

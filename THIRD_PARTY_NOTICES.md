@@ -35,3 +35,10 @@ resonance的几何、程序化微表面、模态激励/摩擦/气流声音、五
 | Natural Earth 110m land | nvkelso/natural-earth-vector commit ca96624a56bd078437bca8184e78163e5039ad19，public domain，原条款保留 | 地理陆地轮廓；不使用第三方照片、模型、音乐或政治边界 |
 
 本地约208KB，包括许可证；`vk-geo.mjs`为原创轻量适配，数学解释由事实表与测试限定。此处是实际运行库/数据复用，因此此前“没有复制第三方代码/图片”的说法只指此前方法调研，不涵盖这些新声明的依赖。新string声源采用公开Karplus–Strong延迟反馈方法，以现有SciPy实现，无第三方音频/声库复制；合成器不是录音或声学测量保证。
+
+## 本轮镜像作品：真实乐器与人体图形资产
+
+- **VSCO 2 Community Edition，Upright Piano**：固定commit `440300901dfe9275fd84e0b7763af1f8443ae62e`，https://github.com/sgossner/VSCO-2-CE 。仓库CC0-1.0；该乐器Info.txt明确注明Simon Dalzell/Ivy Audio采样、Versilian Studios允许再分发。原LICENSE和Info随examples/mirror/assets保留，三个原WAV地址/逐文件SHA在piano.json。准备器按需下载，离线变调成音符，原始库不打包进Git。最终原创编曲不复制任何参考片音乐。
+- **MakeHuman hm08 base graphical mesh**：固定commit `3c701a8e52f09e69922e8b598d23be2d7dfc49e3`，https://github.com/makehumancommunity/makehuman 。base.obj文件头明确2020年9月释放CC0；LICENSE.ASSETS.md随作品保留。仅使用图形数据，经本项目原创脚本裁切/单位换算/三角化成portrait.json。MakeHuman程序为AGPL，**没有复制其程序代码，也不安装或依赖该程序**。
+- examples/mirror/assets/person.png为本轮image_gen生成的虚构成人肖像，无参考图片输入，不是真实用户/研究参与者。来源和SHA在同目录provenance.json；服务具体模型ID未提供，不补造。作品中仅对同一图像做确定性水平翻转。
+- 用户提供《运气的形状》仅作研究。本轮未重新分发其完整媒体、音乐或画面资产，参考抽帧留本地；原创片没有引用其视听文件。

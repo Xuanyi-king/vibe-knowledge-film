@@ -1,0 +1,18 @@
+test_bad_download_or_escape_preserves_previous_bank (tests.test_music_phrases.MusicTest.test_bad_download_or_escape_preserves_previous_bank) ... ok
+test_phrase_uses_shared_tempo_with_rests_and_release (tests.test_music_phrases.MusicTest.test_phrase_uses_shared_tempo_with_rests_and_release) ... ok
+test_prepared_notes_pitch_cache_and_source_identity (tests.test_music_phrases.MusicTest.test_prepared_notes_pitch_cache_and_source_identity) ... ok
+test_distance_changes_projection_not_face_geometry (tests.test_mirror.MirrorTest.test_distance_changes_projection_not_face_geometry) ... ok
+test_orientation_conditions_and_complete_story_replay (tests.test_mirror.MirrorTest.test_orientation_conditions_and_complete_story_replay) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 14.330s
+
+OK
+[page] [.WebGL-0x414001b8a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x414001b8a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x414001b8a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x414001b8a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[page] [.WebGL-0x2c9c0019a200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x2c9c0019a200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x2c9c0019a200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x2c9c0019a200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)

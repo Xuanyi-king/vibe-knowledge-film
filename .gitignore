@@ -15,3 +15,7 @@ examples/resonance/audio/
 examples/atlas/audio/
 !evidence/atlas/final.mp4
 !evidence/resonance/current.mp4
+
+examples/mirror/audio/
+examples/mirror/assets/piano/
+!evidence/mirror/final.mp4

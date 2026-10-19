@@ -1,0 +1,137 @@
+[
+  {
+    "id": "wegner1987_pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/3612492/",
+    "status": 203,
+    "final_url": "https://pubmed.ncbi.nlm.nih.gov/3612492/",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 5590,
+    "file": "wegner1987_pubmed.html"
+  },
+  {
+    "id": "wegner1987_pdf",
+    "url": "https://www.wjh.harvard.edu/~wegner/pdfs/Wegner,Schneider,Carter,&White%201987.pdf",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "wegner1994_pdf",
+    "url": "https://www.wjh.harvard.edu/~wegner/pdfs/Wegner%201994.pdf",
+    "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+  },
+  {
+    "id": "mita1977_doi",
+    "url": "https://doi.org/10.1037/0022-3514.35.8.597",
+    "status": 403,
+    "final_url": "https://doi.apa.org/doi/10.1037/0022-3514.35.8.597",
+    "content_type": "text/html",
+    "bytes": 960,
+    "file": "mita1977_doi.html"
+  },
+  {
+    "id": "mita1977_apa",
+    "url": "https://psycnet.apa.org/record/1978-09715-001",
+    "status": 403,
+    "final_url": "https://psycnet.apa.org/record/1978-09715-001",
+    "content_type": "text/html",
+    "bytes": 960,
+    "file": "mita1977_apa.html"
+  },
+  {
+    "id": "selfie2018_doi",
+    "url": "https://doi.org/10.1001/jamafacial.2018.0009",
+    "status": 403,
+    "final_url": "https://journals.sagepub.com/doi/10.1001/jamafacial.2018.0009",
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 6157,
+    "file": "selfie2018_doi.html"
+  },
+  {
+    "id": "selfie2018_pmc",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5876805/",
+    "status": 200,
+    "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5876805/",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 21310,
+    "file": "selfie2018_pmc.html"
+  },
+  {
+    "id": "wegner1987_archive",
+    "url": "https://dtg.sites.fas.harvard.edu/DANWEGNER/pub/Wegner%2CSchneider%2CCarter%2C%26White%201987.pdf",
+    "status": 200,
+    "final_url": "https://dtg.sites.fas.harvard.edu/DANWEGNER/pub/Wegner%2CSchneider%2CCarter%2C%26White%201987.pdf",
+    "content_type": "application/pdf",
+    "bytes": 1057603,
+    "file": "wegner1987_archive.pdf"
+  },
+  {
+    "id": "wegner1994_archive",
+    "url": "https://dtg.sites.fas.harvard.edu/DANWEGNER/pub/Wegner%20Ironic%20Processes%201994.pdf",
+    "status": 200,
+    "final_url": "https://dtg.sites.fas.harvard.edu/DANWEGNER/pub/Wegner%20Ironic%20Processes%201994.pdf",
+    "content_type": "application/pdf",
+    "bytes": 3897448,
+    "file": "wegner1994_archive.pdf"
+  },
+  {
+    "id": "mita1977_author_pdf",
+    "url": "https://www.researchgate.net/profile/Marshall-Dermer/publication/232497305_Reversed_facial_images_and_the_mere-exposure_hypothesis/links/566a2daf08aea0892c49ea00/Reversed-facial-images-and-the-mere-exposure-hypothesis.pdf",
+    "status": 403,
+    "final_url": "https://www.researchgate.net/profile/Marshall-Dermer/publication/232497305_Reversed_facial_images_and_the_mere-exposure_hypothesis/links/566a2daf08aea0892c49ea00/Reversed-facial-images-and-the-mere-exposure-hypothesis.pdf",
+    "content_type": "text/plain; charset=UTF-8",
+    "bytes": 17,
+    "file": "mita1977_author_pdf.html"
+  },
+  {
+    "id": "wegner1987_epmc",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:3612492&format=json&resultType=core",
+    "status": 200,
+    "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:3612492&format=json&resultType=core",
+    "content_type": "application/json;charset=UTF-8",
+    "bytes": 3550,
+    "file": "wegner1987_epmc.json"
+  },
+  {
+    "id": "selfie2018_epmc",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5876805/fullTextXML",
+    "status": 500,
+    "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5876805/fullTextXML",
+    "content_type": "application/json",
+    "bytes": 150,
+    "file": "selfie2018_epmc.json"
+  },
+  {
+    "id": "selfie2018_epmc_record",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:29494735&format=json&resultType=core",
+    "status": 200,
+    "final_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:29494735&format=json&resultType=core",
+    "content_type": "application/json;charset=UTF-8",
+    "bytes": 4272,
+    "file": "selfie2018_epmc_record.json"
+  },
+  {
+    "id": "selfie2018_pmc_europe",
+    "url": "https://europepmc.org/articles/PMC5876805",
+    "status": 403,
+    "final_url": "https://europepmc.org/articles/PMC5876805",
+    "content_type": "text/plain; charset=UTF-8",
+    "bytes": 17,
+    "file": "selfie2018_pmc_europe.html"
+  },
+  {
+    "id": "selfie2018_rutgers",
+    "url": "https://www.researchwithrutgers.com/en/publications/nasal-distortion-in-short-distance-photographs-the-selfie-effect",
+    "status": 403,
+    "final_url": "https://www.researchwithrutgers.com/en/publications/nasal-distortion-in-short-distance-photographs-the-selfie-effect",
+    "content_type": "text/plain; charset=UTF-8",
+    "bytes": 17,
+    "file": "selfie2018_rutgers.html"
+  },
+  {
+    "id": "selfie2018_author",
+    "url": "https://www.ohadf.com/papers/WardWardFriedPaskhover_JAMA2018.pdf",
+    "status": 200,
+    "final_url": "https://www.ohadf.com/papers/WardWardFriedPaskhover_JAMA2018.pdf",
+    "bytes": 352962,
+    "file": "selfie2018_author.pdf"
+  }
+]

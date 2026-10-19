@@ -12,6 +12,13 @@
 
 ## 本次升级与可检查的作品
 
+本轮导演重点是：**好的知识电影，不是告诉观众一个正确答案，而是带他亲眼经历答案为什么成立。** 分镜现在记录观众进入/离开的认知，分开个人体验、研究证据与理论/类比，不把文献目录或精致动画当成故事。
+
+新作《另一种你》围绕“为什么镜子里的你，有时比照片好看”：同一虚构人像只翻转，1977研究的真实多数偏好计数，再用独立三维模型控制相机距离，最后带新理解回看开场。[源码/事实/分镜](examples/mirror/README.md) · [成片、画面与验收](evidence/mirror/README.md) · [参考片真实研究](evidence/director-story/reference-study.md)。白熊和镜像的[两题故事候选](references/story-cases.md)保留为方法案例，仅制作镜像全片。
+
+[轻音乐制作](references/light-music.md)提供授权真实钢琴音符bank与共享时钟乐句；没有新增Python依赖。图像使用保比例放置器，避免把镜中人像拉瘦制造偏好。成片的技术、编码同步、声明条件、完整观看与听审分别记录，不把正常响度当舒适听感。
+
+
 完整原创《地图是一种选择》（72秒、1080p30发行版）：[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/final.mp4) · [源码、事实、分镜与用法](examples/atlas/README.md) · [首版到最终关键帧与验收](evidence/atlas/review.md)。从一句主题出发，完整解释纬圈、长度尺度、面积和投影取舍；复用D3地理几何、共享事件、原创分轨配乐和实际绘制条件，不再每次手写海岸线与投影。
 
 [自主主题到成片](references/production.md)提供Agent内部流程；`python scripts/produce.py <project> [--assets geo scene]`统一执行已编写作品的技术生产与检查，不取代Agent的创作判断。输入指纹把画面、事件、参考混音和最终媒体绑定；过期或无版本产物会拒绝合音/检查。编码同步、声明的视觉动作条件和主观审片分开验收，具体平台与限制见[最终验收](docs/final-acceptance.md)。

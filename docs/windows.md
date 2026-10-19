@@ -107,3 +107,19 @@ python scripts/check_visual.py examples/atlas --video examples/atlas/renders/fin
 可选地理依赖为本地固定D3与Natural Earth数据，无浏览器CDN请求；卸载时关闭预览后删除engine/vendor/geo。核心CI不强制安装地理或Three，因此会明确跳过对应可选测试；本地完整验收需先安装。完整作品的WebGL之外地理分支由Linux本地实际导出验证。
 
 本轮首次真实Windows CI找到并修复系统MIME映射问题：预览服务器现在显式把.js/.mjs作为JavaScript响应，不依赖Windows注册表把模块判成text/plain。测试通过真实HTTP模拟坏映射；最终原生重跑链接见最终验收。Windows CI固定Playwright Chromium；本机Google Chrome频道和可选WebGL的Windows整片仍分别列为未验证，不外推。
+
+## 镜子与照片：本轮原创作品
+
+沿用现有Python/FFmpeg/Playwright安装，不需要MakeHuman、Blender或新Python包。Agent选择授权真实钢琴时先准备音符，再生产；每条原生命令失败都应停止：
+
+```powershell
+python scripts/prepare_instrument.py examples/mirror examples/mirror/piano.json
+if ($LASTEXITCODE -ne 0) { throw 'piano preparation failed; old bank retained' }
+python scripts/produce.py examples/mirror --assets scene --chunk 4 --jobs 1
+if ($LASTEXITCODE -ne 0) { throw 'film production failed; inspect review/production.json' }
+Start-Process examples/mirror/renders/final.mp4
+```
+
+prepare按固定SHA下载三个CC0钢琴根音，带限离线重采样到manifest的音符；生成assets/piano不进Git。项目完整原始来源/许可保留，生成失败不替换旧bank索引。断网时已准备好的正确bank可重用；修改piano.json或准备器后要先重跑prepare，不能在准备失败后继续合成。关闭制作后可删除生成目录以及系统临时目录中的vk-music-source-v1缓存来卸载，不改注册表或音频驱动。
+
+本轮Windows的完整镜像作品/可选Three渲染未实测。新的核心采样准备与共享拍点测试在最终验收中单独列实际CI结果；前一轮Windows成功不自动覆盖本轮新增代码。

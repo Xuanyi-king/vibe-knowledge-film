@@ -1,0 +1,21 @@
+test_portrait_aspect_is_preserved_in_opening_and_ending (tests.test_mirror.MirrorTest.test_portrait_aspect_is_preserved_in_opening_and_ending) ... FAIL
+
+======================================================================
+FAIL: test_portrait_aspect_is_preserved_in_opening_and_ending (tests.test_mirror.MirrorTest.test_portrait_aspect_is_preserved_in_opening_and_ending)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_mirror.py", line 44, in test_portrait_aspect_is_preserved_in_opening_and_ending
+    render.with_page(ROOT/'examples/mirror',check)
+  File "/workspace/vibe-knowledge-film/engine/render.py", line 117, in with_page
+    try: return fn(pg)
+                ^^^^^^
+  File "/workspace/vibe-knowledge-film/tests/test_mirror.py", line 43, in check
+    for x,y in ratios:self.assertAlmostEqual(x,y,places=6,msg=f'{t}s stretched face: x={x}, y={y}')
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.41889483065953653 != 0.5064194008559201 within 6 places (0.08752457019638354 difference) : 6s stretched face: x=0.41889483065953653, y=0.5064194008559201
+
+----------------------------------------------------------------------
+Ran 1 test in 2.771s
+
+FAILED (failures=1)
+[page] [.WebGL-0xbc001bf400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
