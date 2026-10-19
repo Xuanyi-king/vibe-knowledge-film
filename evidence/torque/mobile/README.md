@@ -36,3 +36,5 @@
 本地完整回归104项通过、无跳过，718.408秒（与正式离线渲染同时进行）；[实际日志](local-tests.log)。原生Linux/Windows核心CI及可选组件范围见PR #2最终记录；Windows完整钢琴下载/14秒成片未实测。旧B/C回归另见本目录legacy-regression.json。
 
 兼容收尾发现并修复一次元数据命名冲突：最初`fr.layout=[]`遮蔽旧`Frame.layout()`，只用新type的测试未覆盖`chars`路径。新增最小旧逐字排版负例先重现READY_ERROR，再将收集器独立为`artLayout`；旧B/C指定帧的精确PNG SHA重新一致。随后按新输入指纹正式重导出，不沿用已过期事件或伪造旧成片侧车。
+
+原生Windows首轮[39240273460](https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39240273460)核心有一个测试失败：回滚负例比较未解析的RUNNER~1临时路径与已规范化输出，导致预期错误没有被注入。用Linux目录别名[重现同一失败](path-alias-red.log)，修正测试比较后[10项手机QA通过](path-alias-green.log)。没有修改生产代码或影片；最终原生重跑结果见PR验收段，不将首轮失败记成通过。

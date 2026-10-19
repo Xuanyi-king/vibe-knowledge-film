@@ -1,4 +1,4 @@
-import hashlib,json,subprocess,tempfile,unittest
+import hashlib,json,os,subprocess,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
 from PIL import Image
@@ -107,10 +107,16 @@ class MobileTest(unittest.TestCase):
     def test_publication_error_restores_previous_owned_directory(self):
         m=self.module()
         with tempfile.TemporaryDirectory() as d:
-            p=Path(d);v=p/'master.mp4';self.make(v);out=p/'mobile';out.mkdir();(out/'report.json').write_text(OLD)
+            p=Path(d)
+            if os.name!='nt':
+                # Exercise the same alias/canonical difference as Windows TEMP's
+                # RUNNER~1 path, without requiring Windows symlink privileges.
+                real=p/'real';real.mkdir();alias=p/'alias';alias.symlink_to(real,target_is_directory=True);p=alias
+            v=p/'master.mp4';self.make(v);out=p/'mobile';out.mkdir();(out/'report.json').write_text(OLD)
+            published=out.resolve()
             original=Path.replace
             def fail(src,dst):
-                if src.name.startswith('.mobile-') and not src.name.startswith('.mobile-old-') and Path(dst)==out:raise OSError('publication failed')
+                if src.name.startswith('.mobile-') and not src.name.startswith('.mobile-old-') and Path(dst)==published:raise OSError('publication failed')
                 return original(src,dst)
             with patch.object(Path,'replace',fail):
                 with self.assertRaisesRegex(OSError,'publication failed'):m.review_video(v,out,times=[.2])

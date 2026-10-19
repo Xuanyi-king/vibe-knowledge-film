@@ -1,7 +1,7 @@
 {
   "README.md": {
-    "sha256": "0719f7f5d60df703a9812eb8ece65b19b0a3a1923426d14823892c1c09f14787",
-    "bytes": 4817
+    "sha256": "b5c8f37c60238e2bec14594e9dd8815d067432c02b1a8ba17f2130f0c3c22c55",
+    "bytes": 5308
   },
   "after-320.png": {
     "sha256": "76b13eba51c6871fc99f597f29345375f4a5ebea1a2f2db4495653b5f848daff",
@@ -66,6 +66,14 @@
   "media.json": {
     "sha256": "b3ba794ef0b417e60da38332991ec3999a83b469532cf9b1efea37f0e15c6200",
     "bytes": 1150
+  },
+  "path-alias-green.log": {
+    "sha256": "ea37c709b1426654aaa8e98c92831e7f36da4240417178a572bea32ed70d7f44",
+    "bytes": 1699
+  },
+  "path-alias-red.log": {
+    "sha256": "647e56d9e25d244ef659e874c6954069b3ef1404843f64610b6ecbe696dc0889",
+    "bytes": 921
   },
   "phone-report.json": {
     "sha256": "c3186b5d12757760220b588b1adce3b9cc1ae0a4e562b48b20eeee4bcd550120",

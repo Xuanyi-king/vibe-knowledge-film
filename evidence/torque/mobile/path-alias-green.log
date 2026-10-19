@@ -1,0 +1,15 @@
+test_bad_time_and_output_overlap_preserve_existing_evidence (tests.test_mobile.MobileTest.test_bad_time_and_output_overlap_preserve_existing_evidence) ... ok
+test_default_samples_include_action_midstate_and_hold (tests.test_mobile.MobileTest.test_default_samples_include_action_midstate_and_hold) ... ok
+test_encoder_failure_preserves_old_report_and_video (tests.test_mobile.MobileTest.test_encoder_failure_preserves_old_report_and_video) ... ok
+test_final_encoded_previews_preserve_audio_frames_and_master (tests.test_mobile.MobileTest.test_final_encoded_previews_preserve_audio_frames_and_master) ... ok
+test_invalid_width_and_profile_are_not_silent_fallbacks (tests.test_mobile.MobileTest.test_invalid_width_and_profile_are_not_silent_fallbacks) ... ok
+test_output_cannot_replace_assets_audio_engine_or_create_tracked_sources (tests.test_mobile.MobileTest.test_output_cannot_replace_assets_audio_engine_or_create_tracked_sources) ... ok
+test_publication_error_restores_previous_owned_directory (tests.test_mobile.MobileTest.test_publication_error_restores_previous_owned_directory) ... ok
+test_risks_use_effective_pixels_importance_bounds_and_declared_contrast (tests.test_mobile.MobileTest.test_risks_use_effective_pixels_importance_bounds_and_declared_contrast) ... ok
+test_source_validation_failure_does_not_publish_new_evidence (tests.test_mobile.MobileTest.test_source_validation_failure_does_not_publish_new_evidence) ... ok
+test_stale_layout_source_is_rejected_before_browser_or_encoding (tests.test_mobile.MobileTest.test_stale_layout_source_is_rejected_before_browser_or_encoding) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.388s
+
+OK
