@@ -1,0 +1,499 @@
+{
+  "measurement": "UTF-8 bytes and declared routes are static proxies; runtime is a .4s technical fixture, not a film or model benchmark",
+  "model_tool_calls": null,
+  "model_tokens": null,
+  "before": {
+    "startup": {
+      "utf8_bytes": 11264,
+      "lines": 93
+    },
+    "routes_proxy": {
+      "topic": {
+        "files": [
+          "SKILL.md",
+          "references/script.md",
+          "references/directing.md",
+          "references/worlds.md",
+          "references/visualization.md",
+          "references/craft.md"
+        ],
+        "utf8_bytes": 85856,
+        "reference_count": 5
+      },
+      "single_shot": {
+        "files": [
+          "SKILL.md",
+          "references/directing.md",
+          "references/craft.md",
+          "references/review.md",
+          "references/engine.md"
+        ],
+        "utf8_bytes": 48499,
+        "reference_count": 4
+      },
+      "complex_3d": {
+        "files": [
+          "SKILL.md",
+          "references/directing.md",
+          "references/craft.md",
+          "references/complex-scenes.md",
+          "references/engine.md",
+          "references/choreography.md"
+        ],
+        "utf8_bytes": 59495,
+        "reference_count": 5
+      },
+      "full_release": {
+        "files": [
+          "SKILL.md",
+          "references/script.md",
+          "references/directing.md",
+          "references/worlds.md",
+          "references/visualization.md",
+          "references/craft.md",
+          "references/choreography.md",
+          "references/review.md",
+          "references/production.md",
+          "references/mobile.md"
+        ],
+        "utf8_bytes": 111780,
+        "reference_count": 9
+      }
+    },
+    "local_link_graph": {
+      "SKILL.md": [
+        "references/script.md",
+        "references/directing.md",
+        "references/worlds.md",
+        "references/directing.md",
+        "references/visualization.md",
+        "references/craft.md",
+        "references/choreography.md",
+        "references/review.md",
+        "references/choreography.md",
+        "references/complex-scenes.md",
+        "references/art-direction.md",
+        "references/mobile.md",
+        "references/music-direction.md",
+        "references/story-cases.md",
+        "references/production.md",
+        "references/action-checks.md",
+        "references/cartography.md",
+        "references/light-music.md",
+        "docs/windows.md",
+        "examples/resonance/README.md",
+        "examples/fold_C/storyboard.md",
+        "examples/pigeon_B/storyboard.md",
+        "docs/experiments/director-2026-10/README.md"
+      ],
+      "references/action-checks.md": [],
+      "references/analysis.md": [
+        "../evidence/director-story/reference-study.md"
+      ],
+      "references/art-direction.md": [
+        "mobile.md",
+        "../examples/torque/README.md",
+        "../evidence/torque/README.md"
+      ],
+      "references/cartography.md": [
+        "../examples/atlas/README.md",
+        "../evidence/atlas/review.md"
+      ],
+      "references/choreography.md": [
+        "complex-scenes.md",
+        "../examples/atlas/score.mjs",
+        "../examples/resonance/README.md",
+        "action-checks.md"
+      ],
+      "references/complex-scenes.md": [
+        "../examples/governor_scene/film.js",
+        "../examples/governor_scene/",
+        "../examples/governor_scene/README.md"
+      ],
+      "references/craft.md": [
+        "art-direction.md",
+        "complex-scenes.md",
+        "../docs/experiments/director-2026-10/README.md",
+        "../evidence/descent_studio/final/s_0010.50.jpg",
+        "../evidence/descent_studio/v1/s_0017.00.png",
+        "../evidence/descent_studio/final/s_0017.00.png",
+        "../evidence/descent_studio/final/s_0024.50.jpg",
+        "../evidence/descent_studio/final/motion_8.8-13.2.jpg"
+      ],
+      "references/directing.md": [
+        "story-cases.md"
+      ],
+      "references/engine.md": [
+        "choreography.md",
+        "complex-scenes.md",
+        "choreography.md"
+      ],
+      "references/historical-prompts.md": [],
+      "references/light-music.md": [
+        "../examples/mirror/score.mjs"
+      ],
+      "references/mobile.md": [
+        "../examples/torque/README.md",
+        "../evidence/torque/mobile/README.md"
+      ],
+      "references/music-direction.md": [
+        "../evidence/music-direction/README.md",
+        "../evidence/torque/mobile/README.md"
+      ],
+      "references/production.md": [
+        "../examples/atlas/storyboard.md",
+        "choreography.md",
+        "action-checks.md",
+        "choreography.md",
+        "mobile.md",
+        "music-direction.md"
+      ],
+      "references/prompts.md": [
+        "historical-prompts.md"
+      ],
+      "references/review.md": [
+        "mobile.md",
+        "choreography.md",
+        "action-checks.md"
+      ],
+      "references/script.md": [
+        "story-cases.md",
+        "directing.md"
+      ],
+      "references/story-cases.md": [
+        "../evidence/director-story/reference-study.md",
+        "../evidence/director-story/research.md"
+      ],
+      "references/visual-grammar.md": [],
+      "references/visualization.md": [
+        "directing.md",
+        "directing.md"
+      ],
+      "references/worlds.md": [
+        "light-music.md"
+      ]
+    }
+  },
+  "after": {
+    "startup": {
+      "utf8_bytes": 6538,
+      "lines": 66
+    },
+    "routes_proxy": {
+      "topic": {
+        "files": [
+          "SKILL.md"
+        ],
+        "utf8_bytes": 6538,
+        "reference_count": 0
+      },
+      "single_shot": {
+        "files": [
+          "SKILL.md",
+          "references/engine.md"
+        ],
+        "utf8_bytes": 26908,
+        "reference_count": 1
+      },
+      "complex_3d": {
+        "files": [
+          "SKILL.md",
+          "references/engine.md",
+          "references/complex-scenes.md",
+          "references/choreography.md"
+        ],
+        "utf8_bytes": 42476,
+        "reference_count": 3
+      },
+      "full_release": {
+        "files": [
+          "SKILL.md",
+          "references/engine.md",
+          "references/choreography.md",
+          "references/production.md",
+          "references/review.md",
+          "references/mobile.md"
+        ],
+        "utf8_bytes": 53671,
+        "reference_count": 5
+      }
+    },
+    "local_link_graph": {
+      "SKILL.md": [
+        "references/engine.md",
+        "references/directing.md",
+        "references/script.md",
+        "references/visualization.md",
+        "references/craft.md",
+        "references/choreography.md",
+        "references/action-checks.md",
+        "references/complex-scenes.md",
+        "references/cartography.md",
+        "references/worlds.md",
+        "references/art-direction.md",
+        "references/music-direction.md",
+        "references/light-music.md",
+        "references/production.md",
+        "docs/windows.md",
+        "references/review.md",
+        "references/mobile.md"
+      ],
+      "references/action-checks.md": [],
+      "references/analysis.md": [
+        "../evidence/director-story/reference-study.md"
+      ],
+      "references/art-direction.md": [
+        "mobile.md",
+        "../examples/torque/README.md",
+        "../evidence/torque/README.md"
+      ],
+      "references/cartography.md": [
+        "../examples/atlas/README.md",
+        "../evidence/atlas/review.md"
+      ],
+      "references/choreography.md": [
+        "complex-scenes.md",
+        "../examples/atlas/score.mjs",
+        "../examples/resonance/README.md",
+        "action-checks.md"
+      ],
+      "references/complex-scenes.md": [
+        "../examples/governor_scene/film.js",
+        "../examples/governor_scene/",
+        "../examples/governor_scene/README.md"
+      ],
+      "references/craft.md": [
+        "art-direction.md",
+        "complex-scenes.md",
+        "../docs/experiments/director-2026-10/README.md",
+        "../evidence/descent_studio/final/s_0010.50.jpg",
+        "../evidence/descent_studio/v1/s_0017.00.png",
+        "../evidence/descent_studio/final/s_0017.00.png",
+        "../evidence/descent_studio/final/s_0024.50.jpg",
+        "../evidence/descent_studio/final/motion_8.8-13.2.jpg"
+      ],
+      "references/directing.md": [
+        "story-cases.md"
+      ],
+      "references/engine.md": [
+        "production.md",
+        "choreography.md",
+        "complex-scenes.md",
+        "choreography.md"
+      ],
+      "references/historical-prompts.md": [],
+      "references/light-music.md": [
+        "../examples/mirror/score.mjs"
+      ],
+      "references/mobile.md": [
+        "../examples/torque/README.md",
+        "../evidence/torque/mobile/README.md"
+      ],
+      "references/music-direction.md": [
+        "../evidence/music-direction/README.md",
+        "../evidence/torque/mobile/README.md"
+      ],
+      "references/production.md": [
+        "../SKILL.md",
+        "music-direction.md",
+        "choreography.md",
+        "action-checks.md",
+        "review.md",
+        "mobile.md",
+        "../docs/windows.md"
+      ],
+      "references/prompts.md": [
+        "historical-prompts.md"
+      ],
+      "references/review.md": [
+        "mobile.md",
+        "choreography.md",
+        "action-checks.md"
+      ],
+      "references/script.md": [
+        "story-cases.md",
+        "directing.md"
+      ],
+      "references/story-cases.md": [
+        "../evidence/director-story/reference-study.md",
+        "../evidence/director-story/research.md"
+      ],
+      "references/visual-grammar.md": [],
+      "references/visualization.md": [
+        "directing.md",
+        "directing.md"
+      ],
+      "references/worlds.md": [
+        "light-music.md"
+      ]
+    }
+  },
+  "runtime": {
+    "before_cold_release": {
+      "seconds": 100.7789,
+      "stage_subprocess_count": 9,
+      "stages": [
+        "fonts",
+        "determinism",
+        "picture",
+        "events",
+        "sound",
+        "mastering",
+        "encoding_audio_sync",
+        "media",
+        "mobile_evidence"
+      ],
+      "reused": [],
+      "status": "technical_complete_needs_subjective_review"
+    },
+    "before_warm_release": {
+      "seconds": 60.1874,
+      "stage_subprocess_count": 9,
+      "stages": [
+        "fonts",
+        "determinism",
+        "picture",
+        "events",
+        "sound",
+        "mastering",
+        "encoding_audio_sync",
+        "media",
+        "mobile_evidence"
+      ],
+      "reused": [],
+      "status": "technical_complete_needs_subjective_review"
+    },
+    "after_cold_release": {
+      "seconds": 80.5049,
+      "stage_subprocess_count": 9,
+      "stages": [
+        "fonts",
+        "determinism",
+        "picture",
+        "events",
+        "sound",
+        "mastering",
+        "encoding_audio_sync",
+        "media",
+        "mobile_evidence"
+      ],
+      "reused": [],
+      "status": "technical_complete_needs_subjective_review"
+    },
+    "after_warm_release": {
+      "seconds": 3.806,
+      "stage_subprocess_count": 1,
+      "stages": [
+        "fonts"
+      ],
+      "reused": [
+        "standard",
+        "mobile_evidence"
+      ],
+      "status": "technical_complete_needs_subjective_review"
+    },
+    "after_cold_standard": {
+      "seconds": 96.0026,
+      "stage_subprocess_count": 8,
+      "stages": [
+        "fonts",
+        "determinism",
+        "picture",
+        "events",
+        "sound",
+        "mastering",
+        "encoding_audio_sync",
+        "media"
+      ],
+      "reused": [],
+      "status": "standard_complete_needs_release_and_review"
+    },
+    "after_warm_standard": {
+      "seconds": 14.0392,
+      "stage_subprocess_count": 1,
+      "stages": [
+        "fonts"
+      ],
+      "reused": [
+        "standard"
+      ],
+      "status": "standard_complete_needs_release_and_review"
+    },
+    "after_release_from_standard": {
+      "seconds": 12.1358,
+      "stage_subprocess_count": 2,
+      "stages": [
+        "fonts",
+        "mobile_evidence"
+      ],
+      "reused": [
+        "standard"
+      ],
+      "status": "technical_complete_needs_subjective_review"
+    },
+    "after_warm_release_from_standard": {
+      "seconds": 5.1094,
+      "stage_subprocess_count": 1,
+      "stages": [
+        "fonts"
+      ],
+      "reused": [
+        "standard",
+        "mobile_evidence"
+      ],
+      "status": "technical_complete_needs_subjective_review"
+    },
+    "after_shot_still": {
+      "seconds": 6.9244,
+      "stage_subprocess_count": 2,
+      "stages": [
+        "fonts",
+        "preview"
+      ],
+      "reused": [],
+      "status": "preview_needs_review"
+    },
+    "after_shot_motion": {
+      "seconds": 19.4418,
+      "stage_subprocess_count": 2,
+      "stages": [
+        "fonts",
+        "preview"
+      ],
+      "reused": [],
+      "status": "preview_needs_review"
+    },
+    "after_shot_clip": {
+      "seconds": 15.8076,
+      "stage_subprocess_count": 2,
+      "stages": [
+        "fonts",
+        "preview"
+      ],
+      "reused": [],
+      "status": "preview_needs_review"
+    },
+    "before_complex_3d": {
+      "seconds": 8.976,
+      "render_cli_calls": 1
+    },
+    "after_complex_3d": {
+      "seconds": 9.1186,
+      "render_cli_calls": 1
+    }
+  },
+  "baseline_commit": "121e9846f906067ab9f07727805ccb764d525c94",
+  "environment": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "browser": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+    "software_gl": true,
+    "packages": {
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "Pillow": "12.3.0",
+      "playwright": "1.62.0"
+    }
+  },
+  "timing_scope": "One sequential trial per scenario on a shared host with concurrent regression work. Cold-start and 3D differences are not causal speedup evidence; stage reuse is directly observed."
+}

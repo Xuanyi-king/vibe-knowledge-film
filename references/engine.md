@@ -1,5 +1,7 @@
 # 引擎
 
+按当前 API 查阅，不要求通读。局部调试用 stills/sheet/motion/clip 或 produce --mode draft；全片 Standard、最终 Release 见 [production](production.md)。历史示例的拆文件行数与字幕数量是参考，不是创作配额。
+
 完整交付优先用`python scripts/produce.py <project>`；本页底层命令不是验收完成信号。新score作品需要编码后峰值、版本与两层同步检查，见[choreography](choreography.md)。
 
 ## 可恢复的正式渲染模式
@@ -39,7 +41,7 @@ engine/
 ## 命令
 
 ```bash
-python scripts/new_film.py <工程目录> --world <B或C或custom> --duration <完整分镜秒数> # 先定方向与分镜，再建空骨架
+python scripts/new_film.py <工程目录> --world <B或C或custom> --duration <完整分镜秒数> # 明确理解目标后建骨架，分镜可随试画迭代
 python engine/render.py <工程> --serve                  # 预览 http://127.0.0.1:8765/?play
 python engine/render.py <工程> --stills 2.5 8.5 21      # 截几帧 → review/
 python engine/render.py <工程> --sheet 16               # 全片均匀 16 帧拼一张 → review/sheet.jpg
