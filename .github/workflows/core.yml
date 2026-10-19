@@ -79,11 +79,18 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: ./scripts/verify.ps1 -SkipTests
+      - name: Cinematic component smoke (software WebGL; no film or instrument download)
+        run: |
+          set -o pipefail
+          python engine/get_scene_assets.py
+          VK_SOFTWARE_GL=1 python -m unittest tests.test_art.CinematicTest tests.test_art.SceneAdapterTest -v 2>&1 | tee cinematic-tests.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: core-${{ runner.os }}
-          path: core-tests.log
+          path: |
+            core-tests.log
+            cinematic-tests.log
           retention-days: 7
   webgl:
     if: github.event_name == 'workflow_dispatch' && inputs.webgl

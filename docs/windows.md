@@ -129,3 +129,18 @@ prepare按固定SHA下载三个CC0钢琴根音，带限离线重采样到manifes
 此前代码7403640已在原生windows-latest执行：70项中63通过、7项可选跳过，230.982秒；采样准备与共享拍点新增测试实际执行，verify.ps1 -SkipTests成功。完整镜像作品/可选Three渲染未在Windows实测。Linux同代码首次截图超时，重跑失败任务通过；不声称已修复间歇根因。详见[当前CI记录](../evidence/director-story/ci.json)。用户要求停止原创作品开发后，此处保留复现命令，不再继续样片制作。
 
 最后小范围修复代码3994838已再次完成原生Windows核心验收：75项中68通过、7可选跳过，189.313秒，verify.ps1 -SkipTests成功；Linux同代码68通过/7跳过。新增脚手架/诊断及采样准备算法的测试实际执行。此结果仍不覆盖上列完整Three/真实钢琴bank联网下载/整片流程，也不覆盖本页原样备份命令的Windows手工执行；见[最新证据](../evidence/closeout/ci.json)。
+
+## 曜石鎏金可选组件
+
+旧B/C与Canvas工程不需安装新的包。按需加载vk-art文字角色时须保留正式HTML模板的字体声明；缺声明/未加载会明确失败，不能只凭磁盘字体存在认领实际字形。3D美术复用已有固定Three运行时。
+
+```powershell
+python engine/get_scene_assets.py
+if ($LASTEXITCODE -ne 0) { throw 'scene runtime installation failed' }
+$env:VK_SOFTWARE_GL = '1' # 仅在需要软件后端时显式选择
+python -m unittest tests.test_art.CinematicTest tests.test_art.SceneAdapterTest -v
+if ($LASTEXITCODE -ne 0) { throw 'cinematic component smoke failed' }
+# 恢复原设置；若原来未设置，可 Remove-Item Env:VK_SOFTWARE_GL
+```
+
+14秒器具镜头的完整钢琴准备/生产/对照命令见[工程说明](../examples/torque/README.md)。本轮核心CI之后新增软件WebGL组件烟测，仅安装现有Three，不下载乐器、不生产影片；与Windows完整有声MP4导出是不同范围。实际原生结果见[美术验收](../evidence/torque/README.md)，未运行部分不外推。

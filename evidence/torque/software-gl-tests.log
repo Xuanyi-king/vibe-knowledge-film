@@ -1,0 +1,9 @@
+test_beveled_block_keeps_declared_dimensions (tests.test_art.CinematicTest.test_beveled_block_keeps_declared_dimensions) ... ok
+test_camera_projects_same_point_before_and_after_render_update (tests.test_art.SceneAdapterTest.test_camera_projects_same_point_before_and_after_render_update) ... ok
+test_finish_is_seeded_disposable_and_scene_renders_repeatably (tests.test_art.SceneAdapterTest.test_finish_is_seeded_disposable_and_scene_renders_repeatably) ... ok
+test_studio_environment_hook_exposure_and_original_defaults (tests.test_art.SceneAdapterTest.test_studio_environment_hook_exposure_and_original_defaults) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 46.050s
+
+OK

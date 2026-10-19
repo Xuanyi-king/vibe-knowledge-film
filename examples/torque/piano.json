@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "CC0-1.0 / VSCO 2 CE / Upright Piano sampled by Simon Dalzell, Ivy Audio; redistributed by Versilian Studios / 440300901dfe9275fd84e0b7763af1f8443ae62e",
+  "sources": [
+    {
+      "midi": 45,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn1_rr1_012.wav",
+      "sha256": "16be23a8378185f1b392600d3fa800a206945543866548640f7573534f76faf2",
+      "trim": 0
+    },
+    {
+      "midi": 57,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn1_rr1_018.wav",
+      "sha256": "01387cb5318c5abf11410ae8e2f4ef6aa83ec03254b4bccfe865aba262a2e412",
+      "trim": 0
+    },
+    {
+      "midi": 69,
+      "url": "https://raw.githubusercontent.com/sgossner/VSCO-2-CE/440300901dfe9275fd84e0b7763af1f8443ae62e/Keys/Upright%20Piano/Player_dyn1_rr1_024.wav",
+      "sha256": "916c3ec2d61fb421e74fb4866ef75d3ef17e9d88e9dc858da24159846489d33f",
+      "trim": 0
+    }
+  ],
+  "notes": [
+    53,
+    57,
+    60,
+    64,
+    65
+  ],
+  "max_seconds": 4
+}

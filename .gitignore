@@ -19,3 +19,6 @@ examples/atlas/audio/
 examples/mirror/audio/
 examples/mirror/assets/piano/
 !evidence/mirror/final.mp4
+examples/torque/audio/
+examples/torque/assets/piano/
+!evidence/torque/final.mp4

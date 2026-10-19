@@ -38,24 +38,28 @@ export function surface({seed=1,grain=.07,bump=.003,...parameters}={}) {
   material.addEventListener('dispose',()=>texture.dispose());return material;
 }
 
-export function studio({width=1920,height=1080,target=[0,1,0],position=[4,3,6],fov=36,shadowSize=1024}={}) {
+export function studio({width=1920,height=1080,target=[0,1,0],position=[4,3,6],fov=36,shadowSize=1024,exposure=1.05,environment=null}={}) {
   let renderer;
   try {renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true});}
   catch(e){throw new Error('WebGL2 unavailable: use current Chrome/Chromium with a working GPU or VK_SOFTWARE_GL=1. '+e.message);}
   renderer.setPixelRatio(1);renderer.setSize(width,height,false);
   renderer.outputColorSpace=THREE.SRGBColorSpace;
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=exposure;
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(fov,width/height,.1,100);
   camera.position.fromArray(position);camera.lookAt(...target);
   // Procedural softboxes are an environment, not a painted object highlight.
   // PMREM supplies roughness-dependent reflections to standard PBR materials.
   const canvas=document.createElement('canvas');canvas.width=512;canvas.height=256;
-  const c=canvas.getContext('2d'),gradient=c.createLinearGradient(0,0,0,256);
+  const c=canvas.getContext('2d');
+  if(environment)environment(c,512,256);
+  else {
+  const gradient=c.createLinearGradient(0,0,0,256);
   gradient.addColorStop(0,'#cbd5db');gradient.addColorStop(.55,'#6a747c');gradient.addColorStop(1,'#242d36');
   c.fillStyle=gradient;c.fillRect(0,0,512,256);
   c.fillStyle='#fff4df';c.fillRect(40,35,90,110);
   c.fillStyle='#eff9ff';c.fillRect(300,55,45,120);
+  }
   const env=new THREE.CanvasTexture(canvas);env.mapping=THREE.EquirectangularReflectionMapping;env.colorSpace=THREE.SRGBColorSpace;
   const pmrem=new THREE.PMREMGenerator(renderer),map=pmrem.fromEquirectangular(env);
   scene.environment=map.texture;env.dispose();pmrem.dispose();
@@ -66,7 +70,7 @@ export function studio({width=1920,height=1080,target=[0,1,0],position=[4,3,6],f
   const fill=new THREE.HemisphereLight('#d9eeff','#404952',1.2);scene.add(fill);
   const gl=renderer.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');
   window.VK_SCENE_INFO={three:THREE.REVISION,renderer:ext?gl.getParameter(ext.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER)};
-  return {scene,camera,renderer,key,
+  return {scene,camera,renderer,key,fill,
     render(ctx){if(gl.isContextLost())throw new Error('WebGL context lost; restart render to resume valid segments');renderer.render(scene,camera);ctx.drawImage(renderer.domElement,0,0,width,height);},
     dispose(){scene.traverse(n=>{n.geometry?.dispose();if(n.material)for(const m of [n.material].flat())m.dispose();});map.dispose();renderer.dispose();},
   };
