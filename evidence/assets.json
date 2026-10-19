@@ -73,5 +73,15 @@
     "sha256": "e2087f9c9b5c1b9d6637f5e2c891a651c3830f138eb99fb71a3ea589f7deaacc",
     "bytes": 607874,
     "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/6a2381cd5f597acd2402bfd9d507f8013b6caecd/evidence/torque/sfx.flac"
+  },
+  "torque-mobile-final.mp4": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/f21d2009b51e090aeadc9254ff15935a7d7977f0/evidence/torque/mobile/final.mp4",
+    "sha256": "0a0b8a574f35b4538f5eaa6fd3ea3fc9b762fc1eef223aecc7806921e5c4293e",
+    "bytes": 1665320
+  },
+  "torque-mobile-stress.mp4": {
+    "url": "https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/f21d2009b51e090aeadc9254ff15935a7d7977f0/evidence/torque/mobile/stress.mp4",
+    "sha256": "286c23506ac1eae10a1a572aec76e51608f187c5a69e7b88c8b34b8f9c724256",
+    "bytes": 458612
   }
 }
