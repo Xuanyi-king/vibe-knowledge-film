@@ -44,3 +44,14 @@ python scripts/check_media.py examples/resonance/renders/final.mp4 --duration 8
 [最终编码接触表](../../evidence/resonance/encoded.jpg) · [动作条](../../evidence/resonance/motion.jpg) · [技术媒体报告](../../evidence/resonance/media.json) · [同步报告](../../evidence/resonance/sync.json) · [返工记录](review.md)。短验证片和无损压缩独听轨随证据追踪；36秒大样片使用历史commit固定链接。当前环境Release附件上传401，未发布Release，字节数和SHA256见[assets.json](../../evidence/assets.json)。没有重新制作两部36秒影片。
 
 已检查关键画面、动作中间态和编码抽帧；技术测试不能代替主观听音。当前无音频播放能力，音色、混音舒适度与完整节奏留待人工审片；不宣称已达电影级。不包含真实目标模型A/B结果。
+
+## 声画版本与实际几何验证增量
+
+原final.mp4及历史报告保留。新增VK_CHECKS读取真实网格射线与实际半径/尺寸，在敲击前帧、接触帧、回弹帧及毡块接触处验证几何间隙；旧名义尺寸测试漏掉了旋转体绕序造成的表面剔除，已修正轮廓方向。新当前版成片为[evidence/resonance/current.mp4](../../evidence/resonance/current.mp4)，原final.mp4不被覆盖为新证据。
+
+```powershell
+python scripts/produce.py examples/resonance --assets scene --chunk 2 --jobs 1
+python scripts/check_visual.py examples/resonance --video examples/resonance/renders/final.mp4 --require mallet-contact felt-contact
+```
+
+导出绑定当前源码与事件表，check_av验证编码音频，check_visual验证声明的实际动作条件。任一输入编辑都会使旧事件/旧raw/旧final不能通过。几何条件不能判断材质美感或声音质感。

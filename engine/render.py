@@ -28,6 +28,8 @@ except ImportError:
 ENGINE = Path(__file__).resolve().parent
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    # Windows registry MIME mappings can label .mjs as text/plain. Modules require JS.
+    extensions_map = {**http.server.SimpleHTTPRequestHandler.extensions_map, '.js': 'text/javascript', '.mjs': 'text/javascript'}
     proj = None
     def translate_path(self, path):
         p = unquote(urlsplit(path).path)

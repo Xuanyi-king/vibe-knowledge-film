@@ -105,3 +105,5 @@ python scripts/check_visual.py examples/atlas --video examples/atlas/renders/fin
 历史无指纹导出须保留后重新渲染/导事件/合音，不能把旧audio/events.json认领为新film.js。输入编辑后请重跑生产入口；--resume按内容复用合法段。相同时长与FPS不代表相同版本。生成目录audio/review/renders不可放输入素材。
 
 可选地理依赖为本地固定D3与Natural Earth数据，无浏览器CDN请求；卸载时关闭预览后删除engine/vendor/geo。核心CI不强制安装地理或Three，因此会明确跳过对应可选测试；本地完整验收需先安装。完整作品的WebGL之外地理分支由Linux本地实际导出验证。
+
+本轮首次真实Windows CI找到并修复系统MIME映射问题：预览服务器现在显式把.js/.mjs作为JavaScript响应，不依赖Windows注册表把模块判成text/plain。测试通过真实HTTP模拟坏映射；最终原生重跑链接见最终验收。Windows CI固定Playwright Chromium；本机Google Chrome频道和可选WebGL的Windows整片仍分别列为未验证，不外推。

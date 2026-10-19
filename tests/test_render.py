@@ -128,3 +128,17 @@ class BrowserTests(unittest.TestCase):
         self.page("VK.film({dur:.2,grain:0,draw(fr,t){fr.rect(t*100,0,50,50,{fill:'#abc'});fr.sfx(.1,'tick');}})",check)
 
 if __name__=='__main__': unittest.main()
+
+class ModuleMimeTest(unittest.TestCase):
+    def test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text(self):
+        import mimetypes,urllib.request
+        mimetypes.init()
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);(p/'film.mjs').write_text('export const x=1;');(p/'film.js').write_text('window.x=1;')
+            with patch.dict(mimetypes.types_map,{'.mjs':'text/plain','.js':'text/plain'}):
+                srv,url=r.serve(p)
+                try:
+                    for name in ['film.mjs','film.js','engine/vk-motion.mjs']:
+                        with urllib.request.urlopen(url+name) as response:
+                            self.assertIn(response.headers.get_content_type(),['text/javascript','application/javascript'],name)
+                finally:srv.shutdown();srv.server_close()

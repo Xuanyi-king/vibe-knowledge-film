@@ -2,7 +2,7 @@ name: Core and optional WebGL
 on:
   pull_request:
   push:
-    branches: [feat/director-evidence-workflow]
+    branches: [main]
   workflow_dispatch:
     inputs:
       webgl:
@@ -16,6 +16,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   core:
+    if: github.event_name != 'workflow_dispatch' || !inputs.webgl
     strategy:
       fail-fast: false
       matrix:

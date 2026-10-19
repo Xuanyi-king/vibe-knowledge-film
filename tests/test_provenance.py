@@ -110,3 +110,18 @@ class ProvenanceTest(unittest.TestCase):
                 try:runpy.run_path(str(ROOT/'scripts/check_av.py'),run_name='__main__')
                 except (SystemExit,subprocess.CalledProcessError):pass
             self.assertTrue(json.loads((p/'audio/sync.json').read_text())['failed'])
+
+    def test_input_edit_during_encoding_check_cannot_publish_green(self):
+        from scripts import check_av
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);self.make(p)
+            self.assertEqual(self.cli('audio',p).returncode,0)
+            decode=check_av.decode
+            def editing_decode(path):
+                (p/'film.js').write_text((p/'film.js').read_text()+'\n// input changed during decoding')
+                return decode(path)
+            with patch.object(check_av,'decode',side_effect=editing_decode):
+                with self.assertRaisesRegex(RuntimeError,'changed during export'):
+                    check_av.check(p,p/'renders/final.mp4')
+            self.assertTrue(json.loads((p/'audio/sync.json').read_text())['failed'])

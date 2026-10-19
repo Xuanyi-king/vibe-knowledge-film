@@ -1,0 +1,18 @@
+test_input_edit_during_encoding_check_cannot_publish_green (tests.test_provenance.ProvenanceTest.test_input_edit_during_encoding_check_cannot_publish_green) ...   0/12
+FAIL
+
+======================================================================
+FAIL: test_input_edit_during_encoding_check_cannot_publish_green (tests.test_provenance.ProvenanceTest.test_input_edit_during_encoding_check_cannot_publish_green)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_provenance.py", line 125, in test_input_edit_during_encoding_check_cannot_publish_green
+    with self.assertRaisesRegex(RuntimeError,'changed during export'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 24.961s
+
+FAILED (failures=1)
+done /tmp/tmp7qjyap47/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared

@@ -1,0 +1,29 @@
+GitHub Actions 39179144760, core (windows-latest), commit dba7dd2. Original full log linked in final acceptance.
+2026-10-19T00:09:48.3850617Z test_tempo_inverse_contact_and_seek_order (test_choreography.ChoreographyTest.test_tempo_inverse_contact_and_seek_order) ... ERROR
+2026-10-19T00:10:20.1636766Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:20.1638667Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:20.1640907Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:20.1643060Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:20.1646084Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:20.1648258Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:20.1650267Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:20.1651935Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:20.1653815Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:37.8621201Z ERROR: test_tempo_inverse_contact_and_seek_order (test_choreography.ChoreographyTest.test_tempo_inverse_contact_and_seek_order)
+2026-10-19T00:10:37.8629144Z   File "D:\a\vibe-knowledge-film\vibe-knowledge-film\tests\test_choreography.py", line 50, in test_tempo_inverse_contact_and_seek_order
+2026-10-19T00:10:37.8668833Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:53591/score.mjs
+2026-10-19T00:10:37.8678168Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:57854/score.mjs
+2026-10-19T00:10:37.8687045Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:49302/score.mjs
+2026-10-19T00:10:37.8696171Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:53067/score.mjs
+2026-10-19T00:10:37.8704970Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:57079/score.mjs
+2026-10-19T00:10:37.8715794Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:54656/score.mjs
+2026-10-19T00:10:37.8726688Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:56951/score.mjs
+2026-10-19T00:10:37.8751864Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:50575/engine/vk-checks.mjs
+2026-10-19T00:10:37.8763702Z RuntimeError: TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:50829/engine/vk-checks.mjs
+2026-10-19T00:10:37.8765175Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:37.8766563Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:37.8767782Z Ran 56 tests in 59.976s
+2026-10-19T00:10:37.8768012Z FAILED (failures=1, errors=11, skipped=4)
+2026-10-19T00:10:37.8768831Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:37.8770201Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.
+2026-10-19T00:10:37.8773106Z [page] Failed to load module script: Expected a JavaScript-or-Wasm module script but the server responded with a MIME type of "text/plain". Strict MIME type checking is enforced for module scripts per HTML spec.

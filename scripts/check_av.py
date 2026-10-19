@@ -40,12 +40,14 @@ def check(proj,video):
         except ValueError as exc:failed.append(e['id']);results.append({'id':e['id'],'error':str(exc)})
     report={'layer':'encoding_audio_sync','visual_action_sync':'not_checked',
             'input_sha256':provenance.identity(sources),'events_sha256':provenance.identity(spec),
+            'video_sha256':final['sha256'],'reference_sha256':mix['reference_sha256'],
             'scope':'source mix vs decoded final; visual action conditions require check_visual.py; no aesthetic score',
             'checked':len(results),'exempt':exempt,'failed':failed,'events':results,
             'duration_difference_seconds':(len(encoded)-len(source))/SR}
     if not results:failed.append('no checkable audio events')
     if abs(report['duration_difference_seconds'])>.1:failed.append('audio duration mismatch')
-    (proj/'audio/sync.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+    provenance.stable(proj,sources)
+    provenance.atomic_json(proj/'audio/sync.json',report)
     return report
 
 def main():

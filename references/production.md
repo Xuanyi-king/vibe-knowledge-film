@@ -22,3 +22,5 @@ python scripts/produce.py <project> --assets geo  # 只按作品需求选geo/sce
 迁移：没有版本记录的旧导出不可自动认领为当前版本。保留文件，先完成输入编辑，再重新`--resume`、`--events`和合音；不提供忽略指纹的“通过”开关。旧fr.sfx和B/C源码仍可运行；历史MP4与报告仍可供审查，但不是当前输入的验证结果。资产须本地可追踪；不是文件锁或抗恶意篡改签名。
 
 [地图完整作品](../examples/atlas/storyboard.md)演示主题到收束；[视听组件](choreography.md)、[动作条件](action-checks.md)按需读。有限Agent可以按镜头/组件逐项实现并持续执行；强模型可进一步发展原创方法，组件数量与代码量不是上限。
+
+生产报告也有生命周期：入口先落盘running，每步记active_stage，强制中断不能遗留上轮成功。全部检查后重验输入稳定与最终媒体身份；成功报告绑定input/events/video，并要求两层同步报告指向同一final。它只能表示已执行的技术层，不能承诺主观发布质量。

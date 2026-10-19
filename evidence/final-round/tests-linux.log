@@ -15,12 +15,14 @@ test_valid_media_and_duration_mismatch (test_media.MediaTest.test_valid_media_an
 test_click_grid_and_silence_do_not_invent_downbeats (test_music.MusicTest.test_click_grid_and_silence_do_not_invent_downbeats) ... ok
 test_positions_speed_and_arrivals (test_physics.PhysicsTest.test_positions_speed_and_arrivals) ... ok
 test_travel_time_from_energy_integral (test_physics.PhysicsTest.test_travel_time_from_energy_integral) ... ok
+test_force_exit_invalidates_old_success_before_first_step (test_production.ProductionTest.test_force_exit_invalidates_old_success_before_first_step) ... ok
 test_one_entry_completes_pipeline_and_reports_blocked_inspection (test_production.ProductionTest.test_one_entry_completes_pipeline_and_reports_blocked_inspection) ... ok
-test_decoder_failure_invalidates_previous_green_report (test_provenance.ProvenanceTest.test_decoder_failure_invalidates_previous_green_report) ... score: /tmp/tmpxioge1hv/audio/score.wav 0.5s 1 events
-score: /tmp/tmpgrmh_pyf/audio/score.wav 0.5s 1 events
+test_source_edit_during_final_media_check_cannot_publish_success (test_production.ProductionTest.test_source_edit_during_final_media_check_cannot_publish_success) ... ok
+test_decoder_failure_invalidates_previous_green_report (test_provenance.ProvenanceTest.test_decoder_failure_invalidates_previous_green_report) ... score: /tmp/tmpo5e_q94_/audio/score.wav 0.5s 1 events
+score: /tmp/tmp20fgt5fh/audio/score.wav 0.5s 1 events
   0/12
 ok
-test_export_input_race_keeps_previous_event_file (test_provenance.ProvenanceTest.test_export_input_race_keeps_previous_event_file) ... done /tmp/tmpakyaugbs/renders/raw.mp4 0.40s
+test_export_input_race_keeps_previous_event_file (test_provenance.ProvenanceTest.test_export_input_race_keeps_previous_event_file) ... done /tmp/tmplbla_cmx/renders/raw.mp4 0.40s
 events: 0 legacy; 1 shared
 {
   "layer": "encoding_audio_sync",
@@ -32,25 +34,29 @@ events: 0 legacy; 1 shared
 }
   0/12
 ok
-test_modified_reference_or_final_cannot_pass_encoding_check (test_provenance.ProvenanceTest.test_modified_reference_or_final_cannot_pass_encoding_check) ... done /tmp/tmptpf450x8/renders/raw.mp4 0.40s
+test_input_edit_during_encoding_check_cannot_publish_green (test_provenance.ProvenanceTest.test_input_edit_during_encoding_check_cannot_publish_green) ... done /tmp/tmp74achbbl/renders/raw.mp4 0.40s
 events: 0 legacy; 1 shared
   0/12
 ok
-test_noninteger_frame_end_is_supported_by_serial_pipeline (test_provenance.ProvenanceTest.test_noninteger_frame_end_is_supported_by_serial_pipeline) ... done /tmp/tmpke3thcfj/renders/raw.mp4 0.40s
+test_modified_reference_or_final_cannot_pass_encoding_check (test_provenance.ProvenanceTest.test_modified_reference_or_final_cannot_pass_encoding_check) ... done /tmp/tmpo82khd1c/renders/raw.mp4 0.40s
 events: 0 legacy; 1 shared
   0/12
 ok
-test_reexported_events_cannot_bind_old_raw_or_tampered_payload (test_provenance.ProvenanceTest.test_reexported_events_cannot_bind_old_raw_or_tampered_payload) ... done /tmp/tmp8_7vsxz3/renders/raw.mp4 0.40s
+test_noninteger_frame_end_is_supported_by_serial_pipeline (test_provenance.ProvenanceTest.test_noninteger_frame_end_is_supported_by_serial_pipeline) ... done /tmp/tmpxmlq74cs/renders/raw.mp4 0.40s
 events: 0 legacy; 1 shared
   0/12
-done /tmp/tmpmx61o3e1/renders/raw.mp4 0.40s
+ok
+test_reexported_events_cannot_bind_old_raw_or_tampered_payload (test_provenance.ProvenanceTest.test_reexported_events_cannot_bind_old_raw_or_tampered_payload) ... done /tmp/tmpq5j32zth/renders/raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+done /tmp/tmpo8dt43ce/renders/raw.mp4 0.40s
 events: 0 legacy; 1 shared
 events: 0 legacy; 1 shared
   0/12
 ok
-test_source_edits_reject_old_events_and_old_encoded_check (test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) ... done /tmp/tmpmx61o3e1/renders/raw.mp4 0.40s
+test_source_edits_reject_old_events_and_old_encoded_check (test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) ... done /tmp/tmpo8dt43ce/renders/raw.mp4 0.40s
   0/12
-done /tmp/tmp4tbh0xx9/renders/raw.mp4 0.40s
+done /tmp/tmplu_ummk7/renders/raw.mp4 0.40s
 events: 0 legacy; 1 shared
   0/12
 ok
@@ -60,80 +66,81 @@ test_event_scan_includes_end_without_exceeding_duration (test_render.BrowserTest
 test_events_preserve_seek_pixels_and_repeatability (test_render.BrowserTests.test_events_preserve_seek_pixels_and_repeatability) ... ok
 test_resume_rejects_inputs_in_generated_directories (test_render.BrowserTests.test_resume_rejects_inputs_in_generated_directories) ... ok
 test_startup_script_error_reports_cause_without_ready (test_render.BrowserTests.test_startup_script_error_reports_cause_without_ready) ... ok
+test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text (test_render.ModuleMimeTest.test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text) ... ok
 test_failed_worker_does_not_skip_waiting_for_other_workers (test_render.ParallelTests.test_failed_worker_does_not_skip_waiting_for_other_workers) ... ok
 test_determinism_failure_is_an_error (test_render.RenderTests.test_determinism_failure_is_an_error) ... ok
-test_encoder_failure_preserves_existing_output (test_render.RenderTests.test_encoder_failure_preserves_existing_output) ... done /tmp/tmpeol0k7q4/renders/raw.mp4 0.40s
+test_encoder_failure_preserves_existing_output (test_render.RenderTests.test_encoder_failure_preserves_existing_output) ... done /tmp/tmp7x_fbtug/renders/raw.mp4 0.40s
 events: 0 legacy; 1 shared
   0/1
 ok
 test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) ... ok
 test_encoded_parent_path_cannot_escape_project (test_render.ServerPathsTest.test_encoded_parent_path_cannot_escape_project) ... ok
 test_url_encoded_asset_names_work (test_render.ServerPathsTest.test_url_encoded_asset_names_work) ... ok
-test_asset_and_render_parameter_changes_invalidate_cache (test_resume.ResumeTest.test_asset_and_render_parameter_changes_invalidate_cache) ... cache new identity a94f952e7003c36981be (source / runtime / encoding / chunk parameters)
+test_asset_and_render_parameter_changes_invalidate_cache (test_resume.ResumeTest.test_asset_and_render_parameter_changes_invalidate_cache) ... cache new identity 0836485cb0a83bdaf742 (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 cache render 2/3 [6,12)
 cache render 3/3 [12,18)
-done /tmp/vk cache's 空格 7c_8z07k/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 7c_8z07k/renders/.vk-cache/a94f952e7003c36981be
-cache new identity 5acce19915686ba21bf9 (source / runtime / encoding / chunk parameters)
+done /tmp/vk cache's 空格 rc2oukiu/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 rc2oukiu/renders/.vk-cache/0836485cb0a83bdaf742
+cache new identity 07c3da348535077c1a8a (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 cache render 2/3 [6,12)
 cache render 3/3 [12,18)
-done /tmp/vk cache's 空格 7c_8z07k/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 7c_8z07k/renders/.vk-cache/5acce19915686ba21bf9
-cache new identity 1baf49186ae323884918 (source / runtime / encoding / chunk parameters)
+done /tmp/vk cache's 空格 rc2oukiu/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 rc2oukiu/renders/.vk-cache/07c3da348535077c1a8a
+cache new identity f37c7950aa5d694f3963 (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 cache render 2/3 [6,12)
 cache render 3/3 [12,18)
-done /tmp/vk cache's 空格 7c_8z07k/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 7c_8z07k/renders/.vk-cache/1baf49186ae323884918
-cache new identity 4907d42bcb1955df1eff (source / runtime / encoding / chunk parameters)
+done /tmp/vk cache's 空格 rc2oukiu/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 rc2oukiu/renders/.vk-cache/f37c7950aa5d694f3963
+cache new identity eaa57c32632757b951dd (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 cache render 2/3 [6,12)
 cache render 3/3 [12,18)
-done /tmp/vk cache's 空格 7c_8z07k/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 7c_8z07k/renders/.vk-cache/4907d42bcb1955df1eff
+done /tmp/vk cache's 空格 rc2oukiu/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 rc2oukiu/renders/.vk-cache/eaa57c32632757b951dd
 ok
 test_browser_initialization_source_race_is_rejected (test_resume.ResumeTest.test_browser_initialization_source_race_is_rejected) ... ok
-test_corrupt_part_is_rebuilt_without_rebuilding_valid_parts (test_resume.ResumeTest.test_corrupt_part_is_rebuilt_without_rebuilding_valid_parts) ... cache new identity a94f952e7003c36981be (source / runtime / encoding / chunk parameters)
+test_corrupt_part_is_rebuilt_without_rebuilding_valid_parts (test_resume.ResumeTest.test_corrupt_part_is_rebuilt_without_rebuilding_valid_parts) ... cache new identity 0836485cb0a83bdaf742 (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 cache render 2/3 [6,12)
 cache render 3/3 [12,18)
-done /tmp/vk cache's 空格 4us791a4/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 4us791a4/renders/.vk-cache/a94f952e7003c36981be
+done /tmp/vk cache's 空格 p1c2c701/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 p1c2c701/renders/.vk-cache/0836485cb0a83bdaf742
 cache reuse 1/3 [0,6)
 cache render 2/3 [6,12)
 cache reuse 3/3 [12,18)
-done /tmp/vk cache's 空格 4us791a4/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 4us791a4/renders/.vk-cache/a94f952e7003c36981be
+done /tmp/vk cache's 空格 p1c2c701/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 p1c2c701/renders/.vk-cache/0836485cb0a83bdaf742
 ok
-test_failed_concat_preserves_old_final (test_resume.ResumeTest.test_failed_concat_preserves_old_final) ... cache new identity a94f952e7003c36981be (source / runtime / encoding / chunk parameters)
+test_failed_concat_preserves_old_final (test_resume.ResumeTest.test_failed_concat_preserves_old_final) ... cache new identity 0836485cb0a83bdaf742 (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 cache render 2/3 [6,12)
 cache render 3/3 [12,18)
-done /tmp/vk cache's 空格 5hib8zvn/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 5hib8zvn/renders/.vk-cache/a94f952e7003c36981be
+done /tmp/vk cache's 空格 5g7rd5uz/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 5g7rd5uz/renders/.vk-cache/0836485cb0a83bdaf742
 cache reuse 1/3 [0,6)
 cache reuse 2/3 [6,12)
 cache reuse 3/3 [12,18)
 ok
-test_interruption_keeps_completed_parts_and_resumes_in_order (test_resume.ResumeTest.test_interruption_keeps_completed_parts_and_resumes_in_order) ... cache new identity a94f952e7003c36981be (source / runtime / encoding / chunk parameters)
+test_interruption_keeps_completed_parts_and_resumes_in_order (test_resume.ResumeTest.test_interruption_keeps_completed_parts_and_resumes_in_order) ... cache new identity 0836485cb0a83bdaf742 (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 cache render 2/3 [6,12)
 cache reuse 1/3 [0,6)
 cache render 2/3 [6,12)
 cache render 3/3 [12,18)
-done /tmp/vk cache's 空格 3gpwuqky/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 3gpwuqky/renders/.vk-cache/a94f952e7003c36981be
+done /tmp/vk cache's 空格 pearrs9j/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 pearrs9j/renders/.vk-cache/0836485cb0a83bdaf742
 ok
 test_invalid_chunk_is_rejected (test_resume.ResumeTest.test_invalid_chunk_is_rejected) ... ok
-test_invalid_part_never_published (test_resume.ResumeTest.test_invalid_part_never_published) ... cache new identity a94f952e7003c36981be (source / runtime / encoding / chunk parameters)
+test_invalid_part_never_published (test_resume.ResumeTest.test_invalid_part_never_published) ... cache new identity 0836485cb0a83bdaf742 (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 ok
 test_lock_releases_after_interruption (test_resume.ResumeTest.test_lock_releases_after_interruption) ... ok
-test_parallel_interrupt_cancels_queued_segments (test_resume.ResumeTest.test_parallel_interrupt_cancels_queued_segments) ... cache new identity 46d09c2edfd6c8fba9e0 (source / runtime / encoding / chunk parameters)
+test_parallel_interrupt_cancels_queued_segments (test_resume.ResumeTest.test_parallel_interrupt_cancels_queued_segments) ... cache new identity 19dc15becd076d50fb63 (source / runtime / encoding / chunk parameters)
 cache render 1/6 [0,6)
 cache render 2/6 [6,12)
 ok
-test_parallel_parts_are_concatenated_in_frame_order (test_resume.ResumeTest.test_parallel_parts_are_concatenated_in_frame_order) ... cache new identity a94f952e7003c36981be (source / runtime / encoding / chunk parameters)
+test_parallel_parts_are_concatenated_in_frame_order (test_resume.ResumeTest.test_parallel_parts_are_concatenated_in_frame_order) ... cache new identity 0836485cb0a83bdaf742 (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 cache render 2/3 [6,12)
 cache render 3/3 [12,18)
-done /tmp/vk cache's 空格 b7m0y9kf/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 b7m0y9kf/renders/.vk-cache/a94f952e7003c36981be
+done /tmp/vk cache's 空格 pwpv_unc/renders/raw.mp4 18 frames; cache /tmp/vk cache's 空格 pwpv_unc/renders/.vk-cache/0836485cb0a83bdaf742
 ok
-test_source_change_during_render_is_rejected (test_resume.ResumeTest.test_source_change_during_render_is_rejected) ... cache new identity a94f952e7003c36981be (source / runtime / encoding / chunk parameters)
+test_source_change_during_render_is_rejected (test_resume.ResumeTest.test_source_change_during_render_is_rejected) ... cache new identity 0836485cb0a83bdaf742 (source / runtime / encoding / chunk parameters)
 cache render 1/3 [0,6)
 ok
 test_custom_is_neutral_and_does_not_overwrite (test_scaffold.ScaffoldTest.test_custom_is_neutral_and_does_not_overwrite) ... ok
@@ -147,17 +154,17 @@ test_invalid_declarations_and_nonfinite_measurements_fail (test_visual_checks.Vi
 test_rendered_condition_fails_when_motion_is_retimed_without_sound (test_visual_checks.VisualChecksTest.test_rendered_condition_fails_when_motion_is_retimed_without_sound) ... ok
 
 ----------------------------------------------------------------------
-Ran 56 tests in 213.713s
+Ran 60 tests in 340.028s
 
 OK
-[page] [.WebGL-0x24c001b5a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[page] [.WebGL-0x24c001b5a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[page] [.WebGL-0x24c001b5a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[page] [.WebGL-0x24c001b5a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
-[page] [.WebGL-0x248c001a8800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[page] [.WebGL-0x248c001a8800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[page] [.WebGL-0x248c001a8800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[page] [.WebGL-0x248c001a8800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[page] [.WebGL-0x1234001be600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x1234001be600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x1234001be600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x1234001be600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[page] [.WebGL-0x8b4001ac800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x8b4001ac800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x8b4001ac800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[page] [.WebGL-0x8b4001ac800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
 events: 0 legacy; 1 shared
 events: 0 legacy; 1 shared
 events: 0 legacy; 1 shared

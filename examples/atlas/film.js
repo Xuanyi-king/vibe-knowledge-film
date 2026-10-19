@@ -71,7 +71,7 @@
   frame(c,7,'如果改为保面积呢？','SAME EARTH / DIFFERENT CHOICE');const q=ease(t,44,51.5),p=flat(c,q,{x:740,y:540,scale:180,box:[[90,220],[1330,885]]});
   band(c,p,60,P.red);smallRegion(c,p,15,60);const k=G.localScale(60,q);measurement(c,1520,510,100,k.x,k.y);
   text(c,'面积',1450,740,28);text(c,`${k.area.toFixed(2)} ×`,1450,800,48,P.red,'VK Mono');
-  footer(c,'东西两倍 × 南北一半，面积回到一倍。','从 Mercator 连续变为 Lambert 柱面等面积；中间态仅为演示');
+  footer(c,q<.999?'把南北缩到原来的一半，会怎样？':'东西两倍 × 南北一半，面积回到一倍。','从 Mercator 连续变为 Lambert 柱面等面积；中间态仅为演示');
  }
  function compare(c,t){
   frame(c,8,'面积保住了，形状却变了','CONFORMAL / EQUAL AREA');

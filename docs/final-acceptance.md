@@ -26,11 +26,11 @@
 
 《地图是一种选择》输入只有“地图为什么一定会失真？”，当前Agent自主制作完整72秒叙事。[有声MP4](../evidence/atlas/final.mp4)、[源码与知识来源](../examples/atlas/README.md)、[返工与真实画面](../evidence/atlas/review.md)。这是端到端实践，不是隔离模型能力实验。地理/数学解释限定球面、赤道标准纬线、局部微分尺度；没有把局部四倍套成任意国家面积。
 
-具体全量测试、媒体测量和平台CI结果在制作完成后填入下方；未运行不等于通过。
+最终Linux本地完整**60项通过，340.028秒**；包含已安装的可选Three与Geo。此前56项通过后追加收尾审查与WindowsMIME回归，旧计数不是最终计数。具体最终结果列下方；未运行不等于通过。
 
 ## 自动验证与平台
 
-验收进行中。Linux本地安装可选Three与Geo；GitHub Actions核心矩阵不强制这些可选资产，会明确跳过对应测试。手动webgl任务执行现有8秒作品的完整渲染/混音/两层同步与媒体检查。Windows原生结果以真实Actions日志为准，本地无Windows主机。
+首次原生Windows Actions实际运行，暴露.mjs被系统映射为text/plain，导致模块加载失败（56项中1失败、11错误、4可选跳过）。服务器已改显式JavaScript MIME，真实HTTP模拟错误映射已RED→GREEN；最终Windows重跑结果待录入。最终完整日志见[evidence/final-round/tests-linux.log](../evidence/final-round/tests-linux.log)。Linux本地安装可选Three与Geo；GitHub Actions核心矩阵不强制这些可选资产，会明确跳过对应测试。手动webgl任务执行现有8秒作品的完整渲染/混音/两层同步与媒体检查。Windows原生结果以真实Actions日志为准，本地无Windows主机。
 
 完整Linux命令：
 

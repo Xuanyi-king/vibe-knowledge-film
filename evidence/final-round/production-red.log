@@ -1,0 +1,27 @@
+test_force_exit_invalidates_old_success_before_first_step (tests.test_production.ProductionTest.test_force_exit_invalidates_old_success_before_first_step) ... FAIL
+test_source_edit_during_final_media_check_cannot_publish_success (tests.test_production.ProductionTest.test_source_edit_during_final_media_check_cannot_publish_success) ... FAIL
+
+======================================================================
+FAIL: test_force_exit_invalidates_old_success_before_first_step (tests.test_production.ProductionTest.test_force_exit_invalidates_old_success_before_first_step)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_production.py", line 42, in test_force_exit_invalidates_old_success_before_first_step
+    self.assertEqual(json.loads(out.read_text())['status'],'running')
+AssertionError: 'technical_complete_needs_subjective_review' != 'running'
+- technical_complete_needs_subjective_review
++ running
+
+
+======================================================================
+FAIL: test_source_edit_during_final_media_check_cannot_publish_success (tests.test_production.ProductionTest.test_source_edit_during_final_media_check_cannot_publish_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/vibe-knowledge-film/tests/test_production.py", line 53, in test_source_edit_during_final_media_check_cannot_publish_success
+    with self.assertRaisesRegex(RuntimeError,'changed during export'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.181s
+
+FAILED (failures=2)
