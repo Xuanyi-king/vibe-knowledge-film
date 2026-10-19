@@ -1,0 +1,38 @@
+{
+  "contact-strip.jpg": {
+    "sha256": "365a9da379c63f2b9f28bb133b8642b83983f8dc4c32664c58e48557ab186891",
+    "bytes": 90650
+  },
+  "encoded-8.5.jpg": {
+    "sha256": "51a25c76af5c06bed1a7e612f0b7698547d95ff1c34fb09659c62a001ad0548b",
+    "bytes": 113213
+  },
+  "encoded-motion.jpg": {
+    "sha256": "615044b9a75e176c46a88d006d3a5bc5107d557c75f9e601c03f4aaf0672bf61",
+    "bytes": 631303
+  },
+  "final.mp4": {
+    "sha256": "bf9b26e8a2e12fa8f8e7cae228fdf42b5b0bf4486fadf638c66fe18f228bec60",
+    "bytes": 1610192
+  },
+  "matched-art.jpg": {
+    "sha256": "c817f7ef4d14349c4218e14d66acb24653570f1abd1bcdf7d4f1dea34545dfc0",
+    "bytes": 220527
+  },
+  "music.flac": {
+    "sha256": "14cc362a1d02b4d13c809440f64a621a9b70de6cc203d6a8bf86dd493dea6134",
+    "bytes": 2235664
+  },
+  "phone-390.jpg": {
+    "sha256": "6f8cfb2bbf3ba774b3a165c049e3cd3b8843af97933f2a883ba11172eebe2e8e",
+    "bytes": 18414
+  },
+  "sfx.flac": {
+    "sha256": "e2087f9c9b5c1b9d6637f5e2c891a651c3830f138eb99fb71a3ea589f7deaacc",
+    "bytes": 607874
+  },
+  "v1.jpg": {
+    "sha256": "a220c9b2968c9842017a7922e9203c809d45e32d59be3dab29b75e8a1389f7dc",
+    "bytes": 223926
+  }
+}

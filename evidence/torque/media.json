@@ -1,0 +1,44 @@
+{
+  "file": "/workspace/vibe-knowledge-film/examples/torque/renders/final.mp4",
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 14.0,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "frames": "420"
+  },
+  "audio": {
+    "duration": 14.0,
+    "codec": "aac",
+    "sample_rate": "48000",
+    "sample_peak_db": -3.502954,
+    "rms_db": -20.632716,
+    "note": "Decoded sample peak/RMS plus FFmpeg loudnorm integrated LUFS, true peak and LRA; not a mix-quality score.",
+    "integrated_lufs": -18.05,
+    "true_peak_dbtp": -3.5,
+    "loudness_range_lu": 4.4
+  },
+  "errors": [],
+  "candidates": {
+    "black": [],
+    "silence": [
+      {
+        "start": 7.326792,
+        "end": 7.691125,
+        "duration": 0.364333
+      }
+    ],
+    "scene_change_times": []
+  },
+  "unverified": [
+    "aesthetic quality",
+    "unexpected blank colored frames",
+    "object bounds and subtitle occlusion",
+    "glyph coverage/readability",
+    "storyboard match",
+    "factual correctness"
+  ],
+  "interpretation": "Candidates require timestamped visual/audio review; intentional black, cuts and silence are allowed."
+}
