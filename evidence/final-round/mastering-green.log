@@ -1,0 +1,12 @@
+test_legacy_mastering_requires_explicit_source_only_contract (tests.test_mastering.MasteringTest.test_legacy_mastering_requires_explicit_source_only_contract) ... ok
+test_real_encoder_failure_preserves_final_and_provenance (tests.test_mastering.MasteringTest.test_real_encoder_failure_preserves_final_and_provenance) ... ok
+test_sparse_transients_meet_encoded_ceiling_without_timing_shift (tests.test_mastering.MasteringTest.test_sparse_transients_meet_encoded_ceiling_without_timing_shift) ... ok
+test_force_exit_invalidates_old_success_before_first_step (tests.test_production.ProductionTest.test_force_exit_invalidates_old_success_before_first_step) ... ok
+test_one_entry_completes_pipeline_and_reports_blocked_inspection (tests.test_production.ProductionTest.test_one_entry_completes_pipeline_and_reports_blocked_inspection) ... ok
+test_post_mux_failure_restores_old_final_and_sidecar (tests.test_production.ProductionTest.test_post_mux_failure_restores_old_final_and_sidecar) ... ok
+test_source_edit_during_final_media_check_cannot_publish_success (tests.test_production.ProductionTest.test_source_edit_during_final_media_check_cannot_publish_success) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 42.225s
+
+OK

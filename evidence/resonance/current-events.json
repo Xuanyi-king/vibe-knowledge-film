@@ -1,0 +1,303 @@
+{
+  "end": 8,
+  "fps": 30,
+  "meta": {
+    "title": "一击之后",
+    "drone": 0
+  },
+  "events": [],
+  "score": {
+    "end": 8,
+    "fps": 30,
+    "tempo": [
+      {
+        "beat": 0,
+        "bpm": 90
+      }
+    ],
+    "shots": [
+      {
+        "id": "resonance",
+        "start": 0,
+        "end": 8
+      }
+    ],
+    "tracks": {
+      "music": {
+        "gain": [
+          [
+            0,
+            0.35
+          ],
+          [
+            1.5,
+            0.18
+          ],
+          [
+            1.9,
+            0
+          ],
+          [
+            5.65,
+            0
+          ],
+          [
+            6.2,
+            0.3
+          ],
+          [
+            7.8,
+            0
+          ]
+        ]
+      },
+      "sfx": {
+        "room": 0.08,
+        "t60": 0.32,
+        "highpass": 45
+      }
+    },
+    "silence": [
+      [
+        5.72,
+        6
+      ]
+    ],
+    "events": [
+      {
+        "id": "approach",
+        "shot": "resonance",
+        "start": 1.3,
+        "duration": 0.7,
+        "object": "mallet",
+        "action": "movement",
+        "sound": {
+          "kind": "whoosh",
+          "material": "wood",
+          "gain": 0.16,
+          "pan": -0.2
+        },
+        "end": 2
+      },
+      {
+        "id": "strike",
+        "shot": "resonance",
+        "beat": 3,
+        "duration": 3.7,
+        "object": "disc",
+        "action": "collision",
+        "material": "metal",
+        "intensity": 0.9200000000000002,
+        "motion": {
+          "from": 1.8,
+          "to": 0.19,
+          "lead": 0.7,
+          "restitution": 0.35
+        },
+        "position": [
+          -0.45,
+          1.62,
+          0.02
+        ],
+        "speed": 4.6000000000000005,
+        "sound": {
+          "kind": "impact",
+          "material": "metal",
+          "frequency": 220,
+          "pan": -0.15,
+          "gain": [
+            [
+              0,
+              0.9
+            ],
+            [
+              3.333,
+              0.9
+            ],
+            [
+              3.5,
+              0
+            ]
+          ]
+        },
+        "start": 2,
+        "end": 5.7
+      },
+      {
+        "id": "damp",
+        "shot": "resonance",
+        "beat": 8,
+        "duration": 0.38,
+        "object": "felt",
+        "action": "friction",
+        "material": "felt",
+        "speed": 0.35,
+        "intensity": 0.25,
+        "sound": {
+          "kind": "friction",
+          "material": "felt",
+          "gain": 0.55,
+          "pan": 0.35,
+          "speed": [
+            [
+              0,
+              0.5
+            ],
+            [
+              0.15,
+              0.15
+            ],
+            [
+              0.38,
+              0
+            ]
+          ]
+        },
+        "start": 5.333333333333333,
+        "end": 5.713333333333333
+      },
+      {
+        "id": "music-0",
+        "beat": 0,
+        "duration": 0.65,
+        "action": "music",
+        "sound": {
+          "kind": "pluck",
+          "midi": 57,
+          "gain": 0.24,
+          "track": "music",
+          "pan": -0.4
+        },
+        "start": 0,
+        "end": 0.65
+      },
+      {
+        "id": "music-1",
+        "beat": 1,
+        "duration": 0.65,
+        "action": "music",
+        "sound": {
+          "kind": "pluck",
+          "midi": 64,
+          "gain": 0.24,
+          "track": "music",
+          "pan": 0.4
+        },
+        "start": 0.6666666666666666,
+        "end": 1.3166666666666667
+      },
+      {
+        "id": "music-2",
+        "beat": 9.25,
+        "duration": 0.65,
+        "action": "music",
+        "sound": {
+          "kind": "pluck",
+          "midi": 60,
+          "gain": 0.24,
+          "track": "music",
+          "pan": -0.4
+        },
+        "start": 6.166666666666667,
+        "end": 6.816666666666667
+      },
+      {
+        "id": "music-3",
+        "beat": 10,
+        "duration": 0.65,
+        "action": "music",
+        "sound": {
+          "kind": "pluck",
+          "midi": 64,
+          "gain": 0.24,
+          "track": "music",
+          "pan": 0.4
+        },
+        "start": 6.666666666666667,
+        "end": 7.316666666666667
+      },
+      {
+        "id": "music-4",
+        "beat": 10.7,
+        "duration": 0.65,
+        "action": "music",
+        "sound": {
+          "kind": "pluck",
+          "midi": 69,
+          "gain": 0.24,
+          "track": "music",
+          "pan": -0.4
+        },
+        "start": 7.133333333333334,
+        "end": 7.783333333333334
+      },
+      {
+        "id": "macro",
+        "start": 2.7,
+        "duration": 1.6,
+        "action": "camera",
+        "object": "disc",
+        "end": 4.300000000000001
+      },
+      {
+        "id": "breath",
+        "start": 5.72,
+        "duration": 0.28,
+        "action": "silence",
+        "reason": "让停止成为可听见的结论",
+        "end": 6
+      }
+    ],
+    "version": 1
+  },
+  "provenance": {
+    "version": 1,
+    "sources": {
+      "project/README.md": "34b3f6c3ed09f2a1724b0a84a3a810939ae36c9038e5944f5f4c7bc089abb86a",
+      "project/film.js": "d9612cf6d9b71f838d458d02ad3af4dab83c63e85450e5d55612682ec382a0c5",
+      "project/index.html": "71179764cf7f380400f33e6d1a7d5888e6872b0489e9a2077abe61920398677b",
+      "project/review.md": "f15adc4ead10b25a417d47d73b720e4a692d8ea3165ff5d17e80070608b0234b",
+      "project/score.mjs": "45682e0c1860375ca7750a01bf751239b39e7bad108b47f521d8acbb87941ddb",
+      "engine/audio.py": "126ce07fe15229e27bd31faacb7d1e117764839f3fb9098d8f96303155acea4f",
+      "engine/fonts/CormorantGaramond-Italic.ttf": "0f48ea6abb2084537854f7174c470991a463b13036309e3b50a81511611c530d",
+      "engine/fonts/CormorantGaramond.ttf": "b20b7d9626dd956b2c5e558692ad328b1f19e3275e2782db4fa07670d83f35e0",
+      "engine/fonts/CourierPrime-Regular.ttf": "72f793376f8e2841656bf21d77a5de010f2929bd6956a22ee848ad0c7eb978af",
+      "engine/fonts/JetBrainsMono.ttf": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "engine/fonts/Lora-Italic.ttf": "22d8d8854b53807aa664ca34f2031a9ed57a1d0dea296b8b96cdd3aad937a2b3",
+      "engine/fonts/Lora.ttf": "822a6621ccbe8d97d20ac88c1c41f5615c9c2c202eaa75f272cd452aac6475a7",
+      "engine/fonts/NotoSansSC-VF.ttf": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+      "engine/fonts/NotoSerifSC-VF.ttf": "050080d9255a86808f2945bffac582b31ef32bc36411ce29563b4961670c66f9",
+      "engine/fonts/OFL-CormorantGaramond.txt": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956",
+      "engine/fonts/OFL-CourierPrime.txt": "9a755af092b494944c99f471be6fddd19b006a448fefdc4717e4ee0aa09a97b0",
+      "engine/fonts/OFL-JetBrainsMono.txt": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+      "engine/fonts/OFL-Lora.txt": "1d9a970809ac804b582a6ce7f0ebc4e7fefcbfd7ff6299cad35ee656a21be716",
+      "engine/fonts/OFL-NotoSansSC.txt": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "engine/fonts/OFL-NotoSerifSC.txt": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+      "engine/get_fonts.py": "9e696c2aa9cb764ea8619048a2a1c4902a692d79647941492c916ed94d1381b4",
+      "engine/get_geo_assets.py": "c38981c9d6d3fc402e92ed851eafb0d725a6cbd0526fafe66b952d711495ae9f",
+      "engine/get_scene_assets.py": "1451cc9c3645dd9005152f8cc5a3c52daf8bf9d68374120979b2ff17db608649",
+      "engine/index.html": "71179764cf7f380400f33e6d1a7d5888e6872b0489e9a2077abe61920398677b",
+      "engine/provenance.py": "43d853d004d2483a1cc0c8d4394f5296f277c1d9ca57329eea217cdb88cb16e0",
+      "engine/render.py": "08d0071d5cf88cfd80ff22b1bf662f2a8ad274a7f515823f1ebb4768d58cab68",
+      "engine/render_cache.py": "ab389fee37cd50b2e94bbdb2dd70c909cf1b13bc90aa5c4f2bd7393d83cd88af",
+      "engine/score_audio.py": "139672d1e980e5ca3503957ec845e691aecbdfd03b9515fc8e7e04c0209bedd3",
+      "engine/vendor/geo/NaturalEarth-LICENSE.md": "2631b5b39b6d1acc56de75235109b5af2dbb4b0ac5a127b6f06185977247fd4b",
+      "engine/vendor/geo/d3-array-LICENSE": "3e6849627f74ff73c257a3ae1efb574015d94fc1035c05ec3c15805165efcbc4",
+      "engine/vendor/geo/d3-array.min.js": "80aa70d0cd17dabddf6d056494ea17926a45a69da8b7850220aace331bad671d",
+      "engine/vendor/geo/d3-geo-LICENSE": "3e3edc1224eec9c39cd26491a21304a62883c1e5b6a65c5283ccc7a6cc94baee",
+      "engine/vendor/geo/d3-geo.min.js": "23e574f1e8d4716d622bce45356a379b66a277162b145f5f147e4c8daefb73d2",
+      "engine/vendor/geo/land.geojson": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+      "engine/vendor/three/LICENSE": "bfe119ea4fd413f5f7ca3fcd63adb0c4a073ed39daa2fe7d3e6b769e21272601",
+      "engine/vendor/three/three.core.min.js": "61ba0df005b05991361d040d8ff670e1aadfd0ce7aeebd1fdb0725957a8957de",
+      "engine/vendor/three/three.module.min.js": "e2b5ee6bccd38fd6d8a2428546b83c5f2426d84b152ef82be8055556e3b40eb6",
+      "engine/vk-checks.mjs": "938ba6c3350abf1eda3e279ebfefdeb94b002f3753a804dc35c207b8513b4673",
+      "engine/vk-geo.mjs": "2adff3ab14bd9f4054e683681bd4d242ce3a92ff1451bfcf2e2dab8c31c6ef6c",
+      "engine/vk-kit.js": "c5afef06ccbe5d1e21ecc9310a31599b4870e28ee28cd8d9b7ee18e827025ea3",
+      "engine/vk-motion.mjs": "3a8da3371a8d360c21d70d0c3b8809858fb40a3f6334abaa3be3998d36953c1b",
+      "engine/vk-scene.mjs": "fa19f33278587d687bf37c4bf6391157d4f6ae82c82f0e009967cde6dd7cc0d5",
+      "engine/vk.js": "71fde3551c585dd18522c8c9fe099c069830afeb3e9dd482cd80a123ba6ea8bc"
+    },
+    "input_sha256": "d938352a5fbda5dd42e1d39cf89e02370e4961decac86071cef39a18fc66ccf3",
+    "payload_sha256": "390d7bb690ef1aa2695386ff92208134c9dd3204f8495c706b9938bf4b46881e"
+  }
+}

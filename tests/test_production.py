@@ -47,7 +47,7 @@ class ProductionTest(unittest.TestCase):
         from scripts import produce
         from unittest.mock import patch
         with tempfile.TemporaryDirectory() as d:
-            p=Path(d);(p/'film.js').write_text('// original')
+            p=Path(d);(p/'renders').mkdir();(p/'film.js').write_text('// original')
             def step(cmd,**kwargs):
                 if str(cmd[1]).endswith('check_media.py'):(p/'film.js').write_text('// saved during final media inspection')
             meta={'end':.4,'fps':30,'score':True,'checks':1}
@@ -55,3 +55,18 @@ class ProductionTest(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError,'changed during export'):
                     produce.produce(p)
             self.assertEqual(json.loads((p/'review/production.json').read_text())['status'],'failed')
+
+    def test_post_mux_failure_restores_old_final_and_sidecar(self):
+        from scripts import produce
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);(p/'renders').mkdir();(p/'film.js').write_text('// fixture')
+            video=p/'renders/final.mp4';stamp=Path(str(video)+'.provenance.json')
+            video.write_bytes(b'old valid film');stamp.write_bytes(b'old identity')
+            def step(cmd,**kwargs):
+                if str(cmd[1]).endswith('audio.py'):
+                    video.write_bytes(b'new candidate');stamp.write_bytes(b'candidate identity')
+                if str(cmd[1]).endswith('check_media.py'):raise subprocess.CalledProcessError(7,cmd)
+            with patch.object(produce.subprocess,'run',side_effect=step),patch.object(produce.render,'with_page',return_value={'end':2,'fps':30,'score':False,'checks':0}):
+                with self.assertRaises(subprocess.CalledProcessError):produce.produce(p)
+            self.assertEqual(video.read_bytes(),b'old valid film');self.assertEqual(stamp.read_bytes(),b'old identity')

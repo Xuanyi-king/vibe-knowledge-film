@@ -1,5 +1,7 @@
 # 引擎
 
+完整交付优先用`python scripts/produce.py <project>`；本页底层命令不是验收完成信号。新score作品需要编码后峰值、版本与两层同步检查，见[choreography](choreography.md)。
+
 ## 可恢复的正式渲染模式
 
 `python engine/render.py <project> --resume 4 --jobs 2`按整数帧切分持久4秒片段。中断后重复同命令，完整校验后复用；不需要样片专用脚本。默认1个worker，资源少时更稳。`--jobs`、`--clip`等旧命令保留；resume用于全片，不能与clip/sheet/det等模式混用。

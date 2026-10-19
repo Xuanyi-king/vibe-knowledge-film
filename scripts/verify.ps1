@@ -20,6 +20,7 @@ try {
         Invoke-Checked -CommandLine @('python', 'engine/render.py', 'examples/governor_scene', '--resume', '2')
         Invoke-Checked -CommandLine @('python', 'engine/render.py', 'examples/governor_scene', '--events')
         Invoke-Checked -CommandLine @('python', 'engine/audio.py', 'examples/governor_scene')
+        Invoke-Checked -CommandLine @('python', 'scripts/master_audio.py', 'examples/governor_scene', '--legacy-source-only')
         Invoke-Checked -CommandLine @('python', 'scripts/check_media.py', 'examples/governor_scene/renders/final.mp4', '--duration', '6')
     }
     if ($AV) {
@@ -27,6 +28,7 @@ try {
         Invoke-Checked -CommandLine @('python', 'engine/render.py', 'examples/resonance', '--resume', '2')
         Invoke-Checked -CommandLine @('python', 'engine/render.py', 'examples/resonance', '--events')
         Invoke-Checked -CommandLine @('python', 'engine/audio.py', 'examples/resonance', '--stems')
+        Invoke-Checked -CommandLine @('python', 'scripts/master_audio.py', 'examples/resonance')
         Invoke-Checked -CommandLine @('python', 'scripts/check_av.py', 'examples/resonance')
         Invoke-Checked -CommandLine @('python', 'scripts/check_visual.py', 'examples/resonance', '--video', 'examples/resonance/renders/final.mp4', '--require', 'mallet-contact', 'felt-contact')
         Invoke-Checked -CommandLine @('python', 'scripts/check_media.py', 'examples/resonance/renders/final.mp4', '--duration', '8', '--loudness')

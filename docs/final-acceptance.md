@@ -26,7 +26,7 @@
 
 《地图是一种选择》输入只有“地图为什么一定会失真？”，当前Agent自主制作完整72秒叙事。[有声MP4](../evidence/atlas/final.mp4)、[源码与知识来源](../examples/atlas/README.md)、[返工与真实画面](../evidence/atlas/review.md)。这是端到端实践，不是隔离模型能力实验。地理/数学解释限定球面、赤道标准纬线、局部微分尺度；没有把局部四倍套成任意国家面积。
 
-最终Linux本地完整**60项通过，340.028秒**；包含已安装的可选Three与Geo。此前56项通过后追加收尾审查与WindowsMIME回归，旧计数不是最终计数。具体最终结果列下方；未运行不等于通过。
+最终Linux本地完整**64项通过，204.234秒**；包含已安装的可选Three与Geo。此前56项通过后追加收尾审查与WindowsMIME回归，旧计数不是最终计数。实际成片又触发AAC超峰值，追加母带/失败恢复/旧BGM保护负例后得到64项。具体最终结果列下方；未运行不等于通过。
 
 ## 自动验证与平台
 
@@ -40,3 +40,19 @@ VK_BROWSER=/usr/bin/chromium python scripts/produce.py examples/atlas --assets g
 ```
 
 [Windows安装/维护](windows.md) · [事件与动作声明](../references/action-checks.md) · [迁移与完整生产](../references/production.md)。没有声称实现真实多体求解、自动乐句审美、专业DAW、通用图像动作识别或弱模型能力提升保证。
+
+## 真实成片终检与声音返工
+
+72秒完整影片：2160帧1920×1080p30，H.264/yuv420p、AAC48kHz。78个编码窗口无失败、量测编码延迟0；15项声明条件通过，输入/事件/final字节绑定一致。终检曾拒绝单遍loudnorm输出的+2.90dBTP，未将其记为完成；新母带从原始混音重编码并两次测量，最终-24.71LUFS、真峰值-1.95dBTP、样本峰值-2.67dBFS，无解码错误或黑段候选。源FLAC与独听轨在evidence/atlas；不是分别拉满的试听母带。
+
+新增master_audio.py采用已测共同恒定增益，AAC未达峰值线自动降增益，最多三次；无lookahead时移，不把LUFS达标当专业听感。母带失败保留旧片；produce的后续失败恢复旧final与侧车，硬中断查备份位置。旧--bgm外混不在score.wav，独立母带默认拒绝无score工程，明确无外混时才可--legacy-source-only。
+
+8秒修正版保留在evidence/resonance/current.mp4，原final.mp4及报告未覆盖。实际射线间隙探针及新编码抽帧归档为current-*；原名义尺寸检查漏掉的绕序问题已明示。旧fold_C24s、pigeon_B29s当前截图SHA仍与原始基线相同，见final-round/legacy-regression.json。
+
+Windows第二轮60项总计中54项通过、2项错误、4项可选跳过，有两次本地字体加载NetworkError，尚不记为通过。新增CI请求失败日志，Python/浏览器/字体步骤分开显示并缓存字体；最终带诊断运行待录入，不通过盲目重试隐藏失败。
+
+## 发行文件与母带
+
+公共final.mp4采用H.264 CRF20、1080p30/72秒发行编码（10,800,291字节），音频包复制；高码率CRF14母带21,216,326字节留于工程renders/final.mp4，由produce生成。发行版经过独立check_av/check_visual/check_media，生产聚合报告引用原master-production与delivery转换记录。最终编码截图来自发行文件本身；有损视频重编码不是无损复制。
+
+Git命令写入通道出现503，21MB单对象通过仓库接口也发送失败；发行编码已由接口接收并核对Git blob SHA。待全部文件树校验后才前移PR分支，不通过丢弃影片或伪造成功解决上传问题。

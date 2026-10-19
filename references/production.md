@@ -24,3 +24,5 @@ python scripts/produce.py <project> --assets geo  # 只按作品需求选geo/sce
 [地图完整作品](../examples/atlas/storyboard.md)演示主题到收束；[视听组件](choreography.md)、[动作条件](action-checks.md)按需读。有限Agent可以按镜头/组件逐项实现并持续执行；强模型可进一步发展原创方法，组件数量与代码量不是上限。
 
 生产报告也有生命周期：入口先落盘running，每步记active_stage，强制中断不能遗留上轮成功。全部检查后重验输入稳定与最终媒体身份；成功报告绑定input/events/video，并要求两层同步报告指向同一final。它只能表示已执行的技术层，不能承诺主观发布质量。
+
+母带与最终媒体检查属于生产阶段。audio.py后从原始混音做恒定增益及AAC编码后真峰值验收，不靠单遍loudnorm参数假定安全；[具体方法](choreography.md)。合音前备份旧final/侧车，后续失败回滚；运行中或硬中断查production.json的备份位置。事务不覆盖不可恢复的磁盘/进程破坏，也不支持多个生产入口同时写同一工程。

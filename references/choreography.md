@@ -99,3 +99,16 @@ python scripts/check_media.py examples/resonance/renders/final.mp4 --duration 8 
 [8秒完整公共能力样例](../examples/resonance/README.md)含真实渲染与局部返工。当前执行环境不能试听，故未主观验收音色、混音舒适度和完整节奏；不要用峰值/相关度代替听音。
 
 关键动作再用[实际帧条件](action-checks.md)读真实几何间隙或实际绘制状态：`python scripts/check_visual.py <project> --video <project>/renders/final.mp4`。编码同步和声明动作条件分层，未声明的动作不在自动证明范围。
+
+## 编码后的峰值保护
+
+完整地图片实测暴露：旧单遍loudnorm设置TP=-1.5仍出现AAC解码样本峰值+1.14dBFS/真峰值+2.90dBTP。生产入口现增加master_audio.py：读取原始score.wav的LUFS与真峰值，选共同恒定增益，编码后再次测量AAC；超出安全线就从原始混音降低增益重试，最多三次。无动态抽吸/新增lookahead延迟，不为追LUFS牺牲峰值。真实完整片最终-24.71LUFS/-1.95dBTP；它比-18目标安静，这是峰值约束优先的结果，不是听感评分。
+
+```powershell
+python scripts/master_audio.py <project> --target -18 --ceiling -1.5
+# 然后重新check_av/check_visual/check_media；或直接用produce自动完成。
+```
+
+旧audio.py仍保持兼容，其结构验证不等于编码后峰值保证。手动旧--bgm输出不能直接用score.wav重做母带（会丢BGM）；默认拒绝无score工程，只有确定无外置BGM时才显式--legacy-source-only。produce没有外置--bgm，故会为旧工程自动声明这个前提。用户音乐优先进入score sample/music。音乐/SFX独听WAV/FLAC保留合成总线原始共同增益，最终MP4再应用mastering.json的共同增益；不分别归一化各轨。
+
+母带候选通过流/时长/全解码与AAC真峰值后替换。produce在合音前备份旧final和侧车，后续技术失败恢复；硬中断可按running报告的previous_final_backup取回，不保证播放中/多进程同时覆盖同一工程。若Windows文件占用阻止恢复，保留备份并报告restore_error，不删除唯一旧片。

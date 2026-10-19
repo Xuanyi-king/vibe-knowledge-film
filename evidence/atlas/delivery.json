@@ -1,0 +1,39 @@
+{
+  "method": "H264 CRF20 distribution export from validated high-rate master",
+  "source_sha256": "ecf129e4e670f5595aeceaef9f0f96f21c5d451de8bc04f6bb0f8d238201615d",
+  "source_local_path": "/workspace/vibe-knowledge-film/examples/atlas/renders/final.mp4",
+  "source_bytes": 21216326,
+  "final_sha256": "a4325e661255415591320109fc53a4c426d87cfbe0ca16c826b2ef87eb7986ec",
+  "final_bytes": 10800291,
+  "duration": 72,
+  "fps": 30,
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "audio": "packet copy; no audio re-encoding",
+  "command": [
+    "ffmpeg",
+    "-i",
+    "examples/atlas/renders/final.mp4",
+    "-c:v",
+    "libx264",
+    "-crf",
+    "20",
+    "-preset",
+    "medium",
+    "-pix_fmt",
+    "yuv420p",
+    "-c:a",
+    "copy",
+    "-movflags",
+    "+faststart",
+    "delivery.mp4"
+  ],
+  "checks": [
+    "sync.json",
+    "visual-sync.json",
+    "media.json"
+  ],
+  "note": "Lossy video distribution rendition, not byte-identical to master. Original master remains locally reproducible by produce.py; no frame re-render or audio scheduling changes."
+}

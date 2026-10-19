@@ -1,0 +1,154 @@
+{
+  "file": "/workspace/vibe-knowledge-film/examples/atlas/renders/final.mp4",
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 72.0,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "frames": "2160"
+  },
+  "audio": {
+    "duration": 72.0,
+    "codec": "aac",
+    "sample_rate": "48000",
+    "sample_peak_db": -2.673375,
+    "rms_db": -32.417794,
+    "note": "Decoded sample peak/RMS plus FFmpeg loudnorm integrated LUFS, true peak and LRA; not a mix-quality score.",
+    "integrated_lufs": -24.71,
+    "true_peak_dbtp": -1.95,
+    "loudness_range_lu": 7.8
+  },
+  "errors": [],
+  "candidates": {
+    "black": [],
+    "silence": [
+      {
+        "start": 2.416688,
+        "end": 2.996062,
+        "duration": 0.579375
+      },
+      {
+        "start": 5.407771,
+        "end": 5.9965,
+        "duration": 0.588729
+      },
+      {
+        "start": 8.5925,
+        "end": 8.9975,
+        "duration": 0.405
+      },
+      {
+        "start": 11.591708,
+        "end": 11.998479,
+        "duration": 0.406771
+      },
+      {
+        "start": 14.598021,
+        "end": 14.997187,
+        "duration": 0.399167
+      },
+      {
+        "start": 17.596062,
+        "end": 17.996979,
+        "duration": 0.400917
+      },
+      {
+        "start": 20.596312,
+        "end": 20.998708,
+        "duration": 0.402396
+      },
+      {
+        "start": 23.594167,
+        "end": 23.998417,
+        "duration": 0.40425
+      },
+      {
+        "start": 26.169104,
+        "end": 26.996125,
+        "duration": 0.827021
+      },
+      {
+        "start": 29.129146,
+        "end": 29.9985,
+        "duration": 0.869354
+      },
+      {
+        "start": 32.182938,
+        "end": 32.998708,
+        "duration": 0.815771
+      },
+      {
+        "start": 35.651187,
+        "end": 35.998333,
+        "duration": 0.347146
+      },
+      {
+        "start": 38.706979,
+        "end": 39.000062,
+        "duration": 0.293083
+      },
+      {
+        "start": 41.00375,
+        "end": 41.998625,
+        "duration": 0.994875
+      },
+      {
+        "start": 47.596125,
+        "end": 47.997958,
+        "duration": 0.401833
+      },
+      {
+        "start": 50.242917,
+        "end": 50.996125,
+        "duration": 0.753208
+      },
+      {
+        "start": 53.233062,
+        "end": 53.997021,
+        "duration": 0.763958
+      },
+      {
+        "start": 56.595062,
+        "end": 56.997833,
+        "duration": 0.402771
+      },
+      {
+        "start": 59.592833,
+        "end": 59.996667,
+        "duration": 0.403833
+      },
+      {
+        "start": 62.597,
+        "end": 62.997167,
+        "duration": 0.400167
+      },
+      {
+        "start": 65.597458,
+        "end": 65.996646,
+        "duration": 0.399187
+      },
+      {
+        "start": 68.371104,
+        "end": 68.99825,
+        "duration": 0.627146
+      },
+      {
+        "start": 70.886417,
+        "end": 72.0,
+        "duration": 1.113583
+      }
+    ],
+    "scene_change_times": []
+  },
+  "unverified": [
+    "aesthetic quality",
+    "unexpected blank colored frames",
+    "object bounds and subtitle occlusion",
+    "glyph coverage/readability",
+    "storyboard match",
+    "factual correctness"
+  ],
+  "interpretation": "Candidates require timestamped visual/audio review; intentional black, cuts and silence are allowed."
+}

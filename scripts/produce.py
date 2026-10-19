@@ -6,6 +6,8 @@ import argparse
 import json
 from pathlib import Path
 import subprocess
+import shutil
+import tempfile
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from engine import render,provenance
@@ -16,6 +18,9 @@ def produce(proj,chunk=4,jobs=1,assets=()):
     proj=proj.resolve();(proj/'review').mkdir(parents=True,exist_ok=True)
     report={'status':'running','stages':[],'subjective_visual_review':'not_automated','subjective_listening':'not_automated'}
     provenance.atomic_json(proj/'review/production.json',report)
+    backup=None
+    saved=[]
+    preserve_backup=False
     def checkpoint(name):
         report['active_stage']=name
         provenance.atomic_json(proj/'review/production.json',report)
@@ -35,7 +40,13 @@ def produce(proj,chunk=4,jobs=1,assets=()):
         step('determinism','engine/render.py',proj,'--det')
         step('picture','engine/render.py',proj,'--resume',chunk,'--jobs',jobs)
         step('events','engine/render.py',proj,'--events')
+        backup=Path(tempfile.mkdtemp(prefix='.vk-production-',dir=proj/'renders'))
+        for item in [proj/'renders/final.mp4',provenance.sidecar(proj/'renders/final.mp4')]:
+            if item.exists():
+                dest=backup/item.name;shutil.copyfile(item,dest);saved.append((dest,item))
+        report['previous_final_backup']=str(backup) if saved else None
         step('sound','engine/audio.py',proj,'--stems')
+        step('mastering','scripts/master_audio.py',proj,*(() if meta['score'] else ('--legacy-source-only',)))
         if meta['score']:step('encoding_audio_sync','scripts/check_av.py',proj)
         if meta['checks']:step('declared_visual_action_sync','scripts/check_visual.py',proj,'--video',proj/'renders/final.mp4')
         step('media','scripts/check_media.py',proj/'renders/final.mp4','--duration',meta['end'],'--loudness','--output',proj/'review/media.json')
@@ -55,8 +66,20 @@ def produce(proj,chunk=4,jobs=1,assets=()):
                       encoding_audio_sync='checked' if meta['score'] else 'legacy_not_checked')
     except (Exception,KeyboardInterrupt) as exc:
         report.update(status='failed',error=str(exc))
+        if saved:
+            try:
+                for source,dest in saved:source.replace(dest)
+                stamp=provenance.sidecar(proj/'renders/final.mp4')
+                if not any(dest==stamp for _,dest in saved):stamp.unlink(missing_ok=True)
+                report['previous_final_restored']=True
+            except OSError as restore_error:
+                preserve_backup=True
+                report['restore_error']=str(restore_error)
         raise
     finally:
+        if backup and not preserve_backup:
+            shutil.rmtree(backup)
+            report['previous_final_backup']=None
         provenance.atomic_json(proj/'review/production.json',report)
     return report
 

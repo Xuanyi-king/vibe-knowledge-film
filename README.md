@@ -12,11 +12,11 @@
 
 ## 本次升级与可检查的作品
 
-完整原创《地图是一种选择》（72秒）：[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/final.mp4) · [源码、事实、分镜与用法](examples/atlas/README.md) · [首版到最终关键帧与验收](evidence/atlas/review.md)。从一句主题出发，完整解释纬圈、长度尺度、面积和投影取舍；复用D3地理几何、共享事件、原创分轨配乐和实际绘制条件，不再每次手写海岸线与投影。
+完整原创《地图是一种选择》（72秒、1080p30发行版）：[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/final.mp4) · [源码、事实、分镜与用法](examples/atlas/README.md) · [首版到最终关键帧与验收](evidence/atlas/review.md)。从一句主题出发，完整解释纬圈、长度尺度、面积和投影取舍；复用D3地理几何、共享事件、原创分轨配乐和实际绘制条件，不再每次手写海岸线与投影。
 
 [自主主题到成片](references/production.md)提供Agent内部流程；`python scripts/produce.py <project> [--assets geo scene]`统一执行已编写作品的技术生产与检查，不取代Agent的创作判断。输入指纹把画面、事件、参考混音和最终媒体绑定；过期或无版本产物会拒绝合音/检查。编码同步、声明的视觉动作条件和主观审片分开验收，具体平台与限制见[最终验收](docs/final-acceptance.md)。
 
-新增8秒原创《一击之后》：[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/final.mp4) · [源码、关键帧、返工与分轨](examples/resonance/README.md)。共享事件驱动敲击、回弹、余振、阻尼、相机和音乐；模型可调用解析运动、真实深度/PBR、材质音色、采样与分轨自动化，不必每镜重写算法。
+8秒原创《一击之后》的几何验证修正版（原片保留）：[有声MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/resonance/current.mp4) · [源码、关键帧、返工与分轨](examples/resonance/README.md)。共享事件驱动敲击、回弹、余振、阻尼、相机和音乐；模型可调用解析运动、真实深度/PBR、材质音色、采样与分轨自动化，不必每镜重写算法。
 
 [视听编排调用手册](references/choreography.md)按需加载；[开源融合取舍](docs/capability-integration.md)记录源码与许可。最终AAC已回测调度同步；音色与完整节奏仍需人工听音，不宣称仅靠技术报告完成专业审片。
 
@@ -32,7 +32,7 @@
 
 本轮新增[6秒复杂机构镜头](examples/governor_scene/README.md)：通过可选Three.js层复用真实深度、PBR材质、阴影、杆件和旋转体几何，减少轻量模型手写图形算法的负担。[复杂场景制作方法](references/complex-scenes.md)说明适用边界；Canvas旧工程无需安装该依赖。
 
-`render.py --resume 4`提供正式的持久分段、输入/浏览器/编码参数身份校验、损坏检测与续跑；`audio.py`也在临时输出通过验证后才替换旧成片。两部原样片未重做；大MP4使用历史commit固定链接，短验证片和压缩独听轨随证据追踪，SHA256见[evidence/assets.json](evidence/assets.json)。当前环境的Release附件上传返回401，未宣称发布成功。重复帧和恢复临时记录已清理，源码与关键同刻对照保留。
+`render.py --resume 4`提供正式的持久分段、输入/浏览器/编码参数身份校验、损坏检测与续跑；`audio.py`也在临时输出通过验证后才替换旧成片。两部原样片未重做；大MP4使用历史commit固定链接，短验证片、新72秒完整片和压缩独听轨随证据追踪，SHA256见[evidence/assets.json](evidence/assets.json)。当前环境的Release附件上传返回401，未宣称发布成功。重复帧和恢复临时记录已清理，源码与关键同刻对照保留。
 
 这两个创作臂的简报不完全一致：升级臂额外收到铜/陶瓷美术方向提示，不能据此隔离证明Skill提升了模型能力。它们是非盲案例，没有调用DeepSeek。新的[中性提示小对照工具](docs/model-probe.md)默认只准备请求，提供任意兼容提供商的凭据、端点和精确模型ID后才能运行。当前无目标模型结果；用户提到的Opus参考片也未提供。
 
