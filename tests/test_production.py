@@ -27,6 +27,11 @@ class ProductionTest(unittest.TestCase):
             self.assertTrue((p/'renders/final.mp4').exists())
             self.assertTrue(json.loads((p/'review/visual-sync.json').read_text())['passed'])
             self.assertEqual(json.loads((p/'audio/sync.json').read_text())['failed'],[])
+            mobile=json.loads((p/'review/mobile/report.json').read_text())
+            self.assertEqual(mobile['video_sha256'],report['video_sha256'])
+            self.assertFalse(mobile['actual_platform_verified'])
+            self.assertEqual(mobile['widths'],[390,320])
+            self.assertIn('text layout unavailable',mobile['unverified']) # legacy Frame.text is not fabricated metadata
             old=(p/'renders/final.mp4').read_bytes()
             (p/'film.js').write_text("throw Error('broken source')")
             bad=subprocess.run(cmd,capture_output=True,text=True)
@@ -70,3 +75,17 @@ class ProductionTest(unittest.TestCase):
             with patch.object(produce.subprocess,'run',side_effect=step),patch.object(produce.render,'with_page',return_value={'end':2,'fps':30,'score':False,'checks':0}):
                 with self.assertRaises(subprocess.CalledProcessError):produce.produce(p)
             self.assertEqual(video.read_bytes(),b'old valid film');self.assertEqual(stamp.read_bytes(),b'old identity')
+
+    def test_mobile_failure_restores_preexisting_final(self):
+        from scripts import produce
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);(p/'renders').mkdir();(p/'film.js').write_text('// fixture')
+            video=p/'renders/final.mp4';stamp=Path(str(video)+'.provenance.json')
+            video.write_bytes(b'old film');stamp.write_bytes(b'old stamp')
+            def step(cmd,**kw):
+                if str(cmd[1]).endswith('audio.py'):video.write_bytes(b'candidate');stamp.write_bytes(b'candidate stamp')
+                if str(cmd[1]).endswith('check_mobile.py'):raise subprocess.CalledProcessError(1,cmd)
+            with patch.object(produce.subprocess,'run',side_effect=step),patch.object(produce.render,'with_page',return_value={'end':2,'fps':30,'score':False,'checks':0}):
+                with self.assertRaises(subprocess.CalledProcessError):produce.produce(p)
+            self.assertEqual(video.read_bytes(),b'old film');self.assertEqual(stamp.read_bytes(),b'old stamp')

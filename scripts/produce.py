@@ -29,6 +29,7 @@ def produce(proj,chunk=4,jobs=1,assets=()):
         subprocess.run([sys.executable,str(ROOT/script),*map(str,args)],check=True)
         report['stages'].append(name)
     try:
+        if (proj/'music.json').exists():step('music_preparation','scripts/prepare_music.py',proj)
         for asset in assets:
             if asset not in {'geo','scene'}:raise ValueError('supported optional assets: geo, scene')
             step('assets-'+asset,f'engine/get_{asset}_assets.py')
@@ -50,11 +51,12 @@ def produce(proj,chunk=4,jobs=1,assets=()):
         if meta['score']:step('encoding_audio_sync','scripts/check_av.py',proj)
         if meta['checks']:step('declared_visual_action_sync','scripts/check_visual.py',proj,'--video',proj/'renders/final.mp4')
         step('media','scripts/check_media.py',proj/'renders/final.mp4','--duration',meta['end'],'--loudness','--output',proj/'review/media.json')
+        step('mobile_evidence','scripts/check_mobile.py',proj/'renders/final.mp4','--project',proj,'--output',proj/'review/mobile')
         provenance.stable(proj,sources)
         spec=json.loads((proj/'audio/events.json').read_text(encoding='utf-8'))
         provenance.validate_events(proj,spec)
         final=provenance.validate_video(proj/'renders/final.mp4',spec,sources,kind='final')
-        reports=[]
+        reports=[proj/'review/mobile/report.json']
         if meta['score']:reports.append(proj/'audio/sync.json')
         if meta['checks']:reports.append(proj/'review/visual-sync.json')
         for path in reports:
@@ -62,6 +64,7 @@ def produce(proj,chunk=4,jobs=1,assets=()):
                 raise RuntimeError('final changed after sync checks; rerun production')
         report.update(input_sha256=provenance.identity(sources),video_sha256=final['sha256'],events_sha256=provenance.identity(spec))
         report.update(status='technical_complete_needs_subjective_review',final='renders/final.mp4',
+                      mobile_review='encoded_390_320_and_pressure_evidence_needs_review',
                       visual_action_sync='checked_declared_conditions' if meta['checks'] else 'not_declared',
                       encoding_audio_sync='checked' if meta['score'] else 'legacy_not_checked')
     except (Exception,KeyboardInterrupt) as exc:

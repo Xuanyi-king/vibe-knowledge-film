@@ -144,3 +144,17 @@ if ($LASTEXITCODE -ne 0) { throw 'cinematic component smoke failed' }
 ```
 
 14秒器具镜头的完整钢琴准备/生产/对照命令见[工程说明](../examples/torque/README.md)。本轮核心CI之后新增软件WebGL组件烟测，仅安装现有Three，不下载乐器、不生产影片；与Windows完整有声MP4导出是不同范围。实际原生结果见[美术验收](../evidence/torque/README.md)，未运行部分不外推。
+
+手机QA复用已有Pillow/FFmpeg，无新包。produce自动输出review/mobile；也可在PowerShell运行`python scripts/check_mobile.py examples/torque/renders/final.mp4 --project examples/torque --output examples/torque/review/mobile`，检查$LASTEXITCODE后打开phone-320.png/phone-390.png。压力副本不覆盖母版，音轨复制；人工手机观看与实际抖音转码不属于核心CI。
+
+外部音乐只在需要时准备（合法文件由用户本地提供，不含在仓库）：
+
+```powershell
+python scripts/analyze_music.py <project>/assets/private-music/song.wav --out <project>/review/music/analysis.json
+python scripts/prepare_music.py <project>
+python scripts/produce.py <project>
+```
+
+先保存项目根music.json，换音乐或配置后重新准备。缺标志性歌曲不是环境安装失败，Agent应选择合适原创/授权替代。完整软件WebGL成片与真实钢琴下载在Windows的验收状态以PR检查说明为准，核心CI和组件烟测不等于这些路径已测。
+
+音乐配置与人工注释JSON请保存为UTF-8无BOM；不要使用旧PowerShell默认的UTF-16文本输出。文件指纹基于真实字节，重新保存后需重新prepare。

@@ -4,7 +4,45 @@ from engine import render
 ROOT=Path(__file__).resolve().parents[1]
 THREE=(ROOT/'engine/vendor/three/three.module.min.js').exists()
 
+def component_page(check):
+    # Geometry/material tests need an origin and Canvas, not fold_C's font/network
+    # startup. Legacy film and typography tests exercise that integration separately.
+    with tempfile.TemporaryDirectory() as d:
+        p=Path(d)
+        (p/'index.html').write_text('<canvas id="stage"></canvas><script src="/engine/vk.js"></script><script>VK.film({dur:1,grain:0,draw(){}})</script>')
+        render.with_page(p,check)
+
 class TypographyTest(unittest.TestCase):
+    def test_mobile_metadata_does_not_replace_legacy_character_layout(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)
+            (p/'index.html').write_text('<canvas id="stage"></canvas><script src="/engine/vk.js"></script><script>VK.film({dur:1,grain:0,draw(fr){window.FR=fr;fr.chars("test",100,100,{size:48});}})</script>')
+            def check(pg):
+                a=render.shot(pg,.5)
+                self.assertEqual(pg.evaluate('typeof FR.layout'),'function')
+                self.assertEqual(pg.evaluate('FR.layout("test",100,{size:48}).length'),4)
+                self.assertEqual(pg.evaluate('VK_LAYOUT()'),[])
+                render.shot(pg,0);self.assertEqual(a,render.shot(pg,.5))
+            render.with_page(p,check)
+
+    def test_layout_metadata_resets_on_repeated_seek_without_changing_text(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);template=(ROOT/'engine/index.html').read_text()
+            script="""<script type="module">import {type} from '/engine/vk-art.mjs';
+            VK.film({dur:1,draw(fr,t){fr.x.save();if(t>.7){fr.x.translate(100,50);fr.x.scale(.5,.5);}
+              type(fr,'距离',200,200,{role:'label',importance:'essential',id:'distance',background:'#131619'});fr.x.restore();}});</script>"""
+            (p/'index.html').write_text(template.replace('<script src="film.js"></script>',script))
+            def check(pg):
+                first=render.shot(pg,.5);a=pg.evaluate('window.VK_LAYOUT?.() || []')
+                self.assertEqual(len(a),1)
+                self.assertEqual(a[0]['importance'],'essential');self.assertEqual(a[0]['id'],'distance')
+                self.assertEqual(a[0]['text'],'距离');self.assertEqual(a[0]['style']['size'],42)
+                self.assertEqual(first,render.shot(pg,.5));self.assertEqual(pg.evaluate('VK_LAYOUT().length'),1)
+                render.shot(pg,.8);self.assertEqual(pg.evaluate('VK_LAYOUT().length'),1)
+                scaled=pg.evaluate('VK_LAYOUT()[0]')
+                self.assertEqual(scaled['style']['size'],21);self.assertAlmostEqual(scaled['left'],200)
+            render.with_page(p,check)
+
     def test_roles_measure_real_text_and_reject_overflow_without_painting(self):
         self.assertTrue((ROOT/'engine/vk-art.mjs').exists(),'measured art-direction adapter missing')
         with tempfile.TemporaryDirectory() as d:
@@ -46,7 +84,7 @@ class CinematicTest(unittest.TestCase):
             self.assertTrue(r['available'],'beveled geometry helper missing')
             for a,b in zip(r['size'],[1.2,.3,.6]):self.assertAlmostEqual(a,b,places=6)
             self.assertTrue(r['invalid'])
-        render.with_page(ROOT/'examples/fold_C',check)
+        component_page(check)
 
 class TorqueTest(unittest.TestCase):
     @unittest.skipUnless(THREE and (ROOT/'examples/torque/assets/piano/bank.json').exists(),'optional Three.js/recorded piano bank')
@@ -73,7 +111,7 @@ class SceneAdapterTest(unittest.TestCase):
               M.camera(c,keys,.75);const point=new T.Vector3(.6,.5,0),before=point.clone().project(c).toArray();
               c.updateMatrixWorld(true);return {before,after:point.project(c).toArray()};}''')
             for a,b in zip(r['before'],r['after']):self.assertAlmostEqual(a,b,places=10)
-        render.with_page(ROOT/'examples/fold_C',check)
+        component_page(check)
 
     @unittest.skipUnless(THREE,'optional Three.js')
     def test_studio_environment_hook_exposure_and_original_defaults(self):
@@ -85,7 +123,7 @@ class SceneAdapterTest(unittest.TestCase):
                 defaults:[b.key.intensity,b.fill?.intensity,b.renderer.toneMappingExposure]};a.dispose();b.dispose();return out;}''')
             self.assertEqual(r['calls'],1);self.assertEqual(r['exposure'],.8);self.assertTrue(r['fill'])
             self.assertEqual(r['defaults'],[3.2,1.2,1.05])
-        render.with_page(ROOT/'examples/fold_C',check)
+        component_page(check)
 
     @unittest.skipUnless(THREE,'optional Three.js')
     def test_finish_is_seeded_disposable_and_scene_renders_repeatably(self):
@@ -103,4 +141,4 @@ class SceneAdapterTest(unittest.TestCase):
               S.dispose();b.dispose();c.dispose();return {same,different,disposed,replay:first===replay,error,invalid};}''')
             self.assertTrue(r['same']);self.assertTrue(r['different']);self.assertEqual(r['disposed'],1)
             self.assertTrue(r['replay']);self.assertEqual(r['error'],0);self.assertTrue(r['invalid'])
-        render.with_page(ROOT/'examples/fold_C',check)
+        component_page(check)

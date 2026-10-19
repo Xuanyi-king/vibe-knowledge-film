@@ -45,3 +45,7 @@ resonance的几何、程序化微表面、模态激励/摩擦/气流声音、五
 # 本轮新增美术镜头
 
 `engine/vk-art.mjs`、`vk-cinematic.mjs`与`examples/torque`原创代码遵循本仓库许可证；Three的PBR/各向异性、PMREM、PCF与ExtrudeGeometry由已有固定版本运行时提供，未复制第三方镜头配方或资产。`examples/torque/assets/VSCO-CC0.txt`及`VSCO-Piano-Info.txt`保留既有VSCO2 CE钢琴录音授权：Simon Dalzell/Ivy Audio，Versilian Studios重分发，CC0；准确URL/commit/SHA在项目piano.json。生成音符不提交Git，短片为原创编配；不复制参考片音乐/图像。
+
+## 外部音乐分析与系列候选
+
+`analyze_music.py`/`prepare_music.py`/适配加载器为原创实现，使用现有NumPy/SciPy/FFmpeg，不引入第三方曲库或新DSP依赖。We Never — Hi Noise仅为用户指定候选；没有独立合法候选音轨，参考片歌曲身份未确认，也没有获得/打包该商业录音。参考片只用于本地研究，公开证据只保留派生统计与方法。用户授权文件与平台曲库范围须逐项记录；平台许可不自动覆盖GitHub分发、混音或跨平台发布。

@@ -10,10 +10,12 @@ export async function makeFilm(variant='cinematic') {
  const seat=SCORE.event('seat'),slide=SCORE.event('slide'),reveal=SCORE.event('reveal');
  const config={position:[1.2,1.2,3.1],target:[.45,.46,0],fov:30};
  const S=cinematic?cinematicStudio({...config,focus:[.3,.55,0]}):studio(config);
+ // Local bounce restores the near support faces without lifting the background.
+ const bounce=new T.PointLight('#e0d0b6',.8,2.8,2);bounce.position.set(.65,.85,1.15);S.scene.add(bounce);
  S.scene.background=new T.Color(INK.black);S.scene.fog=new T.Fog(INK.black,5,13);
  const bronze=cinematic?brushedMetal({seed:16,color:'#b6a381'}):surface({seed:16,color:'#b6a381',metalness:.88,roughness:.46});
  const steel=cinematic?brushedMetal({seed:22,color:'#8d9797',roughness:.6}):surface({seed:22,color:'#8d9797',metalness:.88,roughness:.6});
- const graphite=surface({seed:9,color:'#2e3335',metalness:0,roughness:.92,grain:.10,bump:.001});
+ const graphite=surface({seed:9,color:'#3a4245',metalness:0,roughness:.92,grain:.10,bump:.001});
  const ceramic=surface({seed:11,color:'#dce0da',metalness:0,roughness:.6,grain:.04,bump:.0005});
  const floor=solid(new T.PlaneGeometry(100,100),surface({color:'#24282b',metalness:0,roughness:.86,grain:.09,bump:.0005}));floor.rotation.x=-Math.PI/2;floor.position.y=-.015;floor.castShadow=false;S.scene.add(floor);
  const base=beveledBlock([1.65,.10,.65],graphite,{bevel:.018});base.position.set(.28,.05,0);S.scene.add(base);
@@ -32,11 +34,10 @@ export async function makeFilm(variant='cinematic') {
  }
  const forceRod=rod(new T.MeshBasicMaterial({color:INK.blue}),.005);S.scene.add(forceRod);
  const arrow=solid(new T.ConeGeometry(.02,.055,24),new T.MeshBasicMaterial({color:INK.blue}));arrow.rotation.z=Math.PI;S.scene.add(arrow);
- const datum=rod(new T.MeshBasicMaterial({color:INK.muted}),.002);datum.between([0,.24,.11],[.70,.24,.11]);S.scene.add(datum);
- const ticks=[];for(const x of [0,.35,.7]){const r=rod(new T.MeshBasicMaterial({color:INK.muted}),.002);r.between([x,.22,.11],[x,.26,.11]);S.scene.add(r);ticks.push(r);}
- const finalCamera={position:[1.0,1.12,2.85],target:[.46,.42,0],fov:30};
+ const finalCamera={position:[1.0,1.12,2.85],target:[.46,.39,0],fov:30};
  const keys=[[0,config],[2.8,config],[5.8,finalCamera],[14,finalCamera]];
  let state={},boxes=[];
+ window.VK_MOBILE_TIMES=[53/30,54/30,55/30,3.2,5.35,8.5,12];
  function pose(t){
    const x=M.track([[0,.35],[slide.start,.35],[slide.end,.70],[14,.70]],t);
    carrier.position.x=x;const dt=t-seat.start;
@@ -66,20 +67,22 @@ export async function makeFilm(variant='cinematic') {
  ]);
  VK.film({dur:14,theme:'flat',bloom:0,grain:0,meta:{title:'力的远近',drone:0},draw(fr,t){
    pose(t);boxes=[];fr.look.under=c=>S.render(c);
-   add(fr,'力的远近',112,144,{role:'title'});
-   add(fr,'锁角台架 · 静载比较',114,216,{role:'label',size:36});
-   const p=project(state.r,1.02);if(state.static)add(fr,'2 N',p[0]+34,p[1],{role:'label',align:'l',color:INK.ivory,size:42});
-   const zero=project(0,.24,.11),mid=project(.35,.24,.11),far=project(.7,.24,.11);
-   for(const [point,txt] of [[zero,'0'],[mid,'0.35 m'],[far,'0.70 m']])add(fr,txt,point[0],point[1]+38,{role:'label',align:'c',size:30,font:'mono'});
-   add(fr,'静载保持不变',1410,280,{role:'label'});
-   add(fr,state.static?'2.00 N':'—',1410,349,{role:'number',color:INK.ivory,maxWidth:400});
-   add(fr,'垂直力臂',1410,451,{role:'label'});
-   add(fr,`${state.r.toFixed(2)} m`,1410,520,{role:'number',color:INK.ivory,maxWidth:400});
-   add(fr,'力矩',1410,622,{role:'label'});
-   add(fr,state.static?state.torque.toFixed(2):'—',1410,701,{role:'number',size:94,color:t>=reveal.start?INK.gold:INK.ivory,maxWidth:400});
-   add(fr,'N·m',1680,712,{role:'label',size:40});
-   if(t>=reveal.start)add(fr,'力臂 ×2 → 力矩 ×2',1410,790,{role:'label',size:32,color:INK.gold,maxWidth:400});
+   add(fr,'力的远近',112,132,{role:'title',size:84});
+   add(fr,'锁角静载示意',114,235,{role:'label',size:72,importance:'essential',color:'#c8ccc2'});
+   const p=project(state.r,.97);if(state.static)add(fr,'2 N',p[0]+34,p[1],{role:'label',importance:'essential',color:INK.ivory,size:84});
+   // One changing dimension, anchored to actual pivot/load, replaces three tiny ticks.
+   const a=project(0,.31,.14),b=project(state.r,.31,.14);
+   fr.line(a[0],a[1],b[0],b[1],{w:6,color:INK.ivory});
+   for(const point of [a,b])fr.line(point[0],point[1]-14,point[0],point[1]+14,{w:6,color:INK.ivory});
+   add(fr,`${state.r.toFixed(2)} m`,(a[0]+b[0])/2,(a[1]+b[1])/2+68,{role:'label',importance:'essential',align:'c',size:78,font:'mono',color:INK.ivory});
+   // Force stays beside its object; removing the duplicate F block gives the comparison air.
+   add(fr,'力臂',1360,435,{role:'label',size:72,importance:'essential',color:INK.ivory});
+   add(fr,`${state.r.toFixed(2)} m`,1360,530,{role:'number',size:96,color:INK.ivory,maxWidth:464});
+   add(fr,'力矩',1360,680,{role:'label',size:72,importance:'essential',color:INK.ivory});
+   add(fr,state.static?state.torque.toFixed(2):'—',1360,785,{role:'number',size:112,color:t>=reveal.start?INK.gold:INK.ivory,maxWidth:300});
+   add(fr,'N·m',1672,797,{role:'label',importance:'essential',font:'mono',size:74,color:INK.ivory,maxWidth:152});
+   // The larger caption supplies the conclusion; no extra tiny gold sentence.
    const caption=t<2.7?'同样的力，换个位置会怎样？':t<7.7?'保持 2 N，只把施力点移远。':'力臂翻倍，力矩也翻倍。';
-   add(fr,caption,960,973,{role:'caption',align:'c',maxWidth:1660});
+   add(fr,caption,960,973,{role:'caption',size:84,align:'c',maxWidth:1660});
  }});
 }

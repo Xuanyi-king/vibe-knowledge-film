@@ -142,6 +142,16 @@ class BrowserTests(unittest.TestCase):
             with self.assertRaisesRegex(Exception, 'startup broken'):
                 self.page("throw Error('startup broken')", lambda pg: None)
 
+    def test_startup_network_error_names_failed_local_asset(self):
+        from playwright.sync_api import Page
+        original=Page.goto
+        def routed(pg,*args,**kw):
+            pg.route('**/startup-font.woff2',lambda route:route.abort('connectionrefused'))
+            return original(pg,*args,**kw)
+        with patch.object(Page,'goto',routed):
+            with self.assertRaisesRegex(RuntimeError,'failed assets:.*startup-font.woff2'):
+                self.page("new FontFace('Broken','url(startup-font.woff2)').load().catch(e=>window.READY_ERROR=String(e));",lambda pg:None)
+
     def test_events_preserve_seek_pixels_and_repeatability(self):
         def check(pg):
             before=r.shot(pg,.04)

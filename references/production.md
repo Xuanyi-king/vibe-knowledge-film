@@ -26,3 +26,7 @@ python scripts/produce.py <project> --assets geo  # 只按作品需求选geo/sce
 生产报告也有生命周期：入口先落盘running，每步记active_stage，强制中断不能遗留上轮成功。全部检查后重验输入稳定与最终媒体身份；成功报告绑定input/events/video，并要求两层同步报告指向同一final。它只能表示已执行的技术层，不能承诺主观发布质量。
 
 母带与最终媒体检查属于生产阶段。audio.py后从原始混音做恒定增益及AAC编码后真峰值验收，不靠单遍loudnorm参数假定安全；[具体方法](choreography.md)。合音前备份旧final/侧车，后续失败回滚；运行中或硬中断查production.json的备份位置。事务不覆盖不可恢复的磁盘/进程破坏，也不支持多个生产入口同时写同一工程。
+
+正式输出后入口自动调用手机QA：最终编码关键帧390/320px、压力压缩、可获得的文字布局风险。必须实际看图并自主返工；报告始终保留待视觉审查，不宣称抖音转码实测。按需读[手机检查](mobile.md)。
+
+音乐驱动作品先按[音乐导演](music-direction.md)选择signature/original/custom、核授权和分析候选；根music.json存在时入口预备外部剪辑计划。音乐与画面复用VK_SCORE，不增加逐帧分析或第二套调度。缺标志性曲目自动改用合适原创/授权替代，继续整片。

@@ -22,3 +22,8 @@ examples/mirror/assets/piano/
 examples/torque/audio/
 examples/torque/assets/piano/
 !evidence/torque/final.mp4
+!evidence/torque/mobile/final.mp4
+!evidence/torque/mobile/stress.mp4
+
+# User-authorized commercial music remains local; rights do not imply redistribution.
+**/assets/private-music/

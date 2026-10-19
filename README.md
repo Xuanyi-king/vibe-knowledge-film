@@ -12,7 +12,9 @@
 
 ## 本次升级与可检查的作品
 
-电影美术方向[Obsidian & Gold · 曜石鎏金](references/art-direction.md)提供按主题选择的暗金全片/局部母题/不采用判断，以及独立的文字、灯光、真实倒角和表面组件；不改旧B/C默认，也不强制黑底。新的14秒知识镜头《力的远近》使用同一2 N静载与真实网格力臂计算，验证0.35→0.70 m时力矩0.70→1.40 N·m：[源码/事实/用法](examples/torque/README.md) · [有声MP4、同画面对照与实际验收](evidence/torque/README.md)。不是新一部多分钟影片，也不把配色变化或技术通过当作电影品质证明。
+电影美术方向[Obsidian & Gold · 曜石鎏金](references/art-direction.md)提供按主题选择的暗金全片/局部母题/不采用判断，以及独立的文字、灯光、真实倒角和表面组件；不改旧B/C默认，也不强制黑底。新的14秒知识镜头《力的远近》使用同一2 N静载与真实网格力臂计算，验证0.35→0.70 m时力矩0.70→1.40 N·m：[源码/事实/用法](examples/torque/README.md) · [最新有声MP4与手机对照](evidence/torque/mobile/README.md) · [首版光影/材质对照](evidence/torque/README.md)。不是新一部多分钟影片，也不把配色变化或技术通过当作电影品质证明。
+
+手机横屏检查已纳入正式生产：从最终MP4生成390/320px原始与H.264压力副本，记录声明文字的有效尺寸/越界风险，供Agent实际看图返工。[移动端方法](references/mobile.md) · [《力的远近》同刻返工与新版成片](evidence/torque/mobile/README.md)。压力参数不是抖音官方转码，技术成功不代表阅读舒适度通过；仍保留1080p母版与旧片。
 
 本轮导演重点是：**好的知识电影，不是告诉观众一个正确答案，而是带他亲眼经历答案为什么成立。** 分镜现在记录观众进入/离开的认知，分开个人体验、研究证据与理论/类比，不把文献目录或精致动画当成故事。
 
@@ -95,3 +97,5 @@ python scripts/produce.py examples/atlas --assets geo --chunk 4 --jobs 1
 
 本次 descent、governor_scene、resonance、atlas 原创作品的代码、程序化画面和合成音轨为本任务原创，随仓库 MIT 许可提供。未复制调研项目的视听素材；可选D3/Three运行库和Natural Earth数据单独保留许可，依赖与调研许可边界见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
+
+系列音乐支持[音乐导演与外部剪辑适配](references/music-direction.md)：signature/original/custom复用现有VK_SCORE；有合适授权时优先考虑用户指定候选《We Never》，当前身份未确认且未分发原曲。没有音源自动回到合适原创/授权替代。[真实参考音轨分析与边界](evidence/music-direction/README.md)。

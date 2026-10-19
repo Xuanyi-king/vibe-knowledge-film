@@ -103,7 +103,9 @@ def open_page(p, url):
         pg.goto(url)
         pg.wait_for_function("window.READY === true || !!window.READY_ERROR", timeout=180000)
         reason = pg.evaluate("window.READY_ERROR || null")
-        if reason or errors: raise RuntimeError(reason or "\n".join(errors))
+        if reason or errors:
+            failures='; '.join(pg._vk_request_failures[-5:])
+            raise RuntimeError((reason or "\n".join(errors))+(f'; failed assets: {failures}' if failures else ''))
     except BaseException:
         b.close()
         raise

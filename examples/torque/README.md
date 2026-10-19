@@ -4,6 +4,8 @@
 
 [事实与出处](facts.md) · [艺术方向](direction.md) · [认知分镜](storyboard.md) · [公开成片、对照与验收](../../evidence/torque/README.md)。完成状态以证据页实际报告为准，不由源码存在推断成片或听审通过。
 
+当前源码包含手机返工：单一动态距离带代替三处微刻度、减少重复读数和小字、局部补光分离支撑。原版母片/静帧保持在上述证据页；[移动端前后同刻证据](../../evidence/torque/mobile/README.md)单独归档。不是新题材，也不是9:16裁切。
+
 ```powershell
 python scripts/prepare_instrument.py examples/torque examples/torque/piano.json
 if ($LASTEXITCODE -ne 0) { throw 'instrument preparation failed' }
@@ -13,6 +15,8 @@ python examples/torque/compare.py
 if ($LASTEXITCODE -ne 0) { throw 'comparison capture failed' }
 Start-Process examples/torque/renders/final.mp4
 ```
+
+produce完成后会自动生成review/mobile：从最终MP4抽取声明的接触前/当刻/后、3.2秒、滑移中间态、8.5/12秒停留帧，输出390/320px原始与720p/CRF30压力预览；状态仍为待真实视觉审查。另可运行`python scripts/check_mobile.py examples/torque/renders/final.mp4 --project examples/torque --profile 540p-crf33 --output examples/torque/review/mobile-strong`，不会覆盖母版。模拟参数不是抖音官方转码条件。
 
 旧灯光baseline.html与正式index共用所有几何、运动、相机、配色、文字与score，仅对比旧studio/表面响应与新灯光/表面；倒角与排版双方都有，不假称旧版做不到。compare.py只调用正式渲染器seek截图，不替代produce或输出另一套视频。
 
