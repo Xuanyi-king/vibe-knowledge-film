@@ -1,6 +1,6 @@
 # Windows PowerShell 使用与验证
 
-本地开发环境只有Linux，没有原生Windows或pwsh。新增GitHub Actions的ubuntu-latest/windows-latest核心矩阵，实际运行状态和链接统一列在[最终验收](final-acceptance.md)；未运行的任务不能当通过。Windows核心任务还执行本文件的PowerShell验证入口；可选WebGL完整导出为单独手动任务。
+本地开发环境只有Linux，没有原生Windows或pwsh；原生GitHub Actions的windows-latest核心矩阵已通过：64项中60通过、4可选跳过，另执行`verify.ps1 -SkipTests`的字体检查与fold_C静帧。实际运行链接与范围见[最终验收](final-acceptance.md)。可选WebGL完整导出为单独手动任务，本轮未触发；Windows的`-Scene`/`-AV`和完整地图影片生产仍未实测。
 
 在仓库根目录，安装 Python 3.10+、Git 和 FFmpeg（含 ffprobe），并将它们加入 PATH。
 
@@ -33,7 +33,7 @@ $env:VK_BROWSER = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
 $env:VK_SOFTWARE_GL = '1'
 ```
 
-脚本在仓库根目录执行，逐条检查原生命令退出码，finally恢复当前目录；不修改调用者的浏览器变量。Scene模式先装固定版本可选Three，再运行测试，避免静默跳过可选测试。缓存用msvcrt内核文件锁、relative concat清单及参数数组；这些Windows分支仍待Windows机器实测。
+脚本在仓库根目录执行，逐条检查原生命令退出码，finally恢复当前目录；不修改调用者的浏览器变量。Scene模式先装固定版本可选Three，再运行测试，避免静默跳过可选测试。缓存用msvcrt内核文件锁、relative concat清单及参数数组；核心缓存/失败恢复回归已在Windows CI执行，完整Scene模式仍待实测。
 
 下面原有36秒完整重算命令保留供需要时使用，本轮验证优先用上面的6秒入口，不必重做长片。
 
@@ -75,7 +75,7 @@ python engine/render.py examples/pigeon_B --clip 29 32 arrival
 `--clip` 用主时间轴，输出中第0秒仍对应所选起点。不要直接用全片事件音给局部 clip 合音；先重渲全片再合片。
 确定性只保证同一浏览器/字体版本/平台；跨 Windows 与 Linux 可能出现抗锯齿差异。
 
-本次实测环境是 Linux + Chromium；以上为 PowerShell 兼容命令，**未在 Windows 主机执行**。有些系统限制脚本激活，可直接用 `.\.venv\Scripts\python.exe` 执行。
+本地实测为Linux + Chromium，另有原生Windows CI核心与PowerShell静帧验收；以上36秒重算及手工播放命令**未逐项在Windows执行**。有些系统限制脚本激活，可直接用 `.\.venv\Scripts\python.exe` 执行。
 
 本轮公共视听组件与8秒样例：
 
@@ -88,7 +88,7 @@ Start-Process examples/resonance/renders/final.mp4
 python scripts/analyze_music.py ..\music.wav --out ..\music-analysis.json
 ```
 
-`-AV`安装可选Three，跑完整测试、确定性、8秒分段渲染、分轨、编码同步及媒体检查。关闭浏览器预览后再删除可选`engine/vendor/three`即可卸载；无npm服务/注册表改动。缓存可在停止渲染后删除工程renders/.vk-cache；不要在渲染中清理。新音频模块复用已有NumPy/SciPy和FFmpeg，无新增Python依赖。此PowerShell入口仍未在Windows原生执行，不能将Linux成功等同跨平台已验收。
+`-AV`安装可选Three，跑完整测试、确定性、8秒分段渲染、分轨、编码同步及媒体检查。关闭浏览器预览后再删除可选`engine/vendor/three`即可卸载；无npm服务/注册表改动。缓存可在停止渲染后删除工程renders/.vk-cache；不要在渲染中清理。新音频模块复用已有NumPy/SciPy和FFmpeg，无新增Python依赖。`-SkipTests`已在Windows原生执行，`-AV`尚未执行；不能将Linux完整导出成功等同Windows可选3D已验收。
 
 ## 完整自主作品与当前版本检查
 

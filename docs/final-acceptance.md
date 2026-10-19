@@ -30,7 +30,17 @@
 
 ## 自动验证与平台
 
-首次原生Windows Actions实际运行，暴露.mjs被系统映射为text/plain，导致模块加载失败（56项中1失败、11错误、4可选跳过）。服务器已改显式JavaScript MIME，真实HTTP模拟错误映射已RED→GREEN；最终Windows重跑结果待录入。最终完整日志见[evidence/final-round/tests-linux.log](../evidence/final-round/tests-linux.log)。Linux本地安装可选Three与Geo；GitHub Actions核心矩阵不强制这些可选资产，会明确跳过对应测试。手动webgl任务执行现有8秒作品的完整渲染/混音/两层同步与媒体检查。Windows原生结果以真实Actions日志为准，本地无Windows主机。
+代码提交`0fead6a8`的[原生Actions运行39183691582](https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39183691582)已完成：
+
+| 环境 | 实际结果 | 范围 |
+|---|---|---|
+| Linux本地 | 64项通过，204.234秒 | 安装可选Three与Geo，无跳过 |
+| ubuntu-latest CI | 64项中60通过、4可选跳过，127.998秒 | 核心回归，固定Playwright Chromium |
+| windows-latest CI | 64项中60通过、4可选跳过，213.146秒 | 核心回归，原生Windows/Python3.12/Playwright Chromium |
+| Windows PowerShell | `verify.ps1 -SkipTests`成功 | 字体检查与fold_C@24真实静帧；测试已由上一CI步骤执行 |
+| 可选WebGL手动任务 | 本轮未触发 | 不能把核心CI成功外推为Windows完整WebGL导出通过 |
+
+[本地日志](../evidence/final-round/tests-linux.log)、[Windows测试与PowerShell摘录](../evidence/final-round/tests-windows-ci.log)、[CI身份与范围](../evidence/final-round/ci.json)。可选Three/Geo在核心CI明确跳过，本地已实际运行。Linux本地无Windows主机，原生验证来自Actions；本机Google Chrome频道、Windows完整72秒生产与可选WebGL仍未实测。最后的文档/证据提交不改已验证代码，使用`[skip ci]`避免重复相同矩阵；验收绑定上述代码提交。
 
 完整Linux命令：
 
@@ -49,10 +59,10 @@ VK_BROWSER=/usr/bin/chromium python scripts/produce.py examples/atlas --assets g
 
 8秒修正版保留在evidence/resonance/current.mp4，原final.mp4及报告未覆盖。实际射线间隙探针及新编码抽帧归档为current-*；原名义尺寸检查漏掉的绕序问题已明示。旧fold_C24s、pigeon_B29s当前截图SHA仍与原始基线相同，见final-round/legacy-regression.json。
 
-Windows第二轮60项总计中54项通过、2项错误、4项可选跳过，有两次本地字体加载NetworkError，尚不记为通过。新增CI请求失败日志，Python/浏览器/字体步骤分开显示并缓存字体；最终带诊断运行待录入，不通过盲目重试隐藏失败。
+Windows首次真实运行56项中1失败、11错误、4可选跳过，确认系统把.mjs映射为text/plain。显式JavaScript MIME修复有真实HTTP错误映射的RED→GREEN回归。第二轮60项中54通过、2错误、4可选跳过，错误为本地字体加载NetworkError；保留失败记录，没有证据确认其根因。最终64项带请求失败诊断的运行通过，不能由单次通过宣称此前间歇网络问题已永久解决。两次历史失败链接及最终成功均见ci.json。
 
 ## 发行文件与母带
 
 公共final.mp4采用H.264 CRF20、1080p30/72秒发行编码（10,800,291字节），音频包复制；高码率CRF14母带21,216,326字节留于工程renders/final.mp4，由produce生成。发行版经过独立check_av/check_visual/check_media，生产聚合报告引用原master-production与delivery转换记录。最终编码截图来自发行文件本身；有损视频重编码不是无损复制。
 
-Git命令写入通道出现503，21MB单对象通过仓库接口也发送失败；发行编码已由接口接收并核对Git blob SHA。待全部文件树校验后才前移PR分支，不通过丢弃影片或伪造成功解决上传问题。
+Git命令写入通道出现503，21MB单对象通过仓库接口也发送失败；发行编码已由接口接收并核对Git blob SHA。全部50个变更对象及完整文件树核对后，以预期旧HEAD保护前移PR分支，未强推或改写已发布历史。5个新公开媒体已从固定提交地址实际下载，均HTTP200且大小/SHA256匹配，见[下载核验](../evidence/final-round/downloads.json)。仓库内证据约33MB；高码率母带仍在本地工程可复现，不再重复提交逐帧PNG、无效缓存或临时恢复日志。未创建Release或公网部署。

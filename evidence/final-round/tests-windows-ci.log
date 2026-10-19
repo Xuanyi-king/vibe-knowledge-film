@@ -1,0 +1,168 @@
+test_complete_film_drawn_scale_layout_and_reverse_seek (test_atlas.AtlasTest.test_complete_film_drawn_scale_layout_and_reverse_seek) ... skipped 'optional geographic assets'
+test_corrupt_successful_mux_keeps_previous_final (test_audio.AudioTest.test_corrupt_successful_mux_keeps_previous_final) ... ok
+test_failed_mux_keeps_previous_final (test_audio.AudioTest.test_failed_mux_keeps_previous_final) ... ok
+test_shared_score_mux_and_stems (test_audio.AudioTest.test_shared_score_mux_and_stems) ... ok
+test_shared_score_rejects_unreferenced_external_bgm_keeps_final (test_audio.AudioTest.test_shared_score_rejects_unreferenced_external_bgm_keeps_final) ... ok
+test_subsecond_bgm_mux_has_valid_fade (test_audio.AudioTest.test_subsecond_bgm_mux_has_valid_fade) ... ok
+test_tempo_inverse_contact_and_seek_order (test_choreography.ChoreographyTest.test_tempo_inverse_contact_and_seek_order) ... ok
+test_only_guidance_differs_and_missing_credentials_never_call_network (test_comparison.ComparisonTest.test_only_guidance_differs_and_missing_credentials_never_call_network) ... ok
+test_two_real_http_requests_preserve_usage_and_generated_sources (test_comparison.ComparisonTest.test_two_real_http_requests_preserve_usage_and_generated_sources) ... ok
+test_differential_scales_and_projection_library (test_geo.GeoTest.test_differential_scales_and_projection_library) ... ok
+test_real_projection_and_land_orientation (test_geo.GeoTest.test_real_projection_and_land_orientation) ... skipped 'optional geographic assets'
+test_legacy_mastering_requires_explicit_source_only_contract (test_mastering.MasteringTest.test_legacy_mastering_requires_explicit_source_only_contract) ... ok
+test_real_encoder_failure_preserves_final_and_provenance (test_mastering.MasteringTest.test_real_encoder_failure_preserves_final_and_provenance) ... ok
+test_sparse_transients_meet_encoded_ceiling_without_timing_shift (test_mastering.MasteringTest.test_sparse_transients_meet_encoded_ceiling_without_timing_shift) ... ok
+test_black_frames_are_candidates_not_aesthetic_scores (test_media.MediaTest.test_black_frames_are_candidates_not_aesthetic_scores) ... ok
+test_invalid_file_fails (test_media.MediaTest.test_invalid_file_fails) ... ok
+test_valid_media_and_duration_mismatch (test_media.MediaTest.test_valid_media_and_duration_mismatch) ... ok
+test_click_grid_and_silence_do_not_invent_downbeats (test_music.MusicTest.test_click_grid_and_silence_do_not_invent_downbeats) ... ok
+test_positions_speed_and_arrivals (test_physics.PhysicsTest.test_positions_speed_and_arrivals) ... ok
+test_travel_time_from_energy_integral (test_physics.PhysicsTest.test_travel_time_from_energy_integral) ... ok
+test_force_exit_invalidates_old_success_before_first_step (test_production.ProductionTest.test_force_exit_invalidates_old_success_before_first_step) ... ok
+test_one_entry_completes_pipeline_and_reports_blocked_inspection (test_production.ProductionTest.test_one_entry_completes_pipeline_and_reports_blocked_inspection) ... ok
+test_post_mux_failure_restores_old_final_and_sidecar (test_production.ProductionTest.test_post_mux_failure_restores_old_final_and_sidecar) ... ok
+test_source_edit_during_final_media_check_cannot_publish_success (test_production.ProductionTest.test_source_edit_during_final_media_check_cannot_publish_success) ... ok
+test_decoder_failure_invalidates_previous_green_report (test_provenance.ProvenanceTest.test_decoder_failure_invalidates_previous_green_report) ... score: C:\Users\runneradmin\AppData\Local\Temp\tmp9u8omdd8\audio\score.wav 0.5s 1 events
+score: C:\Users\runneradmin\AppData\Local\Temp\tmprtat3fsr\audio\score.wav 0.5s 1 events
+  0/12
+ok
+test_export_input_race_keeps_previous_event_file (test_provenance.ProvenanceTest.test_export_input_race_keeps_previous_event_file) ... done C:\Users\RUNNER~1\AppData\Local\Temp\tmp9qj2or_d\renders\raw.mp4 0.40s
+events: 0 legacy; 1 shared
+{
+  "layer": "encoding_audio_sync",
+  "visual_action_sync": "not_checked",
+  "checked": 0,
+  "failed": [
+    "Command '['C:\\\\hostedtoolcache\\\\windows\\\\Python\\\\3.12.10\\\\x64\\\\python.exe', '-c', 'import sys;sys.exit(7)']' returned non-zero exit status 7."
+  ]
+}
+  0/12
+ok
+test_input_edit_during_encoding_check_cannot_publish_green (test_provenance.ProvenanceTest.test_input_edit_during_encoding_check_cannot_publish_green) ... done C:\Users\RUNNER~1\AppData\Local\Temp\tmpffpi1hwc\renders\raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_modified_reference_or_final_cannot_pass_encoding_check (test_provenance.ProvenanceTest.test_modified_reference_or_final_cannot_pass_encoding_check) ... done C:\Users\RUNNER~1\AppData\Local\Temp\tmpwxqld_fg\renders\raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_noninteger_frame_end_is_supported_by_serial_pipeline (test_provenance.ProvenanceTest.test_noninteger_frame_end_is_supported_by_serial_pipeline) ... done C:\Users\RUNNER~1\AppData\Local\Temp\tmpx5c_s7pa\renders\raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_reexported_events_cannot_bind_old_raw_or_tampered_payload (test_provenance.ProvenanceTest.test_reexported_events_cannot_bind_old_raw_or_tampered_payload) ... done C:\Users\RUNNER~1\AppData\Local\Temp\tmpfypktwqg\renders\raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+done C:\Users\RUNNER~1\AppData\Local\Temp\tmpa0sc13kq\renders\raw.mp4 0.40s
+events: 0 legacy; 1 shared
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_source_edits_reject_old_events_and_old_encoded_check (test_provenance.ProvenanceTest.test_source_edits_reject_old_events_and_old_encoded_check) ... done C:\Users\RUNNER~1\AppData\Local\Temp\tmpa0sc13kq\renders\raw.mp4 0.40s
+  0/12
+done C:\Users\RUNNER~1\AppData\Local\Temp\tmpwbfwrnl9\renders\raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/12
+ok
+test_unversioned_events_require_reexport (test_provenance.ProvenanceTest.test_unversioned_events_require_reexport) ... ok
+test_event_draw_errors_are_not_swallowed (test_render.BrowserTests.test_event_draw_errors_are_not_swallowed) ... ok
+test_event_scan_includes_end_without_exceeding_duration (test_render.BrowserTests.test_event_scan_includes_end_without_exceeding_duration) ... ok
+test_events_preserve_seek_pixels_and_repeatability (test_render.BrowserTests.test_events_preserve_seek_pixels_and_repeatability) ... ok
+test_resume_rejects_inputs_in_generated_directories (test_render.BrowserTests.test_resume_rejects_inputs_in_generated_directories) ... ok
+test_startup_script_error_reports_cause_without_ready (test_render.BrowserTests.test_startup_script_error_reports_cause_without_ready) ... ok
+test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text (test_render.ModuleMimeTest.test_javascript_mime_is_explicit_even_when_os_mapping_is_plain_text) ... ok
+test_failed_worker_does_not_skip_waiting_for_other_workers (test_render.ParallelTests.test_failed_worker_does_not_skip_waiting_for_other_workers) ... ok
+test_determinism_failure_is_an_error (test_render.RenderTests.test_determinism_failure_is_an_error) ... ok
+test_encoder_failure_preserves_existing_output (test_render.RenderTests.test_encoder_failure_preserves_existing_output) ... done C:\Users\RUNNER~1\AppData\Local\Temp\tmpdxmtebbk\renders\raw.mp4 0.40s
+events: 0 legacy; 1 shared
+  0/1
+ok
+test_invalid_clip_rejected_before_encoder (test_render.RenderTests.test_invalid_clip_rejected_before_encoder) ... ok
+test_encoded_parent_path_cannot_escape_project (test_render.ServerPathsTest.test_encoded_parent_path_cannot_escape_project) ... ok
+test_url_encoded_asset_names_work (test_render.ServerPathsTest.test_url_encoded_asset_names_work) ... ok
+test_asset_and_render_parameter_changes_invalidate_cache (test_resume.ResumeTest.test_asset_and_render_parameter_changes_invalidate_cache) ... cache new identity dd99830c2eb690f1a1cb (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 32qoh2_9\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 32qoh2_9\renders\.vk-cache\dd99830c2eb690f1a1cb
+cache new identity bce17e30a7d543778cbf (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 32qoh2_9\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 32qoh2_9\renders\.vk-cache\bce17e30a7d543778cbf
+cache new identity 9d1b7bbbc5870fa3be29 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 32qoh2_9\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 32qoh2_9\renders\.vk-cache\9d1b7bbbc5870fa3be29
+cache new identity 1e55d0015310df9dd265 (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 32qoh2_9\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 32qoh2_9\renders\.vk-cache\1e55d0015310df9dd265
+ok
+test_browser_initialization_source_race_is_rejected (test_resume.ResumeTest.test_browser_initialization_source_race_is_rejected) ... ok
+test_corrupt_part_is_rebuilt_without_rebuilding_valid_parts (test_resume.ResumeTest.test_corrupt_part_is_rebuilt_without_rebuilding_valid_parts) ... cache new identity dd99830c2eb690f1a1cb (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 wty2ehtf\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 wty2ehtf\renders\.vk-cache\dd99830c2eb690f1a1cb
+cache reuse 1/3 [0,6)
+cache render 2/3 [6,12)
+cache reuse 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 wty2ehtf\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 wty2ehtf\renders\.vk-cache\dd99830c2eb690f1a1cb
+ok
+test_failed_concat_preserves_old_final (test_resume.ResumeTest.test_failed_concat_preserves_old_final) ... cache new identity dd99830c2eb690f1a1cb (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 c6iwvpb1\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 c6iwvpb1\renders\.vk-cache\dd99830c2eb690f1a1cb
+cache reuse 1/3 [0,6)
+cache reuse 2/3 [6,12)
+cache reuse 3/3 [12,18)
+ok
+test_interruption_keeps_completed_parts_and_resumes_in_order (test_resume.ResumeTest.test_interruption_keeps_completed_parts_and_resumes_in_order) ... cache new identity dd99830c2eb690f1a1cb (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache reuse 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 k9zctc7w\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 k9zctc7w\renders\.vk-cache\dd99830c2eb690f1a1cb
+ok
+test_invalid_chunk_is_rejected (test_resume.ResumeTest.test_invalid_chunk_is_rejected) ... ok
+test_invalid_part_never_published (test_resume.ResumeTest.test_invalid_part_never_published) ... cache new identity dd99830c2eb690f1a1cb (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+ok
+test_lock_releases_after_interruption (test_resume.ResumeTest.test_lock_releases_after_interruption) ... ok
+test_parallel_interrupt_cancels_queued_segments (test_resume.ResumeTest.test_parallel_interrupt_cancels_queued_segments) ... cache new identity 9841725d1b95cf741d3f (source / runtime / encoding / chunk parameters)
+cache render 1/6 [0,6)
+cache render 2/6 [6,12)
+ok
+test_parallel_parts_are_concatenated_in_frame_order (test_resume.ResumeTest.test_parallel_parts_are_concatenated_in_frame_order) ... cache new identity dd99830c2eb690f1a1cb (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+cache render 2/3 [6,12)
+cache render 3/3 [12,18)
+done C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 xlblfubs\renders\raw.mp4 18 frames; cache C:\Users\RUNNER~1\AppData\Local\Temp\vk cache's 空格 xlblfubs\renders\.vk-cache\dd99830c2eb690f1a1cb
+ok
+test_source_change_during_render_is_rejected (test_resume.ResumeTest.test_source_change_during_render_is_rejected) ... cache new identity dd99830c2eb690f1a1cb (source / runtime / encoding / chunk parameters)
+cache render 1/3 [0,6)
+ok
+test_custom_is_neutral_and_does_not_overwrite (test_scaffold.ScaffoldTest.test_custom_is_neutral_and_does_not_overwrite) ... ok
+test_contact_clock_and_final_composition_replay (test_scene.ResonanceTest.test_contact_clock_and_final_composition_replay) ... skipped 'optional Three.js assets'
+test_complex_scene_replays_and_preserves_link_lengths (test_scene.SceneTest.test_complex_scene_replays_and_preserves_link_lengths) ... skipped 'optional Three.js assets: run engine/get_scene_assets.py'
+test_automation_silence_samples_and_invalid_events (test_score_audio.ScoreAudioTest.test_automation_silence_samples_and_invalid_events) ... ok
+test_encoded_sync_detects_delay_instead_of_assuming_aac_offset (test_score_audio.ScoreAudioTest.test_encoded_sync_detects_delay_instead_of_assuming_aac_offset) ... ok
+test_materials_repeat_order_independent_and_stems_sum (test_score_audio.ScoreAudioTest.test_materials_repeat_order_independent_and_stems_sum) ... ok
+test_seeded_string_has_requested_pitch (test_score_audio.ScoreAudioTest.test_seeded_string_has_requested_pitch) ... ok
+test_invalid_declarations_and_nonfinite_measurements_fail (test_visual_checks.VisualChecksTest.test_invalid_declarations_and_nonfinite_measurements_fail) ... ok
+test_rendered_condition_fails_when_motion_is_retimed_without_sound (test_visual_checks.VisualChecksTest.test_rendered_condition_fails_when_motion_is_retimed_without_sound) ... ok
+
+----------------------------------------------------------------------
+Ran 64 tests in 213.146s
+
+OK (skipped=4)
+
+PowerShell entry: ./scripts/verify.ps1 -SkipTests
+Fonts: 字体齐全
+fold_C@24: stills: 1
+Job conclusion: success
