@@ -19,6 +19,24 @@ from engine import render,provenance
 ROOT=Path(__file__).resolve().parents[1]
 
 
+def uses_music_plan(proj):
+    """Conservatively detect the existing music adapter in authored browser code.
+
+    An existing plan may be read through dynamically constructed URLs, so keep
+    it fresh even without a literal reference. Ignore other generated outputs
+    and an adapter without a plan; those alone cannot supply stale anchors.
+    """
+    if (proj/'assets/music-plan.json').exists():return True
+    for directory,dirs,files in os.walk(proj):
+        dirs[:]=[d for d in dirs if d not in {'audio','review','renders','.git','__pycache__','node_modules','.venv'}]
+        for name in files:
+            path=Path(directory)/name
+            if path.suffix.lower() not in {'.html','.js','.mjs'}:continue
+            if path==proj/'assets/music-plan.mjs':continue
+            if 'music-plan' in path.read_text(encoding='utf-8',errors='replace'):return True
+    return False
+
+
 def output_snapshot(proj, paths):
     """Hash complete output groups, including their evidence files."""
     files={}
@@ -81,7 +99,8 @@ def produce(proj,chunk=4,jobs=1,assets=(),mode='release',preview=()):
         report['timings'][name]=round(perf_counter()-tick,4)
         report['stages'].append(name)
     try:
-        if (proj/'music.json').exists():step('music_preparation','scripts/prepare_music.py',proj)
+        if (proj/'music.json').exists() and (mode!='draft' or uses_music_plan(proj)):
+            step('music_preparation','scripts/prepare_music.py',proj)
         for asset in assets:
             if asset not in {'geo','scene'}:raise ValueError('supported optional assets: geo, scene')
             step('assets-'+asset,f'engine/get_{asset}_assets.py')

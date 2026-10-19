@@ -22,6 +22,8 @@ python scripts/produce.py <project>                            # 默认 release
 
 `--assets geo scene` 仅在用到时指定，下载器会复用本地资产。字体安装器自身只下载缺项。`--chunk 4 --jobs 1` 旧参数保留。旧 Python 调用 `produce(project, chunk, jobs, assets)` 默认 Release，底层所有渲染命令继续可用。
 
+Draft 在工程 HTML/JS/MJS 引用 `music-plan` 或已有 `assets/music-plan.json` 时准备音乐；后者保守覆盖动态拼接路径/直接读取 JSON，防止旧锚点。未使用的 music.json 或仅遗留的适配器不触发音频分析。准备仍校验当前配置/音源并复用已有分析缓存。动态路径且尚无计划时需先显式运行 `prepare_music.py`，缺项会报错；标准加载器始终拒绝过期计划。显式 `--assets` 与字体准备保留，不能以错误时间轴或缺失场景冒充预览。
+
 Draft 不能作为单主题任务默认最终交付。只调构图用静帧，动作/转场用 Motion Strip，速度与动态问题再渲局部片段；不需要为一帧执行 Release。全片首次生产用 Standard，交付前用 Release；直接执行默认命令也可完成全部技术链。
 
 新工程 `world` 由 Agent 显式决定，custom 要求正数 duration，可在试画后修改。显式 B/C 旧命令保留带警告的 30 秒骨架；已有工程无需迁移，骨架不是作品。

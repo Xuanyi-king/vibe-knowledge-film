@@ -17,6 +17,9 @@ class WorkflowTest(unittest.TestCase):
             p=Path(d)
             subprocess.run([sys.executable,str(ROOT/'scripts/new_film.py'),str(p),
                             '--world','custom','--duration','.4'],check=True,capture_output=True)
+            # Audio-only/unreferenced configuration must not block Canvas previews.
+            (p/'music.json').write_text(json.dumps({'mode':'custom','src':'missing-audio.wav'}))
+            (p/'assets').mkdir();(p/'assets/music-plan.mjs').write_text('// old unused music-plan.json adapter')
             (p/'review').mkdir()
             report=p/'review/production.json';report.write_bytes(b'previous release')
             result=subprocess.run([sys.executable,str(ROOT/'scripts/produce.py'),str(p),
@@ -27,7 +30,7 @@ class WorkflowTest(unittest.TestCase):
             self.assertFalse((p/'renders/final.mp4').exists())
             draft=json.loads((p/'review/draft.json').read_text())
             self.assertEqual(draft['status'],'preview_needs_review')
-            self.assertNotIn('media',draft['stages'])
+            self.assertEqual(draft['stages'],['fonts','preview'])
 
     def test_invalid_modes_and_preview_flags_leave_release_untouched(self):
         with tempfile.TemporaryDirectory() as d:
@@ -63,7 +66,7 @@ class WorkflowTest(unittest.TestCase):
             self.assertFalse(produce.reusable(p,{},'k'))
 
     def test_standard_then_release_reuses_build_but_generates_mobile(self):
-        with tempfile.TemporaryDirectory() as d:
+        with tempfile.TemporaryDirectory(prefix="vk 完整工程 space '") as d:
             p=Path(d)
             (p/'index.html').write_text('<canvas id="stage"></canvas><script src="/engine/vk.js"></script><script src="film.js"></script>')
             (p/'film.js').write_text("""import('/engine/vk-motion.mjs').then(M=>{
@@ -81,6 +84,17 @@ class WorkflowTest(unittest.TestCase):
             again=produce.produce(p,chunk=.2)
             self.assertEqual(again['stages'],['fonts'])
             self.assertIn('mobile_evidence',again['reused'])
+            # Real current Release bytes, receipts and events survive every preview.
+            protected=['renders/final.mp4','renders/final.mp4.provenance.json',
+                       'review/production.json','review/production-cache.json','audio/events.json']
+            saved={name:(p/name).read_bytes() for name in protected}
+            for preview in [('--stills',.2),('--motion',0,.3),('--clip',0,.3)]:
+                draft=produce.produce(p,mode='draft',preview=preview)
+                self.assertEqual(draft['stages'],['fonts','preview'])
+                for name,data in saved.items():self.assertEqual((p/name).read_bytes(),data,name)
+            after_preview=produce.produce(p,chunk=.2)
+            self.assertEqual(after_preview['stages'],['fonts'])
+            self.assertEqual(after_preview['reused'],['standard','mobile_evidence'])
             # Every generated evidence byte is bound; tampering reruns that group.
             image=next((p/'review/mobile').rglob('*.png'))
             image.write_bytes(b'broken evidence')

@@ -16,6 +16,8 @@ ffmpeg -version
 ffprobe -version
 ```
 
+核心 CI 使用 [GyanD/codexffmpeg 固定 8.0.1 essentials ZIP](https://github.com/GyanD/codexffmpeg/releases/tag/8.0.1)（FFmpeg 官网链接的 Windows 构建方），由 `scripts/install_ffmpeg.py` 校验发布方 SHA256 后安装；只缓存校验过的下载包，网络最多尝试三次。安装步骤实际运行两个可执行文件后写入 GITHUB_PATH，不依赖 Runner 预装版本或 Chocolatey 源。原生最终结果以 PR #3 对应提交的检查为准。
+
 有本机 Google Chrome 时默认使用它；没有时使用 Playwright Chromium。可显式选择：
 
 ```powershell
