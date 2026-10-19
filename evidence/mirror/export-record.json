@@ -1,0 +1,15 @@
+{
+  "code_commit": "74036406fc20e209722bc8076a81b907a1f76f7b",
+  "scope": "creative development stopped at user request; preserve existing technical export, not an accepted finished film",
+  "local_video": "examples/mirror/renders/final.mp4",
+  "video_sha256": "219bdcfc9fb7c6347190970ca2a7e0fa2de9d0fc10a16a41ba891051fc18f058",
+  "bytes": 22823874,
+  "tracked_video": false,
+  "encoding_sync_windows": 106,
+  "declared_visual_conditions": 15,
+  "continuous_final_playback": "not_completed",
+  "subjective_listening": "not_completed",
+  "encoded_final_visual_review": "not_completed",
+  "phone_readability_review": "not_completed",
+  "note": "No further render, distribution transcode, audio conversion or new creative iteration after the stop request. Referenced visual PNG evidence remains in the local project review directory."
+}

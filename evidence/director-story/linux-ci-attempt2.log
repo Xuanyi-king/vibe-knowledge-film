@@ -1,0 +1,13 @@
+2026-10-19T05:30:30.6196593Z test_complete_film_drawn_scale_layout_and_reverse_seek (test_atlas.AtlasTest.test_complete_film_drawn_scale_layout_and_reverse_seek) ... skipped 'optional geographic assets'
+2026-10-19T05:30:38.5839042Z test_real_projection_and_land_orientation (test_geo.GeoTest.test_real_projection_and_land_orientation) ... skipped 'optional geographic assets'
+2026-10-19T05:30:40.6263191Z test_distance_changes_projection_not_face_geometry (test_mirror.MirrorTest.test_distance_changes_projection_not_face_geometry) ... skipped 'optional Three.js portrait assets'
+2026-10-19T05:30:40.6264184Z test_orientation_conditions_and_complete_story_replay (test_mirror.MirrorTest.test_orientation_conditions_and_complete_story_replay) ... skipped 'optional Three.js portrait assets'
+2026-10-19T05:30:40.6264891Z test_portrait_aspect_is_preserved_in_opening_and_ending (test_mirror.MirrorTest.test_portrait_aspect_is_preserved_in_opening_and_ending) ... skipped 'optional Three.js portrait assets'
+2026-10-19T05:30:40.8030966Z test_bad_download_or_escape_preserves_previous_bank (test_music_phrases.MusicTest.test_bad_download_or_escape_preserves_previous_bank) ... ok
+2026-10-19T05:30:41.9736681Z test_phrase_uses_shared_tempo_with_rests_and_release (test_music_phrases.MusicTest.test_phrase_uses_shared_tempo_with_rests_and_release) ... ok
+2026-10-19T05:30:43.3808150Z test_prepared_notes_pitch_cache_and_source_identity (test_music_phrases.MusicTest.test_prepared_notes_pitch_cache_and_source_identity) ... ok
+2026-10-19T05:31:05.9111332Z test_one_entry_completes_pipeline_and_reports_blocked_inspection (test_production.ProductionTest.test_one_entry_completes_pipeline_and_reports_blocked_inspection) ... ok
+2026-10-19T05:32:26.7021683Z test_contact_clock_and_final_composition_replay (test_scene.ResonanceTest.test_contact_clock_and_final_composition_replay) ... skipped 'optional Three.js assets'
+2026-10-19T05:32:26.7022710Z test_complex_scene_replays_and_preserves_link_lengths (test_scene.SceneTest.test_complex_scene_replays_and_preserves_link_lengths) ... skipped 'optional Three.js assets: run engine/get_scene_assets.py'
+2026-10-19T05:32:34.9708224Z Ran 70 tests in 124.351s
+2026-10-19T05:32:34.9708491Z OK (skipped=7)

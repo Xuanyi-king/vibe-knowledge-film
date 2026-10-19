@@ -1,0 +1,69 @@
+{
+  "file": "/workspace/vibe-knowledge-film/examples/mirror/renders/final.mp4",
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30.0,
+    "duration": 112.0,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "frames": "3360"
+  },
+  "audio": {
+    "duration": 112.0,
+    "codec": "aac",
+    "sample_rate": "48000",
+    "sample_peak_db": -3.556796,
+    "rms_db": -36.738286,
+    "note": "Decoded sample peak/RMS plus FFmpeg loudnorm integrated LUFS, true peak and LRA; not a mix-quality score.",
+    "integrated_lufs": -30.11,
+    "true_peak_dbtp": -3.54,
+    "loudness_range_lu": 20.2
+  },
+  "errors": [],
+  "candidates": {
+    "black": [],
+    "silence": [
+      {
+        "start": 12.040771,
+        "end": 18.003167,
+        "duration": 5.962396
+      },
+      {
+        "start": 44.778979,
+        "end": 45.831354,
+        "duration": 1.052375
+      },
+      {
+        "start": 45.832687,
+        "end": 51.008021,
+        "duration": 5.175333
+      },
+      {
+        "start": 71.702,
+        "end": 72.008042,
+        "duration": 0.306042
+      },
+      {
+        "start": 74.528167,
+        "end": 78.005625,
+        "duration": 3.477458
+      },
+      {
+        "start": 109.92475,
+        "end": 112.0,
+        "duration": 2.07525
+      }
+    ],
+    "scene_change_times": []
+  },
+  "unverified": [
+    "aesthetic quality",
+    "unexpected blank colored frames",
+    "object bounds and subtitle occlusion",
+    "glyph coverage/readability",
+    "storyboard match",
+    "factual correctness"
+  ],
+  "interpretation": "Candidates require timestamped visual/audio review; intentional black, cuts and silence are allowed."
+}

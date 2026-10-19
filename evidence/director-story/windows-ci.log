@@ -1,0 +1,14 @@
+2026-10-19T05:24:37.6042623Z test_complete_film_drawn_scale_layout_and_reverse_seek (test_atlas.AtlasTest.test_complete_film_drawn_scale_layout_and_reverse_seek) ... skipped 'optional geographic assets'
+2026-10-19T05:24:50.2871095Z test_real_projection_and_land_orientation (test_geo.GeoTest.test_real_projection_and_land_orientation) ... skipped 'optional geographic assets'
+2026-10-19T05:24:53.8413616Z test_distance_changes_projection_not_face_geometry (test_mirror.MirrorTest.test_distance_changes_projection_not_face_geometry) ... skipped 'optional Three.js portrait assets'
+2026-10-19T05:24:53.8415997Z test_orientation_conditions_and_complete_story_replay (test_mirror.MirrorTest.test_orientation_conditions_and_complete_story_replay) ... skipped 'optional Three.js portrait assets'
+2026-10-19T05:24:53.8418360Z test_portrait_aspect_is_preserved_in_opening_and_ending (test_mirror.MirrorTest.test_portrait_aspect_is_preserved_in_opening_and_ending) ... skipped 'optional Three.js portrait assets'
+2026-10-19T05:24:54.1704366Z test_bad_download_or_escape_preserves_previous_bank (test_music_phrases.MusicTest.test_bad_download_or_escape_preserves_previous_bank) ... ok
+2026-10-19T05:24:55.8829770Z test_phrase_uses_shared_tempo_with_rests_and_release (test_music_phrases.MusicTest.test_phrase_uses_shared_tempo_with_rests_and_release) ... ok
+2026-10-19T05:24:57.5663209Z test_prepared_notes_pitch_cache_and_source_identity (test_music_phrases.MusicTest.test_prepared_notes_pitch_cache_and_source_identity) ... ok
+2026-10-19T05:28:12.9371929Z test_contact_clock_and_final_composition_replay (test_scene.ResonanceTest.test_contact_clock_and_final_composition_replay) ... skipped 'optional Three.js assets'
+2026-10-19T05:28:12.9374203Z test_complex_scene_replays_and_preserves_link_lengths (test_scene.SceneTest.test_complex_scene_replays_and_preserves_link_lengths) ... skipped 'optional Three.js assets: run engine/get_scene_assets.py'
+2026-10-19T05:28:28.5754431Z Ran 70 tests in 230.982s
+2026-10-19T05:28:28.5754853Z OK (skipped=7)
+2026-10-19T05:28:28.7076641Z ##[group]Run ./scripts/verify.ps1 -SkipTests
+2026-10-19T05:28:28.7077099Z ./scripts/verify.ps1 -SkipTests
