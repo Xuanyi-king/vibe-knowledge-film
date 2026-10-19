@@ -4,7 +4,7 @@
 
 [观看/下载有声MP4](final.mp4) · [音乐独听](music.flac) · [触感音独听](sfx.flac) · [源码、分镜、出处与复现](../../examples/torque/README.md) · [可复用美术能力](../../references/art-direction.md)。
 
-正式produce输出：1920×1080、30fps、420帧、14.000秒，H.264/yuv420p + 48 kHz AAC。MP4为1,610,192字节，SHA256：`bf9b26e8a2e12fa8f8e7cae228fdf42b5b0bf4486fadf638c66fe18f228bec60`。短片及必要证据随Git持久化，不依赖临时CI产物；[文件校验清单](artifacts.json)。此前112秒《另一种你》未改动，仍是原有本地存储状态，不在此轮擅自发布。
+正式produce输出：1920×1080、30fps、420帧、14.000秒，H.264/yuv420p + 48 kHz AAC。MP4为1,610,192字节，SHA256：`bf9b26e8a2e12fa8f8e7cae228fdf42b5b0bf4486fadf638c66fe18f228bec60`。短片及必要证据随Git持久化，不依赖临时CI产物；[文件校验清单](artifacts.json)，[固定提交的原文件地址](../assets.json)不会随开发分支删除而失效。此前112秒《另一种你》未改动，仍是原有本地存储状态，不在此轮擅自发布。
 
 ## 相同目标的画面对照
 
