@@ -6,7 +6,7 @@ C 夜曲（抽象概念、看不见的机制）· B 寓言（心理和行为机�
 工程里是 index.html 和一份只能跑起来的 film.js 骨架——里面一行画面都没有。
 文案不同，屏上的东西就不同，代码也不同：每一镜按当前镜头记录现写，不要从别的片子里搬画面。
 引擎留在 skill 目录里，由 engine/render.py 挂载。"""
-import argparse, math, shutil, sys
+import argparse, json, math, shutil, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -51,6 +51,7 @@ if __name__ == "__main__":
                         help='Agent按主题显式选择，分镜可随试画迭代；不默认夜曲')
     parser.add_argument('--duration', type=float, help='Agent预计的全片正数秒数，可随叙事修改')
     parser.add_argument('--force', action='store_true')
+    parser.add_argument('--series',choices=['shape-of-luck'],help='lock new series music to its reviewed master; missing assets block production')
     a = parser.parse_args()
     world = a.world
     duration = a.duration
@@ -64,9 +65,20 @@ if __name__ == "__main__":
     proj.mkdir(parents=True, exist_ok=True)
     film = proj / "film.js"
     if film.exists() and not a.force: sys.exit(f"{film} 已经存在。要覆盖加 --force")
+    if a.series and (proj/'music.json').exists():sys.exit('series scaffold does not overwrite existing music.json; edit its policy explicitly')
     name, theme, subs, pal, standing = WORLD[world]
     shutil.copy(ROOT / "engine/index.html", proj / "index.html")
     film.write_text(SKELETON.format(name=name, duration=format(duration, '.15g'), theme=theme, subs=subs, pal=pal, standing=standing, look="bloom: 0, grain: 0, " if world == "CUSTOM" else "", en=", en: '……'" if world == "C" else ""), encoding="utf-8", newline="\n")
+    if a.series:
+        code=film.read_text(encoding='utf-8')
+        film.write_text("Promise.all([import('./assets/music-plan.mjs'),import('/engine/vk-motion.mjs')]).then(([{MUSIC},{score}])=>{\n"
+            +f"if(MUSIC.selected!=='signature'||MUSIC.signature?.id!=={json.dumps(a.series)})throw Error('series master missing/mismatched; no fallback');\n"
+            +f"window.VK_SCORE=score({{end:{duration},events:[...MUSIC.events]}}); // Add this film's SFX/ambience events here.\n"
+            +code+'\n});\n',encoding='utf-8')
+        (proj/'music.json').write_text(json.dumps({'mode':'signature','end':duration,
+            'src':'assets/private-music/master.wav','source_sha256':None,
+            'signature':{'id':a.series,'required':True,'index':'assets/private-music/master-index.json','index_sha256':None},
+            'rights':{'scope':'unavailable'},'clips':[],'anchors':[]},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     if world == "CUSTOM" and not (proj / "direction.md").exists():
         (proj / "direction.md").write_text("# 作品方向\n\n先写事实与观众卡点；表达不确定时再比较不同机制。可将完整创作记录合并在 review/notes.md。以下字段按需，不必逐项填写。\n\n- 视觉概念与母题：\n- 颜色及语义：\n- 字体与字阶（当前字幕使用 flat 默认，按作品修改）：\n- 构图与相机：\n- 光源、材质与空间：\n- 动作、停顿与声音：\n- 候选方案及选择理由：\n", encoding="utf-8")
     render = ROOT / "engine/render.py"

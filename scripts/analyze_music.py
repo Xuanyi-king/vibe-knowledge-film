@@ -85,21 +85,30 @@ def analyze(x,sr):
             'downbeats':None,'phrases':None,'grid_verified':False,
             'scope':'spectral-flux and autocorrelation candidates; soft/noisy or changing-tempo music needs manual annotation; not a music-quality score'}
 
+def analysis_identity(source,annotations=None):
+    """Cheap cache identity shared with prepared series indexes; no DSP."""
+    ffmpeg=subprocess.run(['ffmpeg','-version'],capture_output=True,text=True,check=True,
+                          encoding='utf-8',errors='replace').stdout.splitlines()[0]
+    implementation=digest(Path(__file__))
+    identity=hashlib.sha256(json.dumps({'source':source,'implementation':implementation,'decoder':digest(Path(__file__).resolve().parents[1]/'engine/score_audio.py'),
+        'numpy':np.__version__,'scipy':scipy.__version__,'ffmpeg':ffmpeg,'annotations':annotations},sort_keys=True).encode()).hexdigest()
+    return identity,implementation,ffmpeg
+
 def analyze_file(audio,out,annotations=None):
     audio=Path(audio).resolve();out=Path(out).resolve()
     if audio==out:raise ValueError('analysis output cannot overwrite audio')
     source=digest(audio)
     if annotations and annotations.get('source_sha256')!=source:raise ValueError('annotation source fingerprint differs')
-    implementation=digest(Path(__file__))
-    ffmpeg=subprocess.run(['ffmpeg','-version'],capture_output=True,text=True,check=True).stdout.splitlines()[0]
-    identity=hashlib.sha256(json.dumps({'source':source,'implementation':implementation,'decoder':digest(Path(__file__).resolve().parents[1]/'engine/score_audio.py'),
-        'numpy':np.__version__,'scipy':scipy.__version__,'ffmpeg':ffmpeg,'annotations':annotations},sort_keys=True).encode()).hexdigest()
+    identity,implementation,ffmpeg=analysis_identity(source,annotations)
     try:
         cached=json.loads(out.read_text(encoding='utf-8'));payload={k:v for k,v in cached.items() if k!='payload_sha256'}
         integrity=hashlib.sha256(json.dumps(payload,sort_keys=True,allow_nan=False).encode()).hexdigest()
         if cached.get('identity')==identity and cached.get('payload_sha256')==integrity:return cached
     except (OSError,ValueError,TypeError):pass
     x=resample_poly(decode(audio).mean(axis=1),1,4);r=analyze(x,SR//4)
+    probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-select_streams','a:0',
+        '-show_entries','stream=sample_rate,channels,sample_fmt,codec_name,duration','-of','json',str(audio)]))
+    r['source_format']=probe['streams'][0]
     r.update(version=2,source_sha256=source,source_bytes=audio.stat().st_size,identity=identity,
              implementation_sha256=implementation,ffmpeg=ffmpeg,time_unit='seconds',annotations=None)
     if annotations:
