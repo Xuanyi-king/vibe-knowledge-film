@@ -1,0 +1,25 @@
+{
+  "id": "shape-of-luck",
+  "status": "blocked",
+  "reason": "Original reference media and independently verified music recording are not accessible in the current workspace.",
+  "music_master": null,
+  "music_source_sha256": null,
+  "verified_sections": [],
+  "audition": "not performed",
+  "rights": "No independently verified embedding/editing/publication permission available.",
+  "reference_only": {
+    "filename": "a9063511977063ba693cff53817b29f1.mp4",
+    "sha256": "456effa50dd4a65c6cb2960cd6d18129afb809fbd0bc3e8247fcc3cecb29998e",
+    "bytes": 13249698,
+    "video_seconds": 130,
+    "audio_seconds": 130.008005,
+    "audio_format": "AAC / 44100 Hz / stereo",
+    "kind": "historical full reference mix; not an identified independent music master",
+    "candidates": "reference-analysis.json; mixed-track onsets/tempo/energy, no verified phrases"
+  },
+  "needed": [
+    "The matching reference MP4 or a provenance-verifiable independent music recording",
+    "Actual permission evidence for embedding, editing and public distribution; reuse permission if needed",
+    "Listening review confirming music-only material and reviewed section/cut/role annotations"
+  ]
+}

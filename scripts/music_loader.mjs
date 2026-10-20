@@ -5,6 +5,10 @@ if(!response.ok)throw Error('prepare music-plan.json before rendering');
 const bytes=await response.arrayBuffer();
 if(await sha(bytes)!=='__PLAN_SHA__')throw Error('music plan fingerprint differs; rerun prepare_music.py');
 const plan=JSON.parse(new TextDecoder().decode(bytes));
+for(const binding of plan.bindings||[]){
+  const r=await fetch(new URL(binding.src,new URL('../',import.meta.url)));
+  if(!r.ok||await sha(await r.arrayBuffer())!==binding.sha256)throw Error('music binding fingerprint differs; re-prepare reviewed index/rights');
+}
 const config=await fetch(new URL('../music.json',import.meta.url));
 if(!config.ok||await sha(await config.arrayBuffer())!==plan.config_sha256)throw Error('music config fingerprint differs; rerun prepare_music.py before rendering');
 if(plan.source){

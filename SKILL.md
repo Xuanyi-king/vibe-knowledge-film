@@ -26,7 +26,7 @@ description: >
 命令从 Skill 根目录执行，工程建在其外。world 与时长由 Agent 决定；骨架时长可随叙事修改，不能把占位片交付。
 
 ```bash
-python scripts/new_film.py <project> --world custom --duration <预计全片秒数>
+python scripts/new_film.py <project> --world custom --duration <预计全片秒数> --series shape-of-luck
 python scripts/produce.py <project> --mode draft --stills 2.5 8.5
 python scripts/produce.py <project> --mode draft --motion 8.2 10.6
 python scripts/produce.py <project> --mode draft --clip 8 11
@@ -55,7 +55,7 @@ python scripts/produce.py <project>  # 默认 Release；正式交付前执行
 | 第一次全片生产、缓存或失败恢复 | [production](references/production.md)；[Windows](docs/windows.md) |
 | 审片发现问题；手机布局 | [review](references/review.md)；[mobile](references/mobile.md) |
 
-《We Never — Hi Noise》保留为候选；仅在主题合适、本地素材可用且许可满足时选择。不要求重复考证或强行使用；否则自主选原创/其他合法配乐，不复制参考音轨，不新增音乐时间轴。
+本系列默认锁定《运气的形状》的真实音乐母版：建片加 `--series shape-of-luck`，按[音乐导演](references/music-direction.md)编排同一母版。缺独立母版/许可时明确 blocked，不替换、不仿作；Music 与本片 SFX/Ambience 分轨保留。
 
 ## 怎样才算完成
 
