@@ -1,0 +1,6 @@
+{
+  "first_to_second": 19,
+  "second_to_third": 0,
+  "max_channel_difference": 1,
+  "no_operation_between_reads": true
+}

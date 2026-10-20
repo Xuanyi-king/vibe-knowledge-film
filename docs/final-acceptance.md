@@ -1,4 +1,6 @@
-# 当前验收与历史记录
+# 历史验收记录
+
+> 本页保留 PR #1/#2 当时的验收和限制。轻量化重构的当前测试与效率结果见 [架构审计](lightweight-architecture.md)，下文计数不代表最新代码。
 
 PR #2在曜石鎏金基础上继续手机QA与音乐导演整合，没有新主题长片。最新[14秒母版/同刻手机对照/技术及主观边界](../evidence/torque/mobile/README.md)、[真实参考音轨/We Never未确认结论](../evidence/music-direction/README.md)分别记录，不把技术同步、静帧可读、音乐感染力或平台转码混为一项通过。
 

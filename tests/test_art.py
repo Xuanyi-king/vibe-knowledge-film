@@ -53,6 +53,9 @@ class TypographyTest(unittest.TestCase):
                 r=pg.evaluate('''async()=>{const A=await import('/engine/vk-art.mjs');
                   const box=A.type(F,'力臂与力矩',960,150,{role:'title',align:'c',maxWidth:1000});
                   const measured=F.measure('力臂与力矩',box.style);
+                  // The first read can migrate Chromium's Canvas backing store.
+                  // Establish readback before testing whether rejected calls paint.
+                  F.x.getImageData(0,0,1920,1080);
                   const before=F.x.getImageData(0,0,1920,1080).data;let rejected=0;
                   for(const o of [{maxWidth:10},{role:'unknown'},{maxWidth:NaN}])try{A.type(F,'不能缩字掩盖越界',960,300,o)}catch(e){rejected++}
                   const after=F.x.getImageData(0,0,1920,1080).data;

@@ -40,16 +40,15 @@ jobs:
       - name: FFmpeg on Linux
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - name: FFmpeg on Windows
+      - name: Cache pinned Windows FFmpeg archive
         if: runner.os == 'Windows'
-        shell: pwsh
-        run: |
-          if (-not (Get-Command ffmpeg -ErrorAction SilentlyContinue)) {
-            choco install ffmpeg --yes --no-progress
-            if ($LASTEXITCODE -ne 0) { throw 'FFmpeg installation failed' }
-          }
-          ffmpeg -version
-          ffprobe -version
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.tool_cache }}/vk-ffmpeg-8.0.1.zip
+          key: windows-ffmpeg-8.0.1-e2aaeaa0fdbc397d4794828086424d4aaa2102cef1fb6874f6ffd29c0b88b673
+      - name: FFmpeg on Windows (pinned, SHA256 verified)
+        if: runner.os == 'Windows'
+        run: python scripts/install_ffmpeg.py --archive "$RUNNER_TOOL_CACHE/vk-ffmpeg-8.0.1.zip" --destination "$RUNNER_TEMP/vk-ffmpeg"
       - name: Python dependencies
         run: python -m pip install -r requirements.txt
       - name: Chromium

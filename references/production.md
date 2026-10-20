@@ -1,32 +1,54 @@
-# 从主题持续制作到完整成片
+# 从主题到成片：执行策略与恢复
 
-这是Agent内部生产法，用户无需填写技术表格。只有主题也要自主启动；内部选择先做哪个镜头不改变最终目标。
+创作与验收原则以 [SKILL](../SKILL.md) 为准，本页只解释工具边界。主题即任务开始；简单记录可合在 `review/notes.md`，复杂研究/导演文档按需展开。先明确问题与证据，尽早试画高风险概念，再完成全片叙事，不要求固定候选数、表格数或返工轮数。
 
-1. 界定一个值得回答的问题，找可靠资料，写事实/未知/边界；别把整个学科塞进短片。
-2. 比较至少两个**叙事机制**：观看好奇心、知识深度、可见证据、误导风险、制作可行性。主题决定结构，不固定六段式。
-3. 一并确定视觉、摄影、排版、音乐与声音方向。B/C只是可选历史美术，不是创作边界。
-4. 完整分镜先覆盖开头→发现/推理→认知收获→结尾；每镜有存在理由、观众任务、动作证据、声音与交接。根据阅读和推理决定时长。到此才用`new_film.py <project> --world <B或C或custom> --duration <完整秒数>`建立正式工程；风格和秒数是Agent的决定，不让用户填写。没有world不生成，custom没有duration不生成；B/C旧命令的30秒只是带警告的兼容行为，不能作为创作默认。
-5. 用公共组件实现最关键/高风险的一镜，实际看关键帧、中间态与短动态，修正设计后**自动继续整部影片**。
-6. 填完所有镜头、字幕、转场、音乐和结尾，检查没有占位内容，再执行生产入口。
-7. 用最终产物审查知识、吸引力、观看负担、模板感、空间/动作、转场、声音和余味。按问题回到叙事、镜头或实现层返工；不强制轮数，不以加特效补救解释错误。
-8. 交付可播放MP4为主，源码/知识出处/必要证据为辅。主动说明无法完成的主观验收，不要求用户发送“继续”。
+## 选择当前所需成本
 
-```powershell
-python scripts/produce.py <project> --assets geo  # 只按作品需求选geo/scene，或省略
+```bash
+python scripts/new_film.py <project> --world custom --duration <预计全片秒数>
+python scripts/produce.py <project> --mode draft               # 默认 sheet 16
+python scripts/produce.py <project> --mode draft --stills 2 8.5
+python scripts/produce.py <project> --mode draft --motion 8 10
+python scripts/produce.py <project> --mode draft --clip 8 11    # renders/draft.mp4，无声
+python scripts/produce.py <project> --mode standard
+python scripts/produce.py <project>                            # 默认 release
 ```
 
-入口管技术步骤与失败报告，不编故事、不替代导演。复用原det/resume/events/audio/media；有score时验证编码同步，有VK_CHECKS时验证声明视觉条件。其成功状态刻意是`technical_complete_needs_subjective_review`。没有视觉条件时明确`not_declared`，不冒充视觉同步。
+| 策略 | 自动执行 | 报告与含义 |
+|---|---|---|
+| Draft | 字体/显式可选依赖、选定预览；无参数生成全片拼图 | review/draft.json，preview_needs_review；不修改正式 production.json 或 final.mp4 |
+| Standard | 检查作品能力、确定性、resume全片、事件、分轨、母带、适用音频/动作同步、完整媒体检查 | standard_complete_needs_release_and_review；仍未发行/主观验收 |
+| Release | Standard + 最终编码手机尺寸/压力证据 | technical_complete_needs_subjective_review；实际看图/观看/听音后才判断交付 |
 
-输入与产物身份：源码/资产/引擎按内容SHA256保守追踪，排除项目生成目录audio/review/renders。事件表封装输入清单与内容摘要；raw/clip/final有`.provenance.json`，绑定输入、时间区间、实际媒体字节，final再绑定事件与参考混音。合音前后检查版本，检查器也拒绝过期产物。不能只靠相同时长/帧率。
+`--assets geo scene` 仅在用到时指定，下载器会复用本地资产。字体安装器自身只下载缺项。`--chunk 4 --jobs 1` 旧参数保留。旧 Python 调用 `produce(project, chunk, jobs, assets)` 默认 Release，底层所有渲染命令继续可用。
 
-迁移：没有版本记录的旧导出不可自动认领为当前版本。保留文件，先完成输入编辑，再重新`--resume`、`--events`和合音；不提供忽略指纹的“通过”开关。旧fr.sfx和B/C源码仍可运行；历史MP4与报告仍可供审查，但不是当前输入的验证结果。资产须本地可追踪；不是文件锁或抗恶意篡改签名。
+Draft 在工程 HTML/JS/MJS 引用 `music-plan` 或已有 `assets/music-plan.json` 时准备音乐；后者保守覆盖动态拼接路径/直接读取 JSON，防止旧锚点。未使用的 music.json 或仅遗留的适配器不触发音频分析。准备仍校验当前配置/音源并复用已有分析缓存。动态路径且尚无计划时需先显式运行 `prepare_music.py`，缺项会报错；标准加载器始终拒绝过期计划。显式 `--assets` 与字体准备保留，不能以错误时间轴或缺失场景冒充预览。
 
-[地图完整作品](../examples/atlas/storyboard.md)演示主题到收束；[视听组件](choreography.md)、[动作条件](action-checks.md)按需读。有限Agent可以按镜头/组件逐项实现并持续执行；强模型可进一步发展原创方法，组件数量与代码量不是上限。
+Draft 不能作为单主题任务默认最终交付。只调构图用静帧，动作/转场用 Motion Strip，速度与动态问题再渲局部片段；不需要为一帧执行 Release。全片首次生产用 Standard，交付前用 Release；直接执行默认命令也可完成全部技术链。
 
-生产报告也有生命周期：入口先落盘running，每步记active_stage，强制中断不能遗留上轮成功。全部检查后重验输入稳定与最终媒体身份；成功报告绑定input/events/video，并要求两层同步报告指向同一final。它只能表示已执行的技术层，不能承诺主观发布质量。
+新工程 `world` 由 Agent 显式决定，custom 要求正数 duration，可在试画后修改。显式 B/C 旧命令保留带警告的 30 秒骨架；已有工程无需迁移，骨架不是作品。
 
-母带与最终媒体检查属于生产阶段。audio.py后从原始混音做恒定增益及AAC编码后真峰值验收，不靠单遍loudnorm参数假定安全；[具体方法](choreography.md)。合音前备份旧final/侧车，后续失败回滚；运行中或硬中断查production.json的备份位置。事务不覆盖不可恢复的磁盘/进程破坏，也不支持多个生产入口同时写同一工程。
+## 复用已有结果
 
-正式输出后入口自动调用手机QA：最终编码关键帧390/320px、压力压缩、可获得的文字布局风险。必须实际看图并自主返工；报告始终保留待视觉审查，不宣称抖音转码实测。按需读[手机检查](mobile.md)。
+生产入口不建立新的任务编排系统，只在 `review/production-cache.json` 保存两组已成功结果：Standard 技术链与手机证据。每次先写 running，再准备音乐/字体/依赖，读取当前作品与运行时身份；符合以下全部条件才复用：
 
-音乐驱动作品先按[音乐导演](music-direction.md)选择signature/original/custom、核授权和分析候选；根music.json存在时入口预备外部剪辑计划。音乐与画面复用VK_SCORE，不增加逐帧分析或第二套调度。缺标志性曲目自动改用合适原创/授权替代，继续整片。
+- 当前全部本地输入与引擎 SHA256 一致，包括字体、可选依赖、事件源码和 Markdown。素材必须放 assets，不能依赖生成目录或联网素材/符号链接。
+- 生产脚本、requirements、Python/系统、NumPy/SciPy/Pillow/Playwright 版本、浏览器版本/路径、场景后端、软件 GL、FFmpeg/ffprobe 版本和分段参数一致。
+- 事件、原始画面、final、侧车、参考混音/分轨、媒体/同步报告与检查图片字节全部匹配；手机证据还绑定当前 final。缺文件、损坏记录或内容变化均失效。
+- 结束时重新验证源码稳定、事件/视频身份和适用报告指向同一 final。没有指纹的历史导出不能自动认领为当前输入。
+
+复用报告明确区分 `stages`（本轮执行）、`reused` 和耗时，不把未执行检查写成重跑通过。Standard→Release 可直接补手机证据；手机图片损坏只重做手机组。中断仍依赖已有 resume 分段恢复；当前实现不对改过的 JS 做逐镜依赖推断，源码变化保守重跑。`review/notes.md` 不作为输入，避免写制作笔记使画面失效；真实浏览器输入不要放在 review。
+
+复用是本地缓存，不是防恶意篡改签名，也不支持多个 produce 同时写同一工程。需要强制重新测量时可删除 `review/production-cache.json`，底层 resume 仍校验缓存段，不能手改摘要获得“通过”。
+
+## 失败与验收
+
+入口逐步写 active_stage；中断不会遗留上轮成功。合音前备份旧 final/侧车，后续失败回滚，硬中断查 production.json 的备份路径；磁盘破坏不在事务保证内。失败记录不得当发行许可。
+
+`VK_SCORE` 触发编码音频同步检查，`VK_CHECKS` 触发实际帧声明条件检查，无声明时明确 not_declared。两者都不等于通用动作识别、知识准确或审美评分。母带从参考混音做恒定增益与 AAC 后峰值验收；旧 fr.sfx 保留，旧外混 BGM 不自动假定在参考混音里。
+
+Release 从最终编码生成 390/320px 原图与压力副本，须实际看图并按问题返工。压力参数不代表抖音官方转码。完整观看、独听分轨与成片听审分别声明；环境无法执行就记未验收，不能用正常响度代替舒适听感。
+
+外部配乐只在根 music.json 存在时准备，复用 VK_SCORE；[音乐导演](music-direction.md)保留合法素材、自选原创与平台授权边界。无可用候选不阻塞原创制作，不另造音乐时间轴。
+
+[动作与相机组件](choreography.md) · [视觉动作探针](action-checks.md) · [真实审片](review.md) · [手机布局](mobile.md) · [Windows](../docs/windows.md)

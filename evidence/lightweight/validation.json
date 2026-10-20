@@ -1,0 +1,61 @@
+{
+  "baseline": "121e984",
+  "command": "VK_BROWSER=/usr/bin/chromium python -m unittest discover -s tests -v",
+  "result": {
+    "discovered": 115,
+    "passed": 110,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 5,
+    "seconds": 677.993,
+    "exit_code": 0
+  },
+  "skips": [
+    "test_actual_mesh_lever_arm_and_rendered_conditions_replay (test_art.TorqueTest.test_actual_mesh_lever_arm_and_rendered_conditions_replay) ... skipped 'optional Three.js/recorded piano bank'",
+    "test_moment_label_value_and_unit_wait_for_static_condition_together (test_art.TorqueTest.test_moment_label_value_and_unit_wait_for_static_condition_together) ... skipped 'optional Three.js/recorded piano bank'",
+    "test_distance_changes_projection_not_face_geometry (test_mirror.MirrorTest.test_distance_changes_projection_not_face_geometry) ... skipped 'optional licensed piano bank'",
+    "test_orientation_conditions_and_complete_story_replay (test_mirror.MirrorTest.test_orientation_conditions_and_complete_story_replay) ... skipped 'optional licensed piano bank: run prepare_instrument'",
+    "test_portrait_aspect_is_preserved_in_opening_and_ending (test_mirror.MirrorTest.test_portrait_aspect_is_preserved_in_opening_and_ending) ... skipped 'optional licensed piano bank'"
+  ],
+  "baseline_clean": {
+    "discovered": 110,
+    "passed": 97,
+    "skipped": 13,
+    "seconds": 508.834,
+    "exit_code": 0
+  },
+  "prior_failures": [
+    {
+      "scope": "initial setup overlapped font download",
+      "test": "test_layout_metadata_resets_on_repeated_seek_without_changing_text",
+      "outcome": "NetworkError; clean frozen baseline rerun passed"
+    },
+    {
+      "scope": "software GL Canvas readback, reproduced on frozen baseline and both installed Chromium builds",
+      "test": "test_roles_measure_real_text_and_reject_overflow_without_painting",
+      "outcome": "original assertion failed; test now initializes readback before the baseline snapshot, exact assertion unchanged; targeted software-GL regression passed; old full attempt interrupted and final full suite restarted"
+    }
+  ],
+  "review": {
+    "independent": "static review",
+    "important": "Draft Python API could select final or export events: fixed with RED-to-GREEN regression",
+    "minor": "B/C warning contradicted iterative storyboarding: corrected"
+  },
+  "unverified": [
+    "native Windows locally (use PR CI for native core results)",
+    "hardware GPU",
+    "Windows complete film with optional WebGL and recorded bank",
+    "real piano bank and portrait examples requiring unavailable assets",
+    "subjective full-film viewing/listening",
+    "actual social-platform transcoding",
+    "target-model tokens/tool calls/creative improvement"
+  ],
+  "verified_file_sha256": {
+    "SKILL.md": "9afeb9a1f188f952b8cf978f63878906039e37e1c3e88b0b7b0d4ac6c204468f",
+    "scripts/produce.py": "c144b0d146c1a98fe469bba42321a445cfb540622017887b3b89a418ea802f32",
+    "scripts/new_film.py": "ad9d01707890e6255f4b0d0b038f6d1e82f4505c100f8475a283ef2a71a1e727",
+    "scripts/benchmark_workflow.py": "0daa71b1798b8292c39892fca00b9e4db2bc69b63b2257109c044766dfced31f",
+    "tests/test_workflow.py": "b149cd8c34967bc4bb7b39e74160fa4767211953cce6ccc6198136043b6c65dd",
+    "tests/test_art.py": "97489f5efb7c699005facad56da8a65ad0757f1889a26f6c3c286f0eb985745b"
+  }
+}
