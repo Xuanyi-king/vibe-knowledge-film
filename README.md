@@ -1,9 +1,10 @@
 # vibe-knowledge-film
 
-给 Agent 一个知识主题，制作无旁白、以字幕和程序化画面讲清因果的 16:9 知识电影，交付完整有声 MP4 和源码。支持从研究、原创叙事与艺术方向，到动画、音乐、渲染、真实画面审查和返工。也可以修改已有影片的某一个镜头。
+基于 [HeyChengC/vibe-knowledge-film](https://github.com/HeyChengC/vibe-knowledge-film) 优化。给 Agent 一个知识主题，制作无旁白、暗金深沉、以字幕与程序动画把道理演出来的16:9知识电影。保留原版先找形象、写字幕与分镜、看实际画面返工的方法；优化制作稳定性，不把它改成任意风格的动画生成框架。
 
 ## 看真实作品
 
+- **《盲区》——邓宁—克鲁格效应**：130秒完整视觉源码、字幕与分镜。[制作实例](examples/dunning_kruger/README.md)。暗金器具与一笔画类比贯穿首尾，保留研究争议；本地配乐版已制作，商业参考录音及含其音频的MP4不随仓库分发。
 - **《地图是一种选择》**：72 秒完整作品，解释纬圈、面积与地图投影的取舍。[有声 MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/feat/director-evidence-workflow/evidence/atlas/final.mp4) · [源码和知识来源](examples/atlas/README.md) · [实际画面与验收边界](evidence/atlas/review.md)
 - **《先换来速度》**：36 秒原创，解释摆线为何更快。[有声 MP4](https://raw.githubusercontent.com/Xuanyi-king/vibe-knowledge-film/8c93e14809b839586ab4652cf1e89b2a03876717/evidence/descent_studio/final.mp4) · [源码](examples/descent_studio/) · [同题对照与局限](docs/experiments/director-2026-10/README.md)
 - **夜曲《折叠》 / 寓言《鸽子的迷信》**：保留的 B/C 原版开头，各 33 秒。[折叠预览](examples/fold_C.gif) · [鸽子预览](examples/pigeon_B.gif) · [示例目录](examples/)
@@ -27,11 +28,11 @@ python engine/get_fonts.py
 
 对 Agent 说：
 
-> 用 vibe-knowledge-film 制作“地图为什么一定会失真？”。自主研究、选叙事和视觉方向，完成整部有声 MP4，并说明知识来源和实际审片范围。
+> 用 vibe-knowledge-film 制作“地图为什么一定会失真？”。保持《运气的形状》的暗金深沉气质，自主研究、写出完整字幕稿和逐镜分镜，把原因在画面里演出来，完成整部MP4，并说明知识来源和实际审片范围。
 
-无需指定时长、风格或技术参数。Agent 根据内容自主决定，在 Skill 目录外建立工程；局部试片通过后继续全片。B 寓言、C 夜曲、自定义与曜石鎏金均可选，不默认给所有主题套同一风格。
+无需逐项选择技术参数。默认保持暗金外观，创作自由用于对象、故事与讲解；用户明确选择B/C时保留其原貌。完整中英字幕与分镜先写出，工程建在Skill目录外；默认先展示3–5张实际关键帧给用户看，再根据反馈铺全片。用户明确要求自主完成时，内部验证后连续推进。`custom`是自绘实现入口，不表示可任意换颜色与美术。
 
-新系列唯一使用《运气的形状》的真实音乐母版，动画音效独立设计。当前母版与许可尚缺，指定配乐交付被阻塞，不能换曲或用静默冒充完成；接入方式见[音乐导演](references/music-direction.md)。旧作品配乐保持兼容。
+新系列以《运气的形状》的真实录音为音乐主体，拟音做减法，Music/SFX/Ambience保留独立轨。原片、纯音乐母版与公开授权的状态按当前素材实际核查；明确授权的本地参考混音审看如实标记，不冒充正式母版或Release，不换歌或仿作。缺素材仍继续可完成的画面；接入和严格发行边界见[音乐导演](references/music-direction.md)。旧作品接口保持兼容。
 
 调整旧片时说：
 
@@ -49,7 +50,9 @@ python scripts/produce.py <工程> --mode standard
 python scripts/produce.py <工程>  # 正式交付前；自动复用身份相同且字节校验通过的结果
 ```
 
-[生产与缓存](references/production.md) · [绘图/字幕/底层命令](references/engine.md)。不新增 Python 依赖；3D/地图按需下载本地依赖。CPU 逐帧截图的全片渲染仍有成本，源码变化保守失效，不能承诺只重绘改动镜头。
+[生产与缓存](references/production.md) · [绘图/字幕/底层命令](references/engine.md) · [可修改交付与清理](references/handoff.md)。不新增 Python 依赖；3D/地图按需下载本地依赖。自动缓存对源码变化保守失效；有明确范围证明时，可保留原片段身份做显式局部剪辑，不能伪造缓存命中。交付后保留可编辑源码、分轨、完整画面底稿和版本记录，再清理重复生成物。
+
+DeepSeek等支持文件与执行工具的模型可使用同一入口：先读SKILL，只按当前任务打开参考页，实际写出字幕与分镜，参考完整实例验证一镜后继续全片。模型中立的交付物和恢复步骤已经明确；尚未执行DeepSeek独立实测，不保证不同模型的成片质量相同。
 
 技术报告能证明当前产物身份与具体检查；事实准确、电影表现、手机阅读和听感仍需真实审查。不能播放或试听时必须说明未验收范围。未做实际平台上传，就不能声称通过抖音转码；Linux 测试也不代表 Windows/GPU 全片生产已验证。
 

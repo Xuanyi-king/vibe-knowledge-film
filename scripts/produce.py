@@ -62,13 +62,15 @@ def reusable(proj, record, key):
 def inspect(pg):
     if pg._vk_remote_assets or pg._vk_generated_assets:
         raise ValueError('production requires local assets outside audio/review/renders')
-    meta=pg.evaluate('({end:END,fps:FPS,width:VK.W,height:VK.H,score:!!window.VK_SCORE,checks:window.VK_CHECKS?.list().length||0,scene:window.VK_SCENE_INFO||null})')
+    meta=pg.evaluate('({end:END,fps:FPS,width:VK.W,height:VK.H,score:!!window.VK_SCORE,checks:window.VK_CHECKS?.list().length||0,scene:window.VK_SCENE_INFO||null,visual_only:window.__VK_VISUAL_DRAFT__===true})')
+    if meta['visual_only']:raise ValueError('visual Draft runtime cannot be certified by Standard/Release')
     meta['browser_version']=pg.context.browser.version
     return meta
 
 
-def produce(proj,chunk=4,jobs=1,assets=(),mode='release',preview=()):
+def produce(proj,chunk=4,jobs=1,assets=(),mode='release',preview=(),visual_only=False):
     if mode not in {'draft','standard','release'}:raise ValueError('unsupported production mode')
+    if visual_only and mode!='draft':raise ValueError('visual-only requires draft mode')
     if preview:
         if mode!='draft':raise ValueError('preview arguments require draft mode')
         flag,*values=preview
@@ -100,15 +102,15 @@ def produce(proj,chunk=4,jobs=1,assets=(),mode='release',preview=()):
         report['timings'][name]=round(perf_counter()-tick,4)
         report['stages'].append(name)
     try:
-        if (proj/'music.json').exists() and (mode!='draft' or uses_music_plan(proj)):
+        if not visual_only and (proj/'music.json').exists() and (mode!='draft' or uses_music_plan(proj)):
             step('music_preparation','scripts/prepare_music.py',proj)
         for asset in assets:
             if asset not in {'geo','scene'}:raise ValueError('supported optional assets: geo, scene')
             step('assets-'+asset,f'engine/get_{asset}_assets.py')
         step('fonts','engine/get_fonts.py')
         if mode=='draft':
-            step('preview','engine/render.py',proj,*(preview or ('--sheet',16)))
-            report.update(status='preview_needs_review',preview=list(preview or ('--sheet',16)))
+            step('preview','engine/render.py',proj,*(('--visual-draft',) if visual_only else ()),*(preview or ('--sheet',16)))
+            report.update(status='preview_needs_review',visual_only=visual_only,preview=list(preview or ('--sheet',16)))
             return report
         sources=provenance.source_files(proj)
         checkpoint('inspect')
@@ -206,11 +208,13 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('project',type=Path);p.add_argument('--assets',nargs='*',choices=['geo','scene'],default=[])
     p.add_argument('--chunk',type=float,default=4);p.add_argument('--jobs',type=int,default=1)
     p.add_argument('--mode',choices=['draft','standard','release'],default='release')
+    p.add_argument('--visual-only',action='store_true',help='Draft only: isolated visual preview without loading a music plan')
     group=p.add_mutually_exclusive_group()
     group.add_argument('--stills',nargs='+',type=float)
     group.add_argument('--motion',nargs=2,type=float)
     group.add_argument('--clip',nargs=2,type=float)
     a=p.parse_args();preview=()
+    if a.visual_only and a.mode!='draft':p.error('--visual-only requires --mode draft')
     for name in ('stills','motion','clip'):
         values=getattr(a,name)
         if values is not None:
@@ -218,5 +222,5 @@ def main():
             if any(not math.isfinite(v) or v<0 for v in values):p.error('preview times must be finite and nonnegative')
             if name!='stills' and values[1]<=values[0]:p.error('preview stop must follow start')
             preview=(f'--{name}',*values,*(('draft',) if name=='clip' else ()))
-    produce(a.project,a.chunk,a.jobs,a.assets,a.mode,preview)
+    produce(a.project,a.chunk,a.jobs,a.assets,a.mode,preview,a.visual_only)
 if __name__=='__main__':main()

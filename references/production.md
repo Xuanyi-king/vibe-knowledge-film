@@ -51,4 +51,8 @@ Release 从最终编码生成 390/320px 原图与压力副本，须实际看图�
 
 外部配乐在根 music.json 存在时准备，复用 VK_SCORE；[音乐导演](music-direction.md)说明系列唯一母版锁定及旧原创/合法素材接口。系列缺少指定母版或许可必须 blocked，不能借旧接口降级；非系列旧工程保持兼容，不另造时间轴。
 
+缺母版时可显式运行Draft `--visual-only`：浏览器不导入缺失计划，输出隔离到visual-draft，不认证Standard/Release。页面已标记视觉预览时，正式入口仍拒绝认证。
+
+完成交付后按[保留、修改与清理](handoff.md)保存可编辑版本和画面底稿，再清理重复工作区；返工沿用该版本，不能把清理变成下次从零开始。
+
 [动作与相机组件](choreography.md) · [视觉动作探针](action-checks.md) · [真实审片](review.md) · [手机布局](mobile.md) · [Windows](../docs/windows.md)

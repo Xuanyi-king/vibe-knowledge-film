@@ -1,11 +1,11 @@
 {
   "id": "shape-of-luck",
   "status": "blocked",
-  "reason": "Original reference media and independently verified music recording are not accessible in the current workspace.",
+  "reason": "The historical reference MP4 is now byte-verified in the local Windows workspace; an independently verified music-only master and actual embedding/edit/publication rights are still unavailable.",
   "music_master": null,
   "music_source_sha256": null,
   "verified_sections": [],
-  "audition": "not performed",
+  "audition": "not performed in the latest local run",
   "rights": "No independently verified embedding/editing/publication permission available.",
   "reference_only": {
     "filename": "a9063511977063ba693cff53817b29f1.mp4",
@@ -15,7 +15,9 @@
     "audio_seconds": 130.008005,
     "audio_format": "AAC / 44100 Hz / stereo",
     "kind": "historical full reference mix; not an identified independent music master",
-    "candidates": "reference-analysis.json; mixed-track onsets/tempo/energy, no verified phrases"
+    "candidates": "reference-analysis.json; mixed-track onsets/tempo/energy, no verified phrases",
+    "verified_local_run": "2026-10-20 Windows: 13249698 bytes and SHA256 match; FFmpeg probe and private audio extraction/analysis performed.",
+    "music_only_verified": false
   },
   "needed": [
     "The matching reference MP4 or a provenance-verifiable independent music recording",
