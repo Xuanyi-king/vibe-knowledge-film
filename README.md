@@ -31,6 +31,8 @@ python engine/get_fonts.py
 
 无需指定时长、风格或技术参数。Agent 根据内容自主决定，在 Skill 目录外建立工程；局部试片通过后继续全片。B 寓言、C 夜曲、自定义与曜石鎏金均可选，不默认给所有主题套同一风格。
 
+新系列唯一使用《运气的形状》的真实音乐母版，动画音效独立设计。当前母版与许可尚缺，指定配乐交付被阻塞，不能换曲或用静默冒充完成；接入方式见[音乐导演](references/music-direction.md)。旧作品配乐保持兼容。
+
 调整旧片时说：
 
 > 修改这个工程 12–16 秒的镜头，让接触动作和力臂关系更清楚。先看原片，局部预览，完成后重新验收成片。
@@ -64,4 +66,4 @@ python scripts/produce.py <工程>  # 正式交付前；自动复用身份相同
 
 引擎、脚本和方法文档使用 [MIT](LICENSE)。`references/analysis.md`、`references/historical-prompts.md` 的成片 brief 及 `examples/stim_B`、`info_C` 的字幕/画面来自他人作品，版权属于原作者，仅供学习对照，不可当作自己的作品发布。
 
-原创 descent、governor_scene、resonance、atlas 的代码、程序画面和合成音轨随仓库 MIT 许可提供。D3、Three、Natural Earth、字体和采样资产各有独立许可，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。商业音乐不随仓库分发；《We Never — Hi Noise》只是可选候选，既有身份不确定性与授权边界保留，素材不可用时自主选择原创或其他合法配乐。
+原创 descent、governor_scene、resonance、atlas 的代码、程序画面和合成音轨随仓库 MIT 许可提供。D3、Three、Natural Earth、字体和采样资产各有独立许可，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。商业音乐不随仓库分发；We Never 已取消候选地位，既有讨论仅作历史记录。《运气的形状》的音乐需另行核实素材身份与使用、剪辑和发布权利，仓库许可不授予第三方录音权利。
