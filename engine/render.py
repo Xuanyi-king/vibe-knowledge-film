@@ -49,9 +49,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store"); super().end_headers()
     def log_message(self, *a): pass
 
+class PreviewServer(http.server.ThreadingHTTPServer):
+    # Font variants/modules arrive together; Windows can refuse connections
+    # when Python 3.12's default five-entry listen queue fills before accept.
+    request_queue_size = 64
+
 def serve(proj, port=0):
     h = type("H", (Handler,), {"proj": proj})
-    srv = http.server.ThreadingHTTPServer(("127.0.0.1", port), h)
+    srv = PreviewServer(("127.0.0.1", port), h)
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     return srv, f"http://127.0.0.1:{srv.server_address[1]}/"
 

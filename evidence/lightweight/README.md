@@ -17,3 +17,7 @@
 [旧 Windows 503/504 失败记录](https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39290048270)保留；改用固定、SHA256 校验的 FFmpeg 8.0.1 ZIP，实际执行两个工具后设置 PATH。最终提交的 Ubuntu/原生 Windows 核心、PowerShell 与软件 WebGL 日志链接记录在 [PR #3](https://github.com/Xuanyi-king/vibe-knowledge-film/pull/3) 检查及说明。硬件 GPU、Windows 完整可选 3D/真实乐器成片、主观审听与平台转码仍未验证。
 
 首次修复提交 c780a98 的[原生运行](https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39344712143)：Ubuntu 核心 122 项/109 通过/13 可选跳过，组件 4 项通过；Windows 安装两个工具成功，核心发现 2 项失败（107 通过/13 跳过）：未规范化根路径使合法收据被拒绝，以及一次 Chromium 确定性截图 TargetClosedError。前者用 Linux 等价路径先复现失败，再统一规范化根路径，并保留越界拒绝断言；后者本地原测试重跑未复现（上述两项共 63.366 秒通过），没有修改渲染器、削弱断言或添加自动重试，根因未定。该失败记录保留；后续最终提交完整原生结果见 PR，不将这次失败冒充通过。
+
+160e6e8 的[原生运行](https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39346196887)：Ubuntu 全部通过；Windows 路径收据及音乐生产通过，日志确认 RUNNER~1 别名，但三处真实字体请求发生 loopback ERR_CONNECTION_REFUSED（120 项、3 错误、13 跳过）。Python 3.12 默认监听队列 5 是有证据支持的候选原因：受控无 accept 突发连接实验旧队列第七个超时，64 队列十二个成功。因此仅扩大本地 HTTP 监听队列，保留错误检查，不加入重试；17 项渲染回归通过（14.475 秒），含真实并发字体与有界 TCP 突发验证。原生最终结果仍以 PR 为准，不把队列实验当 Windows 已验收。
+
+HTTP 服务改动的 B/C 真实 PNG 前后完全一致：fold_C@24 SHA256 `26de4df2935bdf13e2377ce9056bbaab7231063a9700e8976e4883590a4bb5c8`；pigeon_B@29 `89106a6822c7635f487fcf81ded8d05b619db7276dd667542db149f8b2da643f`。仅捕获这两个原镜头的改动前后静帧，未重渲历史影片。

@@ -175,3 +175,31 @@ class ModuleMimeTest(unittest.TestCase):
                         with urllib.request.urlopen(url+name) as response:
                             self.assertIn(response.headers.get_content_type(),['text/javascript','application/javascript'],name)
                 finally:srv.shutdown();srv.server_close()
+
+class ServerCapacityTest(unittest.TestCase):
+    def test_concurrent_real_fonts_finish_before_preview_readiness(self):
+        import shutil
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);shutil.copyfile(ROOT/'engine/index.html',p/'index.html')
+            (p/'film.js').write_text("""Promise.all(Array.from({length:12},(_,i)=>
+              new FontFace('Burst'+i,`url('/engine/fonts/CourierPrime-Regular.ttf?burst=${i}')`).load()
+            )).then(fonts=>{window.BURST_FONTS=fonts;VK.film({dur:.1,grain:0,draw(){}})});""")
+            def check(pg):
+                self.assertEqual(pg.evaluate('BURST_FONTS.map(f=>f.status)'),['loaded']*12)
+                self.assertEqual(pg._vk_request_failures,[])
+                self.assertTrue(r.shot(pg,.05))
+            r.with_page(p,check)
+
+    def test_startup_accepts_a_burst_before_handler_threads_run(self):
+        import socket
+        sockets=[]
+        # Pause accepting, as when the scheduler has not run a handler yet.
+        # Font/module requests must fit the listen queue without a retry.
+        with tempfile.TemporaryDirectory() as d,patch.object(r.threading.Thread,'start'):
+            srv,_=r.serve(Path(d))
+            try:
+                for _ in range(12):
+                    sockets.append(socket.create_connection(srv.server_address,timeout=.5))
+            finally:
+                for client in sockets:client.close()
+                srv.server_close() # serve_forever was deliberately not started.
