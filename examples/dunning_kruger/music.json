@@ -1,0 +1,15 @@
+{
+  "mode": "signature",
+  "end": 130,
+  "src": "assets/private-music/master.wav",
+  "source_sha256": null,
+  "signature": {
+    "id": "shape-of-luck",
+    "required": true,
+    "index": "assets/private-music/master-index.json",
+    "index_sha256": null
+  },
+  "rights": {"scope": "unavailable"},
+  "clips": [],
+  "anchors": []
+}

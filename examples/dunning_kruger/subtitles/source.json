@@ -1,0 +1,158 @@
+[
+  {
+    "a": 1.1,
+    "b": 5.3,
+    "zh": "这张图，你觉得能一笔画完吗？",
+    "en": "Could you trace this whole diagram in one continuous stroke?"
+  },
+  {
+    "a": 5.8,
+    "b": 9.6,
+    "zh": "每条线，只走一次。",
+    "en": "Follow every line exactly once."
+  },
+  {
+    "a": 10.6,
+    "b": 13.7,
+    "zh": "总有一条，留在最后。",
+    "en": "One line always remains at the end."
+  },
+  {
+    "a": 22.8,
+    "b": 26.3,
+    "zh": "1999年，两位心理学家问：",
+    "en": "In 1999, two psychologists asked:"
+  },
+  {
+    "a": 26.7,
+    "b": 30.7,
+    "zh": "你做得怎样，又觉得自己做得怎样？",
+    "en": "How well did you do, and how well do you think you did?"
+  },
+  {
+    "a": 31.3,
+    "b": 35.2,
+    "zh": "低分组实际只超过约12%的人；",
+    "en": "The lowest-scoring group actually outperformed about 12% of people;"
+  },
+  {
+    "a": 35.6,
+    "b": 39.5,
+    "zh": "却以为，自己超过了约62%。",
+    "en": "yet believed they had outperformed about 62%."
+  },
+  {
+    "a": 40.6,
+    "b": 44.5,
+    "zh": "做对一道题，需要知识。",
+    "en": "Solving a problem takes knowledge."
+  },
+  {
+    "a": 45,
+    "b": 49.4,
+    "zh": "看出自己哪里错了，也可能需要它。",
+    "en": "Spotting your own mistakes may take it too."
+  },
+  {
+    "a": 50,
+    "b": 53.7,
+    "zh": "缺的知识，可能让错误也藏了起来。",
+    "en": "Missing knowledge may also hide the mistake."
+  },
+  {
+    "a": 54.6,
+    "b": 58.7,
+    "zh": "回到这张图：经过路口，要一进一出。",
+    "en": "Back to this diagram: at a junction, one line in, one line out."
+  },
+  {
+    "a": 59.3,
+    "b": 63.3,
+    "zh": "三条线，总有一条落单。",
+    "en": "With three lines, one is always left unpaired."
+  },
+  {
+    "a": 64,
+    "b": 68.4,
+    "zh": "这种路口，只能留给起点或终点。",
+    "en": "Such a junction must be a start or an end."
+  },
+  {
+    "a": 68.9,
+    "b": 72.4,
+    "zh": "起点和终点，只有两个。",
+    "en": "There are only two: a start and an end."
+  },
+  {
+    "a": 73,
+    "b": 76.5,
+    "zh": "这样的路口，这里却有四个。",
+    "en": "But this diagram has four such junctions."
+  },
+  {
+    "a": 77.1,
+    "b": 80.2,
+    "zh": "原来，它根本画不完。",
+    "en": "So it cannot be traced under these rules."
+  },
+  {
+    "a": 81,
+    "b": 85,
+    "zh": "学到的，也是一把判断自己的尺。",
+    "en": "What you learn also becomes a measure of your own judgment."
+  },
+  {
+    "a": 85.8,
+    "b": 89.5,
+    "zh": "但别急着，拿它给别人贴标签。",
+    "en": "But do not rush to use it to label other people."
+  },
+  {
+    "a": 90.1,
+    "b": 94.1,
+    "zh": "分组与测量，也可能放大差距。",
+    "en": "Grouping and measurement may also amplify the gap."
+  },
+  {
+    "a": 94.7,
+    "b": 98.6,
+    "zh": "后来的智力研究，结果并不一致。",
+    "en": "Later studies of intelligence did not all agree."
+  },
+  {
+    "a": 99.1,
+    "b": 102.7,
+    "zh": "偏差有多大，还要看任务与方法。",
+    "en": "The size of the bias depends on the task and the method."
+  },
+  {
+    "a": 103.6,
+    "b": 107.8,
+    "zh": "再看这张图，你先数了路口。",
+    "en": "Look again: this time, you count the junctions first."
+  },
+  {
+    "a": 108.6,
+    "b": 112,
+    "zh": "少一条线，会怎样？",
+    "en": "What happens if we remove one line?"
+  },
+  {
+    "a": 112.8,
+    "b": 117.5,
+    "zh": "先提出判断，再让结果检验它。",
+    "en": "Make a prediction, then let the result test it."
+  },
+  {
+    "a": 119.1,
+    "b": 122.6,
+    "zh": "所以，觉得自己会了，先做一次验证。",
+    "en": "So when you think you can do it, put that judgment to a test."
+  },
+  {
+    "a": 123.1,
+    "b": 126.8,
+    "zh": "看见差距，再用反馈修正自己的判断。",
+    "en": "Notice the gap, then use feedback to revise your judgment."
+  }
+]
