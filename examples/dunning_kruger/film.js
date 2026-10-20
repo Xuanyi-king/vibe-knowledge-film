@@ -230,8 +230,6 @@ function credits(t){
   txt(c,'Kruger & Dunning · 1999 · Journal of Personality and Social Psychology',960,580,30,P.white,'center','VK Latin');
   txt(c,'Gignac & Zajenkowski · 2020 · Intelligence 80, 101449',960,635,30,P.white,'center','VK Latin');
   txt(c,'Dunkel, Nedelec & van der Linden · 2023 · Intelligence 96, 101717',960,690,30,P.white,'center','VK Latin');
-  txt(c,'图论挑战为教学类比；未使用“愚昧山峰”曲线。',960,780,26,P.muted);
-  if(window.__VK_VISUAL_DRAFT__)txt(c,'本地审看 · 使用《运气的形状》原参考混合音轨',960,860,25,P.muted);
  });
 }
 let state={};window.DK_STATE=()=>structuredClone(state);
