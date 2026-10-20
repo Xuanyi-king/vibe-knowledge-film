@@ -52,6 +52,7 @@ def output_snapshot(proj, paths):
 
 def reusable(proj, record, key):
     try:
+        proj=proj.resolve()
         return (record.get('key')==key and bool(record.get('outputs')) and
                 all((proj/name).resolve().is_relative_to(proj) and not (proj/name).is_symlink() and
                     provenance.digest(proj/name)==sha for name,sha in record['outputs'].items()))

@@ -57,7 +57,14 @@ class WorkflowTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d);(p/'audio').mkdir();a=p/'audio/events.json';a.write_text('{}')
             snapshot=produce.output_snapshot(p,['audio'])
+            if p!=p.resolve():print('receipt canonical project root:',p,'=>',p.resolve())
             self.assertTrue(produce.reusable(p,{'key':'k','outputs':snapshot},'k'))
+            # A canonical target must be compared with a canonical project root
+            # (Windows temporary roots may use their 8.3 short-name alias).
+            self.assertTrue(produce.reusable(p/'audio/..',{'key':'k','outputs':snapshot},'k'))
+            (p/'outside').write_bytes(b'outside audio root')
+            self.assertFalse(produce.reusable(p/'audio',{'key':'k','outputs':{
+                '../outside':provenance.digest(p/'outside')}},'k'))
             self.assertFalse(produce.reusable(p,{'key':'k','outputs':snapshot},'changed-runtime'))
             a.write_text('{"modified":true}')
             self.assertFalse(produce.reusable(p,{'key':'k','outputs':snapshot},'k'))

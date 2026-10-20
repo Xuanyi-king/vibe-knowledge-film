@@ -15,3 +15,5 @@
 只读采样现有 0.4 秒回归夹具的报告：热缓存 Release 1.4217 秒（仅 fonts，复用 standard + mobile_evidence），0–0.3 秒无声 Draft Clip 6.316 秒（fonts + preview）。这不是冷启动/新影片或严格前后性能对照；源码变化后的 Standard 重建样本为 30.5873 秒。核心仍为 6,538 字节，README 5,787 字节；原引擎/作品源码未改，不重复渲染历史影片。复现工具仍为 `scripts/benchmark_workflow.py`，不外推 Token/质量收益。
 
 [旧 Windows 503/504 失败记录](https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39290048270)保留；改用固定、SHA256 校验的 FFmpeg 8.0.1 ZIP，实际执行两个工具后设置 PATH。最终提交的 Ubuntu/原生 Windows 核心、PowerShell 与软件 WebGL 日志链接记录在 [PR #3](https://github.com/Xuanyi-king/vibe-knowledge-film/pull/3) 检查及说明。硬件 GPU、Windows 完整可选 3D/真实乐器成片、主观审听与平台转码仍未验证。
+
+首次修复提交 c780a98 的[原生运行](https://github.com/Xuanyi-king/vibe-knowledge-film/actions/runs/39344712143)：Ubuntu 核心 122 项/109 通过/13 可选跳过，组件 4 项通过；Windows 安装两个工具成功，核心发现 2 项失败（107 通过/13 跳过）：未规范化根路径使合法收据被拒绝，以及一次 Chromium 确定性截图 TargetClosedError。前者用 Linux 等价路径先复现失败，再统一规范化根路径，并保留越界拒绝断言；后者本地原测试重跑未复现（上述两项共 63.366 秒通过），没有修改渲染器、削弱断言或添加自动重试，根因未定。该失败记录保留；后续最终提交完整原生结果见 PR，不将这次失败冒充通过。
