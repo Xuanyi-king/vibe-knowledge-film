@@ -26,6 +26,7 @@ except ImportError:
     import provenance
 
 ENGINE = Path(__file__).resolve().parent
+VISUAL_DRAFT = False  # Set only by the restricted preview CLI; never persisted in a project.
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     # Windows registry MIME mappings can label .mjs as text/plain. Modules require JS.
@@ -97,6 +98,7 @@ def open_page(p, url):
         elif not req.url.startswith(('data:', 'blob:')): pg._vk_remote_assets.append(req.url)
     pg.on("request", record_request)
     try:
+        if VISUAL_DRAFT:pg.add_init_script('window.__VK_VISUAL_DRAFT__ = true;')
         # Syntax/runtime failures can happen before VK.film installs its READY
         # promise. Surface their cause instead of waiting three minutes.
         pg.add_init_script("""(() => {
@@ -153,14 +155,14 @@ def with_page(proj, fn):
         srv.server_close()
 
 def stills(proj, ts):
-    (proj / "review").mkdir(exist_ok=True)
+    folder=proj/('review/visual-draft' if VISUAL_DRAFT else 'review');folder.mkdir(parents=True,exist_ok=True)
     def go(pg):
-        for t in ts: (proj / f"review/s_{t:07.2f}.png").write_bytes(shot(pg, t))
+        for t in ts: (folder / f"s_{t:07.2f}.png").write_bytes(shot(pg, t))
     with_page(proj, go); print("stills:", len(ts))
 
 def sheet(proj, args, name="sheet"):
     from PIL import Image, ImageDraw, ImageFont
-    (proj / "review").mkdir(exist_ok=True)
+    folder=proj/('review/visual-draft' if VISUAL_DRAFT else 'review');folder.mkdir(parents=True,exist_ok=True)
     def go(pg):
         end = pg.evaluate("END")
         ts = [float(x) for x in args] if len(args) > 1 else [round((i + .5) * end / int(args[0] if args else 16), 2) for i in range(int(args[0] if args else 16))]
@@ -172,7 +174,7 @@ def sheet(proj, args, name="sheet"):
             im = Image.open(io.BytesIO(shot(pg, t))).convert("RGB").resize((tw, th), Image.LANCZOS)
             x, y = (i % cols) * tw, (i // cols) * th; out.paste(im, (x, y))
             d.rectangle([x, y + th - 24, x + 78, y + th], fill=(0, 0, 0)); d.text((x + 5, y + th - 22), f"{t:.2f}", font=font, fill=(255, 230, 0))   # 时间标在左下角，不挡左上的年份 / 章节标
-        out.save(proj / f"review/{name}.jpg", quality=90); print("sheet:", proj / f"review/{name}.jpg", len(ts))
+        out.save(folder / f"{name}.jpg", quality=90); print("sheet:", folder / f"{name}.jpg", len(ts))
     with_page(proj, go)
 
 def frames(proj, out, a=0.0, b=None, local_only=False):
@@ -187,8 +189,8 @@ def frames(proj, out, a=0.0, b=None, local_only=False):
         out = Path(out_path)
         with tempfile.TemporaryDirectory(prefix=".vk-render-", dir=out.parent) as tmp:
             target = Path(tmp) / "encoded.mp4"
-            ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "image2pipe", "-framerate", str(fps), "-i", "-",
-                                   "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "14", "-preset", "medium", "-movflags", "+faststart", str(target)], stdin=subprocess.PIPE)
+            ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "image2pipe", "-framerate", str(fps), "-threads", "1", "-i", "-",
+                                   "-c:v", "libx264", "-threads", "4", "-pix_fmt", "yuv420p", "-crf", "14", "-preset", "medium", "-movflags", "+faststart", str(target)], stdin=subprocess.PIPE)
             try:
                 for i in range(n0, n1):
                     data = shot(pg, i / fps)
@@ -297,6 +299,12 @@ def det(proj, n=12):
 if __name__ == "__main__":
     a = sys.argv[1:]
     if not a: sys.exit(__doc__)
+    if '--visual-draft' in a:
+        VISUAL_DRAFT=True;a.remove('--visual-draft')
+        if not any(x in a for x in ('--stills','--sheet','--motion','--clip')) or any(x in a for x in ('--resume','--events','--det','--serve','--jobs')):
+            sys.exit('--visual-draft is restricted to stills/sheet/motion/clip previews')
+        if '--clip' in a and len(a)>a.index('--clip')+3 and a[a.index('--clip')+3]!='draft':
+            sys.exit('visual Draft clip must be named draft')
     proj = Path(a[0]).resolve()
     if not (proj / "film.js").exists(): sys.exit(f"{proj} 里没有 film.js")
     (proj / "renders").mkdir(exist_ok=True)
@@ -313,7 +321,8 @@ if __name__ == "__main__":
         sheet(proj, [repr(round(t0 + (t1 - t0) * k / (n - 1), 3)) for k in range(n)], f"motion_{t0:g}-{t1:g}")
     elif "--clip" in a:
         i = a.index("--clip"); name = a[i + 3] if len(a) > i + 3 else "_clip"
-        frames(proj, proj / f"renders/{name}.mp4", float(a[i + 1]), float(a[i + 2]))
+        folder=proj/('renders/visual-draft' if VISUAL_DRAFT else 'renders');folder.mkdir(parents=True,exist_ok=True)
+        frames(proj, folder / f"{name}.mp4", float(a[i + 1]), float(a[i + 2]))
     elif "--events" in a: events(proj)
     elif "--det" in a: det(proj)
     elif "--resume" in a:

@@ -12,7 +12,7 @@ import subprocess
 import tempfile
 
 ENGINE = Path(__file__).resolve().parent
-ENCODER = {'codec': 'libx264', 'pix_fmt': 'yuv420p', 'crf': 14, 'preset': 'medium'}
+ENCODER = {'codec': 'libx264', 'pix_fmt': 'yuv420p', 'crf': 14, 'preset': 'medium', 'decode_threads': 1, 'encode_threads': 4}
 
 
 @contextmanager
