@@ -154,6 +154,10 @@ class SignatureMusicTest(unittest.TestCase):
             cfg=json.loads((p/'music.json').read_text());self.assertEqual(cfg['signature']['id'],'shape-of-luck')
             self.assertTrue(cfg['signature']['required']);self.assertIn('MUSIC.events',(p/'film.js').read_text())
             with self.assertRaises(ValueError):P.prepare(p)
+            # Losing/replacing music.json must not erase the series identity in film.js.
+            (p/'music.json').unlink();P.prepare(p,{'mode':'original'})
+            with self.assertRaisesRegex(RuntimeError,'series master missing/mismatched'):
+                render.with_page(p,lambda pg:None)
 
     def test_synthetic_master_stems_and_real_aac_delivery(self):
         from scripts import produce

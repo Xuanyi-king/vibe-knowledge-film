@@ -72,6 +72,7 @@ if __name__ == "__main__":
     if a.series:
         code=film.read_text(encoding='utf-8')
         film.write_text("Promise.all([import('./assets/music-plan.mjs'),import('/engine/vk-motion.mjs')]).then(([{MUSIC},{score}])=>{\n"
+            +f"if(MUSIC.selected!=='signature'||MUSIC.signature?.id!=={json.dumps(a.series)})throw Error('series master missing/mismatched; no fallback');\n"
             +f"window.VK_SCORE=score({{end:{duration},events:[...MUSIC.events]}}); // Add this film's SFX/ambience events here.\n"
             +code+'\n});\n',encoding='utf-8')
         (proj/'music.json').write_text(json.dumps({'mode':'signature','end':duration,

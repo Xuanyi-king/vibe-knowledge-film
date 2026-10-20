@@ -10,7 +10,7 @@ Agent 从主题自主完成叙事；先决定知识任务、阅读时间与镜�
 python scripts/new_film.py <project> --world custom --duration 150 --series shape-of-luck
 ```
 
-B/C 仍可按主题选择。系列骨架生成显式锁定的 music.json，并将 MUSIC.events 合入已有 VK_SCORE；把本片 SFX/Ambience 加入同一 events 数组。缺母版、索引、剪辑许可或段落计划会阻塞生产，不降级 original/custom/platform-only。所有新系列作品默认使用此入口，用户不必选择技术参数。
+B/C 仍可按主题选择。系列骨架生成显式锁定的 music.json，并将 MUSIC.events 合入已有 VK_SCORE；把本片 SFX/Ambience 加入同一 events 数组。缺母版、索引、剪辑许可或段落计划会阻塞生产，不降级 original/custom/platform-only。骨架加载处也核对系列身份，删除配置后重建旧 original 计划仍会失败。所有新系列作品默认使用此入口，用户不必选择技术参数。
 
 旧 B/C 工程、无系列标记的 new_film、旧 music.json 和合法原创/采样接口保持兼容；旧无锁 signature 的历史降级行为仅用于非系列工程，不能用于本系列规避锁定。
 
