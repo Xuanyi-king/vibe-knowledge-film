@@ -15,11 +15,11 @@
 ```powershell
 New-Item -ItemType Directory -Path ../films -Force
 Copy-Item -LiteralPath ./examples/dunning_kruger -Destination ../films/dunning-kruger -Recurse
-python scripts/produce.py ../films/dunning-kruger --mode draft --visual-only --stills 3 36 75 120.5
+python scripts/produce.py ../films/dunning-kruger --mode draft --assets scene --visual-only --stills 3 36 75 120.5
 python scripts/produce.py ../films/dunning-kruger --mode draft --visual-only --motion 108 118
 ```
 
-当前`music.json`如实保留缺母版状态。视觉Draft不导入缺失音乐计划；Standard/Release仍会拒绝认证。正式使用需按[音乐导演](../../references/music-direction.md)接入真实指定母版及适用权限。不能以修改状态或换歌取得通过。
+`--assets scene`准备本例使用的可选Three依赖，已经存在时复用；不是安装另一套引擎。当前`music.json`如实保留缺母版状态。视觉Draft不导入缺失音乐计划；Standard/Release仍会拒绝认证。正式使用需按[音乐导演](../../references/music-direction.md)接入真实指定母版及适用权限。不能以修改状态或换歌取得通过。
 
 本地成片使用用户提供的《运气的形状》参考混合录音；原视频、录音、WAV及含其音频的MP4均不随仓库分发。源码中的显式本地混音分支不授予录音权利，普通视觉Draft不会启用该分支。
 
