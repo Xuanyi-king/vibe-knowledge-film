@@ -6,7 +6,7 @@
 
 先读[字幕稿](script.md)、[逐镜分镜](storyboard.md)与[科学依据及类比边界](sources.md)，再看`film.js`。`objects.mjs`用现有Three/PBR绘制器具，`canvas.mjs`负责纸张、数轴和二维图形。`SUBS`、`SHOTS`、绝对时间和共享VK_SCORE在同一影片中管理，绘制代码不另造引擎。
 
-观众的理解变化：从凭直觉判断一笔画，学会检查路口配对规则，再回到同一张图验证新判断。该图只是教学类比，不是心理学原实验。原研究12/62是百分位，不是答对率；2020与2023年的研究结果与范围分别交代，未使用流行山谷曲线。结尾直接给出“先做一次验证，再用反馈修正判断”的学习落点。
+观众的理解变化：从凭直觉判断一笔画，学会检查路口配对规则，再回到同一张图验证新判断。该图只是教学类比，不是心理学原实验。原研究12/62是百分位，不是答对率；2020与2023年的研究结果与范围分别交代，未使用流行山谷曲线。中段让两枚起终点标记尝试覆盖四个路口；结尾把规则记在纸上，直白落到“别把熟悉当掌握，实际试一次，并从预期与结果的差距找到下一步要学的内容”。
 
 ## 本地试画
 
@@ -16,7 +16,8 @@
 New-Item -ItemType Directory -Path ../films -Force
 Copy-Item -LiteralPath ./examples/dunning_kruger -Destination ../films/dunning-kruger -Recurse
 python scripts/produce.py ../films/dunning-kruger --mode draft --assets scene --visual-only --stills 3 36 75 120.5
-python scripts/produce.py ../films/dunning-kruger --mode draft --visual-only --motion 108 118
+python scripts/produce.py ../films/dunning-kruger --mode draft --visual-only --motion 64 80
+python scripts/produce.py ../films/dunning-kruger --mode draft --visual-only --clip 64 80
 ```
 
 `--assets scene`准备本例使用的可选Three依赖，已经存在时复用；不是安装另一套引擎。当前`music.json`如实保留缺母版状态。视觉Draft不导入缺失音乐计划；Standard/Release仍会拒绝认证。正式使用需按[音乐导演](../../references/music-direction.md)接入真实指定母版及适用权限。不能以修改状态或换歌取得通过。
@@ -32,3 +33,7 @@ python scripts/produce.py ../films/dunning-kruger --mode draft --visual-only --m
 后续制作保留成片、画面底稿、源码/资产与分轨；见[修改、交接与清理](../../references/handoff.md)。本例不含机器路径固定的临时剪辑脚本，使用仓库现有入口。
 
 原片需求为简体中文，因此当前画面保留中文主字幕；`subtitles/zh.srt`与`en.srt`提供26条同轴独立字幕，译文和时间源在`source.json`。英文尚未烧录进本例画面；新片按Skill默认设计中英双行，不能把字幕文件存在说成英文画面已验收。
+
+本轮以完整关键推理动态预览验证规则：中段分配起终点标记，结尾画出并记录漏看的规则；完整片重绘54秒、复用76秒，源分轨与AAC内容及时间戳保持一致。该执行实例检验了画面与文案对应，不等于目标模型对照或观众理解实验。
+
+![本轮实际编码的结尾启示](insight.jpg)

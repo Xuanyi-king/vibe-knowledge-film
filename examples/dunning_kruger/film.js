@@ -28,11 +28,11 @@ export const SUBS=[
  [90.1,94.1,'分组与测量，也可能放大差距。'],
  [94.7,98.6,'后来的智力研究，结果并不一致。'],
  [99.1,102.7,'偏差有多大，还要看任务与方法。'],
- [103.6,107.8,'再看这张图，你先数了路口。'],
- [108.6,112.0,'少一条线，会怎样？'],
- [112.8,117.5,'先提出判断，再让结果检验它。'],
- [119.1,122.6,'所以，觉得自己会了，先做一次验证。'],
- [123.1,126.8,'看见差距，再用反馈修正自己的判断。'],
+ [103.6,107.8,'所以，别急着把熟悉，当成掌握。'],
+ [108.6,112.0,'先找一道题，试试自己。'],
+ [112.8,117.5,'再让结果，检验刚才的判断。'],
+ [119.1,122.6,'和预想不一样的地方，'],
+ [123.1,126.8,'就是接下来该学的地方。'],
 ];
 export const SHOTS=[
  {id:'challenge',start:0,end:14},{id:'name',start:14,end:22},
@@ -166,17 +166,42 @@ function junction(t){
  if(t>56){alpha(ss(t,56,56.6),()=>{label('进',750,322,42,P.gold);label('出',1180,322,42,P.gold);});}
 }
 function fourEnds(t){
- heading('Ⅱ','四个路口 · 每处三条线');
- const zoom=mix(1.16,.93,ss(t,64,66));
- const mark=Math.floor(4*ss(t,71.8,75.0)+.00001);
- graph(c,{x:1040,y:460,s:zoom,mark,labels:t>71.7});
- if(t<72){alpha(1-ss(t,71.3,72),()=>{
-  paper(c,390,500,340,250,-.035,q=>{txt(q,'起点',-80,-20,42,P.ink);txt(q,'终点',80,-20,42,P.ink);dot(q,-80,45,13,'#9c7641');dot(q,80,45,13,'#9c7641');txt(q,'最多两个例外',0,95,27,'#756548');});
- });}
- if(t>75.2){alpha(ss(t,75.2,76),()=>{txt(c,'4',390,440,140,P.red,'center','VK Latin');label('四个“落单”的路口',390,565,35,P.muted);});}
- if(t>80.5){const u=ss(t,80.5,82);alpha(u,()=>{
-  paper(c,960,790,1050,64,.0,q=>{for(let i=0;i<=60;i++){const x=-480+i*16;ln(q,[x,-21],[x,i%5===0?14:-4],'#76603e',1);}txt(q,'一份新的判断依据',0,0,25,P.ink);});
- });}
+ heading('Ⅱ','四处需要端点，却只有两个位置');
+ const center=[1080,450],scale=.92,pts=Q.map(([x,y])=>[center[0]+x*scale,center[1]+y*scale]);
+ const odd=Q.map((_,i)=>i).filter(i=>E.filter(edge=>edge.includes(i)).length%2);
+ graph(c,{x:center[0],y:center[1],s:scale,mark:0});
+ // Two physical tokens can cover only two of the four odd junctions.
+ const moves=ss(t,68.9,71.5),retreat=ss(t,72.6,74.8);
+ const homes=[[350,360],[350,550]];
+ const slots=homes.map((home,i)=>{
+  const first=pts[i],second=pts[i+2],travel=ss(t,64.6+i*.25,67+i*.25);
+  const target=[mix(first[0],second[0],moves),mix(first[1],second[1],moves)];
+  return [mix(mix(home[0],target[0],travel),home[0],retreat),mix(mix(home[1],target[1],travel),home[1],retreat)];
+ });
+ slots.forEach((pos,i)=>{
+  c.save();c.shadowColor='#000a';c.shadowBlur=16;c.shadowOffsetY=8;
+  dot(c,pos[0],pos[1],40,P.gold);c.shadowBlur=0;c.shadowOffsetY=0;
+  dot(c,pos[0],pos[1],35,'#e2cf9f');txt(c,i?'终':'起',pos[0],pos[1],35,P.ink);c.restore();
+ });
+ const reached=t>75?odd.length:Math.max(0,Math.min(odd.length,Math.floor((t-72.7)/.55)+1));
+ odd.forEach((i,k)=>{
+  const [x,y]=pts[i],covered=slots.some(([a,b])=>Math.hypot(a-x,b-y)<49);
+  const visible=ss(t,64.8+k*.18,65.5+k*.18);
+  alpha(visible,()=>{
+   c.beginPath();c.arc(x,y,25,0,Math.PI*2);c.strokeStyle=covered?P.gold:P.red;c.lineWidth=3;c.stroke();
+   if(k<reached&&t>72.6){txt(c,'3',x+(i===0?-42:42),y-32,38,P.red);}
+  });
+ });
+ if(t>72.7)alpha(ss(t,72.7,73.6),()=>{
+  txt(c,'可用：2',350,688,42,P.gold);txt(c,'需要：'+reached,1100,805,48,P.red);
+ });
+ if(t>77.5)alpha(ss(t,77.5,78.4),()=>{
+  ln(c,[450,450],[660,450],P.muted,2);txt(c,'还缺两个',530,400,33,P.muted);
+ });
+ if(t>80.5)alpha(ss(t,80.5,82),()=>{
+  paper(c,960,790,1050,64,0,q=>{for(let i=0;i<=60;i++){const x=-480+i*16;ln(q,[x,-21],[x,i%5===0?14:-4],'#76603e',1);}txt(q,'一份新的判断依据',0,0,25,P.ink);});
+ });
+ state.endpointAllocation={needs:odd.length,slots:slots.length,shownCount:reached,drawnSlots:slots};
 }
 function limits(t){
  // A field of paper slips becomes two readable research records; no invented dataset.
@@ -219,9 +244,20 @@ function returnScene(t){
  if(t>110.6&&t<113){alpha(ss(t,110.6,111.2)*(1-ss(t,112.5,113)),()=>label('现在，可以试了。',1450,470,43,P.gold));}
 }
 function afterword(t){
- model.show(c,t,{path:endingPath,progress:5,removed:1,alpha:1-ss(t,124,127),
+ model.show(c,t,{path:endingPath,progress:5,removed:1,alpha:1-ss(t,125.5,127),
   pose:{position:M.track([[119,[.4,7.6,8]],[123,[3.8,7.6,10.8]],[127,[5.8,7.6,12.8]]],t),target:[0,-.48,0],fov:40}});
- alpha(ss(t,119.5,121),()=>{txt(c,'盲 区',390,275,100,P.gold);flourish(c,390,368,350);txt(c,'邓宁—克鲁格效应',390,420,35,P.muted);});
+ const appear=ss(t,119.15,120.2),x=mix(280,425,appear);
+ alpha(appear,()=>{
+  paper(c,x,435,620,500,-.025,q=>{
+   txt(q,'把差距记下来',0,-175,40,P.ink);
+   const o=[0,5],arms=[[-170,-95],[170,-95],[0,152]];
+   arms.forEach(a=>ln(q,o,a,'#82745a',6));
+   pathBetween(q,[arms[0],o,arms[1]],ss(t,120.4,122.8),'#896425',9);
+   alpha(ss(t,122.5,123.4),()=>{ln(q,o,arms[2],P.red,8);});
+   dot(q,0,5,14,'#c5ae7d');
+   txt(q,'漏看的：路口的进出规则',0,210,29,P.ink);
+  });
+ });
 }
 function credits(t){
  const a=ss(t,126.8,127.4);alpha(a,()=>{

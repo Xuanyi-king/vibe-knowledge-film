@@ -84,20 +84,20 @@ The size of the bias depends on the task and the method.
 
 22
 00:01:43,600 --> 00:01:47,800
-Look again: this time, you count the junctions first.
+So, do not mistake familiarity for mastery.
 
 23
 00:01:48,600 --> 00:01:52,000
-What happens if we remove one line?
+Find a task and try it yourself.
 
 24
 00:01:52,800 --> 00:01:57,500
-Make a prediction, then let the result test it.
+Then let the result test your prediction.
 
 25
 00:01:59,100 --> 00:02:02,600
-So when you think you can do it, put that judgment to a test.
+Where the result differs from what you expected,
 
 26
 00:02:03,100 --> 00:02:06,800
-Notice the gap, then use feedback to revise your judgment.
+you have found what to learn next.
